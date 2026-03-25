@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WONKA - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-white">
+    <div
+      class="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-[#7B2CBF] via-[#6F4E37] to-[#D4AF37] opacity-20"
+      ></div>
+
+      <div
+        class="absolute top-10 left-10 w-20 h-20 rounded-full bg-[#FFD700] opacity-30 blur-2xl"
+      ></div>
+      <div
+        class="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-[#7B2CBF] opacity-30 blur-3xl"
+      ></div>
+      <div
+        class="absolute top-1/2 right-10 w-24 h-24 rounded-full bg-[#D4AF37] opacity-20 blur-2xl"
+      ></div>
+
+      <div
+        class="w-full max-w-md mx-4 relative z-10 bg-white rounded-xl shadow-2xl border-2 border-[#D4AF37]/30 overflow-hidden"
+      >
+        <div class="p-8 text-center space-y-4">
+          <div class="flex justify-center items-center gap-3">
+            <i data-lucide="chef-hat" class="w-10 h-10 text-[#7B2CBF]"></i>
+            <div class="relative">
+              <h1
+                class="text-4xl font-bold bg-gradient-to-r from-[#7B2CBF] via-[#D4AF37] to-[#7B2CBF] bg-clip-text text-transparent"
+              >
+                WONKA
+              </h1>
+              <i
+                data-lucide="sparkles"
+                class="w-6 h-6 text-[#FFD700] absolute -top-2 -right-8 animate-pulse"
+              ></i>
+            </div>
+          </div>
+          <h2 class="text-2xl font-semibold text-[#6F4E37]">
+            Chocolatería Mágica
+          </h2>
+          <p class="text-[#6F4E37] opacity-80">
+            Ingresa tus credenciales para acceder
+          </p>
+        </div>
+
+        <div class="px-8 pb-8">
+          <form id="loginForm" class="space-y-4">
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="block text-sm font-medium text-[#6F4E37]"
+                >Email</label
+              >
+              <input
+                id="email"
+                type="email"
+                required
+                placeholder="tu@email.com"
+                class="w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                for="password"
+                class="block text-sm font-medium text-[#6F4E37]"
+                >Contraseña</label
+              >
+              <input
+                id="password"
+                type="password"
+                required
+                placeholder="••••••••"
+                class="w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all"
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full py-2 px-4 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1FAF] hover:to-[#7B2CBF] text-white font-semibold rounded-md shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              Ingresar
+            </button>
+          </form>
+
+          <div
+            class="mt-6 p-4 bg-[#FFF8F0] rounded-lg border border-[#D4AF37]/30"
+          >
+            <p class="text-sm text-[#6F4E37] font-bold mb-2">
+              Demo credentials:
+            </p>
+            <div class="space-y-1 text-xs text-[#6F4E37]">
+              <p><strong>Admin:</strong> admin@wonka.com / admin</p>
+              <p><strong>Cliente:</strong> cliente@wonka.com / cliente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+      const loginForm = document.getElementById("loginForm");
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email === "admin@wonka.com" && password === "admin") {
+          window.location.href =
+            "{{ url_for('proveedores.lista_proveedores') }}";
+        } else if (email === "cliente@wonka.com" && password === "cliente") {
+          window.location.href =
+            "{{ url_for('proveedores.lista_proveedores') }}";
+        } else {
+          alert(
+            "Credenciales incorrectas. Intenta con admin@wonka.com / admin",
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

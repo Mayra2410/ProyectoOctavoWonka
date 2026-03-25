@@ -1,0 +1,43 @@
+{# Macro para Botón de Acción Principal #} 
+{% macro boton_principal(texto,
+icono='plus', id='') %}
+<button
+  class="bg-wonka-purple hover:bg-wonka-purple-dark text-white px-5 py-2 rounded-xl font-bold flex items-center gap-2 shadow-sm transition-all"
+>
+  <i data-lucide="{{ icono }}" class="w-5 h-5"></i>
+  {{ texto }}
+</button>
+{% endmacro %} 
+
+{# Macro para el Buscador #} {% macro
+buscador(placeholder="Buscar...") %}
+<div class="relative mb-8 max-w-md">
+  <i
+    data-lucide="search"
+    class="absolute left-4 top-3 text-gray-400 w-5 h-5"
+  ></i>
+  <input
+    type="text"
+    placeholder="{{ placeholder }}"
+    class="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-wonka-purple/20 outline-none text-sm"
+  />
+</div>
+{% endmacro %} 
+
+{# Macro para las Acciones #} {% macro
+acciones_tabla(edit_link="#", delete_link="#") %}
+<div class="flex justify-end gap-3">
+  <a
+    href="{{ edit_link }}"
+    class="text-wonka-purple hover:scale-110 transition-transform"
+  >
+    <i data-lucide="pencil" class="w-5 h-5"></i>
+  </a>
+  <button
+    onclick="confirmDelete('{{ delete_link }}')"
+    class="text-red-400 hover:scale-110 transition-transform"
+  >
+    <i data-lucide="trash-2" class="w-5 h-5"></i>
+  </button>
+</div>
+{% endmacro %}

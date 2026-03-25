@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
+<div class="max-w-[1600px] mx-auto">
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold text-wonka-purple">Proveedores</h1>
+    <p class="text-gray-500">Gestiona la base de datos de suministros</p>
+  </div>
+
+  <div class="flex justify-end mb-4">
+    {{ m.boton_principal("Nuevo Proveedor") }}
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+    {{ m.buscador("Buscar proveedor por nombre...") }}
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-gray-400 text-sm border-b border-gray-50">
+          <tr>
+            <th class="pb-4 px-2">Proveedor</th>
+            <th class="pb-4 px-2">Email</th>
+            <th class="pb-4 px-2 text-right">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+          <tr class="group hover:bg-gray-50/50 transition-all">
+            <td class="py-5 px-2 font-bold text-wonka-brown">
+              Cacao Premium S.A.
+            </td>
+            <td class="py-5 px-2 text-gray-500">cacao@wonka.com</td>
+            <td class="py-5 px-2">{{ m.acciones_tabla() }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WONKA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "wonka-purple": "#8b5cf6", 
+              "wonka-purple-dark": "#7c3aed",
+              "wonka-brown": "#5c4033",
+              "wonka-cream": "#fdf8f3", 
+              "wonka-gold": "#ffcc00",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .sidebar-item-active {
+        background-color: #8b5cf6 !format;
+        color: white !important;
+        border-radius: 0.75rem;
+      }
+    </style>
+  </head>
+  <body class="flex h-screen bg-wonka-cream overflow-hidden">
+    <aside
+      class="w-64 bg-[#5c4434] text-white flex flex-col flex-shrink-0 shadow-2xl"
+    >
+      <div class="p-6">
+        <div class="flex items-center gap-2 mb-8">
+          <i data-lucide="sparkles" class="text-wonka-gold w-8 h-8"></i>
+          <h1 class="text-2xl font-black tracking-tighter text-wonka-gold">
+            WONKA
+          </h1>
+        </div>
+
+        <nav class="space-y-1">
+          {% set items = [ ('dashboard', 'Panel', 'layout-dashboard'),
+          ('customers', 'Clientes', 'users'), ('employees', 'Empleados',
+          'user-cog'), ('suppliers', 'Proveedores', 'truck'), ('materials',
+          'Materias Primas', 'package'), ('purchases', 'Compras',
+          'shopping-cart'), ('payments', 'Pagos', 'credit-card'), ('products',
+          'Productos', 'boxes'), ('recipes', 'Recetas', 'chef-hat'),
+          ('production', 'Producción', 'factory'), ('inventory', 'Inventario',
+          'warehouse'), ('sales', 'Ventas', 'trending-up') ] %} {% for id,
+          label, icon in items %}
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group {% if id == 'suppliers' %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
+          >
+            <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+            {{ label }}
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col min-w-0">
+      <header
+        class="h-16 bg-[#5c4434] flex items-center justify-between px-8 shadow-md"
+      >
+        <span class="text-white/70 text-sm font-medium">Admin Panel</span>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 text-white">
+            <span class="text-sm font-medium">Mayra</span>
+            <div
+              class="w-8 h-8 rounded-full bg-wonka-purple border-2 border-white/20 overflow-hidden text-xs flex items-center justify-center font-bold"
+            >
+              W
+            </div>
+          </div>
+          <button class="text-white/70 hover:text-white">
+            <i data-lucide="log-out" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </header>
+
+      <main class="flex-1 overflow-y-auto p-8">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
