@@ -1,0 +1,181 @@
+{% extends "base.html" %} {% import "proveedores/_macros_prov.html" as mp %} {%
+block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Nuevo Proveedor</h1>
+  </div>
+
+  <form
+    action="{{ url_for('proveedores.agregar_proveedor') }}"
+    method="POST"
+    novalidate
+  >
+    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+    <div
+      class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+    >
+      <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
+        <div
+          class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12"
+        >
+          <div class="relative mb-6">
+            <img
+              class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
+              src="{{ url_for('static', filename='img/proveedor2.jpg') }}"
+              alt="Nuevo"
+            />
+            <div
+              class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"
+            ></div>
+          </div>
+
+          <div class="w-full space-y-4">
+            <button
+              type="submit"
+              class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-black rounded-2xl text-center transition-all shadow-lg flex items-center justify-center gap-2"
+            >
+              <i data-lucide="plus-circle" class="w-5 h-5"></i>
+              Guardar Proveedor
+            </button>
+
+            <a
+              href="{{ url_for('proveedores.lista_proveedores') }}"
+              class="block w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all"
+            >
+              Cancelar
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >Nombre de la Empresa</label
+              >
+              {{ form.nombre(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-700") }} {% for error in form.nombre.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >Nombre del Contacto</label
+              >
+              {{ form.contacto(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-700") }} {% for error in form.contacto.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >Correo Electrónico</label
+              >
+              {{ form.email(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-700") }} {% for error in form.email.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >Teléfono</label
+              >
+              {{ form.telefono(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-700") }} {% for error in form.telefono.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >RUC / Registro Fiscal</label
+              >
+              {{ form.ruc(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              font-mono") }} {% for error in form.ruc.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div
+              class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+            >
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+                >Fecha de Registro</label
+              >
+
+              {{ form.fecha_registro(class="wonka-date w-full bg-transparent
+              border-0 text-xl font-medium focus:ring-0 outline-none
+              text-gray-700", placeholder="Seleccionar fecha...") }} {% for
+              error in form.fecha_registro.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <script>
+              flatpickr(".wonka-date", {
+                disableMobile: "true",
+                animate: true,
+              });
+            </script>
+
+            <div
+              class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 md:col-span-2"
+            >
+              <label
+                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+                >Dirección Completa</label
+              >
+              {{ form.direccion(class="w-full bg-white border-0 rounded-xl p-3
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-700") }} {% for error in form.direccion.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+
+            <div
+              class="p-6 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2"
+            >
+              <label
+                class="text-lg font-bold text-wonka-purple uppercase block mb-3"
+                >Notas Adicionales</label
+              >
+              {{ form.notas(class="w-full bg-white border-0 rounded-xl p-4
+              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
+              text-gray-600 italic", rows="3") }} {% for error in
+              form.notas.errors %}<span
+                class="text-red-500 text-xs font-bold mt-1 block"
+                >* {{ error }}</span
+              >{% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

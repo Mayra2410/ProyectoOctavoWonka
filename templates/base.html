@@ -11,10 +11,10 @@
         theme: {
           extend: {
             colors: {
-              "wonka-purple": "#8b5cf6", 
+              "wonka-purple": "#8b5cf6",
               "wonka-purple-dark": "#7c3aed",
               "wonka-brown": "#5c4033",
-              "wonka-cream": "#fdf8f3", 
+              "wonka-cream": "#fdf8f3",
               "wonka-gold": "#ffcc00",
             },
           },
@@ -28,6 +28,15 @@
         border-radius: 0.75rem;
       }
     </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style/calendario.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   </head>
   <body class="flex h-screen bg-wonka-cream overflow-hidden">
     <aside
