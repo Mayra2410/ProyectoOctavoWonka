@@ -1,0 +1,117 @@
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
+<div class="max-w-[1800px] mx-auto">
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold text-wonka-purple">Materias Primas</h1>
+    <p class="text-gray-500">Gestiona los insumos</p>
+  </div>
+
+  <div class="flex justify-end mb-4">
+    <a href="{{ url_for('materiaPrima.agregar_materia') }}">
+      {{ m.boton_principal("Nuevo Insumo") }}
+    </a>
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+    {{ m.buscador("Buscar insumo por nombre...") }}
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-gray-400 text-sm border-b border-gray-50">
+          <tr>
+            <th class="pb-4 px-2">ID</th>
+            <th class="pb-4 px-2">Imagen</th>
+            <th class="pb-4 px-2">Nombre</th>
+            <th class="pb-4 px-2">U. Medida</th>
+            <th class="pb-4 px-2">Stock Actual</th>
+            <th class="pb-4 px-2">Costo Unitario</th>
+            <th class="pb-4 px-2">Última Compra</th>
+            <th class="pb-4 px-2">Estado</th>
+            <th class="pb-4 px-2 text-center w-24">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-50">
+          {% for materia in materias %}
+          <tr
+            class="group hover:bg-wonka-purple/5 transition-all cursor-pointer"
+            onclick="window.location.href = '{{ url_for('materiaPrima.detalle_materia', id=materia.id_materia_prima) }}'"
+          >
+            <td class="py-5 px-2 font-bold text-wonka-brown">
+              {{ materia.id_materia_prima }}
+            </td>
+            <td class="py-5 px-2">
+              <div
+                class="w-10 h-10 rounded-full overflow-hidden border border-gray-200"
+              >
+                {% if materia.imagen_materia %} {% if
+                materia.imagen_materia.startswith('data:') %}
+                <img
+                  src="{{ materia.imagen_materia }}"
+                  class="w-full h-full object-cover"
+                  alt="{{ materia.nombre }}"
+                />
+                {% else %}
+                <img
+                  src="{{ url_for('static', filename='img/' + materia.imagen_materia) }}"
+                  class="w-full h-full object-cover"
+                  alt="{{ materia.nombre }}"
+                />
+                {% endif %} {% else %}
+                <img
+                  src="{{ url_for('static', filename='img/materias_primas.jpg') }}"
+                  class="w-full h-full object-cover"
+                  alt="Imagen por defecto"
+                />
+                {% endif %}
+              </div>
+            </td>
+            <td class="py-5 px-2 text-gray-700 font-medium">
+              {{ materia.nombre }}
+            </td>
+            <td class="py-5 px-2 text-gray-500">{{ materia.unidad_medida }}</td>
+
+            <td
+              class="py-5 px-2 font-semibold {% if materia.stock_actual <= materia.stock_minimo %} text-red-500 {% else %} text-gray-500 {% endif %}"
+            >
+              {{ materia.stock_actual }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              ${{ "{:,.2f}".format(materia.costo_unitario) if
+              materia.costo_unitario else "0.00" }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              {{ materia.fecha_ultima_compra if materia.fecha_ultima_compra else
+              '0000-00-00' }}
+            </td>
+
+            <td class="py-5 px-2">
+              {% if materia.activo %}
+              <span
+                class="px-3 py-1 rounded-full text-xs bg-green-100 text-green-600 font-bold"
+                >Activo</span
+              >
+              {% else %}
+              <span
+                class="px-3 py-1 rounded-full text-xs bg-red-100 text-red-600 font-bold"
+                >Inactivo</span
+              >
+              {% endif %}
+            </td>
+
+            <td class="py-5 px-2 text-right" onclick="event.stopPropagation()">
+              {{ m.acciones_tabla(
+              edit_link=url_for('materiaPrima.modificar_materia',
+              id=materia.id_materia_prima),
+              delete_link=url_for('materiaPrima.eliminar_materia',
+              id=materia.id_materia_prima), es_activo=materia.activo ) }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

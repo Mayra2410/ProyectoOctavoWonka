@@ -32,13 +32,19 @@ def agregar_proveedor():
     if request.method == "POST" and form.validate():
         existe_ruc = Proveedores.query.filter_by(ruc=form.ruc.data).first()
         existe_nombre = Proveedores.query.filter_by(nombre=form.nombre.data).first()
+        existe_tel = Proveedores.query.filter_by(telefono=form.telefono.data).first()
+        existe_dir = Proveedores.query.filter_by(direccion=form.direccion.data).first()
 
         if existe_ruc:
             form.ruc.errors.append("Este RUC ya está registrado.")
         if existe_nombre:
             form.nombre.errors.append("Ya existe una empresa con este nombre.")
+        if existe_tel:
+            form.telefono.errors.append("Este teléfono ya pertenece a otro proveedor.")
+        if existe_dir:
+            form.direccion.errors.append("Esta dirección ya está registrada.")
 
-        if existe_ruc or existe_nombre:
+        if existe_ruc or existe_nombre or existe_tel or existe_dir:
             return render_template("proveedores/agregarProveedores.html", form=form)
 
         nuevo_prov = Proveedores(
@@ -72,18 +78,33 @@ def modificar_proveedor(id):
     if request.method == "POST" and form.validate():
 
         duplicado_ruc = Proveedores.query.filter(
-            Proveedores.ruc == form.ruc.data, Proveedores.id != id
+            Proveedores.ruc == form.ruc.data, Proveedores.id_proveedor != id
         ).first()
+
         duplicado_nombre = Proveedores.query.filter(
-            Proveedores.nombre == form.nombre.data, Proveedores.id != id
+            Proveedores.nombre == form.nombre.data, Proveedores.id_proveedor != id
+        ).first()
+
+        duplicado_tel = Proveedores.query.filter(
+            Proveedores.telefono == form.telefono.data, Proveedores.id_proveedor != id
+        ).first()
+
+        duplicado_dir = Proveedores.query.filter(
+            Proveedores.direccion == form.direccion.data, Proveedores.id_proveedor != id
         ).first()
 
         if duplicado_ruc:
             form.ruc.errors.append("Este RUC pertenece a otro proveedor.")
         if duplicado_nombre:
             form.nombre.errors.append("Ese nombre ya lo usa otra empresa.")
+        if duplicado_tel:
+            form.telefono.errors.append("Este teléfono ya lo tiene otro proveedor.")
+        if duplicado_dir:
+            form.direccion.errors.append(
+                "Esta dirección ya está registrada en otro proveedor."
+            )
 
-        if duplicado_ruc or duplicado_nombre:
+        if duplicado_ruc or duplicado_nombre or duplicado_tel or duplicado_dir:
             return render_template(
                 "proveedores/modificarProveedores.html", form=form, proveedor_id=id
             )
@@ -91,8 +112,11 @@ def modificar_proveedor(id):
         form.populate_obj(proveedor)
         proveedor.activo = bool(form.activo.data)
 
-        db.session.commit()
-        return redirect(url_for("proveedores.lista_proveedores"))
+        try:
+            db.session.commit()
+            return redirect(url_for("proveedores.lista_proveedores"))
+        except Exception as e:
+            db.session.rollback()
 
     return render_template(
         "proveedores/modificarProveedores.html", form=form, proveedor_id=id
