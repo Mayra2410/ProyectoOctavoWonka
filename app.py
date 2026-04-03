@@ -6,6 +6,7 @@ from flask_wtf.csrf import CSRFProtect
 
 from proveedores.routes import proveedores
 from materiaPrima.routes import materia_Prima
+from comprasProveedores.routes import compras_bp
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -16,6 +17,7 @@ csrf = CSRFProtect(app)
 
 app.register_blueprint(proveedores)
 app.register_blueprint(materia_Prima)
+app.register_blueprint(compras_bp)
 
 
 @app.route("/")

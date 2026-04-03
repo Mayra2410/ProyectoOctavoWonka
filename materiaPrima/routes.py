@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for
 from models import (
     db,
     MateriasPrimas,
@@ -74,28 +74,30 @@ def agregar_materia():
     return render_template("materiaPrima/agregarMateriaPrima.html", form=form)
 
 
-# Modificar materia prima
 @materia_Prima.route("/modificar/<int:id>", methods=["GET", "POST"])
 def modificar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
 
-    form = forms.MateriaPrimaForm(request.form, obj=materia)
+    stock_real_auditoria = materia.stock_actual
 
+    form = forms.MateriaPrimaForm(request.form, obj=materia)
     form.proveedor_id.choices = [
         (p.id_proveedor, p.nombre) for p in Proveedores.query.order_by("nombre").all()
     ]
 
     if request.method == "POST" and form.validate():
-
-        duplicado_nombre = MateriasPrimas.query.filter(
+        duplicado = MateriasPrimas.query.filter(
             MateriasPrimas.nombre == form.nombre.data,
             MateriasPrimas.id_materia_prima != id,
         ).first()
 
-        if duplicado_nombre:
+        if duplicado:
             form.nombre.errors.append("Este nombre de insumo ya está registrado.")
             return render_template(
-                "materiaPrima/modificarMateriaPrima.html", form=form, materia_id=id
+                "materiaPrima/modificarMateriaPrima.html",
+                form=form,
+                materia_id=id,
+                materia=materia,
             )
 
         file = request.files.get("imagen_materia")
@@ -106,7 +108,9 @@ def modificar_materia(id):
 
         form.populate_obj(materia)
 
-        materia.proveedor_id = form.proveedor_id.data
+        # si queremos que el stock solo cambie con compras y no manualmente
+        # materia.stock_actual = stock_real_auditoria
+
         materia.activo = bool(form.activo.data)
 
         try:
@@ -114,9 +118,7 @@ def modificar_materia(id):
             return redirect(url_for("materiaPrima.admin_materias"))
         except Exception as e:
             db.session.rollback()
-            return render_template(
-                "materiaPrima/modificarMateriaPrima.html", form=form, materia_id=id
-            )
+            print(f"Error al modificar: {e}")
 
     return render_template(
         "materiaPrima/modificarMateriaPrima.html",
