@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 
 from proveedores.routes import proveedores
+from productos.routes import productos
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -14,6 +15,7 @@ migrate = Migrate(app, db)
 csrf = CSRFProtect(app)
 
 app.register_blueprint(proveedores)
+app.register_blueprint(productos)
 
 
 @app.route("/")

@@ -1,0 +1,118 @@
+{% macro formulario_edicion_producto(form, producto_id=None, modo='agregar') %}
+<div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
+  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
+    <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
+      <div class="relative mb-6">
+        <img
+          class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
+          src="{{ url_for('static', filename='img/producto.jpg') }}"
+          alt="Producto"
+        />
+        <div class="absolute bottom-3 right-3 w-8 h-8 {% if form.activo.data %}bg-green-500{% else %}bg-red-500{% endif %} border-4 border-white rounded-full"></div>
+      </div>
+
+      {% if producto_id %}
+      <p class="text-wonka-purple font-medium text-lg mb-8">
+        ID Producto: {{ producto_id }}
+      </p>
+      {% endif %}
+
+      <div class="w-full space-y-3">
+        <button
+          type="submit"
+          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg"
+        >
+          {% if modo == 'agregar' %}Guardar Producto{% else %}Guardar Cambios{% endif %}
+        </button>
+
+        <a
+          href="{{ url_for('productos.lista_productos') }}"
+          class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all inline-block"
+        >
+          Cancelar
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Nombre</label>
+          {{ form.nombre(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.nombre.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Categoría</label>
+          {{ form.categoria(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.categoria.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Precio de venta</label>
+          {{ form.precio_venta(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.precio_venta.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Costo producción estimado</label>
+          {{ form.costo_produccion_estimado(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.costo_produccion_estimado.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Unidad de medida</label>
+          {{ form.unidad_medida(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.unidad_medida.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Tiempo producción (minutos)</label>
+          {{ form.tiempo_produccion_minutos(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.tiempo_produccion_minutos.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Ruta de imagen</label>
+          {{ form.imagen_producto(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700") }}
+          {% for error in form.imagen_producto.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Descripción</label>
+          {{ form.descripcion(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700", rows="3") }}
+          {% for error in form.descripcion.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
+          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Activo</label>
+          {{ form.activo(class="w-6 h-6") }}
+          {% for error in form.activo.errors %}
+          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

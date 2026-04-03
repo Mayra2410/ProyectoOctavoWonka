@@ -9,5 +9,5 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:2390L@127.0.0.1/wonka"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@127.0.0.1/wonka"
     SQLALCHEMY_TRACK_MODIFICATIONS = False

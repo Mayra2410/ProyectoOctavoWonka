@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "productos/_macros_prod.html" as mp %}
+
+{% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Editar Producto</h1>
+  </div>
+
+  <form action="{{ url_for('productos.editar_producto', id_producto=producto.id_producto) }}" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ mp.formulario_edicion_producto(form, producto.id_producto, 'editar') }}
+  </form>
+</div>
+{% endblock %}
