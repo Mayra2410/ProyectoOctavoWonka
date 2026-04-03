@@ -40,26 +40,34 @@
             WONKA
           </h1>
         </div>
+<nav class="space-y-1">
+  {# Añadimos un cuarto valor a cada tupla para la ruta de Flask #}
+  {% set items = [ 
+    ('dashboard', 'Panel', 'layout-dashboard', 'index'),
+    ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
+    ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
+    ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
+    ('materials', 'Materias Primas', 'package', '#'),
+    ('purchases', 'Compras', 'shopping-cart', '#'),
+    ('payments', 'Pagos', 'credit-card', '#'),
+    ('products', 'Productos', 'boxes', '#'),
+    ('recipes', 'Recetas', 'chef-hat', '#'),
+    ('production', 'Producción', 'factory', '#'),
+    ('inventory', 'Inventario', 'warehouse', '#'),
+    ('sales', 'Ventas', 'trending-up', '#') 
+  ] %} 
 
-        <nav class="space-y-1">
-          {% set items = [ ('dashboard', 'Panel', 'layout-dashboard'),
-          ('customers', 'Clientes', 'users'), ('employees', 'Empleados',
-          'user-cog'), ('suppliers', 'Proveedores', 'truck'), ('materials',
-          'Materias Primas', 'package'), ('purchases', 'Compras',
-          'shopping-cart'), ('payments', 'Pagos', 'credit-card'), ('products',
-          'Productos', 'boxes'), ('recipes', 'Recetas', 'chef-hat'),
-          ('production', 'Producción', 'factory'), ('inventory', 'Inventario',
-          'warehouse'), ('sales', 'Ventas', 'trending-up') ] %} {% for id,
-          label, icon in items %}
-          <a
-            href="#"
-            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group {% if id == 'suppliers' %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
-          >
-            <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
-            {{ label }}
-          </a>
-          {% endfor %}
-        </nav>
+  {% for id, label, icon, ruta in items %}
+  <a
+    href="{{ url_for(ruta) if ruta != '#' else '#' }}"
+    class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group 
+    {% if request.endpoint == ruta %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
+  >
+    <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+    {{ label }}
+  </a>
+  {% endfor %}
+</nav>
       </div>
     </aside>
 
@@ -84,8 +92,11 @@
       </header>
 
       <main class="flex-1 overflow-y-auto p-8">
-        {% block content %}{% endblock %}
-      </main>
+        <div class="max-w-[1800px] mx-auto">
+        </div>
+
+  {% block content %}{% endblock %}
+</main>
     </div>
 
     <script>
