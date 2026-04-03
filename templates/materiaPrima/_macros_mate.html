@@ -1,0 +1,395 @@
+{% macro tarjeta_materia(datos, botones=None) %}
+<div
+  class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+>
+  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
+    <div
+      class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12"
+    >
+      <div class="relative mb-6">
+        <img
+          class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
+          src="{{ datos.imagen_materia if datos.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+          alt="Materia Prima"
+        />
+        <div
+          class="absolute bottom-3 right-3 w-8 h-8 {% if datos.activo %}bg-green-500{% else %}bg-red-500{% endif %} border-4 border-white rounded-full"
+        ></div>
+      </div>
+
+      <h2
+        class="text-4xl font-extrabold text-wonka-brown text-center leading-tight mb-2"
+      >
+        {{ datos.nombre }}
+      </h2>
+      <p class="text-wonka-purple font-medium text-lg mb-8">
+        ID Materia: {{ datos.id_materia_prima }}
+      </p>
+
+      <div class="w-full space-y-3">
+        {% if botones %} {{ botones }} {% else %}
+        <a
+          href="{{ url_for('materiaPrima.admin_materias') }}"
+          class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg hover:shadow-wonka-purple/20 inline-block"
+        >
+          Regresar al listado
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Unidad de Medida</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.unidad_medida }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Stock Actual</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.stock_actual }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Costo Unitario</span
+          >
+          <span
+            class="text-gray-700 text-xl font-medium font-mono tracking-wider"
+            >${{ datos.costo_unitario }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Stock Mínimo</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.stock_minimo }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Descripción del Insumo</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.descripcion or 'Sin descripción registrada aún.' }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Última Compra</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.fecha_ultima_compra or '2222-22-22' }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+        >
+          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Porcentaje de Merma</span
+          >
+          <span class="text-gray-700 text-xl font-medium"
+            >{{ datos.porcentaje_merma }}%</span
+          >
+        </div>
+
+        <div
+          class="p-8 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2"
+        >
+          <span class="text-lg font-bold text-wonka-purple uppercase block mb-3"
+            >Proveedor Asignado</span
+          >
+          <p
+            class="text-gray-600 italic text-base leading-relaxed p-4 bg-white rounded-xl shadow-sm"
+          >
+            "{{ datos.proveedor.nombre if datos.proveedor else 'Este insumo no
+            tiene un proveedor asignado todavía.' }}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %} {% macro formulario_edicion_materia(form, materia_id,
+materia_obj) %}
+<div
+  class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+>
+  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
+    <div
+      class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12"
+    >
+      <div class="relative mb-6">
+        <img
+          class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
+          src="{{ materia_obj.imagen_materia if materia_obj and materia_obj.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+          alt="Materia Prima"
+        />
+      </div>
+      <p class="text-wonka-purple font-medium text-lg mb-8">
+        ID Materia: {{ materia_id }}
+      </p>
+      <div class="w-full space-y-3">
+        <button
+          type="submit"
+          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg"
+        >
+          Guardar Cambios
+        </button>
+        <a
+          href="{{ url_for('materiaPrima.admin_materias') }}"
+          class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all inline-block"
+        >
+          Cancelar
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start md:col-span-2"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Actualizar Foto del Insumo</label
+          >
+          <input
+            type="file"
+            name="imagen_materia"
+            accept="image/*"
+            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-wonka-purple file:text-white hover:file:bg-wonka-purple-dark"
+          />
+        </div>
+
+        {# Nombre de la Materia #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Nombre del Insumo</label
+          >
+          {{ form.nombre(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.nombre.errors %} {% for error in form.nombre.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Unidad de Medida #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Unidad de Medida</label
+          >
+          {{ form.unidad_medida(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.unidad_medida.errors %} {% for error in
+          form.unidad_medida.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Stock Actual #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Stock Actual</label
+          >
+          {{ form.stock_actual(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.stock_actual.errors %} {% for error in
+          form.stock_actual.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Stock Mínimo #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Stock Mínimo</label
+          >
+          {{ form.stock_minimo(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.stock_minimo.errors %} {% for error in
+          form.stock_minimo.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Costo Unitario #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Costo Unitario ($)</label
+          >
+          {{ form.costo_unitario(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.costo_unitario.errors %} {% for error in
+          form.costo_unitario.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Porcentaje de Merma #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Porcentaje de Merma (%)</label
+          >
+          {{ form.porcentaje_merma(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.porcentaje_merma.errors %} {% for error in
+          form.porcentaje_merma.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Fecha Última Compra #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Fecha Última Compra</label
+          >
+          <div class="flex flex-col">
+            {{ form.fecha_ultima_compra(class="wonka-date w-full bg-transparent
+            border-0 text-xl font-medium focus:ring-0 outline-none
+            text-gray-700", placeholder="Seleccionar fecha...", required=false)
+            }} {% if form.fecha_ultima_compra.errors %} {% for error in
+            form.fecha_ultima_compra.errors %}
+            <span
+              class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+              >* {{ error }}</span
+            >
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+
+        {# Estado Activo #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Estado del Insumo</label
+          >
+          {{ form.activo(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700") }} {% if
+          form.activo.errors %} {% for error in form.activo.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Proveedor #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start md:col-span-2"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Proveedor Asignado</label
+          >
+          {{ form.proveedor_id(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700 cursor-pointer")
+          }} {% if form.proveedor_id.errors %} {% for error in
+          form.proveedor_id.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+
+        {# Descripción #}
+        <div
+          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start"
+        >
+          <label
+            class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >Descripción / Especificaciones</label
+          >
+          {{ form.descripcion(class="w-full bg-transparent border-0 text-xl
+          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          }} {% if form.descripcion.errors %} {% for error in
+          form.descripcion.errors %}
+          <span
+            class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight"
+            >* {{ error }}</span
+          >
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  flatpickr(".wonka-date", {
+    disableMobile: "true",
+    animate: true,
+  });
+</script>
+{% endmacro %}

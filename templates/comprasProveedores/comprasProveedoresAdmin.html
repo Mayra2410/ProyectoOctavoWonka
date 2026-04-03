@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold text-wonka-purple">Historial de Compras</h1>
+    <p class="text-gray-500">
+      Registro de ingresos de materia prima de proveedores
+    </p>
+  </div>
+
+  <div class="flex justify-end mb-4">
+    <a href="{{ url_for('comprasProveedores.registrar_compra') }}">
+      {{ m.boton_principal("Registrar Nueva Compra") }}
+    </a>
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+    {{ m.buscador("Buscar por insumo o proveedor...") }}
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-gray-400 text-sm border-b border-gray-50">
+          <tr>
+            <th class="pb-4 px-2">ID</th>
+            <th class="pb-4 px-2">Materia Prima</th>
+            <th class="pb-4 px-2">Proveedor</th>
+            <th class="pb-4 px-2">Cantidad</th>
+            <th class="pb-4 px-2">Costo Unit.</th>
+            <th class="pb-4 px-2">Total</th>
+            <th class="pb-4 px-2">Fecha y Hora</th>
+            <th class="pb-4 px-2">Notas</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-50">
+          {% for compra in compras %}
+          <tr
+            onclick="window.location.href='{{ url_for('comprasProveedores.detalles_compra', id=compra.id_compra) }}'"
+            class="group hover:bg-wonka-purple/5 transition-all cursor-pointer"
+          >
+            <td class="py-5 px-2 font-bold text-wonka-brown">
+              {{ compra.id_compra }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700 font-medium">
+              <div class="flex items-center gap-3">
+                <img
+                  src="{{ compra.materia_prima.imagen_materia if compra.materia_prima.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+                  class="w-10 h-10 rounded-full object-cover border border-gray-100 shadow-sm"
+                  alt="Insumo"
+                />
+                {{ compra.materia_prima.nombre }}
+              </div>
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin
+              proveedor' }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700 font-semibold">
+              {{ compra.cantidad }}
+              <span class="text-xs text-gray-400"
+                >{{ compra.materia_prima.unidad_medida }}</span
+              >
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              ${{ "{:,.2f}".format(compra.costo_unitario) }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700 font-bold">
+              ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500 text-sm">
+              {% if compra.fecha_compra %}
+              <div class="flex flex-col">
+                <span class="font-medium text-gray-700"
+                  >{{ compra.fecha_compra.strftime('%Y-%m-%d') }}</span
+                >
+                <span class="text-xs text-wonka-purple font-bold">
+                  <i class="far fa-clock mr-1"></i>{{
+                  compra.fecha_compra.strftime('%H:%M') }}
+                </span>
+              </div>
+              {% else %}
+              <span class="text-gray-400">S/F</span>
+              {% endif %}
+            </td>
+
+            <td
+              class="py-5 px-2 text-gray-400 italic text-sm truncate max-w-[150px]"
+            >
+              {{ compra.observaciones or '-' }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
