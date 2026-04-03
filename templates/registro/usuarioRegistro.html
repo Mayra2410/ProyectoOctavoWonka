@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WONKA | Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .blob {
+        animation: blob-bounce 7s infinite alternate;
+      }
+      @keyframes blob-bounce {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(20px, -30px) scale(1.1); }
+      }
+    </style>
+    
+  </head>
+  <body class="bg-white">
+    <div class="min-h-screen flex items-center justify-center relative overflow-hidden py-12">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#7B2CBF] via-[#6F4E37] to-[#D4AF37] opacity-20"></div>
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-[#FFD700] opacity-30 blur-2xl blob"></div>
+      <div class="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-[#7B2CBF] opacity-30 blur-3xl blob"></div>
+      <div class="absolute top-1/2 right-10 w-24 h-24 rounded-full bg-[#D4AF37] opacity-20 blur-2xl blob"></div>
+
+      <div class="w-full max-w-xl mx-4 relative z-10 bg-white rounded-xl shadow-2xl border-2 border-[#D4AF37]/30 overflow-hidden">
+        <div class="p-8 text-center space-y-4">
+          <div class="flex justify-center items-center">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-[#7B2CBF] via-[#D4AF37] to-[#7B2CBF] bg-clip-text text-transparent">WONKA</h1>
+          </div>
+          <p class="text-[#6F4E37] opacity-80">Completa tus datos para crear una cuenta</p>
+        </div>
+
+        <div class="px-8 pb-8">
+          <form action="{{ url_for('registro.registro_cliente') }}" method="POST" enctype="multipart/form-data" class="space-y-4" novalidate>
+            {{ form.csrf_token }}
+
+            <div class="space-y-1">
+              <label class="block text-sm font-medium text-[#6F4E37]">Nombre Completo</label>
+              {{ form.nombre(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='Ej. Juan Perez') }}
+              {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                  <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="block text-sm font-medium text-[#6F4E37]">Correo electronico</label>
+                {{ form.email(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='usuario@ejemplo.com') }}
+                {% if form.email.errors %}
+                  {% for error in form.email.errors %}
+                    <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              <div class="space-y-1">
+                <label class="block text-sm font-medium text-[#6F4E37]">Telefono</label>
+                {{ form.telefono(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='10 digitos') }}
+                {% if form.telefono.errors %}
+                  {% for error in form.telefono.errors %}
+                    <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-sm font-medium text-[#6F4E37]">Direccion de Envio</label>
+              {{ form.direccion(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='Calle, Numero, Colonia, Ciudad') }}
+              {% if form.direccion.errors %}
+                {% for error in form.direccion.errors %}
+                  <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-sm font-medium text-[#6F4E37]">Contraseña</label>
+              {{ form.password(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='Minimo 6 caracteres') }}
+              {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                  <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+              <div class="space-y-1">
+                <label class="block text-sm font-medium text-[#6F4E37]">Tipo de Comprador</label>
+                {{ form.tipo(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] transition-all') }}
+              </div>
+
+              <div class="space-y-1">
+                <label class="block text-sm font-medium text-[#6F4E37]">Fotografia de Perfil</label>
+                {{ form.imagen_cliente(class='w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#7B2CBF]/10 file:text-[#7B2CBF] hover:file:bg-[#7B2CBF]/20 border border-[#D4AF37]/50 rounded-md p-1 transition-all cursor-pointer', accept='.jpg,.jpeg,.png') }}
+                {% if form.imagen_cliente.errors %}
+                  {% for error in form.imagen_cliente.errors %}
+                    <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" class="w-full py-2 px-4 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1FAF] hover:to-[#7B2CBF] text-white font-semibold rounded-md shadow-lg transition-all duration-300 transform hover:scale-[1.02]">Finalizar Registro</button>
+            </div>
+          </form>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('index') }}" class="text-[#6F4E37] hover:text-[#7B2CBF] text-sm font-medium transition-colors duration-300 flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Volver al inicio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if registro_exitoso %}
+      <script>
+        Swal.fire({
+          title: '¡Registro Guardado!',
+          text: 'Tus datos y fotografia se han almacenado con exito.',
+          icon: 'success',
+          confirmButtonColor: '#7B2CBF',
+          confirmButtonText: 'Aceptar'
+        })
+      </script>
+    {% endif %}
+
+    {% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <script>
+            Swal.fire({
+              title: 'Aviso',
+              text: '{{ message }}',
+              icon: '{{ "error" if category == "error" else "info" }}',
+              confirmButtonColor: '#D4AF37'
+            })
+          </script>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </body>
+</html>

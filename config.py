@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 from sqlalchemy import create_engine
 
@@ -11,3 +12,18 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:2390L@127.0.0.1/wonka"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+=======
+import os 
+from sqlalchemy import create_engine 
+
+class Config(object):
+    SECRET_KEY = 'ClaveSecreta'
+    SESSION_COOKIE_SECURE=False
+    
+    
+    
+class DevelopmentConfig(Config):
+    DEBUG=True
+    SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:admi@127.0.0.1/wonka'
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+>>>>>>> origin/NaomiDev

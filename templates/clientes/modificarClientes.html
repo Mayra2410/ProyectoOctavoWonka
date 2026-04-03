@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-[1200px] mx-auto p-6">
+    <div class="mb-8">
+        <h1 class="text-3xl font-black text-wonka-purple tracking-tight">Modificar Cliente</h1>
+        <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Actualizar informacion de expediente #{{ cliente_id }}</p>
+    </div>
+
+    <form action="{{ url_for('cliente.modificar_cliente', id=cliente_id) }}" method="POST" enctype="multipart/form-data" class="flex flex-col lg:flex-row gap-8 items-start">
+        {{ form.csrf_token }}
+
+        <div class="w-full lg:w-[320px] bg-white rounded-[2.5rem] shadow-sm border border-gray-50 p-8 flex flex-col items-center shrink-0 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-wonka-purple/5 rounded-bl-full"></div>
+            
+            <div class="relative mb-6 group cursor-pointer" onclick="document.getElementById('imagen_cliente').click()">
+                <div class="w-40 h-40 rounded-full p-1 bg-gradient-to-tr from-wonka-purple to-wonka-brown shadow-xl transition-transform group-hover:scale-105">
+                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white">
+                        <img id="preview" 
+                             src="{{ cliente.imagen_cliente if cliente.imagen_cliente else '' }}" 
+                             class="w-full h-full object-cover {{ 'hidden' if not cliente.imagen_cliente }}">
+                        
+                        <div id="placeholder" class="{{ 'hidden' if cliente.imagen_cliente }} flex flex-col items-center text-wonka-purple/30">
+                            <i data-lucide="camera" class="w-10 h-10"></i>
+                            <span class="text-[9px] font-black uppercase mt-2 tracking-tighter">Cambiar Foto</span>
+                        </div>
+                    </div>
+                </div>
+                {{ form.imagen_cliente(id="imagen_cliente", class="hidden", accept="image/*", onchange="previewImage(this)") }}
+            </div>
+
+            <div class="w-full space-y-3">
+                <button type="submit" class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple/90 text-white rounded-2xl font-black text-sm shadow-lg shadow-wonka-purple/20 transition-all">
+                    Guardar Cambios
+                </button>
+                <a href="{{ url_for('cliente.clientesAdmin') }}" class="block w-full py-4 bg-gray-50 text-gray-400 rounded-2xl font-bold text-xs hover:bg-gray-100 transition-all text-center">
+                    Cancelar
+                </a>
+            </div>
+        </div>
+
+        <div class="flex-1 bg-white rounded-[2.5rem] shadow-sm border border-gray-50 p-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                
+                {% macro edit_block(field, label, is_date=False, is_select=False) %}
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-[0.15em] ml-1">{{ label }}</label>
+                    <div class="relative">
+                        {{ field(class="w-full bg-gray-50/50 border-none rounded-2xl px-5 py-3.5 text-sm text-gray-700 focus:ring-2 focus:ring-wonka-purple/20 outline-none transition-all" + (" datepicker-input" if is_date else "") + (" appearance-none cursor-pointer" if is_select else "")) }}
+                        {% if is_date %}
+                            <i data-lucide="calendar" class="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 text-wonka-purple pointer-events-none"></i>
+                        {% elif is_select %}
+                            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                        {% endif %}
+                    </div>
+                    {% for error in field.errors %}<span class="text-red-500 text-[10px] font-bold italic ml-2">{{ error }}</span>{% endfor %}
+                </div>
+                {% endmacro %}
+
+                {{ edit_block(form.nombre, "Nombre Completo") }}
+                {{ edit_block(form.email, "Correo Electronico") }}
+                {{ edit_block(form.direccion, "Direccion de Entrega") }}
+                {{ edit_block(form.telefono, "Telefono de Contacto") }}
+                {{ edit_block(form.fecha_registro, "Fecha de Registro", is_date=True) }}
+                {{ edit_block(form.estatus, "Estatus de Cuenta", is_select=True) }}
+
+                <div class="md:col-span-2 flex flex-col gap-2 mt-2">
+                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-[0.15em] ml-1">Notas y Observaciones</label>
+                    {{ form.notas(class="w-full bg-gray-50/50 border-none rounded-[1.5rem] p-6 text-sm text-gray-600 italic h-32 focus:ring-2 focus:ring-wonka-purple/20 outline-none resize-none") }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        flatpickr(".datepicker-input", {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "d/m/Y",
+            disableMobile: true,
+            locale: "es"
+        });
+    });
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const preview = document.getElementById('preview');
+                const placeholder = document.getElementById('placeholder');
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock %}
