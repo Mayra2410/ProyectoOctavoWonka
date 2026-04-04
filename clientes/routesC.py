@@ -5,8 +5,6 @@ from .formsC import ClienteForm
 from sqlalchemy import or_
 import base64
 
-
-
 @cliente.route('/clientes', methods=['GET'])
 def clientesAdmin(): 
     search_query = request.args.get('q', '').strip()
@@ -20,27 +18,29 @@ def clientesAdmin():
         query = query.filter(or_(*filtros))
 
     return render_template("clientes/clientesAdmin.html", 
-                           form=ClienteForm(), 
-                           clientes=query.all(), 
-                           query=search_query)
-
-
+                         form=ClienteForm(), 
+                         clientes=query.all(), 
+                         query=search_query)
 
 @cliente.route("/clientes/agregar", methods=["GET", "POST"])
 def agregar_cliente():
     form = ClienteForm()
     if form.validate_on_submit():
         archivo = request.files.get('imagen_cliente')
+        imagen_recuperada = request.form.get('imagen_base64_recuperada')
         
-        if not archivo or archivo.filename == '':
-            form.imagen_cliente.errors.append("La fotografía es obligatoria para WONKA.")
-        elif Cliente.query.filter_by(email=form.email.data).first():
-            form.email.errors.append("Este correo ya está registrado.")
+        base64_final = None
+        if archivo and archivo.filename != '':
+            contenido = archivo.read()
+            encoded = base64.b64encode(contenido).decode('utf-8')
+            base64_final = f"data:{archivo.content_type};base64,{encoded}"
+        elif imagen_recuperada and imagen_recuperada.startswith('data:image'):
+            base64_final = imagen_recuperada
+
+        if not base64_final:
+            form.imagen_cliente.errors.append("La fotografia es obligatoria.")
         else:
             try:
-                encoded_string = base64.b64encode(archivo.read()).decode('utf-8')
-                base64_final = f"data:{archivo.content_type};base64,{encoded_string}"
-                
                 nuevo = Cliente(
                     nombre=form.nombre.data,
                     email=form.email.data,
@@ -61,8 +61,6 @@ def agregar_cliente():
 
     return render_template("clientes/agregarClientes.html", form=form)
 
-
-
 @cliente.route("/clientes/modificar/<int:id>", methods=["GET", "POST"])
 def modificar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
@@ -71,7 +69,7 @@ def modificar_cliente(id):
     if form.validate_on_submit():
         duplicado = Cliente.query.filter(Cliente.email == form.email.data, Cliente.id_cliente != id).first()
         if duplicado:
-            form.email.errors.append("Este correo ya está registrado.")
+            form.email.errors.append("Este correo ya esta registrado.")
         else:
             try:
                 archivo = request.files.get('imagen_cliente')
@@ -81,7 +79,7 @@ def modificar_cliente(id):
                 
                 form.populate_obj(cliente_obj)
                 db.session.commit()
-                flash("Cliente actualizado con éxito", "success")
+                flash("Cliente actualizado con exito", "success")
                 return redirect(url_for("cliente.clientesAdmin"))
             except Exception as e:
                 db.session.rollback()
@@ -89,15 +87,13 @@ def modificar_cliente(id):
 
     return render_template("clientes/modificarClientes.html", form=form, cliente_id=id, cliente=cliente_obj)
 
-
-
 @cliente.route("/clientes/eliminar/<int:id>")
 def eliminar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
     try:
         cliente_obj.estatus = 'INACTIVO'
         db.session.commit()
-        flash(f"Cliente {cliente_obj.nombre} desactivado.", "success")
+        flash(f"Cliente desactivado con exito.", "success")
     except Exception as e:
         db.session.rollback()
         flash(f"Error al eliminar: {str(e)}", "danger")

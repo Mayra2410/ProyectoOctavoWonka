@@ -45,6 +45,7 @@
                         class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer"
                     >
                         <td class="py-5 px-6 text-center font-bold text-wonka-brown text-sm">{{ cliente.id_cliente }}</td>
+                        
                         <td class="py-5 px-4">
                             {% if cliente.imagen_cliente %}
                                 <img src="{{ cliente.imagen_cliente }}" class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm">
@@ -54,33 +55,40 @@
                                 </div>
                             {% endif %}
                         </td>
+
                         <td class="py-5 px-4">
                             <span class="text-gray-800 font-bold text-sm tracking-tight group-hover:text-wonka-purple transition-colors">{{ cliente.nombre }}</span>
                         </td>
+
                         <td class="py-5 px-4 text-gray-500 text-xs font-medium">{{ cliente.email }}</td>
+                        
                         <td class="py-5 px-4 text-gray-600 text-xs font-semibold">{{ cliente.telefono or '---' }}</td>
+                        
                         <td class="py-5 px-4">
                             <div class="flex flex-col gap-1">
                                 <span class="text-[9px] font-black uppercase {{ 'text-blue-500' if cliente.tipo == 'MAYORISTA' else 'text-gray-400' }}">{{ cliente.tipo }}</span>
                                 <span class="text-[9px] font-black uppercase {{ 'text-wonka-purple' if cliente.categoria_comprador == 'FRECUENTE' else 'text-orange-400' }}">{{ cliente.categoria_comprador }}</span>
                             </div>
                         </td>
+
                         <td class="py-5 px-4 text-gray-400 text-[11px] font-medium">{{ cliente.fecha_registro }}</td>
+                        
                         <td class="py-5 px-4">
                             <p class="text-[11px] text-gray-400 italic line-clamp-1" title="{{ cliente.notas }}">{{ cliente.notas or 'Sin notas' }}</p>
                         </td>
+
                         <td class="py-5 px-4">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if cliente.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}">
                                 {{ cliente.estatus }}
                             </span>
                         </td>
-                        <td class="py-5 px-6 text-right">
-                            <div class="flex justify-end gap-2">
-                                <a href="{{ url_for('cliente.modificar_cliente', id=cliente.id_cliente) }}" onclick="event.stopPropagation();" class="p-2 text-gray-400 hover:text-wonka-purple hover:bg-wonka-purple/10 rounded-lg transition-all"><i data-lucide="edit-3" class="w-4 h-4"></i></a>
-                                {% if cliente.estatus == 'ACTIVO' %}
-                                <a href="{{ url_for('cliente.eliminar_cliente', id=cliente.id_cliente) }}" onclick="event.stopPropagation();" class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"><i data-lucide="trash-2" class="w-4 h-4"></i></a>
-                                {% endif %}
-                            </div>
+
+                        <td class="py-5 px-6">
+                            {{ m.acciones_tabla(
+                                edit_link=url_for('cliente.modificar_cliente', id=cliente.id_cliente),
+                                delete_link=url_for('cliente.eliminar_cliente', id=cliente.id_cliente),
+                                es_activo=(cliente.estatus == 'ACTIVO')
+                            ) }}
                         </td>
                     </tr>
                     {% endfor %}
@@ -91,6 +99,7 @@
 </div>
 
 <style>.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const contenedor = document.getElementById('contenedor-buscador');

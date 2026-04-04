@@ -37,7 +37,7 @@ class ClienteForm(FlaskForm):
     )
 
     estatus = SelectField("Estado del Cliente",
-        choices=[('ACTIVO', 'Activo'), ('INACTIVO', 'Inactivo')],
+        choices=[('ACTIVO', 'ACTIVO'), ('INACTIVO', 'INACTIVO')],
         default='ACTIVO'
     )
 
@@ -48,7 +48,7 @@ class ClienteForm(FlaskForm):
     
     imagen_cliente = FileField("Foto del Cliente", validators=[
         Optional(),
-        FileAllowed(['jpg', 'png', 'jpeg'], 'Solo se permiten imagenes (JPG, PNG, JPEG)')
+        FileAllowed(['jpg', 'png', 'jpeg'], 'Solo imagenes JPG o PNG')
     ])
 
     fecha_registro = DateField("Fecha de Registro",
