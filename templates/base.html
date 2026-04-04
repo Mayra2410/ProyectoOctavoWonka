@@ -23,7 +23,7 @@
     </script>
     <style>
       .sidebar-item-active {
-        background-color: #8b5cf6 !format;
+        background-color: #8b5cf6 !important;
         color: white !important;
         border-radius: 0.75rem;
       }
@@ -49,50 +49,34 @@
             WONKA
           </h1>
         </div>
-<nav class="space-y-1">
-  {# Añadimos un cuarto valor a cada tupla para la ruta de Flask #}
-  {% set items = [ 
-    ('dashboard', 'Panel', 'layout-dashboard', 'index'),
-    ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
-    ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
-    ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
-    ('materials', 'Materias Primas', 'package', '#'),
-    ('purchases', 'Compras', 'shopping-cart', '#'),
-    ('payments', 'Pagos', 'credit-card', '#'),
-    ('products', 'Productos', 'boxes', '#'),
-    ('recipes', 'Recetas', 'chef-hat', '#'),
-    ('production', 'Producción', 'factory', '#'),
-    ('inventory', 'Inventario', 'warehouse', '#'),
-    ('sales', 'Ventas', 'trending-up', '#') 
-  ] %} 
-
-  {% for id, label, icon, ruta in items %}
-  <a
-    href="{{ url_for(ruta) if ruta != '#' else '#' }}"
-    class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group 
-    {% if request.endpoint == ruta %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
-  >
-    <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
-    {{ label }}
-  </a>
-  {% endfor %}
-</nav>
-
+        
         <nav class="space-y-1">
-          {% set items = [ ('dashboard', 'Panel', 'layout-dashboard', 'index'),
-          ('customers', 'Clientes', 'users', '#'), ('employees', 'Empleados',
-          'user-cog', '#'), ('suppliers', 'Proveedores', 'truck',
-          'proveedores.lista_proveedores'), ('materials', 'Materias Primas',
-          'package', 'materiaPrima.admin_materias'), ('purchases', 'Compras',
-          'shopping-cart', 'comprasProveedores.lista_compras'), ('payments',
-          'Pagos', 'credit-card', '#'), ('products', 'Productos', 'boxes', '#'),
-          ('recipes', 'Recetas', 'chef-hat', '#'), ('production', 'Producción',
-          'factory', '#'), ('inventory', 'Inventario', 'warehouse', '#'),
-          ('sales', 'Ventas', 'trending-up', '#') ] %} {% for id, label, icon,
-          route in items %}
+          {% set items = [ 
+            ('dashboard', 'Panel', 'layout-dashboard', 'index'),
+            ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
+            ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
+            ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
+            ('materials', 'Materias Primas', 'package', 'materiaPrima.admin_materias'),
+            ('purchases', 'Pedidos', 'shopping-cart', 'comprasProveedores.lista_compras'),
+            ('payments', 'Pagos', 'credit-card', '#'),
+            ('products', 'Productos', 'boxes', '#'),
+            ('recipes', 'Recetas', 'chef-hat', '#'),
+            ('production', 'Producción', 'factory', '#'),
+            ('inventory', 'Inventario', 'warehouse', '#'),
+            ('sales', 'Ventas', 'trending-up', '#') 
+          ] %} 
+
+          {% for id, label, icon, ruta in items %}
           <a
-            href="{{ url_for(route) if route != '#' else '#' }}"
-            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group {% if (id == 'suppliers' and request.endpoint.startswith('proveedores.')) or (id == 'materials' and request.endpoint.startswith('materiaPrima.')) or (id == 'purchases' and request.endpoint.startswith('comprasProveedores.')) %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
+            href="{{ url_for(ruta) if ruta != '#' else '#' }}"
+            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group 
+            {% if request.endpoint == ruta or 
+               (id == 'suppliers' and request.endpoint.startswith('proveedores.')) or 
+               (id == 'materials' and request.endpoint.startswith('materiaPrima.')) or 
+               (id == 'purchases' and request.endpoint.startswith('comprasProveedores.')) or
+               (id == 'customers' and request.endpoint.startswith('cliente.')) or
+               (id == 'employees' and request.endpoint.startswith('empleado.'))
+            %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
           >
             <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
             {{ label }}
@@ -124,10 +108,9 @@
 
       <main class="flex-1 overflow-y-auto p-8">
         <div class="max-w-[1800px] mx-auto">
+            {% block content %}{% endblock %}
         </div>
-
-  {% block content %}{% endblock %}
-</main>
+      </main>
     </div>
 
     <script>

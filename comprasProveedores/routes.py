@@ -35,14 +35,7 @@ def registrar_compra():
             observaciones=form.observaciones.data,
         )
 
-        materia = MateriasPrimas.query.get(form.materia_prima_id.data)
-
         try:
-            if materia:
-                materia.stock_actual += form.cantidad.data
-                materia.costo_unitario = form.costo_unitario.data
-                materia.fecha_ultima_compra = form.fecha_compra.data
-
             db.session.add(nueva_compra)
             db.session.commit()
             return redirect(url_for("comprasProveedores.lista_compras"))
