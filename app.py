@@ -9,6 +9,7 @@ from productos.routes import productos
 from materiaPrima.routes import materia_Prima
 from comprasProveedores.routes import compras_bp
 from recetas.routes import recetas
+from pagosProveedores.routes import pagosProveedores
 
 
 app = Flask(__name__)
@@ -23,6 +24,7 @@ app.register_blueprint(productos)
 app.register_blueprint(materia_Prima)
 app.register_blueprint(compras_bp)
 app.register_blueprint(recetas)
+app.register_blueprint(pagosProveedores)
 
 
 
@@ -34,3 +36,5 @@ def index():
 if __name__ == "__main__":
     with app.app_context():
         app.run(debug=True)
+
+

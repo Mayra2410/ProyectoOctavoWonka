@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold text-wonka-purple">Pagos a Proveedores</h1>
+    <p class="text-gray-500">Gestiona las compras pendientes de pago</p>
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+    {% if compras %}
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-gray-400 text-sm border-b border-gray-100">
+          <tr>
+            <th class="pb-4 px-2">ID Compra</th>
+            <th class="pb-4 px-2">Proveedor</th>
+            <th class="pb-4 px-2">Materia Prima</th>
+            <th class="pb-4 px-2">Cantidad</th>
+            <th class="pb-4 px-2">Total</th>
+            <th class="pb-4 px-2">Estatus</th>
+            <th class="pb-4 px-2 text-center">Acción</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-50">
+          {% for compra in compras %}
+          <tr class="hover:bg-wonka-purple/5 transition-all">
+            <td class="py-5 px-2 font-bold text-wonka-brown">
+              {{ compra.id_compra }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700">
+              {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin proveedor' }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700">
+              {{ compra.materia_prima.nombre }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700">
+              {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}
+            </td>
+
+            <td class="py-5 px-2 font-semibold text-gray-700">
+              ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
+            </td>
+
+            <td class="py-5 px-2">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
+                {{ compra.estatus_compra }}
+              </span>
+            </td>
+
+            <td class="py-5 px-2 text-center">
+              <a
+                href="{{ url_for('pagosProveedores.gestionar_pago', id_compra=compra.id_compra) }}"
+                class="inline-block bg-wonka-purple hover:bg-wonka-purple-dark text-white px-4 py-2 rounded-xl font-bold transition-all"
+              >
+                Gestionar pago
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center py-10">
+      <p class="text-gray-500 text-lg">No hay compras pendientes por pagar.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

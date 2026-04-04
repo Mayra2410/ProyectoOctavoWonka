@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Gestionar Pago</h1>
+    <p class="text-gray-500">Procesa el pago o cancelación de la compra</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+      <h2 class="text-2xl font-bold text-wonka-brown mb-6">Detalle de la compra</h2>
+
+      <div class="space-y-4 text-gray-700">
+        <p><span class="font-bold">ID:</span> {{ compra.id_compra }}</p>
+        <p><span class="font-bold">Proveedor:</span> {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin proveedor' }}</p>
+        <p><span class="font-bold">Materia Prima:</span> {{ compra.materia_prima.nombre }}</p>
+        <p><span class="font-bold">Cantidad:</span> {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}</p>
+        <p><span class="font-bold">Costo Unitario:</span> ${{ "{:,.2f}".format(compra.costo_unitario) }}</p>
+        <p><span class="font-bold">Total:</span> ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}</p>
+        <p>
+          <span class="font-bold">Estatus:</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
+            {{ compra.estatus_compra }}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+      <form method="POST" class="space-y-6">
+        {{ form.hidden_tag() }}
+
+        <div>
+          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
+            {{ form.accion.label.text }}
+          </label>
+          {{ form.accion(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3") }}
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
+            {{ form.metodo_pago.label.text }}
+          </label>
+          {{ form.metodo_pago(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3") }}
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
+            {{ form.numero_comprobante.label.text }}
+          </label>
+          {{ form.numero_comprobante(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3", placeholder="Ej. TRX-001") }}
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
+            {{ form.observaciones.label.text }}
+          </label>
+          {{ form.observaciones(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3", rows="4") }}
+        </div>
+
+        <div class="flex gap-4">
+          {{ form.submit(class="bg-wonka-purple hover:bg-wonka-purple-dark text-white px-6 py-3 rounded-xl font-bold transition-all") }}
+
+          <a
+            href="{{ url_for('pagosProveedores.lista_pagos') }}"
+            class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold transition-all"
+          >
+            Volver
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -104,16 +104,69 @@ class ComprasMateriaPrima(db.Model):
     __tablename__ = "compras_materia_prima"
 
     id_compra = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    materia_prima_id = db.Column(db.Integer, db.ForeignKey("materias_primas.id_materia_prima"), nullable=False)
-    proveedor_id = db.Column(db.Integer, db.ForeignKey("proveedores.id_proveedor"))
+    materia_prima_id = db.Column(
+        db.Integer,
+        db.ForeignKey("materias_primas.id_materia_prima"),
+        nullable=False
+    )
+    proveedor_id = db.Column(
+        db.Integer,
+        db.ForeignKey("proveedores.id_proveedor"),
+        nullable=False
+    )
+
     cantidad = db.Column(db.Numeric(10, 2), nullable=False)
     costo_unitario = db.Column(db.Numeric(10, 2), nullable=False)
 
     fecha_compra = db.Column(db.DateTime, default=datetime.now)
     observaciones = db.Column(db.String(200))
 
+    estatus_compra = db.Column(
+        db.Enum('PENDIENTE', 'PAGADO', 'CANCELADO', name='estatus_compra_enum'),
+        nullable=False,
+        default='PENDIENTE'
+    )
+
     materia_prima = db.relationship("MateriasPrimas", backref="historial_compras")
     proveedor_rel = db.relationship("Proveedores", backref="compras_realizadas")
+    pagos = db.relationship("PagoProveedor", back_populates="compra", cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"<Compra ID: {self.id_compra}>"
+        return f"<Compra ID: {self.id_compra} - Estatus: {self.estatus_compra}>"
+    
+
+
+class PagoProveedor(db.Model):
+    __tablename__ = 'pagos_proveedores'
+
+    id_pago = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    compra_id = db.Column(
+        db.Integer,
+        db.ForeignKey('compras_materia_prima.id_compra'),
+        nullable=False
+    )
+
+    proveedor_id = db.Column(
+        db.Integer,
+        db.ForeignKey('proveedores.id_proveedor'),
+        nullable=False
+    )
+
+    fecha_pago = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    monto = db.Column(db.Numeric(12, 2), nullable=False)
+
+    metodo_pago = db.Column(
+        db.Enum('EFECTIVO', 'TRANSFERENCIA', name='metodo_pago_enum'),
+        nullable=False
+    )
+
+    numero_comprobante = db.Column(db.String(50))
+    observaciones = db.Column(db.String(200))
+    usuario_registro = db.Column(db.String(50))
+
+    compra = db.relationship("ComprasMateriaPrima", back_populates="pagos")
+    proveedor = db.relationship("Proveedores", backref="pagos_realizados")
+
+    def __repr__(self):
+        return f"<Pago ID: {self.id_pago} - Compra: {self.compra_id}>"
