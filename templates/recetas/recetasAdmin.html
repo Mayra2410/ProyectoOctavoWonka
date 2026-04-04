@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block content %}
+<div class="max-w-[1800px] mx-auto">
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold text-wonka-purple">Recetas</h1>
+    <p class="text-gray-500">Gestiona las recetas de producción</p>
+  </div>
+
+  <div class="flex justify-end mb-4">
+    <a href="{{ url_for('recetas.agregar_receta') }}">
+      {{ m.boton_principal("Nueva Receta") }}
+    </a>
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+    <form method="GET" action="{{ url_for('recetas.lista_recetas') }}">
+      <div class="relative mb-8 max-w-md">
+        <i data-lucide="search" class="absolute left-4 top-3 text-gray-400 w-5 h-5"></i>
+        <input
+          type="text"
+          name="q"
+          value="{{ busqueda or '' }}"
+          placeholder="Buscar receta por nombre..."
+          class="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-wonka-purple/20 outline-none text-sm"
+        />
+      </div>
+    </form>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="text-gray-400 text-sm border-b border-gray-50">
+          <tr>
+            <th class="pb-4 px-2">ID</th>
+            <th class="pb-4 px-2">Nombre</th>
+            <th class="pb-4 px-2">Producto</th>
+            <th class="pb-4 px-2">Cantidad por lote</th>
+            <th class="pb-4 px-2">Estado</th>
+            <th class="pb-4 px-2 text-center w-24">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-50">
+          {% for receta in recetas %}
+          <tr
+            class="group hover:bg-wonka-purple/5 transition-all cursor-pointer"
+            onclick="window.location.href='{{ url_for('recetas.detalle_receta', id_receta=receta.id_receta) }}'"
+          >
+            <td class="py-5 px-2 font-bold text-wonka-brown">
+              {{ receta.id_receta }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-700 font-medium">
+              {{ receta.nombre_receta }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              {{ receta.producto.nombre if receta.producto else '--' }}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              {{ receta.cantidad_lote }}
+            </td>
+
+            <td class="py-5 px-2">
+              {% if receta.activo %}
+              <span class="px-3 py-1 rounded-full text-xs bg-green-100 text-green-600 font-bold">
+                Activo
+              </span>
+              {% else %}
+              <span class="px-3 py-1 rounded-full text-xs bg-red-100 text-red-600 font-bold">
+                Inactivo
+              </span>
+              {% endif %}
+            </td>
+
+            <td class="py-5 px-2 text-right" onclick="event.stopPropagation()">
+              {{ m.acciones_tabla(
+                edit_link=url_for('recetas.modificar_receta', id_receta=receta.id_receta),
+                delete_link=url_for('recetas.confirmar_eliminar_receta', id_receta=receta.id_receta),
+                es_activo=receta.activo
+              ) }}
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="6" class="py-8 text-center text-gray-400">
+              No hay recetas registradas.
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

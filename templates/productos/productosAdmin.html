@@ -14,27 +14,71 @@
   </div>
 
   <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-    {{ m.buscador("Buscar producto por nombre...") }}
+    <form method="GET" action="{{ url_for('productos.lista_productos') }}">
+      <div class="relative mb-8 max-w-md">
+        <i
+          data-lucide="search"
+          class="absolute left-4 top-3 text-gray-400 w-5 h-5"
+        ></i>
+        <input
+          type="text"
+          name="q"
+          value="{{ busqueda or '' }}"
+          placeholder="Buscar producto por nombre..."
+          class="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-wonka-purple/20 outline-none text-sm"
+        />
+      </div>
+    </form>
 
     <div class="overflow-x-auto">
       <table class="w-full text-left">
         <thead class="text-gray-400 text-sm border-b border-gray-50">
           <tr>
             <th class="pb-4 px-2">ID</th>
+            <th class="pb-4 px-2">Imagen</th>
             <th class="pb-4 px-2">Nombre</th>
             <th class="pb-4 px-2">Categoría</th>
             <th class="pb-4 px-2">Presentación</th>
             <th class="pb-4 px-2">Precio</th>
             <th class="pb-4 px-2">Estado</th>
-            <th class="pb-4 px-2 text-right">Acciones</th>
+            <th class="pb-4 px-2 text-center w-24">Acciones</th>
           </tr>
         </thead>
 
         <tbody class="divide-y divide-gray-50">
           {% for producto in productos %}
-          <tr class="group hover:bg-wonka-purple/5 transition-all">
+          <tr
+            class="group hover:bg-wonka-purple/5 transition-all cursor-pointer"
+            onclick="window.location.href='{{ url_for('productos.detalle_producto', id_producto=producto.id_producto) }}'"
+          >
             <td class="py-5 px-2 font-bold text-wonka-brown">
               {{ producto.id_producto }}
+            </td>
+
+            <td class="py-5 px-2">
+              <div class="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
+                {% if producto.imagen_producto %}
+                  {% if producto.imagen_producto.startswith('data:') %}
+                  <img
+                    src="{{ producto.imagen_producto }}"
+                    class="w-full h-full object-cover"
+                    alt="{{ producto.nombre }}"
+                  />
+                  {% else %}
+                  <img
+                    src="{{ url_for('static', filename='img/' + producto.imagen_producto) }}"
+                    class="w-full h-full object-cover"
+                    alt="{{ producto.nombre }}"
+                  />
+                  {% endif %}
+                {% else %}
+                <img
+                  src="{{ url_for('static', filename='img/productos.jpg') }}"
+                  class="w-full h-full object-cover"
+                  alt="Imagen por defecto"
+                />
+                {% endif %}
+              </div>
             </td>
 
             <td class="py-5 px-2 text-gray-700 font-medium">
@@ -42,15 +86,15 @@
             </td>
 
             <td class="py-5 px-2 text-gray-500">
-              {{ producto.categoria or '--' }}
+              {{ producto.categoria if producto.categoria else '--' }}
             </td>
 
             <td class="py-5 px-2 text-gray-500">
-              {{ producto.unidad_medida or '--' }}
+              {{ producto.unidad_medida if producto.unidad_medida else '--' }}
             </td>
 
-            <td class="py-5 px-2 text-gray-500">
-              ${{ '%.2f'|format(producto.precio_venta) }}
+            <td class="py-5 px-2 text-gray-500 font-semibold">
+              ${{ "{:,.2f}".format(producto.precio_venta) if producto.precio_venta else "0.00" }}
             </td>
 
             <td class="py-5 px-2">
@@ -68,14 +112,14 @@
             <td class="py-5 px-2 text-right" onclick="event.stopPropagation()">
               {{ m.acciones_tabla(
                 edit_link=url_for('productos.editar_producto', id_producto=producto.id_producto),
-                delete_link=url_for('productos.eliminar_producto', id_producto=producto.id_producto),
+                delete_link=url_for('productos.confirmar_eliminar_producto', id_producto=producto.id_producto),
                 es_activo=producto.activo
               ) }}
             </td>
           </tr>
           {% else %}
           <tr>
-            <td colspan="7" class="py-8 text-center text-gray-400">
+            <td colspan="8" class="py-8 text-center text-gray-400">
               No hay productos registrados.
             </td>
           </tr>

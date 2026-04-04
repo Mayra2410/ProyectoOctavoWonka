@@ -8,6 +8,7 @@ from proveedores.routes import proveedores
 from productos.routes import productos
 from materiaPrima.routes import materia_Prima
 from comprasProveedores.routes import compras_bp
+from recetas.routes import recetas
 
 
 app = Flask(__name__)
@@ -21,6 +22,7 @@ app.register_blueprint(proveedores)
 app.register_blueprint(productos)
 app.register_blueprint(materia_Prima)
 app.register_blueprint(compras_bp)
+app.register_blueprint(recetas)
 
 
 
