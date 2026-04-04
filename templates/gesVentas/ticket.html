@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-2xl border-2 border-wonka-gold/30 font-mono text-wonka-brown">
+    <div class="text-center space-y-2 mb-6">
+        <h1 class="text-2xl font-black tracking-tighter">WONKA CHOCOLATES</h1>
+        <p class="text-[10px] uppercase">DOS HERMANOS DOS ARTESANOS</p>
+        <div class="border-b-2 border-dashed border-gray-200 my-4"></div>
+        
+        <p class="text-sm font-bold">TICKET DE VENTA #{{ venta.id_venta }}</p>
+        
+        <div class="bg-wonka-cream/50 p-3 rounded-xl border border-wonka-gold/20 my-4">
+            <p class="text-[9px] uppercase font-bold text-gray-400">Lote de Fabricación:</p>
+            <p class="text-xs font-bold text-wonka-purple">
+                {# Buscamos la orden relacionada con este producto/venta #}
+                {{ venta.observaciones if 'LOTE' in venta.observaciones else 'PROCESANDO...' }}
+            </p>
+        </div>
+
+        <p class="text-[10px]">{{ venta.fecha_venta.strftime('%d/%m/%Y %H:%M:%S') }}</p>
+    </div>
+
+    <div class="space-y-4 mb-8">
+        <div class="flex justify-between text-sm font-bold">
+            <span>Subtotal:</span>
+            <span>${{ "{:,.2f}".format(venta.total) }}</span>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+            <span>Método de Pago:</span>
+            <span>{{ venta.metodo_pago }}</span>
+        </div>
+    </div>
+
+    <div class="border-t-2 border-black pt-4 mb-6">
+        <div class="flex justify-between items-end">
+            <span class="text-lg font-black">TOTAL</span>
+            <span class="text-3xl font-black">${{ "{:,.2f}".format(venta.total) }}</span>
+        </div>
+    </div>
+
+    <div class="text-center space-y-4">
+        <p class="text-[10px] italic">"Gracias por hacer el mundo más premium"</p>
+        <button onclick="window.print()" class="w-full bg-wonka-purple text-white py-3 rounded-xl font-bold hover:bg-wonka-purple-dark transition-all no-print">
+            Imprimir Recibo
+        </button>
+        <a href="{{ url_for('gesVentas.mostrar_ventas') }}" class="block text-xs text-gray-400 underline no-print">Regresar a Ventas</a>
+    </div>
+</div>
+{% endblock %}

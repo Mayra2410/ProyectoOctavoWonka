@@ -42,24 +42,33 @@
         </div>
 
         <nav class="space-y-1">
-          {% set items = [ ('dashboard', 'Panel', 'layout-dashboard'),
-          ('customers', 'Clientes', 'users'), ('employees', 'Empleados',
-          'user-cog'), ('suppliers', 'Proveedores', 'truck'), ('materials',
-          'Materias Primas', 'package'), ('purchases', 'Compras',
-          'shopping-cart'), ('payments', 'Pagos', 'credit-card'), ('products',
-          'Productos', 'boxes'), ('recipes', 'Recetas', 'chef-hat'),
-          ('production', 'Producción', 'factory'), ('inventory', 'Inventario',
-          'warehouse'), ('sales', 'Ventas', 'trending-up') ] %} {% for id,
-          label, icon in items %}
-          <a
-            href="#"
-            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group {% if id == 'suppliers' %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
-          >
-            <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
-            {{ label }}
-          </a>
+          {% set items = [ 
+            ('dashboard', 'Panel', 'layout-dashboard'),
+            ('customers', 'Clientes', 'users'), 
+            ('employees', 'Empleados','user-cog'), 
+            ('suppliers', 'Proveedores', 'truck'), 
+            ('materials','Materias Primas', 'package'), 
+            ('purchases', 'Compras','shopping-cart'), 
+            ('payments', 'Pagos', 'credit-card'), 
+            ('products','Productos', 'boxes'), 
+            ('recipes', 'Recetas', 'chef-hat'),
+            ('produccion.mostrar_ordenes', 'Producción', 'factory'), 
+            ('inventario.mostrar_inventario', 'Inventario', 'warehouse'), 
+            ('gesVentas.mostrar_ventas', 'Ventas', 'trending-up')
+          ] %} 
+
+          {% for id, label, icon in items %}
+            {# Validamos si el ID tiene un punto (indica que es un Blueprint) para poner la ruta real #}
+            <a
+              href="{{ url_for(id) if '.' in id else '#' }}"
+              class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group 
+              {% if request.endpoint == id %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
+            >
+              <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+              {{ label }}
+            </a>
           {% endfor %}
-        </nav>
+      </nav>
       </div>
     </aside>
 
