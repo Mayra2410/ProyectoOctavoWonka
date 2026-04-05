@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% from "_macros.html" import buscador, acciones_tabla %}
+{% from "_macros.html" import acciones_tabla %}
 
 {% block content %}
+
 <div class="flex justify-between items-center mb-6">
     <div>
         <h2 class="text-3xl font-bold text-wonka-brown">Órdenes de Producción</h2>
@@ -12,7 +13,42 @@
     </button>
 </div>
 
-{{ buscador('Buscar por lote o producto...') }}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="space-y-3 mb-6">
+    {% for category, message in messages %}
+      <div class="flex items-center p-4 rounded-2xl border shadow-sm animate-pulse
+        {% if category == 'danger' %} bg-red-50 border-red-200 text-red-800
+        {% elif category == 'success' %} bg-green-50 border-green-200 text-green-800
+        {% else %} bg-blue-50 border-blue-200 text-blue-800 {% endif %}">
+        
+        <i data-lucide="alert-circle" class="w-5 h-5 mr-3"></i>
+        <span class="text-xs font-black uppercase tracking-widest">{{ message }}</span>
+        
+        <button type="button" class="ml-auto opacity-50 hover:opacity-100" onclick="this.parentElement.remove()">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('produccion.mostrar_ordenes') }}" method="GET" class="mb-6">
+    <div class="relative group">
+        <input type="text" name="q" value="{{ request.args.get('q', '') }}" 
+               placeholder="Buscar por lote (ej. AUTO-18) o producto (ej. Nuez)..." 
+               class="w-full pl-12 pr-4 py-3 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-wonka-purple outline-none shadow-sm text-sm transition-all">
+        <div class="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-wonka-purple transition-colors">
+            <i data-lucide="search" class="w-5 h-5"></i>
+        </div>
+        {% if request.args.get('q') %}
+            <a href="{{ url_for('produccion.mostrar_ordenes') }}" class="absolute right-4 top-3 text-[10px] bg-gray-100 text-gray-500 px-2 py-1 rounded-lg font-bold hover:bg-red-50 hover:text-red-500 transition-all uppercase">
+                Limpiar Filtro
+            </a>
+        {% endif %}
+    </div>
+</form>
 
 <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100">
     <table class="w-full text-left border-collapse">
@@ -76,7 +112,7 @@
             {% if not ordenes %}
             <tr>
                 <td colspan="6" class="px-6 py-10 text-center text-gray-400 italic">
-                    No hay órdenes de producción registradas.
+                    No se encontraron órdenes para "{{ request.args.get('q') }}".
                 </td>
             </tr>
             {% endif %}
@@ -86,7 +122,7 @@
 
 <div class="mt-4 p-4 bg-wonka-cream/50 rounded-2xl border border-dashed border-gray-200">
     <p class="text-[10px] text-gray-500 text-center">
-        <b>Nota de Calidad:</b> Al marcar una orden como "Terminar", el sistema descuenta automáticamente la materia prima e incrementa el stock de producto terminado en inventario.
+        <b>Nota de Calidad:</b> El buscador permite trazabilidad por folio de venta (ej: escriba "18" para ver lotes AUTO-18).
     </p>
 </div>
 {% endblock %}

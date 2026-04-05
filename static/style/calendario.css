@@ -1,0 +1,47 @@
+.flatpickr-calendar {
+  background: #fdf8f3 !important; 
+  border: 2px solid #8b5cf6 !important; 
+  border-radius: 1.5rem !important;
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3) !important;
+  font-family: inherit;
+}
+
+/* Flechas de navegación */
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: #8b5cf6 !important;
+}
+
+/* Mes y Año */
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-month {
+  font-weight: 800 !important;
+  color: #5c4033 !important; 
+}
+
+/* Días de la semana */
+span.flatpickr-weekday {
+  color: #8b5cf6 !important;
+  font-weight: bold !important;
+}
+
+/* El día seleccionado */
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+  background: #8b5cf6 !important;
+  border-color: #8b5cf6 !important;
+  color: white !important;
+  border-radius: 0.75rem !important;
+}
+
+/* El día de Hoy */
+.flatpickr-day.today {
+  border-color: #ffcc00 !important;
+  color: #5c4033 !important;
+}
+
+/* Efecto hover sobre los días */
+.flatpickr-day:hover {
+  background: #8b5cf620 !important;
+  border-color: transparent !important;
+}

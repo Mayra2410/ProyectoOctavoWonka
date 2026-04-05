@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash, session
 from . import inventario 
 from models import db, Producto, MovimientoInventario 
+from models import MateriasPrimas, Producto, MovimientoInventario, db
 from datetime import datetime
 
 @inventario.route('/producto-terminado')

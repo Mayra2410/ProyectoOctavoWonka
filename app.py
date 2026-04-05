@@ -2,24 +2,36 @@ from flask import Flask, render_template
 from config import DevelopmentConfig 
 from models import db
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect  
 
-# Tus Blueprints
 from proveedores.routes import proveedores
 from produccion.routes import produccion
 from inventario.routes import inventario
 from gesVentas.routes import gesVentas
+from productos.routes import productos
+from materiaPrima.routes import materia_Prima
+from comprasProveedores.routes import compras_bp
+from recetas.routes import recetas
+from pagosProveedores.routes import pagosProveedores
+from puntoVenta.routes import puntoVenta_bp
 
 app = Flask(__name__)
-
 app.config.from_object(DevelopmentConfig)
 
 db.init_app(app)
 migrate = Migrate(app, db)
+csrf = CSRFProtect(app)
+
 app.register_blueprint(proveedores)
 app.register_blueprint(produccion)
 app.register_blueprint(inventario)
 app.register_blueprint(gesVentas)
+app.register_blueprint(productos)
+app.register_blueprint(materia_Prima)
+app.register_blueprint(compras_bp)
+app.register_blueprint(recetas)
+app.register_blueprint(pagosProveedores)
+app.register_blueprint(puntoVenta_bp, url_prefix='/punto-venta')
 
 @app.route("/")
 def index():
@@ -28,4 +40,7 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    with app.app_context():
+        app.run(debug=True)
+
+
