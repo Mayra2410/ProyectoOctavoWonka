@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_wtf import FlaskForm
+from sqlalchemy.exc import IntegrityError
 from . import recetas
 from .forms import RecetaForm
 from models import db, Receta, Producto, MateriasPrimas, RecetaDetalle
@@ -30,9 +31,17 @@ def agregar_receta():
     form.producto_id.choices = [(p.id_producto, p.nombre) for p in Producto.query.all()]
 
     if form.validate_on_submit():
-        existe = Receta.query.filter_by(nombre_receta=form.nombre_receta.data).first()
-        if existe:
+        nombre_limpio = form.nombre_receta.data.strip()
+
+        existe_nombre = Receta.query.filter_by(nombre_receta=nombre_limpio).first()
+        if existe_nombre:
             form.nombre_receta.errors.append('Esta receta ya existe.')
+
+        existe_producto = Receta.query.filter_by(producto_id=form.producto_id.data).first()
+        if existe_producto:
+            form.producto_id.errors.append('Ese producto ya tiene una receta registrada.')
+
+        if form.nombre_receta.errors or form.producto_id.errors:
             return render_template(
                 'recetas/agregarReceta.html',
                 form=form,
@@ -41,16 +50,23 @@ def agregar_receta():
 
         nueva_receta = Receta(
             producto_id=form.producto_id.data,
-            nombre_receta=form.nombre_receta.data,
+            nombre_receta=nombre_limpio,
             cantidad_lote=form.cantidad_lote.data,
-            instrucciones=form.instrucciones.data,
-            activo = bool(int(request.form.get('activo', 1)))
+            instrucciones=form.instrucciones.data.strip() if form.instrucciones.data else None,
+            activo=bool(int(request.form.get('activo', 1)))
         )
 
-        db.session.add(nueva_receta)
-        db.session.commit()
-        flash('Receta agregada correctamente. Ahora agrega sus ingredientes.', 'success')
-        return redirect(url_for('recetas.gestionar_ingredientes', id_receta=nueva_receta.id_receta))
+        try:
+            db.session.add(nueva_receta)
+            db.session.commit()
+            flash('Receta agregada correctamente. Ahora agrega sus ingredientes.', 'success')
+            return redirect(url_for('recetas.gestionar_ingredientes', id_receta=nueva_receta.id_receta))
+        except IntegrityError:
+            db.session.rollback()
+            form.producto_id.errors.append('Ese producto ya tiene una receta registrada.')
+        except Exception:
+            db.session.rollback()
+            flash('Ocurrió un error al guardar la receta.', 'danger')
 
     return render_template(
         'recetas/agregarReceta.html',
@@ -66,13 +82,25 @@ def modificar_receta(id_receta):
     form.producto_id.choices = [(p.id_producto, p.nombre) for p in Producto.query.all()]
 
     if form.validate_on_submit():
-        duplicado = Receta.query.filter(
-            Receta.nombre_receta == form.nombre_receta.data,
+        nombre_limpio = form.nombre_receta.data.strip()
+
+        duplicado_nombre = Receta.query.filter(
+            Receta.nombre_receta == nombre_limpio,
             Receta.id_receta != id_receta
         ).first()
 
-        if duplicado:
+        if duplicado_nombre:
             form.nombre_receta.errors.append('Este nombre de receta ya está registrado.')
+
+        duplicado_producto = Receta.query.filter(
+            Receta.producto_id == form.producto_id.data,
+            Receta.id_receta != id_receta
+        ).first()
+
+        if duplicado_producto:
+            form.producto_id.errors.append('Ese producto ya tiene una receta registrada.')
+
+        if form.nombre_receta.errors or form.producto_id.errors:
             return render_template(
                 'recetas/modificarReceta.html',
                 form=form,
@@ -81,14 +109,21 @@ def modificar_receta(id_receta):
             )
 
         receta.producto_id = form.producto_id.data
-        receta.nombre_receta = form.nombre_receta.data
+        receta.nombre_receta = nombre_limpio
         receta.cantidad_lote = form.cantidad_lote.data
-        receta.instrucciones = form.instrucciones.data
+        receta.instrucciones = form.instrucciones.data.strip() if form.instrucciones.data else None
         receta.activo = bool(int(request.form.get('activo', 1)))
 
-        db.session.commit()
-        flash('Receta actualizada correctamente.', 'success')
-        return redirect(url_for('recetas.lista_recetas'))
+        try:
+            db.session.commit()
+            flash('Receta actualizada correctamente.', 'success')
+            return redirect(url_for('recetas.lista_recetas'))
+        except IntegrityError:
+            db.session.rollback()
+            form.producto_id.errors.append('Ese producto ya tiene una receta registrada.')
+        except Exception:
+            db.session.rollback()
+            flash('Ocurrió un error al actualizar la receta.', 'danger')
 
     return render_template(
         'recetas/modificarReceta.html',
@@ -115,28 +150,31 @@ def confirmar_eliminar_receta(id_receta):
 @recetas.route("/recetas/desactivar/<int:id_receta>", methods=["POST"])
 def desactivar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
-
     receta.activo = False
 
     try:
         db.session.commit()
         flash('Receta desactivada correctamente.', 'warning')
-        return redirect(url_for("recetas.lista_recetas"))
     except Exception:
         db.session.rollback()
         flash('Ocurrió un error al desactivar la receta.', 'danger')
-        return redirect(url_for("recetas.lista_recetas"))
+
+    return redirect(url_for("recetas.lista_recetas"))
 
 
 @recetas.route('/recetas/reactivar/<int:id_receta>', methods=['POST'])
 def reactivar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     receta.activo = True
-    db.session.commit()
 
-    flash('Receta reactivada correctamente.', 'success')
+    try:
+        db.session.commit()
+        flash('Receta reactivada correctamente.', 'success')
+    except Exception:
+        db.session.rollback()
+        flash('Ocurrió un error al reactivar la receta.', 'danger')
+
     return redirect(url_for('recetas.lista_recetas'))
-
 
 
 @recetas.route('/recetas/detalles/<int:id_receta>')
@@ -148,6 +186,7 @@ def detalle_receta(id_receta):
         receta=receta,
         active_page='recetas.lista_recetas'
     )
+
 
 @recetas.route('/recetas/<int:id_receta>/ingredientes', methods=['GET', 'POST'])
 def gestionar_ingredientes(id_receta):
