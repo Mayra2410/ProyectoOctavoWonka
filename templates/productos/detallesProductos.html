@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "productos/_macros_prod.html" as mm %}
+{% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="flex items-center gap-4 mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">
+      Detalle del producto
+    </h1>
+  </div>
+
+  {{ mm.tarjeta_producto(producto) }}
+</div>
+{% endblock %}

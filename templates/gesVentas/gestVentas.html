@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Ingresos Hoy</p>
+            <h4 class="text-xl font-black text-green-600">${{ "{:,.2f}".format(ingresos) }}</h4>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Egresos Hoy</p>
+            <h4 class="text-xl font-black text-red-500">-${{ "{:,.2f}".format(egresos) }}</h4>
+        </div>
+        <div class="bg-wonka-purple/10 p-4 rounded-2xl border border-wonka-purple/20 shadow-sm">
+            <p class="text-wonka-purple text-[10px] font-bold uppercase tracking-widest">Utilidad Neta</p>
+            <h4 class="text-xl font-black text-wonka-purple">${{ "{:,.2f}".format(utilidad) }}</h4>
+        </div>
+        <div class="flex items-center justify-end gap-2">
+             <a href="{{ url_for('gesVentas.corte_caja') }}" class="bg-wonka-gold text-wonka-brown px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:scale-105 transition-transform shadow-md">
+                <i data-lucide="printer" class="w-4 h-4"></i> Corte de Caja
+             </a>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+            <form action="{{ url_for('gesVentas.mostrar_ventas') }}" method="GET" class="relative w-full md:w-1/3 flex gap-2">
+                <div class="relative flex-1">
+                    <i data-lucide="search" class="absolute left-3 top-2.5 text-gray-400 w-4 h-4"></i>
+                    <input type="text" name="q" value="{{ request.args.get('q', '') }}" placeholder="Buscar por Folio #..." class="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20">
+                </div>
+                <button type="submit" class="bg-wonka-brown text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-black transition-colors">
+                    Buscar
+                </button>
+                {% if request.args.get('q') %}
+                <a href="{{ url_for('gesVentas.mostrar_ventas') }}" class="p-2 text-gray-400 hover:text-red-500">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                </a>
+                {% endif %}
+            </form>
+
+            <div class="flex gap-2">
+                <a href="{{ url_for('puntoVenta.index') }}" class="bg-wonka-purple text-white px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-wonka-purple-dark transition-all shadow-lg">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i> Nueva Venta
+                </a>
+                <a href="{{ url_for('pagosProveedores.lista_pagos') }}" class="bg-gray-100 text-gray-600 px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-gray-200 transition-all">
+                    <i data-lucide="truck" class="w-4 h-4"></i> Cuentas por Pagar
+                </a>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="bg-gray-50 text-gray-400 text-[10px] font-black uppercase tracking-widest border-b border-gray-100">
+                    <tr>
+                        <th class="px-4 py-4">Folio</th>
+                        <th class="px-4 py-4">Fecha y Hora</th>
+                        <th class="px-4 py-4">Monto Total</th>
+                        <th class="px-4 py-4">Método</th>
+                        <th class="px-4 py-4">Estado</th>
+                        <th class="px-4 py-4 text-right">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-sm">
+                    {% for v in ventas %}
+                    <tr class="hover:bg-gray-50/50 transition-colors">
+                        <td class="px-4 py-4 font-bold text-wonka-purple">#{{ v.id_venta }}</td>
+                        <td class="px-4 py-4 text-gray-500">{{ v.fecha_venta.strftime('%d/%m/%Y %I:%M %p') }}</td>
+                        <td class="px-4 py-4 font-black text-wonka-brown">${{ "{:,.2f}".format(v.total) }}</td>
+                        <td class="px-4 py-4"><span class="bg-gray-100 px-2 py-1 rounded text-[10px] font-bold">{{ v.metodo_pago }}</span></td>
+                        <td class="px-4 py-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-black tracking-tighter 
+                                {% if v.estado == 'COMPLETADA' %} bg-green-100 text-green-700 
+                                {% elif v.estado == 'CANCELADA' %} bg-red-100 text-red-700
+                                {% else %} bg-yellow-100 text-yellow-700 {% endif %}">
+                                {{ v.estado }}
+                            </span>
+                        </td>
+                        <td class="px-4 py-4 text-right flex justify-end gap-2">
+                            <a href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}" class="p-2 bg-pink-50 text-pink-500 rounded-lg hover:bg-pink-100 transition-colors" title="Imprimir Ticket">
+                                <i data-lucide="ticket" class="w-4 h-4"></i>
+                            </a>
+                            
+                            <a href="{{ url_for('gesVentas.cancelar_venta', id=v.id_venta) }}" 
+                               onclick="return confirm('¿Seguro que deseas cancelar la venta #{{ v.id_venta }}?')"
+                               class="p-2 bg-red-50 text-red-400 rounded-lg hover:bg-red-500 hover:text-white transition-all" title="Cancelar Venta">
+                                <i data-lucide="ban" class="w-4 h-4"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-10 text-gray-400 italic">No se encontraron ventas con ese criterio.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-from werkzeug.security import check_password_hash
+from flask import Flask, render_template
+from config import DevelopmentConfig
+from models import db
 from flask_migrate import Migrate
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect  
 
 # Configuración y Modelos (Agrupados)
 from config import DevelopmentConfig
@@ -13,11 +14,11 @@ from registro.formsR import ClienteForm
 
 # Blueprints (Los módulos del equipo)
 from proveedores.routes import proveedores
-from registro.routesR import registro as registro_blueprint
-from clientes import cliente
-from empleados import empleado
 from materiaPrima.routes import materia_Prima
 from comprasProveedores.routes import compras_bp
+from recetas.routes import recetas
+from pagosProveedores.routes import pagosProveedores
+from puntoVenta.routes import puntoVenta_bp
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -29,13 +30,11 @@ csrf = CSRFProtect(app)
 
 # Registro de Blueprints
 app.register_blueprint(proveedores)
-app.register_blueprint(registro_blueprint)
-app.register_blueprint(cliente)
-app.register_blueprint(empleado)
 app.register_blueprint(materia_Prima)
 app.register_blueprint(compras_bp)
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route("/")
 def index():
     form = LoginForm()
     if form.validate_on_submit():
@@ -54,13 +53,7 @@ def index():
 
     return render_template("index.html", form=form)
 
-@app.route('/registro')
-def registro_pagina():
-    form = ClienteForm()
-    return render_template('registro/usuarioRegistro.html', form=form)
 
 if __name__ == "__main__":
     with app.app_context():
-        # Esto crea las tablas si no existen en la DB
-        db.create_all()
-    app.run(debug=True)
+        app.run(debug=True)

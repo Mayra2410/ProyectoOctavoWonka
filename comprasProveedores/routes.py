@@ -1,6 +1,6 @@
 from . import compras_bp
 from models import ComprasMateriaPrima, MateriasPrimas, Proveedores, db
-from flask import render_template, redirect, request, url_for
+from flask import render_template, redirect, request, url_for, flash
 from . import forms
 
 
@@ -33,15 +33,25 @@ def registrar_compra():
             costo_unitario=form.costo_unitario.data,
             fecha_compra=form.fecha_compra.data,
             observaciones=form.observaciones.data,
+            estatus_compra="PENDIENTE"
         )
 
         try:
+            if materia:
+                materia.stock_actual += form.cantidad.data
+                materia.costo_unitario = form.costo_unitario.data
+                materia.fecha_ultima_compra = form.fecha_compra.data
+
             db.session.add(nueva_compra)
             db.session.commit()
+
+            flash("Compra registrada correctamente con estatus pendiente.", "success")
             return redirect(url_for("comprasProveedores.lista_compras"))
+
         except Exception as e:
             db.session.rollback()
             print(f"Error en transacción Wonka: {e}")
+            flash("Ocurrió un error al registrar la compra.", "danger")
 
     return render_template("comprasProveedores/registrarCompra.html", form=form)
 
@@ -66,5 +76,7 @@ def detalles_compra(id):
     }
 
     return render_template(
-        "comprasProveedores/detallesComprasProveedores.html", compra=compra, meses=meses
+        "comprasProveedores/detallesComprasProveedores.html",
+        compra=compra,
+        meses=meses
     )

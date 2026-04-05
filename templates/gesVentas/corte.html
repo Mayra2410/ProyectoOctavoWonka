@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <a href="{{ url_for('gesVentas.mostrar_ventas') }}" 
+               class="p-2 bg-white hover:bg-gray-100 rounded-xl border border-gray-200 text-wonka-brown transition-all shadow-sm"
+               title="Volver a Ventas">
+                <i data-lucide="arrow-left" class="w-6 h-6"></i>
+            </a>
+            <div>
+                <h2 class="text-3xl font-bold text-wonka-brown">Corte de Caja Diario</h2>
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-widest">Resumen General: {{ hoy }}</p>
+            </div>
+        </div>
+        
+        <button onclick="window.print()" class="bg-wonka-brown text-white px-6 py-2 rounded-xl font-bold hover:bg-black transition-all flex items-center gap-2 no-print">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            Imprimir Reporte
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-3xl border-b-8 border-green-500 shadow-sm relative overflow-hidden">
+            <i data-lucide="trending-up" class="absolute -right-4 -bottom-4 w-24 h-24 text-green-50 opacity-50"></i>
+            <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Ingresos Totales</p>
+            <h3 class="text-4xl font-black text-green-600">${{ "{:,.2f}".format(ingresos) }}</h3>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border-b-8 border-red-500 shadow-sm relative overflow-hidden">
+            <i data-lucide="trending-down" class="absolute -right-4 -bottom-4 w-24 h-24 text-red-50 opacity-50"></i>
+            <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Egresos (Pagos)</p>
+            <h3 class="text-4xl font-black text-red-600">-${{ "{:,.2f}".format(egresos) }}</h3>
+        </div>
+
+        <div class="bg-wonka-purple p-8 rounded-3xl shadow-xl relative overflow-hidden border-b-8 border-wonka-gold">
+            <i data-lucide="gem" class="absolute -right-4 -bottom-4 w-24 h-24 text-white/10"></i>
+            <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-2">Utilidad Neta</p>
+            <h3 class="text-4xl font-black text-wonka-gold">${{ "{:,.2f}".format(utilidad) }}</h3>
+        </div>
+    </div>
+
+    <div class="bg-wonka-cream border-2 border-dashed border-wonka-purple/20 p-6 rounded-3xl text-center">
+        <p class="text-wonka-brown/60 text-sm italic">
+            "Este reporte es una vista resumida de las transacciones del día de hoy. Las ventas pendientes no se contabilizan en el ingreso hasta ser completadas."
+        </p>
+    </div>
+</div>
+
+<style>
+    @media print {
+        .no-print { display: none; }
+        aside, header { display: none; }
+        main { padding: 0; }
+        body { background: white; }
+        .rounded-3xl { border-radius: 0; }
+        .shadow-sm, .shadow-xl { shadow: none; }
+    }
+</style>
+{% endblock %}
