@@ -42,8 +42,7 @@
                     {% for cliente in clientes %}
                     <tr 
                         onclick="window.location.href='{{ url_for('cliente.detalle_cliente', id=cliente.id_cliente) }}'"
-                        class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer"
-                    >
+                        class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer">
                         <td class="py-5 px-6 text-center font-bold text-wonka-brown text-sm">{{ cliente.id_cliente }}</td>
                         
                         <td class="py-5 px-4">

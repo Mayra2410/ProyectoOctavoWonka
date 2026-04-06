@@ -1,5 +1,6 @@
+import logging
 import base64
-from flask import render_template, flash
+from flask import render_template, flash, redirect, url_for
 from . import registro
 from .formsR import ClienteForm
 from models import db, Usuario, Cliente
@@ -10,16 +11,15 @@ def registro_cliente():
     form = ClienteForm()
 
     if form.validate_on_submit():
-        archivo = form.imagen_cliente.data
-        base64_image = None
+        try:
+            logging.info(f"INTENTO DE REGISTRO: {form.email.data}")
 
-        if archivo:
+            archivo = form.imagen_cliente.data
             contenido_binario = archivo.read()
             encoded_string = base64.b64encode(contenido_binario).decode('utf-8')
             extension = archivo.filename.rsplit('.', 1)[-1].lower()
             base64_image = f"data:image/{extension};base64,{encoded_string}"
 
-        try:
             nuevo_usuario = Usuario(
                 username=form.email.data,
                 password_hash=generate_password_hash(form.password.data), 
@@ -42,12 +42,15 @@ def registro_cliente():
             db.session.add(nuevo_cliente)
             db.session.commit()
             
+            logging.info(f"REGISTRO EXITOSO: Cliente {form.email.data} creado.")
+
             return render_template('registro/usuarioRegistro.html', 
                                  form=ClienteForm(formdata=None), 
                                  registro_exitoso=True)
 
         except Exception as e:
             db.session.rollback()
-            flash(f"Error en BD: {str(e)}", "error")
+            logging.error(f"FALLO EN REGISTRO: {str(e)}")
+            flash(f"Error en el sistema: {str(e)}", "error")
 
     return render_template('registro/usuarioRegistro.html', form=form)

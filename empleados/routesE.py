@@ -1,4 +1,6 @@
 import base64
+import secrets
+import string
 from flask import render_template, request, redirect, url_for, flash
 from sqlalchemy import or_
 from . import empleado 
@@ -6,6 +8,11 @@ from models import db, Empleado, Usuario
 from .formsE import EmpleadoForm
 from werkzeug.security import generate_password_hash
 from datetime import datetime
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def procesar_imagen_base64(archivo):
     if archivo and archivo.filename != '':
@@ -33,82 +40,52 @@ def empleadosAdmin():
                            form=EmpleadoForm(),
                            query=search_query)
 
-import base64
-from flask import render_template, request, redirect, url_for, flash
-from sqlalchemy import or_
-from . import empleado 
-from models import db, Empleado, Usuario
-from .formsE import EmpleadoForm
-from werkzeug.security import generate_password_hash
-from datetime import datetime
-
-def procesar_imagen_base64(archivo):
-    if archivo and archivo.filename != '':
-        contenido_binario = archivo.read()
-        encoded_string = base64.b64encode(contenido_binario).decode('utf-8')
-        return f"data:{archivo.content_type};base64,{encoded_string}"
-    return None
-
 @empleado.route('/agregar_empleado', methods=['GET', 'POST'])
 def agregar_empleado():
     form = EmpleadoForm()
     
-    if request.method == 'POST':
-        if not form.estatus.data:
-            form.estatus.data = 'ACTIVO'
+    if form.validate_on_submit():
+        try:
+            pass_hash = generate_password_hash(form.password.data)
+            nuevo_usuario = Usuario(
+                username=form.email.data,
+                email=form.email.data,
+                password_hash=pass_hash,
+                rol='ADMIN',
+                activo=True
+            )
+            db.session.add(nuevo_usuario)
+            db.session.flush()
 
-        if form.validate_on_submit():
-            usuario_existente = Usuario.query.filter_by(email=form.email.data).first()
-            if usuario_existente:
-                flash(f"El correo {form.email.data} ya está registrado.", "danger")
-                return render_template('empleados/agregarEmpleados.html', form=form)
+            img_b64 = request.form.get('imagen_base64_recuperada')
+            if not img_b64:
+                archivo = request.files.get('imagen_empleado')
+                img_b64 = procesar_imagen_base64(archivo)
 
-            try:
-                pass_hash = generate_password_hash(form.password.data)
-                nuevo_usuario = Usuario(
-                    username=form.email.data,
-                    email=form.email.data,
-                    password_hash=pass_hash,
-                    rol='ADMIN',
-                    activo=True
-                )
-                db.session.add(nuevo_usuario)
-                db.session.flush()
-
-                img_b64 = request.form.get('imagen_base64_recuperada')
-                if not img_b64:
-                    archivo = request.files.get('imagen_empleado')
-                    img_b64 = procesar_imagen_base64(archivo)
-
-                nuevo_empleado = Empleado(
-                    usuario_id=nuevo_usuario.id_usuario,
-                    nombre=form.nombre.data,
-                    apellido=form.apellido.data,
-                    dni_cedula=form.dni_cedula.data,
-                    email=form.email.data,
-                    telefono=form.telefono.data,
-                    direccion=form.direccion.data,
-                    puesto=form.puesto.data,
-                    salario_mensual=form.salario_mensual.data,
-                    fecha_contratacion=form.fecha_contratacion.data,
-                    imagen_empleado=img_b64,
-                    estatus='ACTIVO'
-                )
-                
-                db.session.add(nuevo_empleado)
-                db.session.commit()
-                
-                flash("Empleado registrado con éxito", "success")
-                return redirect(url_for('empleado.empleadosAdmin'))
-
-            except Exception as e:
-                db.session.rollback()
-                flash(f"Error: {str(e)}", "danger")
-        else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    flash(f"{field.capitalize()}: {error}", "danger")
+            nuevo_empleado = Empleado(
+                usuario_id=nuevo_usuario.id_usuario,
+                nombre=form.nombre.data,
+                apellido=form.apellido.data,
+                dni_cedula=form.dni_cedula.data,
+                email=form.email.data,
+                telefono=form.telefono.data,
+                direccion=form.direccion.data,
+                puesto=form.puesto.data,
+                salario_mensual=form.salario_mensual.data,
+                fecha_contratacion=form.fecha_contratacion.data,
+                imagen_empleado=img_b64,
+                estatus=form.estatus.data
+            )
             
+            db.session.add(nuevo_empleado)
+            db.session.commit()
+            
+            return redirect(url_for('empleado.empleadosAdmin'))
+
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error critico al guardar: {str(e)}", "danger")
+    
     return render_template('empleados/agregarEmpleados.html', form=form)
 
 @empleado.route("/empleados/modificar/<int:id>", methods=["GET", "POST"])

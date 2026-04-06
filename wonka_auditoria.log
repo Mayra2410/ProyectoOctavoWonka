@@ -1,0 +1,123 @@
+2026-04-05 23:58:19,065 - WARNING -  * Debugger is active!
+2026-04-05 23:58:19,072 - INFO -  * Debugger PIN: 113-376-504
+2026-04-05 23:58:19,205 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:19] "GET / HTTP/1.1" 200 -
+2026-04-05 23:58:21,371 - WARNING - ACCESO DENEGADO: Intento de login fallido para: root@gmail.com
+2026-04-05 23:58:21,375 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:21] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-05 23:58:21,391 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:21] "GET / HTTP/1.1" 200 -
+2026-04-05 23:58:34,703 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:34] "GET /registro HTTP/1.1" 200 -
+2026-04-05 23:58:52,471 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:52] "POST /registro_cliente HTTP/1.1" 200 -
+2026-04-05 23:58:55,062 - INFO - 127.0.0.1 - - [05/Apr/2026 23:58:55] "GET / HTTP/1.1" 200 -
+2026-04-05 23:59:45,186 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:08:19,002 - INFO - SISTEMA WONKA: El servidor ha iniciado correctamente en modo Debug.
+2026-04-06 00:08:19,062 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:08:19,063 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:08:19,070 - INFO -  * Restarting with stat
+2026-04-06 00:08:20,770 - INFO - SISTEMA WONKA: El servidor ha iniciado correctamente en modo Debug.
+2026-04-06 00:08:20,790 - WARNING -  * Debugger is active!
+2026-04-06 00:08:20,797 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:08:29,425 - INFO - 127.0.0.1 - - [06/Apr/2026 00:08:29] "GET / HTTP/1.1" 200 -
+2026-04-06 00:08:37,945 - INFO - SISTEMA WONKA: El servidor ha iniciado correctamente en modo Debug.
+2026-04-06 00:08:38,001 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:08:38,001 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:08:38,009 - INFO -  * Restarting with stat
+2026-04-06 00:08:40,640 - INFO - SISTEMA WONKA: El servidor ha iniciado correctamente en modo Debug.
+2026-04-06 00:08:40,660 - WARNING -  * Debugger is active!
+2026-04-06 00:08:40,666 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:09:46,722 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:09:47,086 - INFO -  * Restarting with stat
+2026-04-06 00:09:52,268 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:09:52,268 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:09:52,272 - INFO -  * Restarting with stat
+2026-04-06 00:09:53,815 - WARNING -  * Debugger is active!
+2026-04-06 00:09:53,820 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:09:57,608 - INFO - 127.0.0.1 - - [06/Apr/2026 00:09:57] "GET / HTTP/1.1" 200 -
+2026-04-06 00:09:59,920 - INFO - 127.0.0.1 - - [06/Apr/2026 00:09:59] "[33mGET /registro HTTP/1.1[0m" 404 -
+2026-04-06 00:10:20,287 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:10:20,579 - INFO -  * Restarting with stat
+2026-04-06 00:10:22,818 - WARNING -  * Debugger is active!
+2026-04-06 00:10:22,822 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:10:30,577 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\registro\\routesR.py', reloading
+2026-04-06 00:10:30,847 - INFO -  * Restarting with stat
+2026-04-06 00:12:59,886 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:12:59,886 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:12:59,895 - INFO -  * Restarting with stat
+2026-04-06 00:13:04,028 - WARNING -  * Debugger is active!
+2026-04-06 00:13:04,068 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:14:39,964 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:14:40,270 - INFO -  * Restarting with stat
+2026-04-06 00:14:43,071 - WARNING -  * Debugger is active!
+2026-04-06 00:14:43,080 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:14:43,167 - INFO - 127.0.0.1 - - [06/Apr/2026 00:14:43] "GET / HTTP/1.1" 200 -
+2026-04-06 00:14:49,704 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:14:49,704 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:14:49,711 - INFO -  * Restarting with stat
+2026-04-06 00:14:52,369 - WARNING -  * Debugger is active!
+2026-04-06 00:14:52,377 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:14:56,709 - INFO - 127.0.0.1 - - [06/Apr/2026 00:14:56] "GET / HTTP/1.1" 200 -
+2026-04-06 00:14:58,353 - INFO - 127.0.0.1 - - [06/Apr/2026 00:14:58] "[33mGET /registro HTTP/1.1[0m" 404 -
+2026-04-06 00:17:24,764 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:17:25,058 - INFO -  * Restarting with stat
+2026-04-06 00:17:27,298 -  * Debugger is active!
+2026-04-06 00:17:27,303 -  * Debugger PIN: 113-376-504
+2026-04-06 00:17:33,958 -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:17:34,205 - INFO -  * Restarting with stat
+2026-04-06 00:19:52,103 - WARNING -  * Debugger is active!
+2026-04-06 00:19:52,115 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:19:52,216 - INFO - 127.0.0.1 - - [06/Apr/2026 00:19:52] "[33mGET /registro HTTP/1.1[0m" 404 -
+2026-04-06 00:19:59,651 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:19:59,651 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:19:59,656 - INFO -  * Restarting with stat
+2026-04-06 00:20:02,319 - WARNING -  * Debugger is active!
+2026-04-06 00:20:02,326 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:20:05,280 - INFO - 127.0.0.1 - - [06/Apr/2026 00:20:05] "GET / HTTP/1.1" 200 -
+2026-04-06 00:20:06,906 - INFO - 127.0.0.1 - - [06/Apr/2026 00:20:06] "[33mGET /registro HTTP/1.1[0m" 404 -
+2026-04-06 00:20:18,845 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:20:19,114 - INFO -  * Restarting with stat
+2026-04-06 00:21:23,076 - WARNING -  * Debugger is active!
+2026-04-06 00:21:23,083 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:21:28,171 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:21:28,172 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:21:28,178 - INFO -  * Restarting with stat
+2026-04-06 00:21:29,937 - WARNING -  * Debugger is active!
+2026-04-06 00:21:29,946 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:21:31,821 - INFO - 127.0.0.1 - - [06/Apr/2026 00:21:31] "GET / HTTP/1.1" 200 -
+2026-04-06 00:21:33,885 - INFO - 127.0.0.1 - - [06/Apr/2026 00:21:33] "GET /registro HTTP/1.1" 200 -
+2026-04-06 00:22:14,517 - INFO - 127.0.0.1 - - [06/Apr/2026 00:22:14] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 00:22:24,727 - INFO - 127.0.0.1 - - [06/Apr/2026 00:22:24] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 00:22:34,758 - INFO - INTENTO DE REGISTRO: root1@gmail.com
+2026-04-06 00:22:35,470 - INFO - REGISTRO EXITOSO: Cliente root1@gmail.com creado.
+2026-04-06 00:22:35,474 - INFO - 127.0.0.1 - - [06/Apr/2026 00:22:35] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 00:22:37,834 - INFO - 127.0.0.1 - - [06/Apr/2026 00:22:37] "GET / HTTP/1.1" 200 -
+2026-04-06 00:23:10,937 - INFO - ACCESO: Usuario root1@gmail.com inició sesión correctamente.
+2026-04-06 00:23:10,943 - INFO - 127.0.0.1 - - [06/Apr/2026 00:23:10] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 00:23:11,005 - INFO - 127.0.0.1 - - [06/Apr/2026 00:23:11] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 00:23:37,262 - INFO - 127.0.0.1 - - [06/Apr/2026 00:23:37] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 00:23:39,319 - INFO - 127.0.0.1 - - [06/Apr/2026 00:23:39] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-06 00:23:39,521 - INFO - 127.0.0.1 - - [06/Apr/2026 00:23:39] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-06 00:24:02,350 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:02] "[32mPOST /agregar_empleado HTTP/1.1[0m" 302 -
+2026-04-06 00:24:02,383 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:02] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 00:24:05,376 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:05] "[32mGET /empleados/eliminar/1 HTTP/1.1[0m" 302 -
+2026-04-06 00:24:05,405 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:05] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 00:24:06,486 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:06] "GET /empleados/modificar/1 HTTP/1.1" 200 -
+2026-04-06 00:24:08,994 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:08] "[32mPOST /empleados/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-06 00:24:09,029 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:09] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 00:24:11,414 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:11] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 00:24:13,595 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:13] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-06 00:24:13,723 - INFO - 127.0.0.1 - - [06/Apr/2026 00:24:13] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-06 00:24:38,594 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 00:24:38,595 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 00:24:38,599 - INFO -  * Restarting with stat
+2026-04-06 00:24:40,541 - WARNING -  * Debugger is active!
+2026-04-06 00:24:40,548 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 00:25:58,202 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 00:25:58,510 - INFO -  * Restarting with stat
+2026-04-06 00:26:00,510 - WARNING -  * Debugger is active!
+2026-04-06 00:26:00,514 - INFO -  * Debugger PIN: 113-376-504

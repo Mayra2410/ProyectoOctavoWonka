@@ -1,13 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, SelectField, DecimalField, DateField, PasswordField
 from flask_wtf.file import FileField, FileAllowed
-from wtforms.validators import DataRequired, Length, Email, Optional, Regexp, NumberRange
+from wtforms.validators import DataRequired, Length, Email, Optional, Regexp, NumberRange, ValidationError
+from models import Usuario, Empleado
 
 class EmpleadoForm(FlaskForm):
     nombre = StringField("Nombre", validators=[
         DataRequired(message="El nombre es obligatorio"),
         Length(min=3, message="Minimo 3 caracteres"),
-        Regexp(r'^[a-zA-Z\s]+$', message="Solo letras")
+        Regexp(r'^[a-zA-Z\s]+$', message="Solo se aceptan letras")
     ])
     
     apellido = StringField("Apellidos", validators=[Optional()])
@@ -22,13 +23,12 @@ class EmpleadoForm(FlaskForm):
     ])
     
     password = PasswordField("Contrasena", validators=[
-        DataRequired(message="Contrasena obligatoria"),
-        Length(min=6, message="Minimo 6 caracteres")
+        DataRequired(message="Contrasena obligatoria")
     ])
     
     telefono = StringField("Telefono", validators=[
         DataRequired(message="Telefono obligatorio"),
-        Regexp(r'^[0-9]+$', message="Solo numeros")
+        Regexp(r'^[0-9]+$', message="Solo se aceptan numeros")
     ])
     
     puesto = SelectField("Puesto", choices=[
@@ -61,3 +61,15 @@ class EmpleadoForm(FlaskForm):
         choices=[('ACTIVO', 'ACTIVO'), ('INACTIVO', 'INACTIVO')], 
         validators=[DataRequired()]
     )
+    
+    def validate_email(self, email):
+        if email.data:
+            existente = Usuario.query.filter_by(email=email.data).first()
+            if existente:
+                raise ValidationError('Este correo ya esta registrado en el sistema.')
+
+    def validate_dni_cedula(self, dni_cedula):
+        if dni_cedula.data:
+            existente = Empleado.query.filter_by(dni_cedula=dni_cedula.data).first()
+            if existente:
+                raise ValidationError('Esta identificacion (DNI/RFC) ya esta duplicada.')
