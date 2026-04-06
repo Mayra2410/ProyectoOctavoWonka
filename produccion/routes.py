@@ -6,9 +6,9 @@ import random
 
 @produccion.route('/ordenes', methods=['GET', 'POST']) 
 def mostrar_ordenes():
-    if not session.get('username'):
-        flash("Por favor, regístrate.", "warning")
-        return redirect(url_for('index'))
+    # if not session.get('username'):
+    #     flash("Por favor, regístrate.", "warning")
+    #     return redirect(url_for('index'))
     
     query = request.args.get('q') or request.form.get('q')
     
@@ -26,9 +26,6 @@ def mostrar_ordenes():
     return render_template('produccion/ordenes.html', ordenes=ordenes)
 @produccion.route('/crear-orden', methods=['POST'])
 def crear_orden():
-    if session.get('rol') != 'ADMIN':
-        flash("Acceso denegado: Solo el Jefe de Producción puede generar órdenes.", "danger")
-        return redirect(url_for('produccion.mostrar_ordenes'))
 
     id_prod = request.form.get('producto_id')
     cant = int(request.form.get('cantidad'))
@@ -56,9 +53,6 @@ def crear_orden():
 
 @produccion.route('/completar-orden/<int:id>')
 def completar_orden(id):
-    if session.get('rol') != 'ADMIN':
-        flash("No tienes permisos.", "danger")
-        return redirect(url_for('produccion.mostrar_ordenes'))
 
     orden = OrdenProduccion.query.get_or_404(id)
     if orden.estado == 'COMPLETADA':

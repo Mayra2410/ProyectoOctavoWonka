@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from models import db, Producto, Venta, OrdenProduccion 
+from models import db, Producto, Venta, OrdenProduccion
 from datetime import datetime
 
 puntoVenta_bp = Blueprint('puntoVenta', __name__)

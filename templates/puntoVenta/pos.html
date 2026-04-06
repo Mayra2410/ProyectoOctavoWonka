@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="flex flex-col lg:flex-row gap-6 min-h-[calc(100vh-120px)]">
-    
+<div class="flex flex-col lg:flex-row gap-6">
     <div class="flex-1 space-y-6">
         <div class="flex justify-between items-center">
             <h2 class="text-3xl font-black text-wonka-purple uppercase tracking-tighter italic">Catálogo Wonka</h2>
@@ -20,7 +19,7 @@
                 </div>
 
                 <h3 class="font-bold text-wonka-brown text-lg">{{ p.nombre }}</h3>
-                <p class="text-gray-400 text-xs mb-4 line-clamp-1 italic text-[10px]">{{ p.descripcion }}</p>
+                <p class="text-gray-400 text-[10px] mb-4 line-clamp-1 italic">{{ p.descripcion }}</p>
 
                 <form action="{{ url_for('puntoVenta.agregar') }}" method="POST" class="space-y-3">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -64,7 +63,7 @@
                             <span class="font-black text-sm text-white">${{ "{:,.2f}".format(item.subtotal) }}</span>
                             <a href="{{ url_for('puntoVenta.quitar_item', indice=loop.index0) }}" 
                                class="text-red-400 hover:text-red-600 transition-colors">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                 <i data-lucide="trash-2" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -94,36 +93,9 @@
 </div>
 
 <div id="modalMetodoPago" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20">
+    <div class="bg-white w-full max-w-md rounded-[2.5rem] overflow-hidden shadow-2xl">
         <div class="bg-wonka-purple p-6 text-white text-center">
             <h3 class="text-2xl font-bold italic tracking-tighter">Resumen de Venta</h3>
-            <p class="text-[10px] uppercase opacity-70 tracking-widest">Verifique los productos</p>
-        </div>
-        
-        <div class="p-6 max-h-48 overflow-y-auto bg-gray-50 border-b border-gray-100 custom-scrollbar">
-            <table class="w-full text-left text-xs">
-                <thead>
-                    <tr class="text-gray-400 font-black uppercase text-[9px] border-b border-gray-200">
-                        <th class="pb-2">Producto</th>
-                        <th class="pb-2 text-center">Cant.</th>
-                        <th class="pb-2 text-right">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    {% if session['carrito'] %}
-                        {% for item in session['carrito'] %}
-                        <tr>
-                            <td class="py-3">
-                                <p class="font-bold text-wonka-brown">{{ item.nombre }}</p>
-                                <p class="text-[9px] text-gray-400">{{ item.presentacion }}</p>
-                            </td>
-                            <td class="py-3 text-center font-bold text-gray-600">x{{ item.cantidad_cajas }}</td>
-                            <td class="py-3 text-right font-black text-wonka-purple">${{ "{:,.2f}".format(item.subtotal) }}</td>
-                        </tr>
-                        {% endfor %}
-                    {% endif %}
-                </tbody>
-            </table>
         </div>
         
         <form action="{{ url_for('puntoVenta.finalizar_venta') }}" method="POST" class="p-8 space-y-6">
@@ -134,36 +106,24 @@
                 <span class="text-2xl font-black text-wonka-brown">${{ "{:,.2f}".format(total) }}</span>
             </div>
 
-            <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-widest">Medio de Pago</p>
-            
             <div class="grid grid-cols-2 gap-3">
-                <label class="flex flex-col items-center gap-2 p-4 bg-gray-50 rounded-2xl border-2 border-transparent has-[:checked]:border-wonka-purple has-[:checked]:bg-wonka-purple/5 cursor-pointer transition-all">
+                <label class="flex flex-col items-center gap-2 p-4 bg-gray-50 rounded-2xl border-2 border-transparent has-[:checked]:border-wonka-purple has-[:checked]:bg-wonka-purple/5 cursor-pointer">
                     <input type="radio" name="metodo_pago" value="EFECTIVO" class="hidden" checked>
-                    <div class="p-2 bg-green-100 rounded-lg text-green-600"><i data-lucide="banknote"></i></div>
+                    <i data-lucide="banknote" class="text-green-600"></i>
                     <span class="font-bold text-wonka-brown text-[10px]">EFECTIVO</span>
                 </label>
-
-                <label class="flex flex-col items-center gap-2 p-4 bg-gray-50 rounded-2xl border-2 border-transparent has-[:checked]:border-wonka-purple has-[:checked]:bg-wonka-purple/5 cursor-pointer transition-all">
+                <label class="flex flex-col items-center gap-2 p-4 bg-gray-50 rounded-2xl border-2 border-transparent has-[:checked]:border-wonka-purple has-[:checked]:bg-wonka-purple/5 cursor-pointer">
                     <input type="radio" name="metodo_pago" value="TARJETA" class="hidden">
-                    <div class="p-2 bg-blue-100 rounded-lg text-blue-600"><i data-lucide="credit-card"></i></div>
+                    <i data-lucide="credit-card" class="text-blue-600"></i>
                     <span class="font-bold text-wonka-brown text-[10px]">TARJETA</span>
                 </label>
             </div>
 
-            <div class="flex flex-col gap-2 pt-2">
-                <button type="submit" class="w-full bg-wonka-purple text-white py-4 rounded-xl font-bold shadow-lg hover:bg-wonka-purple-dark active:scale-95 transition-all">
-                    Pagar Ahora
-                </button>
-                <button type="button" onclick="document.getElementById('modalMetodoPago').classList.add('hidden')" class="w-full py-2 text-gray-400 font-bold text-[10px] uppercase tracking-widest hover:text-red-500 transition-colors">
-                    Cancelar
-                </button>
+            <div class="flex flex-col gap-2">
+                <button type="submit" class="w-full bg-wonka-purple text-white py-4 rounded-xl font-bold shadow-lg hover:bg-wonka-purple-dark transition-all">Pagar Ahora</button>
+                <button type="button" onclick="document.getElementById('modalMetodoPago').classList.add('hidden')" class="w-full py-2 text-gray-400 font-bold text-[10px] uppercase hover:text-red-500">Cancelar</button>
             </div>
         </form>
     </div>
 </div>
-
-<style>
-    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-</style>
 {% endblock %}

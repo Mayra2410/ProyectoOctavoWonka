@@ -6,7 +6,7 @@
     <div class="mb-8 flex justify-between items-center">
         <div>
             <h1 class="text-4xl font-extrabold text-wonka-purple tracking-tight">Empleados</h1>
-            <p class="text-gray-500 mt-1 font-medium text-sm">Gestion de personal y nomina WONKA</p>
+            <p class="text-gray-500 mt-1 font-medium text-sm">Gestion completa de nomina y perfiles del personal</p>
         </div>
         <a href="{{ url_for('empleado.agregar_empleado') }}" class="hover:scale-105 transition-transform duration-200">
             {{ m.boton_principal("Nuevo Empleado") }}
@@ -14,9 +14,10 @@
     </div>
 
     <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
+        
         <div class="p-6 border-b border-gray-50 bg-gray-50/30">
             <div class="max-w-md" id="contenedor-buscador">
-                {{ m.buscador("Buscar por nombre, apellido, puesto...") }}
+                {{ m.buscador("Buscar por nombre, DNI o puesto...") }}
             </div>
         </div>
 
@@ -26,10 +27,12 @@
                     <tr>
                         <th class="py-5 px-6 font-bold border-b border-gray-100 text-center w-16">ID</th>
                         <th class="py-5 px-4 font-bold border-b border-gray-100 w-16">Foto</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Nombre Completo</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">DNI</th>
+                        <th class="py-5 px-4 font-bold border-b border-gray-100">Empleado</th>
+                        <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Identificacion</th>
+                        <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Telefono</th>
                         <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Puesto</th>
                         <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Salario</th>
+                        <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Registro</th>
                         <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Estatus</th>
                         <th class="py-5 px-6 font-bold border-b border-gray-100 text-right">Acciones</th>
                     </tr>
@@ -37,9 +40,10 @@
 
                 <tbody class="divide-y divide-gray-50">
                     {% for emp in empleados %}
-                    <tr onclick="window.location.href='{{ url_for('empleado.detalle_empleado', id=emp.id_empleado) }}'" 
-                        class="hover:bg-gray-50 cursor-pointer transition-colors group">
-                        
+                    <tr 
+                        onclick="window.location.href='{{ url_for('empleado.detalle_empleado', id=emp.id_empleado) }}'" 
+                        class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer"
+                    >
                         <td class="py-5 px-6 text-center font-bold text-wonka-brown text-sm">
                             {{ emp.id_empleado }}
                         </td>
@@ -48,8 +52,8 @@
                             {% if emp.imagen_empleado %}
                                 <img src="{{ emp.imagen_empleado }}" class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm">
                             {% else %}
-                                <div class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs border border-wonka-purple/10">
-                                    {{ emp.nombre[0]|upper }}{{ emp.apellido[0]|upper if emp.apellido else '' }}
+                                <div class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs">
+                                    {{ emp.nombre[0]|upper }}
                                 </div>
                             {% endif %}
                         </td>
@@ -63,8 +67,12 @@
                             </div>
                         </td>
 
-                        <td class="py-5 px-4 text-center text-gray-600 text-xs font-medium">
+                        <td class="py-5 px-4 text-center text-gray-500 text-xs font-medium">
                             {{ emp.dni_cedula }}
+                        </td>
+
+                        <td class="py-5 px-4 text-center text-gray-600 text-xs font-semibold">
+                            {{ emp.telefono or '---' }}
                         </td>
 
                         <td class="py-5 px-4 text-center">
@@ -77,27 +85,22 @@
                             ${{ "{:,.2f}".format(emp.salario_mensual) if emp.salario_mensual else "0.00" }}
                         </td>
 
+                        <td class="py-5 px-4 text-center text-gray-400 text-[11px] font-medium">
+                            {{ emp.fecha_contratacion.strftime('%d/%m/%Y') if emp.fecha_contratacion else '---' }}
+                        </td>
+
                         <td class="py-5 px-4 text-center">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if emp.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}">
                                 {{ emp.estatus }}
                             </span>
                         </td>
                         
-                        <td class="py-5 px-6 text-right">
-                            <div class="flex justify-end gap-2">
-                                <a href="{{ url_for('empleado.modificar_empleado', id=emp.id_empleado) }}" 
-                                   onclick="event.stopPropagation();" 
-                                   class="p-2 text-gray-400 hover:text-wonka-purple hover:bg-wonka-purple/10 rounded-lg transition-all">
-                                    <i data-lucide="edit-3" class="w-4 h-4"></i>
-                                </a>
-                                {% if emp.estatus == 'ACTIVO' %}
-                                <a href="{{ url_for('empleado.eliminar_empleado', id=emp.id_empleado) }}" 
-                                   onclick="event.stopPropagation();" 
-                                   class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
-                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                </a>
-                                {% endif %}
-                            </div>
+                        <td class="py-5 px-6">
+                            {{ m.acciones_tabla(
+                                edit_link=url_for('empleado.modificar_empleado', id=emp.id_empleado),
+                                delete_link=url_for('empleado.eliminar_empleado', id=emp.id_empleado),
+                                es_activo=(emp.estatus == 'ACTIVO')
+                            ) }}
                         </td>
                     </tr>
                     {% endfor %}

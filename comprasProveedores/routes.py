@@ -18,6 +18,7 @@ def registrar_compra():
         request.form if request.method == "POST" else None
     )
 
+    # Llenamos los selects
     form.materia_prima_id.choices = [
         (m.id_materia_prima, m.nombre) for m in MateriasPrimas.query.all()
     ]
@@ -26,6 +27,14 @@ def registrar_compra():
     ]
 
     if request.method == "POST" and form.validate():
+        # 1. Buscamos la materia prima en la BD para que ya no te de el error "not defined"
+        materia = MateriasPrimas.query.get(form.materia_prima_id.data)
+
+        if not materia:
+            flash("La materia prima seleccionada no existe.", "danger")
+            return redirect(url_for("comprasProveedores.registrar_compra"))
+
+        # 2. Creamos el objeto de la nueva compra
         nueva_compra = ComprasMateriaPrima(
             materia_prima_id=form.materia_prima_id.data,
             proveedor_id=form.proveedor_id.data,
@@ -37,15 +46,15 @@ def registrar_compra():
         )
 
         try:
-            if materia:
-                materia.stock_actual += form.cantidad.data
-                materia.costo_unitario = form.costo_unitario.data
-                materia.fecha_ultima_compra = form.fecha_compra.data
+            # Quitamos la parte que sumaba al stock_actual
+            # Pero mantenemos la actualización de datos informativos si quieres:
+            materia.costo_unitario = form.costo_unitario.data
+            materia.fecha_ultima_compra = form.fecha_compra.data
 
             db.session.add(nueva_compra)
             db.session.commit()
 
-            flash("Compra registrada correctamente con estatus pendiente.", "success")
+            flash("Compra registrada correctamente. El stock no se verá afectado hasta que se procese la producción.", "success")
             return redirect(url_for("comprasProveedores.lista_compras"))
 
         except Exception as e:
@@ -54,7 +63,6 @@ def registrar_compra():
             flash("Ocurrió un error al registrar la compra.", "danger")
 
     return render_template("comprasProveedores/registrarCompra.html", form=form)
-
 
 @compras_bp.route("/compras/detalles/<int:id>")
 def detalles_compra(id):

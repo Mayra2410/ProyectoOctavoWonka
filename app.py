@@ -1,42 +1,61 @@
-from flask import Flask, render_template
-from config import DevelopmentConfig
-from models import db
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_migrate import Migrate
-from flask_wtf.csrf import CSRFProtect  
+from flask_wtf.csrf import CSRFProtect
+from werkzeug.security import check_password_hash
 
-# Configuración y Modelos (Agrupados)
+# Configuración y Modelos
 from config import DevelopmentConfig
-from models import db, Usuario 
+from models import db, Usuario
 
 # Formularios
 from forms import LoginForm 
 from registro.formsR import ClienteForm
 
-# Blueprints (Los módulos del equipo)
+# --- IMPORTACIÓN DE BLUEPRINTS ---
+# Asegúrate de que estas rutas coincidan con tus carpetas
 from proveedores.routes import proveedores
+from produccion.routes import produccion
+from inventario.routes import inventario
+from gesVentas.routes import gesVentas
+from productos.routes import productos
 from materiaPrima.routes import materia_Prima
 from comprasProveedores.routes import compras_bp
 from recetas.routes import recetas
 from pagosProveedores.routes import pagosProveedores
 from puntoVenta.routes import puntoVenta_bp
+from registro.routesR import registro as registro_blueprint
+
+# IMPORTANTE: Importar el objeto 'cliente' y 'empleado' desde su carpeta
+from clientes import cliente
+from empleados import empleado
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
+app.config['SECRET_KEY'] = 'WonkA'
 
-# Inicialización de extensiones
 db.init_app(app)
 migrate = Migrate(app, db)
 csrf = CSRFProtect(app)
 
-# Registro de Blueprints
+# --- REGISTRO DE BLUEPRINTS ---
 app.register_blueprint(proveedores)
+app.register_blueprint(produccion)
+app.register_blueprint(inventario)
+app.register_blueprint(gesVentas)
+app.register_blueprint(productos)
 app.register_blueprint(materia_Prima)
 app.register_blueprint(compras_bp)
+app.register_blueprint(recetas)
+app.register_blueprint(pagosProveedores)
+app.register_blueprint(puntoVenta_bp, url_prefix='/punto-venta')
+app.register_blueprint(registro_blueprint)
+app.register_blueprint(cliente)
+app.register_blueprint(empleado)
 
-
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
     form = LoginForm()
+
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
@@ -53,7 +72,18 @@ def index():
 
     return render_template("index.html", form=form)
 
+@app.route('/registro')
+def registro_pagina():
+    form = ClienteForm()
+    return render_template('registro/usuarioRegistro.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     with app.app_context():
-        app.run(debug=True)
+        db.create_all()
+    app.run(debug=True)

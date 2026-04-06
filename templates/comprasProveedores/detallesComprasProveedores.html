@@ -1,26 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="max-w-[1800px] mx-auto p-8">
   <div class="mb-8">
     <h1 class="text-4xl font-bold text-wonka-purple">Detalles de la Compra</h1>
   </div>
 
-  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
+  <div
+    class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+  >
     <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-      
-      <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
+      <div
+        class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12"
+      >
         <div class="relative mb-6">
           <img
             class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
             src="{{ compra.materia_prima.imagen_materia if compra.materia_prima.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
             alt="Insumo"
           />
-          <div class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"></div>
+          <div
+            class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"
+          ></div>
         </div>
 
-        <h2 class="text-4xl font-extrabold text-wonka-brown text-center leading-tight mb-2">
+        <h2
+          class="text-4xl font-extrabold text-wonka-brown text-center leading-tight mb-2"
+        >
           {{ compra.materia_prima.nombre }}
         </h2>
 
@@ -29,37 +35,48 @@
         </p>
 
         <div class="w-full space-y-3">
-          <a href="{{ url_for('comprasProveedores.lista_compras') }}"
-            class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg hover:shadow-wonka-purple/20 inline-block">
+          <a
+            href="{{ url_for('comprasProveedores.lista_compras') }}"
+            class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg hover:shadow-wonka-purple/20 inline-block"
+          >
             Regresar al historial
           </a>
         </div>
       </div>
 
       <div class="lg:col-span-3">
-        
         {% if compra.estatus_compra == 'PENDIENTE' %}
         <div class="flex justify-end mb-6">
-          <a href="{{ url_for('pagosProveedores.gestionar_pago', id_compra=compra.id_compra) }}"
-            class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-2xl text-center transition-all shadow-lg">
+          <a
+            href="{{ url_for('pagosProveedores.gestionar_pago', id_compra=compra.id_compra) }}"
+            class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-2xl text-center transition-all shadow-lg"
+          >
             Ir a pagar compra
           </a>
         </div>
         {% endif %}
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Proveedor suministrante
             </span>
             <span class="text-gray-700 text-xl font-medium">
-              {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin asignar' }}
+              {{ compra.proveedor.nombre if compra.proveedor else 'Sin asignar'
+              }}
             </span>
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Cantidad ingresada
             </span>
             <span class="text-gray-700 text-xl font-medium">
@@ -67,8 +84,12 @@
             </span>
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Costo unitario
             </span>
             <span class="text-gray-700 text-xl font-medium">
@@ -76,8 +97,12 @@
             </span>
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Inversión total
             </span>
             <span class="text-green-600 text-2xl font-extrabold">
@@ -85,37 +110,57 @@
             </span>
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-2">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-2"
+            >
               Estatus de la compra
             </span>
 
             {% if compra.estatus_compra == 'PAGADO' %}
-              <span class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-green-100 text-green-700">
-                PAGADO
-              </span>
+            <span
+              class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-green-100 text-green-700"
+            >
+              PAGADO
+            </span>
             {% elif compra.estatus_compra == 'CANCELADO' %}
-              <span class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-red-100 text-red-700">
-                CANCELADO
-              </span>
+            <span
+              class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-red-100 text-red-700"
+            >
+              CANCELADO
+            </span>
             {% else %}
-              <span class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-yellow-100 text-yellow-700">
-                PENDIENTE
-              </span>
+            <span
+              class="inline-block px-4 py-2 rounded-full text-sm font-bold bg-yellow-100 text-yellow-700"
+            >
+              PENDIENTE
+            </span>
             {% endif %}
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Fecha de operación
             </span>
             <span class="text-gray-700 text-xl font-medium">
-              {{ compra.fecha_compra.day }} de {{ meses[compra.fecha_compra.month] }}, {{ compra.fecha_compra.year }}
+              {{ compra.fecha_compra.day }} de {{
+              meses[compra.fecha_compra.month] }}, {{ compra.fecha_compra.year
+              }}
             </span>
           </div>
 
-          <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-            <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
+          <div
+            class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
+          >
+            <span
+              class="text-sm font-bold text-wonka-purple uppercase block mb-1"
+            >
               Hora de registro
             </span>
             <span class="text-gray-700 text-xl font-medium">
@@ -123,15 +168,21 @@
             </span>
           </div>
 
-          <div class="p-10 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2">
-            <span class="text-lg font-bold text-wonka-purple uppercase block mb-3">
+          <div
+            class="p-10 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2"
+          >
+            <span
+              class="text-lg font-bold text-wonka-purple uppercase block mb-3"
+            >
               Observaciones de la compra
             </span>
-            <p class="text-gray-600 italic text-base leading-relaxed p-6 bg-white rounded-xl shadow-sm">
-              "{{ compra.observaciones or 'Sin observaciones registradas para esta transacción.' }}"
+            <p
+              class="text-gray-600 italic text-base leading-relaxed p-6 bg-white rounded-xl shadow-sm"
+            >
+              "{{ compra.observaciones or 'Sin observaciones registradas para
+              esta transacción.' }}"
             </p>
           </div>
-
         </div>
       </div>
     </div>

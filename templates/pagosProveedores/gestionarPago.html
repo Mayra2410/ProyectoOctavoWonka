@@ -13,7 +13,7 @@
 
       <div class="space-y-4 text-gray-700">
         <p><span class="font-bold">ID:</span> {{ compra.id_compra }}</p>
-        <p><span class="font-bold">Proveedor:</span> {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin proveedor' }}</p>
+     <p><span class="font-bold">Proveedor:</span> {{ compra.proveedor.nombre if compra.proveedor else 'Sin proveedor' }}</p>
         <p><span class="font-bold">Materia Prima:</span> {{ compra.materia_prima.nombre }}</p>
         <p><span class="font-bold">Cantidad:</span> {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}</p>
         <p><span class="font-bold">Costo Unitario:</span> ${{ "{:,.2f}".format(compra.costo_unitario) }}</p>

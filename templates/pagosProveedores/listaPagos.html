@@ -30,9 +30,9 @@
               {{ compra.id_compra }}
             </td>
 
-            <td class="py-5 px-2 text-gray-700">
-              {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin proveedor' }}
-            </td>
+           <td class="py-5 px-2 text-gray-700">
+  {{ compra.proveedor.nombre if compra.proveedor else 'Sin proveedor' }}
+</td>
 
             <td class="py-5 px-2 text-gray-700">
               {{ compra.materia_prima.nombre }}

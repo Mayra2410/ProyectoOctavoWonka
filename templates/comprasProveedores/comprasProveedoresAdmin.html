@@ -56,8 +56,8 @@
             </td>
 
             <td class="py-5 px-2 text-gray-500">
-              {{ compra.proveedor_rel.nombre if compra.proveedor_rel else 'Sin proveedor' }}
-            </td>
+  {{ compra.proveedor.nombre if compra.proveedor else 'Sin proveedor' }}
+</td>
 
             <td class="py-5 px-2 text-gray-700 font-semibold">
               {{ compra.cantidad }}
