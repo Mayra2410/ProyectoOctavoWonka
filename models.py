@@ -146,6 +146,11 @@ class Producto(db.Model):
 class Receta(db.Model):
     __tablename__ = 'recetas'
     id_receta = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey("productos.id_producto"), nullable=False, unique=True)
+    nombre_receta = db.Column(db.String(100), nullable=False, unique=True)
+    cantidad_lote = db.Column(db.Integer, nullable=False)
+    instrucciones = db.Column(db.Text, nullable=True)
+    activo = db.Column(db.Boolean, default=True, nullable=False)
     producto_id = db.Column(db.Integer, db.ForeignKey('productos.id_producto'), nullable=False)
     nombre_receta = db.Column(db.String(100), nullable=False)
     cantidad_lote = db.Column(db.Integer, default=1)
