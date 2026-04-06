@@ -121,3 +121,252 @@
 2026-04-06 00:25:58,510 - INFO -  * Restarting with stat
 2026-04-06 00:26:00,510 - WARNING -  * Debugger is active!
 2026-04-06 00:26:00,514 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:34:32,824 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 09:34:32,825 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 09:34:32,831 - INFO -  * Restarting with stat
+2026-04-06 09:34:34,396 - WARNING -  * Debugger is active!
+2026-04-06 09:34:34,401 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:34:47,723 - INFO - 127.0.0.1 - - [06/Apr/2026 09:34:47] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-06 09:34:47,970 - INFO - 127.0.0.1 - - [06/Apr/2026 09:34:47] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 09:34:47,973 - INFO - 127.0.0.1 - - [06/Apr/2026 09:34:47] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 09:34:48,101 - INFO - 127.0.0.1 - - [06/Apr/2026 09:34:48] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:34:48,173 - INFO - 127.0.0.1 - - [06/Apr/2026 09:34:48] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:36:02,981 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:36:03,300 - INFO -  * Restarting with stat
+2026-04-06 09:36:09,654 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 09:36:09,655 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 09:36:09,662 - INFO -  * Restarting with stat
+2026-04-06 09:36:11,993 - WARNING -  * Debugger is active!
+2026-04-06 09:36:11,998 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:36:12,240 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:12] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-06 09:36:12,346 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:12] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 09:36:12,350 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:12] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 09:36:12,391 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:12] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:36:12,484 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:12] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:36:52,780 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\registro\\routesR.py', reloading
+2026-04-06 09:36:53,091 - INFO -  * Restarting with stat
+2026-04-06 09:36:55,283 - WARNING -  * Debugger is active!
+2026-04-06 09:36:55,291 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:36:58,805 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:58] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-06 09:36:59,037 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:59] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 09:36:59,039 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:59] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 09:36:59,069 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:36:59,118 - INFO - 127.0.0.1 - - [06/Apr/2026 09:36:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:37:10,723 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\registro\\routesR.py', reloading
+2026-04-06 09:37:11,004 - INFO -  * Restarting with stat
+2026-04-06 09:37:13,418 - WARNING -  * Debugger is active!
+2026-04-06 09:37:13,423 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:37:29,920 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:37:30,157 - INFO -  * Restarting with stat
+2026-04-06 09:37:32,002 - WARNING -  * Debugger is active!
+2026-04-06 09:37:32,013 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:38:20,302 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:38:20,611 - INFO -  * Restarting with stat
+2026-04-06 09:38:22,964 - WARNING -  * Debugger is active!
+2026-04-06 09:38:22,970 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:38:26,996 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:26] "GET / HTTP/1.1" 200 -
+2026-04-06 09:38:27,738 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 09:38:33,750 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:33] "[35m[1mGET /recuperar HTTP/1.1[0m" 500 -
+2026-04-06 09:38:34,006 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:34] "GET /recuperar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-06 09:38:34,011 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:34] "GET /recuperar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-06 09:38:34,039 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:34] "GET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-06 09:38:34,087 - INFO - 127.0.0.1 - - [06/Apr/2026 09:38:34] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:42:41,898 - INFO - 127.0.0.1 - - [06/Apr/2026 09:42:41] "GET / HTTP/1.1" 200 -
+2026-04-06 09:42:43,818 - INFO - 127.0.0.1 - - [06/Apr/2026 09:42:43] "[35m[1mGET /recuperar HTTP/1.1[0m" 500 -
+2026-04-06 09:42:43,852 - INFO - 127.0.0.1 - - [06/Apr/2026 09:42:43] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 09:42:43,853 - INFO - 127.0.0.1 - - [06/Apr/2026 09:42:43] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 09:42:43,877 - INFO - 127.0.0.1 - - [06/Apr/2026 09:42:43] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:43:33,959 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:43:34,394 - INFO -  * Restarting with stat
+2026-04-06 09:47:29,022 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 09:47:29,023 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 09:47:29,028 - INFO -  * Restarting with stat
+2026-04-06 09:47:31,051 - WARNING -  * Debugger is active!
+2026-04-06 09:47:31,057 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:47:38,282 - INFO - 127.0.0.1 - - [06/Apr/2026 09:47:38] "GET / HTTP/1.1" 200 -
+2026-04-06 09:47:40,623 - INFO - 127.0.0.1 - - [06/Apr/2026 09:47:40] "GET /registro HTTP/1.1" 200 -
+2026-04-06 09:48:13,455 - INFO - INTENTO DE REGISTRO: naosita@gmail.com
+2026-04-06 09:48:13,457 - INFO - INTENTO DE REGISTRO: naosita@gmail.com
+2026-04-06 09:48:14,217 - INFO - REGISTRO EXITOSO: Cliente naosita@gmail.com creado.
+2026-04-06 09:48:14,218 - ERROR - FALLO EN REGISTRO: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'naosita@gmail.com' for key 'usuarios.username'")
+[SQL: INSERT INTO usuarios (username, password_hash, email, rol, activo) VALUES (%(username)s, %(password_hash)s, %(email)s, %(rol)s, %(activo)s)]
+[parameters: {'username': 'naosita@gmail.com', 'password_hash': 'scrypt:32768:8:1$3VU2tAqck2cAbAhk$e20c0eba084a32742732ca9d8c637dfe66a01bc265d1a6fe9f89254f3642df03c3cec2e96f874593884f5022e755c25f1bfdf29a955476876b3991f132682134', 'email': 'naosita@gmail.com', 'rol': 'CLIENTE', 'activo': 1}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-04-06 09:48:14,227 - INFO - 127.0.0.1 - - [06/Apr/2026 09:48:14] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 09:48:14,232 - INFO - 127.0.0.1 - - [06/Apr/2026 09:48:14] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 09:48:31,846 - INFO - INTENTO DE REGISTRO: naosita@gmail.com
+2026-04-06 09:48:32,425 - ERROR - FALLO EN REGISTRO: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'naosita@gmail.com' for key 'usuarios.username'")
+[SQL: INSERT INTO usuarios (username, password_hash, email, rol, activo) VALUES (%(username)s, %(password_hash)s, %(email)s, %(rol)s, %(activo)s)]
+[parameters: {'username': 'naosita@gmail.com', 'password_hash': 'scrypt:32768:8:1$nLJXGuUiN1zUtwEv$a306d393175a2ab8650a1a4546510ce6661d4a98a94fdc88b4b3877e56d2b11be87ad70237d4150964027675f91903b6578e015c74d252673cf4e3b31bf76a86', 'email': 'naosita@gmail.com', 'rol': 'CLIENTE', 'activo': 1}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-04-06 09:48:32,430 - INFO - 127.0.0.1 - - [06/Apr/2026 09:48:32] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 09:49:46,979 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:49:47,282 - INFO -  * Restarting with stat
+2026-04-06 09:49:51,249 - WARNING -  * Debugger is active!
+2026-04-06 09:49:51,264 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:49:51,424 - INFO - 127.0.0.1 - - [06/Apr/2026 09:49:51] "[33mPOST /registro/registro_cliente HTTP/1.1[0m" 404 -
+2026-04-06 09:50:00,093 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 09:50:00,094 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 09:50:00,098 - INFO -  * Restarting with stat
+2026-04-06 09:50:01,581 - WARNING -  * Debugger is active!
+2026-04-06 09:50:01,586 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:50:06,003 - INFO - 127.0.0.1 - - [06/Apr/2026 09:50:06] "GET / HTTP/1.1" 200 -
+2026-04-06 09:50:08,806 - INFO - 127.0.0.1 - - [06/Apr/2026 09:50:08] "GET /registro HTTP/1.1" 200 -
+2026-04-06 09:50:45,110 - INFO - INTENTO DE REGISTRO: naomi@gmail.com
+2026-04-06 09:50:45,787 - INFO - REGISTRO EXITOSO: Cliente naomi@gmail.com creado.
+2026-04-06 09:50:45,808 - INFO - 127.0.0.1 - - [06/Apr/2026 09:50:45] "POST /registro_cliente HTTP/1.1" 200 -
+2026-04-06 09:50:50,360 - INFO - 127.0.0.1 - - [06/Apr/2026 09:50:50] "GET / HTTP/1.1" 200 -
+2026-04-06 09:51:11,836 - INFO - 127.0.0.1 - - [06/Apr/2026 09:51:11] "[35m[1mGET /recuperar HTTP/1.1[0m" 500 -
+2026-04-06 09:51:12,189 - INFO - 127.0.0.1 - - [06/Apr/2026 09:51:12] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 09:51:12,192 - INFO - 127.0.0.1 - - [06/Apr/2026 09:51:12] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 09:51:12,283 - INFO - 127.0.0.1 - - [06/Apr/2026 09:51:12] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 09:53:42,503 - INFO - 127.0.0.1 - - [06/Apr/2026 09:53:42] "GET /registro HTTP/1.1" 200 -
+2026-04-06 09:54:48,541 - INFO - 127.0.0.1 - - [06/Apr/2026 09:54:48] "GET /registro HTTP/1.1" 200 -
+2026-04-06 09:55:02,862 - INFO - 127.0.0.1 - - [06/Apr/2026 09:55:02] "[31m[1mPOST /registro HTTP/1.1[0m" 405 -
+2026-04-06 09:56:10,436 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:56:10,753 - INFO -  * Restarting with stat
+2026-04-06 09:56:13,281 - WARNING -  * Debugger is active!
+2026-04-06 09:56:13,289 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:56:13,524 - INFO - 127.0.0.1 - - [06/Apr/2026 09:56:13] "POST /registro HTTP/1.1" 200 -
+2026-04-06 09:56:20,002 - INFO - 127.0.0.1 - - [06/Apr/2026 09:56:20] "POST /registro HTTP/1.1" 200 -
+2026-04-06 09:57:33,815 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:57:34,183 - INFO -  * Restarting with stat
+2026-04-06 09:57:37,211 - WARNING -  * Debugger is active!
+2026-04-06 09:57:37,220 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:57:37,532 - INFO - 127.0.0.1 - - [06/Apr/2026 09:57:37] "POST /registro HTTP/1.1" 200 -
+2026-04-06 09:57:43,820 - INFO - 127.0.0.1 - - [06/Apr/2026 09:57:43] "POST /registro HTTP/1.1" 200 -
+2026-04-06 09:57:50,066 - INFO - 127.0.0.1 - - [06/Apr/2026 09:57:50] "POST /registro HTTP/1.1" 200 -
+2026-04-06 09:58:07,401 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:58:07,699 - INFO -  * Restarting with stat
+2026-04-06 09:58:10,314 - WARNING -  * Debugger is active!
+2026-04-06 09:58:10,328 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:58:10,932 - INFO - 127.0.0.1 - - [06/Apr/2026 09:58:10] "[31m[1mPOST /registro HTTP/1.1[0m" 405 -
+2026-04-06 09:58:14,836 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:58:15,135 - INFO -  * Restarting with stat
+2026-04-06 09:58:17,947 - WARNING -  * Debugger is active!
+2026-04-06 09:58:17,952 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:58:19,700 - INFO - 127.0.0.1 - - [06/Apr/2026 09:58:19] "[31m[1mPOST /registro HTTP/1.1[0m" 405 -
+2026-04-06 09:58:26,965 - INFO - 127.0.0.1 - - [06/Apr/2026 09:58:26] "[31m[1mPOST /registro HTTP/1.1[0m" 405 -
+2026-04-06 09:58:36,404 - INFO - 127.0.0.1 - - [06/Apr/2026 09:58:36] "[31m[1mPOST /registro HTTP/1.1[0m" 405 -
+2026-04-06 09:58:40,195 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 09:58:40,441 - INFO -  * Restarting with stat
+2026-04-06 09:59:07,795 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 09:59:07,796 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 09:59:07,801 - INFO -  * Restarting with stat
+2026-04-06 09:59:09,420 - WARNING -  * Debugger is active!
+2026-04-06 09:59:09,427 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 09:59:12,087 - INFO - 127.0.0.1 - - [06/Apr/2026 09:59:12] "GET / HTTP/1.1" 200 -
+2026-04-06 09:59:14,218 - INFO - 127.0.0.1 - - [06/Apr/2026 09:59:14] "GET /registro HTTP/1.1" 200 -
+2026-04-06 09:59:28,133 - INFO - 127.0.0.1 - - [06/Apr/2026 09:59:28] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 09:59:41,479 - INFO - INTENTO DE REGISTRO: root1@gmail.com
+2026-04-06 09:59:42,118 - INFO - REGISTRO EXITOSO: Cliente root1@gmail.com creado.
+2026-04-06 09:59:42,124 - INFO - 127.0.0.1 - - [06/Apr/2026 09:59:42] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 10:00:34,201 - INFO - 127.0.0.1 - - [06/Apr/2026 10:00:34] "GET / HTTP/1.1" 200 -
+2026-04-06 10:00:36,585 - INFO - 127.0.0.1 - - [06/Apr/2026 10:00:36] "[35m[1mGET /recuperar HTTP/1.1[0m" 500 -
+2026-04-06 10:00:36,814 - INFO - 127.0.0.1 - - [06/Apr/2026 10:00:36] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 10:00:36,816 - INFO - 127.0.0.1 - - [06/Apr/2026 10:00:36] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 10:00:36,902 - INFO - 127.0.0.1 - - [06/Apr/2026 10:00:36] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 10:01:33,111 - INFO - 127.0.0.1 - - [06/Apr/2026 10:01:33] "[35m[1mGET /recuperar HTTP/1.1[0m" 500 -
+2026-04-06 10:01:33,134 - INFO - 127.0.0.1 - - [06/Apr/2026 10:01:33] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 10:01:33,136 - INFO - 127.0.0.1 - - [06/Apr/2026 10:01:33] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 10:01:33,151 - INFO - 127.0.0.1 - - [06/Apr/2026 10:01:33] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 10:01:33,202 - INFO - 127.0.0.1 - - [06/Apr/2026 10:01:33] "[36mGET /recuperar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 10:03:42,517 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 10:03:42,791 - INFO -  * Restarting with stat
+2026-04-06 10:03:45,201 - WARNING -  * Debugger is active!
+2026-04-06 10:03:45,212 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 10:03:45,334 - INFO - 127.0.0.1 - - [06/Apr/2026 10:03:45] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:04:06,008 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:06] "POST /recuperar HTTP/1.1" 200 -
+2026-04-06 10:04:11,066 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:11] "GET / HTTP/1.1" 200 -
+2026-04-06 10:04:22,633 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:22] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:04:35,982 - INFO - AUDITORIA: Contrasena actualizada para naosita@gmail.com
+2026-04-06 10:04:35,984 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:35] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:04:36,001 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:36] "GET / HTTP/1.1" 200 -
+2026-04-06 10:04:47,122 - INFO - ACCESO: Usuario naosita@gmail.com inicio sesion correctamente.
+2026-04-06 10:04:47,126 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:47] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:04:47,180 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:47] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:04:53,851 - INFO - 127.0.0.1 - - [06/Apr/2026 10:04:53] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:06:51,129 - INFO - 127.0.0.1 - - [06/Apr/2026 10:06:51] "GET / HTTP/1.1" 200 -
+2026-04-06 10:06:53,289 - INFO - 127.0.0.1 - - [06/Apr/2026 10:06:53] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:07:15,616 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:15] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:07:31,297 - INFO - AUDITORIA: Contrasena actualizada para root1@gmail.com
+2026-04-06 10:07:31,299 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:31] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:07:31,322 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:31] "GET / HTTP/1.1" 200 -
+2026-04-06 10:07:40,658 - INFO - ACCESO: Usuario root1@gmail.com inicio sesion correctamente.
+2026-04-06 10:07:40,661 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:40] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:07:40,674 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:40] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:07:43,482 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:43] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 10:07:55,925 - WARNING - FALLO: Intento de conexion erroneo para root1@gmail.com.
+2026-04-06 10:07:55,928 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:55] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:07:55,942 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:55] "GET / HTTP/1.1" 200 -
+2026-04-06 10:07:59,002 - INFO - 127.0.0.1 - - [06/Apr/2026 10:07:59] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:08:01,506 - INFO - 127.0.0.1 - - [06/Apr/2026 10:08:01] "POST /recuperar HTTP/1.1" 200 -
+2026-04-06 10:08:03,983 - INFO - 127.0.0.1 - - [06/Apr/2026 10:08:03] "GET / HTTP/1.1" 200 -
+2026-04-06 10:08:05,772 - INFO - 127.0.0.1 - - [06/Apr/2026 10:08:05] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:08:07,096 - INFO - 127.0.0.1 - - [06/Apr/2026 10:08:07] "GET / HTTP/1.1" 200 -
+2026-04-06 10:10:18,456 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 10:10:18,706 - INFO -  * Restarting with stat
+2026-04-06 10:10:20,792 - WARNING -  * Debugger is active!
+2026-04-06 10:10:20,802 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 10:11:23,687 - INFO - 127.0.0.1 - - [06/Apr/2026 10:11:23] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:11:26,360 - INFO - 127.0.0.1 - - [06/Apr/2026 10:11:26] "GET / HTTP/1.1" 200 -
+2026-04-06 10:11:27,826 - INFO - 127.0.0.1 - - [06/Apr/2026 10:11:27] "GET /registro HTTP/1.1" 200 -
+2026-04-06 10:11:29,561 - INFO - 127.0.0.1 - - [06/Apr/2026 10:11:29] "GET / HTTP/1.1" 200 -
+2026-04-06 10:20:33,488 - INFO - 127.0.0.1 - - [06/Apr/2026 10:20:33] "GET / HTTP/1.1" 200 -
+2026-04-06 10:20:35,633 - INFO - 127.0.0.1 - - [06/Apr/2026 10:20:35] "GET /registro HTTP/1.1" 200 -
+2026-04-06 10:20:39,022 - INFO - 127.0.0.1 - - [06/Apr/2026 10:20:39] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:22:18,495 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:18] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:22:29,604 - INFO - Auditoria: Contrasena actualizada para root1@gmail.com
+2026-04-06 10:22:29,609 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:29] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:22:29,631 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:29] "GET / HTTP/1.1" 200 -
+2026-04-06 10:22:36,559 - WARNING - Fallo: Intento de conexion erroneo para root@gmail.com.
+2026-04-06 10:22:36,565 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:36] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:22:36,578 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:36] "GET / HTTP/1.1" 200 -
+2026-04-06 10:22:45,175 - INFO - Acceso: Usuario root1@gmail.com inicio sesion correctamente.
+2026-04-06 10:22:45,179 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:45] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:22:45,399 - INFO - 127.0.0.1 - - [06/Apr/2026 10:22:45] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:23:20,270 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:20] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:23:25,284 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:25] "GET / HTTP/1.1" 200 -
+2026-04-06 10:23:27,263 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:27] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:23:30,772 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:30] "POST /recuperar HTTP/1.1" 200 -
+2026-04-06 10:23:36,682 - INFO - Auditoria: Contrasena actualizada para root1@gmail.com
+2026-04-06 10:23:36,688 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:36] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:23:36,708 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:36] "GET / HTTP/1.1" 200 -
+2026-04-06 10:23:42,504 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:42] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:23:48,433 - INFO - Auditoria: Contrasena actualizada para root1@gmail.com
+2026-04-06 10:23:48,438 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:48] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:23:48,457 - INFO - 127.0.0.1 - - [06/Apr/2026 10:23:48] "GET / HTTP/1.1" 200 -
+2026-04-06 10:26:06,037 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 10:26:06,481 - INFO -  * Restarting with stat
+2026-04-06 10:26:16,289 - WARNING -  * Debugger is active!
+2026-04-06 10:26:16,308 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 10:27:07,173 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:07] "GET / HTTP/1.1" 200 -
+2026-04-06 10:27:13,810 - WARNING - Fallo: Intento de conexion erroneo para root1@gmail.com.
+2026-04-06 10:27:13,815 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:13] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:27:13,828 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:13] "GET / HTTP/1.1" 200 -
+2026-04-06 10:27:20,855 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:20] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:27:26,318 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:26] "POST /recuperar HTTP/1.1" 200 -
+2026-04-06 10:27:36,710 - INFO - Auditoria: Contrasena actualizada para root1@gmail.com
+2026-04-06 10:27:36,713 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:36] "[32mPOST /recuperar HTTP/1.1[0m" 302 -
+2026-04-06 10:27:36,731 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:36] "GET / HTTP/1.1" 200 -
+2026-04-06 10:27:44,739 - INFO - Acceso: Usuario root1@gmail.com inicio sesion correctamente.
+2026-04-06 10:27:44,743 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:44] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:27:44,799 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:44] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:27:47,590 - INFO - 127.0.0.1 - - [06/Apr/2026 10:27:47] "GET /registro HTTP/1.1" 200 -
+2026-04-06 10:28:12,809 - INFO - INTENTO DE REGISTRO: root@gmail.com
+2026-04-06 10:28:13,480 - INFO - REGISTRO EXITOSO: Cliente root@gmail.com creado.
+2026-04-06 10:28:13,485 - INFO - 127.0.0.1 - - [06/Apr/2026 10:28:13] "POST /registro/registro_cliente HTTP/1.1" 200 -
+2026-04-06 10:28:16,714 - INFO - 127.0.0.1 - - [06/Apr/2026 10:28:16] "GET / HTTP/1.1" 200 -
+2026-04-06 10:28:22,327 - INFO - Acceso: Usuario root@gmail.com inicio sesion correctamente.
+2026-04-06 10:28:22,331 - INFO - 127.0.0.1 - - [06/Apr/2026 10:28:22] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 10:28:22,347 - INFO - 127.0.0.1 - - [06/Apr/2026 10:28:22] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:28:42,687 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 10:28:43,024 - INFO -  * Restarting with stat
+2026-04-06 10:28:45,118 - WARNING -  * Debugger is active!
+2026-04-06 10:28:45,123 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 10:29:35,560 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading

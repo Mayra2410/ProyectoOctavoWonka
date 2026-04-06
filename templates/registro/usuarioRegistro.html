@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WONKA | Registro</title>
+    <title>WONKA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -84,8 +84,8 @@
             </div>
 
             <div class="space-y-1">
-              <label class="block text-sm font-medium text-[#6F4E37]">Contraseña</label>
-              {{ form.password(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='Minimo 6 caracteres') }}
+              <label class="block text-sm font-medium text-[#6F4E37]">Contrasena</label>
+              {{ form.password(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all', placeholder='Minimo 8 caracteres') }}
               {% if form.password.errors %}
                 {% for error in form.password.errors %}
                   <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
@@ -130,7 +130,7 @@
     {% if registro_exitoso %}
       <script>
         Swal.fire({
-          title: '¡Registro Guardado!',
+          title: 'Registro Guardado!',
           text: 'Tus datos y fotografia se han almacenado con exito.',
           icon: 'success',
           confirmButtonColor: '#7B2CBF',

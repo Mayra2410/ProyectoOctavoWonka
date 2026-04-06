@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -26,9 +26,7 @@
           <div class="flex justify-center items-center gap-3">
             <i data-lucide="chef-hat" class="w-10 h-10 text-[#7B2CBF]"></i>
             <div class="relative">
-              <h1 class="text-4xl font-bold bg-gradient-to-r from-[#7B2CBF] via-[#D4AF37] to-[#7B2CBF] bg-clip-text text-transparent">
-                WONKA
-              </h1>
+              <h1 class="text-4xl font-bold bg-gradient-to-r from-[#7B2CBF] via-[#D4AF37] to-[#7B2CBF] bg-clip-text text-transparent">WONKA</h1>
               <i data-lucide="sparkles" class="w-6 h-6 text-[#FFD700] absolute -top-2 -right-8 animate-pulse"></i>
             </div>
           </div>
@@ -42,8 +40,8 @@
 
             <div class="space-y-2">
               <label for="email" class="block text-sm font-medium text-[#6F4E37]">Email</label>
-              {{ form.email(class="w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all") }}
-              
+              {{ form.email(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all') }}
+
               {% if form.email.errors %}
                 {% for error in form.email.errors %}
                   <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
@@ -53,8 +51,8 @@
 
             <div class="space-y-2">
               <label for="password" class="block text-sm font-medium text-[#6F4E37]">Contrasena</label>
-              {{ form.password(class="w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all")}}
-              
+              {{ form.password(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all') }}
+
               {% if form.password.errors %}
                 {% for error in form.password.errors %}
                   <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
@@ -62,22 +60,21 @@
               {% endif %}
             </div>
 
-            <button type="submit"
-              class="w-full py-2 px-4 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1FAF] hover:to-[#7B2CBF] text-white font-semibold rounded-md shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
-              Ingresar
-            </button>
+            <button type="submit" class="w-full py-2 px-4 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1FAF] hover:to-[#7B2CBF] text-white font-semibold rounded-md shadow-lg transition-all duration-300 transform hover:scale-[1.02]">Ingresar</button>
+
+            <div class="mt-4 text-center">
+              <a href="{{ url_for('recuperar_password') }}" class="text-[#6F4E37] hover:text-[#7B2CBF] text-xs font-medium transition-all duration-300">¿Olvidaste tu contraseña?</a>
+            </div>
           </form>
 
           <div class="mt-4 text-center">
-            <a href="/registro" class="text-sm font-semibold text-[#7B2CBF] hover:text-[#6F4E37] transition-colors flex items-center justify-center gap-1">
-              ¿No tienes cuenta? Registrate aqui
-            </a>
+            <a href="/registro" class="text-sm font-semibold text-[#7B2CBF] hover:text-[#6F4E37] transition-colors flex items-center justify-center gap-1">¿No tienes cuenta? Registrate aqui</a>
           </div>
         </div>
       </div>
     </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% with messages=get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
           <script>
@@ -86,14 +83,14 @@
               text: '{{ message }}',
               icon: '{{ "error" if category == "error" else "success" }}',
               confirmButtonColor: '#7B2CBF'
-            });
+            })
           </script>
         {% endfor %}
       {% endif %}
     {% endwith %}
 
     <script>
-      lucide.createIcons();
+      lucide.createIcons()
     </script>
   </body>
 </html>
