@@ -370,3 +370,15 @@
 2026-04-06 10:28:45,118 - WARNING -  * Debugger is active!
 2026-04-06 10:28:45,123 - INFO -  * Debugger PIN: 113-376-504
 2026-04-06 10:29:35,560 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\app.py', reloading
+2026-04-06 10:29:36,012 - INFO -  * Restarting with stat
+2026-04-06 10:29:37,986 - WARNING -  * Debugger is active!
+2026-04-06 10:29:37,994 - INFO -  * Debugger PIN: 113-376-504
+2026-04-06 10:29:40,911 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:40] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 10:29:44,893 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:44] "GET / HTTP/1.1" 200 -
+2026-04-06 10:29:46,595 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:46] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:29:50,536 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:50] "GET /registro HTTP/1.1" 200 -
+2026-04-06 10:29:51,719 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:51] "GET / HTTP/1.1" 200 -
+2026-04-06 10:29:59,836 - INFO - 127.0.0.1 - - [06/Apr/2026 10:29:59] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:30:13,953 - INFO - 127.0.0.1 - - [06/Apr/2026 10:30:13] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 10:30:15,428 - INFO - 127.0.0.1 - - [06/Apr/2026 10:30:15] "GET / HTTP/1.1" 200 -
+2026-04-06 10:30:16,496 - INFO - 127.0.0.1 - - [06/Apr/2026 10:30:16] "GET /registro HTTP/1.1" 200 -
