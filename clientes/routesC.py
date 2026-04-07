@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from . import cliente 
-from models import db, Cliente
+from models import db, Cliente, Usuario
 from .formsC import ClienteForm
 from sqlalchemy import or_
 import base64
@@ -112,3 +112,66 @@ def desactivar_confirmado(id):
 @cliente.route("/clientes/<int:id>")
 def detalle_cliente(id):
     return render_template("clientes/detallesClientes.html", cliente=Cliente.query.get_or_404(id))
+
+@cliente.route('/mi-perfil')
+def detalles_cliente_vista():
+    if 'user_id' not in session: return redirect(url_for('index'))
+    
+    # Buscamos el cliente asociado al usuario logueado
+    obj_cliente = Cliente.query.filter_by(usuario_id=session['user_id']).first()
+    return render_template('clientes/detallesClienteVistaCliente.html', cliente=obj_cliente)
+
+@cliente.route('/mi-perfil/editar', methods=['GET', 'POST'])
+def modificar_cliente_vista():
+    if 'user_id' not in session:
+        return redirect(url_for('index'))
+    
+    obj_cliente = Cliente.query.filter_by(usuario_id=session['user_id']).first()
+    
+    if not obj_cliente:
+        flash("No se encontró el perfil del cliente.", "danger")
+        return redirect(url_for('index'))
+        
+    form = ClienteForm(obj=obj_cliente)
+
+    if form.validate_on_submit():
+        # Verificar si el nuevo correo ya lo tiene OTRO usuario para evitar errores
+        nuevo_email = form.email.data
+        usuario_duplicado = Usuario.query.filter(Usuario.email == nuevo_email, Usuario.id_usuario != session['user_id']).first()
+        
+        if usuario_duplicado:
+            form.email.errors.append("Este correo ya está en uso por otra cuenta.")
+            return render_template('clientes/modificarClienteVistaCliente.html', form=form, cliente=obj_cliente)
+
+        try:
+            # 1. Actualizar la tabla de CLIENTE
+            form.populate_obj(obj_cliente)
+            
+            # 2. Actualizar la tabla de USUARIO (La del Login)
+            # Buscamos el registro en la tabla Usuario usando el ID de la sesión
+            user_login = Usuario.query.get(session['user_id'])
+            if user_login:
+                user_login.email = nuevo_email
+                # También actualizamos el username si quieres que cambie en el header
+                user_login.username = form.nombre.data 
+            
+            # 3. Manejo de imagen
+            archivo = request.files.get('imagen_cliente')
+            if archivo and archivo.filename != '':
+                contenido = archivo.read()
+                encoded = base64.b64encode(contenido).decode('utf-8')
+                obj_cliente.imagen_cliente = f"data:{archivo.content_type};base64,{encoded}"
+            
+            db.session.commit()
+            
+            # 4. Actualizar la sesión para que el Header muestre el nombre nuevo de inmediato
+            session['nombre'] = form.nombre.data
+            
+            flash("¡Datos actualizados! Ya puedes usar tu nuevo correo para entrar.", "success")
+            return redirect(url_for('cliente.detalles_cliente_vista'))
+            
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error al sincronizar datos: {str(e)}", "danger")
+    
+    return render_template('clientes/modificarClienteVistaCliente.html', form=form, cliente=obj_cliente)

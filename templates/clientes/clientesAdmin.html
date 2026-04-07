@@ -1,125 +1,194 @@
-{% extends "base.html" %} 
-{% import "_macros.html" as m %} 
-
-{% block content %}
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
 <div class="max-w-[1800px] mx-auto px-4 py-8">
-    <div class="mb-8 flex justify-between items-center">
-        <div>
-            <h1 class="text-4xl font-extrabold text-wonka-purple tracking-tight">Clientes</h1>
-            <p class="text-gray-500 mt-1 font-medium text-sm">Control detallado de registros y perfiles comerciales</p>
-        </div>
-        <a href="{{ url_for('cliente.agregar_cliente') }}" class="hover:scale-105 transition-transform duration-200">
-            {{ m.boton_principal("Nuevo Cliente") }}
-        </a>
+  <div class="mb-8 flex justify-between items-center">
+    <div>
+      <h1 class="text-4xl font-extrabold text-wonka-purple tracking-tight">
+        Clientes
+      </h1>
+      <p class="text-gray-500 mt-1 font-medium text-sm">
+        Control detallado de registros y perfiles comerciales
+      </p>
+    </div>
+    <a
+      href="{{ url_for('cliente.agregar_cliente') }}"
+      class="hover:scale-105 transition-transform duration-200"
+    >
+      {{ m.boton_principal("Nuevo Cliente") }}
+    </a>
+  </div>
+
+  <div
+    class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden"
+  >
+    <div class="p-6 border-b border-gray-50 bg-gray-50/30">
+      <div class="max-w-md" id="contenedor-buscador">
+        {{ m.buscador("Buscar por nombre o correo") }}
+      </div>
     </div>
 
-    <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
-        
-        <div class="p-6 border-b border-gray-50 bg-gray-50/30">
-            <div class="max-w-md" id="contenedor-buscador">
-                {{ m.buscador("Buscar por nombre o correo") }}
-            </div>
-        </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left table-auto border-collapse">
+        <thead
+          class="bg-white text-gray-400 text-[10px] uppercase tracking-[0.2em]"
+        >
+          <tr>
+            <th
+              class="py-5 px-6 font-bold border-b border-gray-100 text-center w-16"
+            >
+              ID
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100 w-16">
+              Foto
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Nombre Completo
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">Email</th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Telefono
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Perfil / Tipo
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Fecha Registro
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">Notas</th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Estatus
+            </th>
+            <th class="py-5 px-6 font-bold border-b border-gray-100 text-right">
+              Acciones
+            </th>
+          </tr>
+        </thead>
 
-        <div class="overflow-x-auto">
-            <table class="w-full text-left table-auto border-collapse">
-                <thead class="bg-white text-gray-400 text-[10px] uppercase tracking-[0.2em]">
-                    <tr>
-                        <th class="py-5 px-6 font-bold border-b border-gray-100 text-center w-16">ID</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100 w-16">Foto</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Nombre Completo</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Email</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Telefono</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Perfil / Tipo</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Fecha Registro</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Notas</th>
-                        <th class="py-5 px-4 font-bold border-b border-gray-100">Estatus</th>
-                        <th class="py-5 px-6 font-bold border-b border-gray-100 text-right">Acciones</th>
-                    </tr>
-                </thead>
+        <tbody class="divide-y divide-gray-50">
+          {% for cliente in clientes %}
+          <tr
+            onclick="window.location.href='{{ url_for('cliente.detalle_cliente', id=cliente.id_cliente) }}'"
+            class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer"
+          >
+            <td
+              class="py-5 px-6 text-center font-bold text-wonka-brown text-sm"
+            >
+              {{ cliente.id_cliente }}
+            </td>
 
-                <tbody class="divide-y divide-gray-50">
-                    {% for cliente in clientes %}
-                    <tr 
-                        onclick="window.location.href='{{ url_for('cliente.detalle_cliente', id=cliente.id_cliente) }}'"
-                        class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer">
-                        <td class="py-5 px-6 text-center font-bold text-wonka-brown text-sm">{{ cliente.id_cliente }}</td>
-                        
-                        <td class="py-5 px-4">
-                            {% if cliente.imagen_cliente %}
-                                <img src="{{ cliente.imagen_cliente }}" class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm">
-                            {% else %}
-                                <div class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs">
-                                    {{ cliente.nombre[0] | upper }}
-                                </div>
-                            {% endif %}
-                        </td>
+            <td class="py-5 px-4">
+              {% if cliente.imagen_cliente %}
+              <img
+                src="{{ cliente.imagen_cliente }}"
+                class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm"
+              />
+              {% else %}
+              <div
+                class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs"
+              >
+                {{ cliente.nombre[0] | upper }}
+              </div>
+              {% endif %}
+            </td>
 
-                        <td class="py-5 px-4">
-                            <span class="text-gray-800 font-bold text-sm tracking-tight group-hover:text-wonka-purple transition-colors">{{ cliente.nombre }}</span>
-                        </td>
+            <td class="py-5 px-4">
+              <span
+                class="text-gray-800 font-bold text-sm tracking-tight group-hover:text-wonka-purple transition-colors"
+                >{{ cliente.nombre }}</span
+              >
+            </td>
 
-                        <td class="py-5 px-4 text-gray-500 text-xs font-medium">{{ cliente.email }}</td>
-                        
-                        <td class="py-5 px-4 text-gray-600 text-xs font-semibold">{{ cliente.telefono or '---' }}</td>
-                        
-                        <td class="py-5 px-4">
-                            <div class="flex flex-col gap-1">
-                                <span class="text-[9px] font-black uppercase {{ 'text-blue-500' if cliente.tipo == 'MAYORISTA' else 'text-gray-400' }}">{{ cliente.tipo }}</span>
-                                <span class="text-[9px] font-black uppercase {{ 'text-wonka-purple' if cliente.categoria_comprador == 'FRECUENTE' else 'text-orange-400' }}">{{ cliente.categoria_comprador }}</span>
-                            </div>
-                        </td>
+            <td class="py-5 px-4 text-gray-500 text-xs font-medium">
+              {{ cliente.email }}
+            </td>
 
-                        <td class="py-5 px-4 text-gray-400 text-[11px] font-medium">{{ cliente.fecha_registro }}</td>
-                        
-                        <td class="py-5 px-4">
-                            <p class="text-[11px] text-gray-400 italic line-clamp-1" title="{{ cliente.notas }}">{{ cliente.notas or 'Sin notas' }}</p>
-                        </td>
+            <td class="py-5 px-4 text-gray-600 text-xs font-semibold">
+              {{ cliente.telefono or '---' }}
+            </td>
 
-                        <td class="py-5 px-4">
-                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if cliente.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}">
-                                {{ cliente.estatus }}
-                            </span>
-                        </td>
+            <td class="py-5 px-4">
+              <div class="flex flex-col gap-1">
+                <span
+                  class="text-[9px] font-black uppercase {{ 'text-blue-500' if cliente.tipo == 'MAYORISTA' else 'text-gray-400' }}"
+                  >{{ cliente.tipo }}</span
+                >
+                <span
+                  class="text-[9px] font-black uppercase {{ 'text-wonka-purple' if cliente.categoria_comprador == 'FRECUENTE' else 'text-orange-400' }}"
+                  >{{ cliente.categoria_comprador }}</span
+                >
+              </div>
+            </td>
 
-                        <td class="py-5 px-6">
-                            {{ m.acciones_tabla(
-                                edit_link=url_for('cliente.modificar_cliente', id=cliente.id_cliente),
-                                delete_link=url_for('cliente.eliminar_cliente', id=cliente.id_cliente),
-                                es_activo=(cliente.estatus == 'ACTIVO')
-                            ) }}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            <td class="py-5 px-4 text-gray-400 text-[11px] font-medium">
+              {{ cliente.fecha_registro }}
+            </td>
+
+            <td class="py-5 px-4">
+              <p
+                class="text-[11px] text-gray-400 italic line-clamp-1"
+                title="{{ cliente.notas }}"
+              >
+                {{ cliente.notas or 'Sin notas' }}
+              </p>
+            </td>
+
+            <td class="py-5 px-4">
+              <span
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if cliente.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}"
+              >
+                {{ cliente.estatus }}
+              </span>
+            </td>
+
+            <td class="py-5 px-6">
+              {{ m.acciones_tabla(
+              edit_link=url_for('cliente.modificar_cliente',
+              id=cliente.id_cliente),
+              delete_link=url_for('cliente.eliminar_cliente',
+              id=cliente.id_cliente), es_activo=(cliente.estatus == 'ACTIVO') )
+              }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
-<style>.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }</style>
+<style>
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const contenedor = document.getElementById('contenedor-buscador');
-    const buscador = contenedor ? contenedor.querySelector('input') : null;
+  document.addEventListener("DOMContentLoaded", function () {
+    const contenedor = document.getElementById("contenedor-buscador");
+    const buscador = contenedor ? contenedor.querySelector("input") : null;
 
     if (buscador) {
-        const params = new URLSearchParams(window.location.search);
-        if (params.has('q')) {
-            buscador.value = params.get('q');
-        }
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("q")) {
+        buscador.value = params.get("q");
+      }
 
-        buscador.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const query = this.value.trim();
-                window.location.href = "{{ url_for('cliente.clientesAdmin') }}?q=" + encodeURIComponent(query);
-            }
-        });
+      buscador.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const query = this.value.trim();
+          window.location.href =
+            "{{ url_for('cliente.clientesAdmin') }}?q=" +
+            encodeURIComponent(query);
+        }
+      });
     }
 
-    if (typeof lucide !== 'undefined') { lucide.createIcons(); }
-});
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+  });
 </script>
 {% endblock %}

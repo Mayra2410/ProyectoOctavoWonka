@@ -198,8 +198,16 @@ def gestionar_ingredientes(id_receta):
         materia_prima_id = request.form.get('materia_prima_id', type=int)
         cantidad_necesaria = request.form.get('cantidad_necesaria', type=float)
 
-        if not materia_prima_id or cantidad_necesaria is None:
-            flash('Selecciona la materia prima y escribe la cantidad necesaria.', 'warning')
+        if not materia_prima_id:
+            flash('Selecciona una materia prima de la lista.', 'warning')
+            return redirect(url_for('recetas.gestionar_ingredientes', id_receta=id_receta))
+
+        if cantidad_necesaria is None:
+            flash('La cantidad necesaria es obligatoria.', 'warning')
+            return redirect(url_for('recetas.gestionar_ingredientes', id_receta=id_receta))
+
+        if cantidad_necesaria <= 0:
+            flash('La cantidad debe ser un número mayor a 0. No se permiten valores negativos.', 'danger')
             return redirect(url_for('recetas.gestionar_ingredientes', id_receta=id_receta))
 
         materia = MateriasPrimas.query.get_or_404(materia_prima_id)
@@ -210,7 +218,7 @@ def gestionar_ingredientes(id_receta):
         ).first()
 
         if existente:
-            flash('Esa materia prima ya está agregada a la receta.', 'warning')
+            flash(f'La materia prima "{materia.nombre}" ya está agregada a esta receta.', 'warning')
             return redirect(url_for('recetas.gestionar_ingredientes', id_receta=id_receta))
 
         nuevo_detalle = RecetaDetalle(
@@ -226,7 +234,7 @@ def gestionar_ingredientes(id_receta):
             flash('Ingrediente agregado correctamente.', 'success')
         except Exception:
             db.session.rollback()
-            flash('Ocurrió un error al agregar el ingrediente.', 'danger')
+            flash('Ocurrió un error al agregar el ingrediente a la base de datos.', 'danger')
 
         return redirect(url_for('recetas.gestionar_ingredientes', id_receta=id_receta))
 

@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="max-w-[1000px] mx-auto p-8">
+  <div class="mb-10 flex items-center justify-between">
+    <div>
+      <h1 class="text-3xl font-black text-wonka-purple tracking-tight">Mi Perfil Wonka</h1>
+      <p class="text-gray-400 font-bold text-[10px] uppercase tracking-widest">ID Miembro #{{ cliente.id_cliente }}</p>
+    </div>
+    
+    {# CAMBIO: Usamos 'modificar_cliente_vista' y quitamos el ID #}
+<a href="{{ url_for('cliente.modificar_cliente_vista') }}" 
+   class="px-6 py-3 bg-wonka-purple text-white rounded-2xl font-black text-sm hover:bg-wonka-purple-dark transition-all flex items-center gap-2 shadow-lg shadow-wonka-purple/20">
+  <i data-lucide="edit-3" class="w-4 h-4"></i>
+  Editar mis datos
+</a>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4 bg-white rounded-[3rem] p-10 shadow-sm border border-gray-50 flex flex-col items-center">
+      <div class="relative mb-6">
+        <div class="w-44 h-44 rounded-full p-1 bg-gradient-to-tr from-wonka-purple to-wonka-gold shadow-xl">
+          <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white">
+            {% if cliente.imagen_cliente %}
+              <img src="{{ cliente.imagen_cliente }}" class="w-full h-full object-cover" />
+            {% else %}
+              <div class="text-wonka-purple font-black text-5xl">{{ cliente.nombre[0]|upper }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <h2 class="text-2xl font-black text-wonka-brown text-center">{{ cliente.nombre }}</h2>
+      <p class="text-wonka-purple font-bold text-sm mt-1">{{ cliente.email }}</p>
+    </div>
+
+    <div class="lg:col-span-8 space-y-6">
+      <div class="bg-white rounded-[3rem] p-10 shadow-sm border border-gray-50">
+        <div class="flex items-center gap-3 mb-8 border-b border-gray-50 pb-5">
+          <i data-lucide="contact" class="text-wonka-purple w-6 h-6"></i>
+          <h3 class="text-lg font-black text-wonka-brown">Información de contacto</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="space-y-1">
+            <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block">Mi Teléfono</label>
+            <p class="text-gray-800 font-black text-xl tracking-tighter">{{ cliente.telefono or 'No registrado' }}</p>
+          </div>
+
+          <div class="md:col-span-2 pt-6 border-t border-gray-50 space-y-3">
+            <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block">Dirección de Entrega</label>
+            <div class="flex gap-4 items-center bg-gray-50/50 p-5 rounded-3xl border border-gray-100">
+              <i data-lucide="map-pin" class="text-wonka-purple w-5 h-5"></i>
+              <p class="text-gray-600 font-semibold text-sm leading-relaxed">{{ cliente.direccion or 'Aún no has agregado una dirección.' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

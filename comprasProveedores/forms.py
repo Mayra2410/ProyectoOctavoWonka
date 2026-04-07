@@ -34,7 +34,9 @@ class CompraMateriaPrimaForm(Form):
 
     costo_unitario = DecimalField(
         "Costo Unitario",
-        [validators.DataRequired(message="Ingresa el costo")],
+        [validators.DataRequired(message="Ingresa el costo"),
+         validators.NumberRange(min=0, message="El costo no puede ser negativo")
+        ],
         places=2,
     )
 

@@ -1,0 +1,87 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="max-w-[900px] mx-auto p-6">
+  <div class="mb-8">
+    <h1 class="text-3xl font-black text-wonka-purple tracking-tight">Actualizar mis Datos</h1>
+    <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Mantén tu información al día para tus pedidos</p>
+  </div>
+
+  {# CAMBIO: El action apunta a 'modificar_cliente_vista' sin ID, la sesión se encarga en Python #}
+  <form action="{{ url_for('cliente.modificar_cliente_vista') }}" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row gap-8">
+    {{ form.csrf_token }}
+
+    <div class="w-full md:w-72 flex flex-col items-center gap-6">
+      <div class="relative group cursor-pointer" onclick="document.getElementById('imagen_cliente').click()">
+        <div class="w-48 h-48 rounded-full p-1 bg-gradient-to-tr from-wonka-purple to-wonka-brown shadow-2xl transition-transform group-hover:scale-105">
+          <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white">
+            <img id="preview" src="{{ cliente.imagen_cliente if cliente.imagen_cliente else '' }}" 
+                 class="w-full h-full object-cover {{ 'hidden' if not cliente.imagen_cliente }}" />
+            <div id="placeholder" class="{{ 'hidden' if cliente.imagen_cliente }} flex flex-col items-center text-wonka-purple/30">
+              <i data-lucide="camera" class="w-10 h-10"></i>
+              <span class="text-[9px] font-black uppercase mt-2">Subir Foto</span>
+            </div>
+          </div>
+        </div>
+        {{ form.imagen_cliente(id="imagen_cliente", class="hidden", accept="image/*", onchange="previewImage(this)") }}
+      </div>
+      
+      <button type="submit" class="w-full py-4 bg-wonka-purple text-white rounded-2xl font-black text-sm shadow-xl hover:bg-wonka-purple-dark transition-all">
+        Guardar Cambios
+      </button>
+
+      {# CAMBIO: Volver a la vista de detalles del cliente #}
+      <a href="{{ url_for('cliente.detalles_cliente_vista') }}" class="text-gray-400 font-bold text-xs hover:text-wonka-brown">
+        Cancelar y volver
+      </a>
+    </div>
+
+    <div class="flex-1 bg-white rounded-[2.5rem] shadow-sm border border-gray-50 p-10 space-y-6">
+      <div class="space-y-1">
+        <label class="text-[10px] font-black text-wonka-purple uppercase ml-1">Mi Nombre Completo</label>
+        {{ form.nombre(class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20") }}
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-[10px] font-black text-wonka-purple uppercase ml-1">Correo Electrónico</label>
+        {{ form.email(class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20") }}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-1">
+          <label class="text-[10px] font-black text-wonka-purple uppercase ml-1">Mi Teléfono</label>
+          {{ form.telefono(class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20") }}
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-[10px] font-black text-wonka-purple uppercase ml-1">Dirección de Entrega</label>
+        {{ form.direccion(class="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20") }}
+      </div>
+      
+      {# Campos ocultos necesarios para que el formulario no falle al validar #}
+      <div class="hidden">
+        {{ form.estatus }}
+        {{ form.tipo }}
+        {{ form.categoria_comprador }}
+        {{ form.fecha_registro }}
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function previewImage(input) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById("preview").src = e.target.result;
+        document.getElementById("preview").classList.remove("hidden");
+        document.getElementById("placeholder").classList.add("hidden");
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  // Reiniciar los iconos de Lucide por si acaso
+  lucide.createIcons();
+</script>
+{% endblock %}

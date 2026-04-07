@@ -75,19 +75,20 @@
     </div>
 
     {% with messages=get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <script>
-            Swal.fire({
-              title: '{{ "Aviso" if category == "error" else "Exito!" }}',
-              text: '{{ message }}',
-              icon: '{{ "error" if category == "error" else "success" }}',
-              confirmButtonColor: '#7B2CBF'
-            })
-          </script>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <script>
+        Swal.fire({
+          // Si la categoría es 'danger' o 'error', que diga '¡Error!'
+          title: '{{ "¡Error!" if category in ["error", "danger"] else "¡Éxito!" }}',
+          text: '{{ message }}',
+          icon: '{{ "error" if category in ["error", "danger"] else "success" }}',
+          confirmButtonColor: '#7B2CBF'
+        })
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
     <script>
       lucide.createIcons()

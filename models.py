@@ -13,7 +13,8 @@ class Usuario(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    rol = db.Column(db.Enum("ADMIN", "CLIENTE"), nullable=False, default="CLIENTE")
+    rol = db.Column(db.Enum('GERENTE', 'CHOCOLATERO', 'CONTROL_CALIDAD', 'VENTAS', 'LOGISTICA', 'MANTENIMIENTO', 'CLIENTE'), 
+                    nullable=False, default="CLIENTE")
     activo = db.Column(db.Boolean, default=True)
 
     # Relación 1 a 1 con Cliente

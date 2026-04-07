@@ -34,6 +34,10 @@ class ProveedorForm(Form):
         [
             validators.DataRequired(message="El teléfono es requerido"),
             validators.Length(max=20),
+            validators.Regexp(
+                r'^\+?[0-9]+$', 
+                message="El teléfono solo debe contener números (sin espacios)"
+            )
         ],
     )
 

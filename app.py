@@ -66,13 +66,19 @@ def index():
         user = Usuario.query.filter_by(email=email).first()
 
         if user and check_password_hash(user.password_hash, password):
-            logging.info(f"Acceso: Usuario {email} inicio sesion correctamente.")
             session['user_id'] = user.id_usuario
             session['rol'] = user.rol
-            return redirect(url_for('proveedores.lista_proveedores'))
+            session['nombre'] = user.username # Guardamos el nombre para el header
+            
+            # REDIRECCIÓN SEGÚN ROL
+            if user.rol == 'CLIENTE':
+                # Lo mandamos a su perfil o al punto de venta
+                return redirect(url_for('cliente.detalles_cliente_vista')) 
+            else:
+                # Si es empleado/gerente va al panel administrativo
+                return redirect(url_for('proveedores.lista_proveedores'))
         else:
-            logging.warning(f"Fallo: Intento de conexion erroneo para {email}.")
-            flash("Correo o contrasena incorrectos.", "error")
+            flash("Correo o contraseña incorrectos.", "danger")
             return redirect(url_for('index'))
 
     return render_template("index.html", form=form)
