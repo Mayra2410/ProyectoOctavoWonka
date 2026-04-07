@@ -1,0 +1,1650 @@
+2026-04-06 17:15:57,092 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 17:15:57,092 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 17:15:57,093 - INFO -  * Restarting with stat
+2026-04-06 17:15:57,852 - WARNING -  * Debugger is active!
+2026-04-06 17:15:57,856 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 17:15:59,281 - INFO - 127.0.0.1 - - [06/Apr/2026 17:15:59] "GET / HTTP/1.1" 200 -
+2026-04-06 17:16:46,257 - INFO - 127.0.0.1 - - [06/Apr/2026 17:16:46] "GET /recuperar HTTP/1.1" 200 -
+2026-04-06 17:17:05,580 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:05] "GET / HTTP/1.1" 200 -
+2026-04-06 17:17:27,609 - WARNING - Fallo: Intento de conexion erroneo para jose.gerencia@empresa.com.
+2026-04-06 17:17:27,623 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:27] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 17:17:27,634 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:27] "GET / HTTP/1.1" 200 -
+2026-04-06 17:17:36,998 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 17:17:36,999 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:36] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 17:17:37,069 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:37] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 17:17:37,225 - INFO - 127.0.0.1 - - [06/Apr/2026 17:17:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:18:20,838 - INFO - 127.0.0.1 - - [06/Apr/2026 17:18:20] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 17:18:20,865 - INFO - 127.0.0.1 - - [06/Apr/2026 17:18:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:18:23,858 - INFO - 127.0.0.1 - - [06/Apr/2026 17:18:23] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-06 17:18:23,876 - INFO - 127.0.0.1 - - [06/Apr/2026 17:18:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:18:23,909 - INFO - 127.0.0.1 - - [06/Apr/2026 17:18:23] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-06 17:20:45,774 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:45] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 17:20:45,793 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:20:47,512 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:47] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 17:20:47,547 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:20:49,836 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:49] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 17:20:49,859 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:20:49,869 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:49] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:20:51,651 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:51] "GET /compras HTTP/1.1" 200 -
+2026-04-06 17:20:51,679 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:20:51,681 - INFO - 127.0.0.1 - - [06/Apr/2026 17:20:51] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:24:49,174 - INFO - 127.0.0.1 - - [06/Apr/2026 17:24:49] "GET /compras HTTP/1.1" 200 -
+2026-04-06 17:24:49,198 - INFO - 127.0.0.1 - - [06/Apr/2026 17:24:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:25,413 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:25] "GET /compras HTTP/1.1" 200 -
+2026-04-06 17:28:25,440 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:25,448 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:25] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:28:27,898 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:28:27,923 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,927 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:27,931 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,945 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,949 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,955 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,960 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,963 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,966 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,969 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:27,974 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:27] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:28,050 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:28] "GET /static/img/producto.png HTTP/1.1" 200 -
+2026-04-06 17:28:39,903 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:39] "GET /productos/detalles/1 HTTP/1.1" 200 -
+2026-04-06 17:28:39,924 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:39] "[33mGET /productos/detalles/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:39,930 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:39,995 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:39] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:28:42,845 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:42] "[32mGET /productos/1/receta HTTP/1.1[0m" 302 -
+2026-04-06 17:28:42,859 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:42] "GET /productos/detalles/1 HTTP/1.1" 200 -
+2026-04-06 17:28:42,891 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:42] "[33mGET /productos/detalles/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:42,897 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:42,969 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:42] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:28:50,038 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:28:50,063 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:50,066 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,069 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,071 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,072 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,075 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,083 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,084 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,086 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,087 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,112 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:50,164 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:50] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:28:52,614 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:52] "GET /productos/eliminar/confirmar/1 HTTP/1.1" 200 -
+2026-04-06 17:28:52,636 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:52] "[33mGET /productos/eliminar/confirmar/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:52,643 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:52,719 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:52] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:28:54,408 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[32mPOST /productos/desactivar/1 HTTP/1.1[0m" 302 -
+2026-04-06 17:28:54,421 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:28:54,444 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:28:54,445 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,446 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,458 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,459 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,460 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,462 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,465 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,470 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,477 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,492 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:28:54,533 - INFO - 127.0.0.1 - - [06/Apr/2026 17:28:54] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:29:43,025 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:43] "GET /productos/editar/3 HTTP/1.1" 200 -
+2026-04-06 17:29:43,045 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:29:43,048 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:43] "[33mGET /productos/editar/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:29:43,296 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:43] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:29:50,059 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 17:29:50,059 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 17:29:50,060 - INFO -  * Restarting with stat
+2026-04-06 17:29:50,930 - WARNING -  * Debugger is active!
+2026-04-06 17:29:50,932 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 17:29:52,127 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:52] "GET / HTTP/1.1" 200 -
+2026-04-06 17:29:59,619 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 17:29:59,621 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:59] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 17:29:59,688 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:59] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 17:29:59,806 - INFO - 127.0.0.1 - - [06/Apr/2026 17:29:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:39,132 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:39] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 17:30:39,159 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:39,186 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:39] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:30:40,770 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:40] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:30:40,791 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:42,782 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:30:42,813 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:42,815 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,817 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,827 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,829 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,841 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,862 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,879 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,913 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,921 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:42,948 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:42] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:30:43,090 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:43] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:30:49,029 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:49] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:30:49,050 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:52,690 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:52] "GET /recetas/agregar HTTP/1.1" 200 -
+2026-04-06 17:30:52,713 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:30:52,719 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:52] "GET /static/img/receta.png HTTP/1.1" 200 -
+2026-04-06 17:30:54,690 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:54] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:30:54,719 - INFO - 127.0.0.1 - - [06/Apr/2026 17:30:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:47,176 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:47] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:33:47,237 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:51,010 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:33:51,072 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:51,075 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,079 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,124 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,137 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,153 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,165 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,188 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,217 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,231 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,246 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:51,358 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:51] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:33:52,432 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:52] "GET /productos/detalles/1 HTTP/1.1" 200 -
+2026-04-06 17:33:52,489 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:52,495 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:52] "[33mGET /productos/detalles/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:52,737 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:52] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:33:54,008 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:54] "GET /productos/1/receta HTTP/1.1" 200 -
+2026-04-06 17:33:54,061 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:54,070 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:54] "[36mGET /static/img/receta.png HTTP/1.1[0m" 304 -
+2026-04-06 17:33:58,069 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:33:58,127 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,129 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,130 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:33:58,160 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,165 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,174 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,209 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,227 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,240 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,264 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,299 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:33:58,425 - INFO - 127.0.0.1 - - [06/Apr/2026 17:33:58] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:34:01,052 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:01] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 17:34:01,118 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:34:21,085 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 17:34:21,086 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 17:34:21,095 - INFO -  * Restarting with stat
+2026-04-06 17:34:23,549 - WARNING -  * Debugger is active!
+2026-04-06 17:34:23,554 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 17:34:23,669 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:23] "GET / HTTP/1.1" 200 -
+2026-04-06 17:34:33,241 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:33] "GET /registro HTTP/1.1" 200 -
+2026-04-06 17:34:45,517 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:45] "GET / HTTP/1.1" 200 -
+2026-04-06 17:34:57,448 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 17:34:57,451 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:57] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 17:34:57,522 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:57] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 17:34:57,730 - INFO - 127.0.0.1 - - [06/Apr/2026 17:34:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:01,738 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:35:01,790 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,801 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:01,804 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,844 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,854 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,881 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,874 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,899 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,922 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:01,933 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:01] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:39,716 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:39] "GET /compras HTTP/1.1" 200 -
+2026-04-06 17:35:39,771 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:39,822 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:39] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:35:42,180 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:42] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-06 17:35:42,238 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:43,545 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:35:43,603 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,605 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:43,607 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,693 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,701 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,723 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,740 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,775 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,783 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,806 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,834 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:43,991 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:43] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:35:46,535 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:46] "GET /productos/editar/2 HTTP/1.1" 200 -
+2026-04-06 17:35:46,584 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:46,587 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:46] "[33mGET /productos/editar/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:46,854 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:46] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:35:57,221 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[32mPOST /productos/editar/2 HTTP/1.1[0m" 302 -
+2026-04-06 17:35:57,244 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:35:57,316 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:35:57,321 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,336 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,353 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,368 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,410 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,430 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,450 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,471 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,485 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:35:57,703 - INFO - 127.0.0.1 - - [06/Apr/2026 17:35:57] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:36:00,707 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:36:00,773 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:36:00,780 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,786 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,822 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,832 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,863 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,881 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,906 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:00,919 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:00] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,304 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:36:05,363 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,365 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:36:05,371 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,407 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,422 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,438 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,450 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,472 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,489 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,500 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:05,625 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:05] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:36:18,777 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:36:18,837 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,841 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,843 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:36:18,900 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,910 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,937 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,942 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:18,971 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:18] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:19,021 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:19] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:36:59,601 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:59] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 17:36:59,654 - INFO - 127.0.0.1 - - [06/Apr/2026 17:36:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:00,740 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:00] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 17:37:00,791 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:01,731 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:01] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 17:37:01,785 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:02,640 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:02] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 17:37:02,693 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:02,695 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:02] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:37:03,548 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:03] "GET /compras HTTP/1.1" 200 -
+2026-04-06 17:37:03,600 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:03,601 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:03] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 17:37:04,425 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:04] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-06 17:37:04,476 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:05,307 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:37:05,368 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,375 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,376 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:05,409 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,417 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,432 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,446 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,463 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,471 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,484 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:05,588 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:05] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:37:06,322 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:06] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:37:06,368 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:07,293 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:07] "GET /ordenes HTTP/1.1" 200 -
+2026-04-06 17:37:07,339 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:09,349 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:09] "[35m[1mGET /producto-terminado HTTP/1.1[0m" 500 -
+2026-04-06 17:37:09,406 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:09] "GET /producto-terminado?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-06 17:37:09,510 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:09] "GET /producto-terminado?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-06 17:37:09,603 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:09] "GET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-06 17:37:09,667 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:09] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:37:16,815 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:16] "[35m[1mGET /producto-terminado HTTP/1.1[0m" 500 -
+2026-04-06 17:37:16,866 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:16] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:16,869 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:16] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 17:37:16,888 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:16] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:37:23,073 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:23] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-06 17:37:23,119 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:28,797 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:37:28,856 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:28,861 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,865 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,885 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,888 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,898 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,913 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,924 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:28,936 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:28] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:32,970 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:32] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-06 17:37:32,993 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:32] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:37:33,079 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:33,082 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,090 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,103 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,118 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,128 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,147 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,158 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:33,163 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:33] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:36,811 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-06 17:37:36,835 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:37:36,922 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:36,935 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:36,951 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:36,972 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:36,992 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:36] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:37,002 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:37] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:37,042 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:37] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:37,053 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:37] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:37,068 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:37] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:44,817 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-06 17:37:44,843 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:37:44,924 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:44,925 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:37:44,926 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:44,951 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:44,979 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:44,997 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:44] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:45,021 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:45] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:45,050 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:45] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:37:45,068 - INFO - 127.0.0.1 - - [06/Apr/2026 17:37:45] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,839 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-06 17:38:10,860 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 17:38:10,941 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,942 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,945 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:38:10,961 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,968 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,976 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:10,997 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:10] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:11,037 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:11] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:11,098 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:11] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:38:30,900 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:30] "[35m[1mGET /producto-terminado HTTP/1.1[0m" 500 -
+2026-04-06 17:38:30,951 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:30] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 17:38:30,955 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:30] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 17:38:30,971 - INFO - 127.0.0.1 - - [06/Apr/2026 17:38:30] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:39:54,980 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-06 17:39:55,327 - INFO -  * Restarting with stat
+2026-04-06 17:39:58,439 - WARNING -  * Debugger is active!
+2026-04-06 17:39:58,446 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 17:40:02,372 - INFO - 127.0.0.1 - - [06/Apr/2026 17:40:02] "[35m[1mGET /producto-terminado HTTP/1.1[0m" 500 -
+2026-04-06 17:40:02,653 - INFO - 127.0.0.1 - - [06/Apr/2026 17:40:02] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 17:40:02,655 - INFO - 127.0.0.1 - - [06/Apr/2026 17:40:02] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 17:40:02,736 - INFO - 127.0.0.1 - - [06/Apr/2026 17:40:02] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:40:02,779 - INFO - 127.0.0.1 - - [06/Apr/2026 17:40:02] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:43:15,279 - INFO - 127.0.0.1 - - [06/Apr/2026 17:43:15] "[35m[1mGET /producto-terminado HTTP/1.1[0m" 500 -
+2026-04-06 17:43:15,334 - INFO - 127.0.0.1 - - [06/Apr/2026 17:43:15] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-06 17:43:15,347 - INFO - 127.0.0.1 - - [06/Apr/2026 17:43:15] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-06 17:43:15,373 - INFO - 127.0.0.1 - - [06/Apr/2026 17:43:15] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:43:15,482 - INFO - 127.0.0.1 - - [06/Apr/2026 17:43:15] "[36mGET /producto-terminado?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-06 17:45:36,465 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:36] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-06 17:45:36,554 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:45:42,367 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:45:42,427 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,427 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:45:42,432 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,503 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,516 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,535 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,557 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,584 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,587 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,603 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,630 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:42,745 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:42] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:45:45,711 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:45] "GET /productos/detalles/1 HTTP/1.1" 200 -
+2026-04-06 17:45:45,767 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:45] "[33mGET /productos/detalles/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:45,768 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:45:46,035 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:46] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:45:48,122 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:48] "GET /productos/1/receta HTTP/1.1" 200 -
+2026-04-06 17:45:48,173 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:45:48,182 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:48] "[36mGET /static/img/receta.png HTTP/1.1[0m" 304 -
+2026-04-06 17:45:57,735 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:45:57,787 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:45:57,790 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,791 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,824 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,829 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,851 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,870 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,873 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,887 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,916 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:57,919 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:57] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:58,037 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:58] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:45:59,921 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:59] "GET /productos/eliminar/confirmar/1 HTTP/1.1" 200 -
+2026-04-06 17:45:59,977 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:59] "[33mGET /productos/eliminar/confirmar/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:45:59,979 - INFO - 127.0.0.1 - - [06/Apr/2026 17:45:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:00,213 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:00] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:46:01,616 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[32mPOST /productos/desactivar/1 HTTP/1.1[0m" 302 -
+2026-04-06 17:46:01,645 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:46:01,704 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,708 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,711 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:01,758 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,765 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,787 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,815 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,837 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,848 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,854 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,877 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:01,968 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:01] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:46:04,654 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:46:04,717 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:04,722 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,725 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,751 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,763 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,775 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,783 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,881 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,883 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,897 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,915 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:04,995 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:04] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:46:05,420 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:05] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:46:05,469 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:07,230 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:46:07,281 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:07,287 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,289 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,315 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,326 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,346 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,368 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,378 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,393 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,399 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,412 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:07,492 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:07] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:46:08,275 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:08] "GET /recetas HTTP/1.1" 200 -
+2026-04-06 17:46:08,324 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:09,867 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:09] "GET /ordenes HTTP/1.1" 200 -
+2026-04-06 17:46:09,921 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:12,231 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:12] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-06 17:46:12,290 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:23,959 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:23] "GET /productos HTTP/1.1" 200 -
+2026-04-06 17:46:24,021 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,024 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,027 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:24,052 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,062 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,072 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,225 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,266 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,293 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,322 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,337 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 17:46:24,348 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:24] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 17:46:30,134 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:30] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-06 17:46:30,189 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 17:46:32,049 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:32] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-06 17:46:32,096 - INFO - 127.0.0.1 - - [06/Apr/2026 17:46:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 18:17:16,881 - INFO - 127.0.0.1 - - [06/Apr/2026 18:17:16] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-06 18:17:16,980 - INFO - 127.0.0.1 - - [06/Apr/2026 18:17:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 18:17:19,445 - INFO - 127.0.0.1 - - [06/Apr/2026 18:17:19] "GET /ordenes HTTP/1.1" 200 -
+2026-04-06 18:17:19,503 - INFO - 127.0.0.1 - - [06/Apr/2026 18:17:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:35:36,282 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 21:35:36,284 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 21:35:41,523 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:41] "GET / HTTP/1.1" 200 -
+2026-04-06 21:35:42,555 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 21:35:48,743 - WARNING - Fallo: Intento de conexion erroneo para mayrahdezao@gmail.com.
+2026-04-06 21:35:48,752 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:48] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 21:35:48,784 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:48] "GET / HTTP/1.1" 200 -
+2026-04-06 21:35:54,172 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:54] "GET /materias-primas/eliminar/confirmar/1 HTTP/1.1" 200 -
+2026-04-06 21:35:54,439 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:35:54,440 - INFO - 127.0.0.1 - - [06/Apr/2026 21:35:54] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:36:04,196 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 21:36:04,200 - INFO - 127.0.0.1 - - [06/Apr/2026 21:36:04] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 21:36:04,231 - INFO - 127.0.0.1 - - [06/Apr/2026 21:36:04] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:36:04,259 - INFO - 127.0.0.1 - - [06/Apr/2026 21:36:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:38:39,547 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-06 21:38:39,580 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,584 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:38:39,586 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,590 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,594 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,599 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,618 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,623 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,632 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:39,638 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:39] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,446 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "GET /productos HTTP/1.1" 200 -
+2026-04-06 21:38:48,470 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,472 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:38:48,474 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,494 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,500 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,504 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,510 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,516 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,520 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /coco.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,523 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,528 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[33mGET /mix.jpg HTTP/1.1[0m" 404 -
+2026-04-06 21:38:48,581 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:48] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-06 21:38:52,902 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:52] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 21:38:52,919 - INFO - 127.0.0.1 - - [06/Apr/2026 21:38:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:39:43,743 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:43] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-06 21:39:43,775 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:39:43,915 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:43] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-06 21:39:46,757 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:46] "GET /clientes HTTP/1.1" 200 -
+2026-04-06 21:39:46,777 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:39:48,631 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:48] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 21:39:48,654 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:39:50,118 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:50] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:39:50,140 - INFO - 127.0.0.1 - - [06/Apr/2026 21:39:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:44:58,409 - INFO - 127.0.0.1 - - [06/Apr/2026 21:44:58] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:44:58,459 - INFO - 127.0.0.1 - - [06/Apr/2026 21:44:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:45:07,815 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:07] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:45:07,842 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:45:17,022 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:17] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 21:45:17,044 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:45:17,045 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:17] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:45:17,910 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:17] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:45:17,929 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:45:23,436 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:23] "GET /proveedores/1 HTTP/1.1" 200 -
+2026-04-06 21:45:23,462 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:45:23,469 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:23] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:45:24,908 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:24] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:45:24,926 - INFO - 127.0.0.1 - - [06/Apr/2026 21:45:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:47:40,202 - INFO - 127.0.0.1 - - [06/Apr/2026 21:47:40] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:47:40,256 - INFO - 127.0.0.1 - - [06/Apr/2026 21:47:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:48:36,295 - INFO - 127.0.0.1 - - [06/Apr/2026 21:48:36] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:48:36,344 - INFO - 127.0.0.1 - - [06/Apr/2026 21:48:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:48:54,472 - INFO - 127.0.0.1 - - [06/Apr/2026 21:48:54] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:48:54,495 - INFO - 127.0.0.1 - - [06/Apr/2026 21:48:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:49:13,126 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:13] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 21:49:13,143 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:49:15,391 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:15] "GET /empleados?q=jose HTTP/1.1" 200 -
+2026-04-06 21:49:15,425 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:49:38,880 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:38] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 21:49:38,903 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:49:38,904 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:38] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:49:41,223 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:41] "GET /modificar/1 HTTP/1.1" 200 -
+2026-04-06 21:49:41,252 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:49:41,255 - INFO - 127.0.0.1 - - [06/Apr/2026 21:49:41] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:50:07,795 - INFO - 127.0.0.1 - - [06/Apr/2026 21:50:07] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-06 21:50:07,824 - INFO - 127.0.0.1 - - [06/Apr/2026 21:50:07] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:50:07,825 - INFO - 127.0.0.1 - - [06/Apr/2026 21:50:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:50:09,258 - INFO - 127.0.0.1 - - [06/Apr/2026 21:50:09] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 21:50:09,306 - INFO - 127.0.0.1 - - [06/Apr/2026 21:50:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:51:41,319 - INFO - 127.0.0.1 - - [06/Apr/2026 21:51:41] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 21:51:41,383 - INFO - 127.0.0.1 - - [06/Apr/2026 21:51:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:51:43,049 - INFO - 127.0.0.1 - - [06/Apr/2026 21:51:43] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:51:43,068 - INFO - 127.0.0.1 - - [06/Apr/2026 21:51:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:55:56,578 - INFO - 127.0.0.1 - - [06/Apr/2026 21:55:56] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:55:56,610 - INFO - 127.0.0.1 - - [06/Apr/2026 21:55:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:56:13,908 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:13] "GET /proveedores/1 HTTP/1.1" 200 -
+2026-04-06 21:56:13,928 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:56:13,930 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:13] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:56:16,432 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:16] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 21:56:16,464 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:56:21,455 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:21] "GET /empleados?q=marcos HTTP/1.1" 200 -
+2026-04-06 21:56:21,490 - INFO - 127.0.0.1 - - [06/Apr/2026 21:56:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:58:30,074 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:30] "GET /compras HTTP/1.1" 200 -
+2026-04-06 21:58:30,116 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:58:30,119 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:30] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-06 21:58:30,968 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:30] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:58:30,989 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 21:58:32,395 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:32] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 21:58:32,423 - INFO - 127.0.0.1 - - [06/Apr/2026 21:58:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:01:30,968 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:30] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:01:31,021 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:01:37,327 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:37] "GET /proveedores/1 HTTP/1.1" 200 -
+2026-04-06 22:01:37,364 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:01:37,369 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:37] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 22:01:38,830 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:38] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:01:38,857 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:01:39,830 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:39] "GET /proveedores/3 HTTP/1.1" 200 -
+2026-04-06 22:01:39,870 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:01:39,872 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:39] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 22:01:40,916 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:40] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:01:40,951 - INFO - 127.0.0.1 - - [06/Apr/2026 22:01:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:03:58,040 - INFO - 127.0.0.1 - - [06/Apr/2026 22:03:58] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:03:58,072 - INFO - 127.0.0.1 - - [06/Apr/2026 22:03:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:04:00,019 - INFO - 127.0.0.1 - - [06/Apr/2026 22:04:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:04:00,026 - INFO - 127.0.0.1 - - [06/Apr/2026 22:04:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-06 22:05:44,216 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:05:44,217 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:05:46,909 - INFO - 127.0.0.1 - - [06/Apr/2026 22:05:46] "GET / HTTP/1.1" 200 -
+2026-04-06 22:05:53,805 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 22:05:53,807 - INFO - 127.0.0.1 - - [06/Apr/2026 22:05:53] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:05:53,974 - INFO - 127.0.0.1 - - [06/Apr/2026 22:05:53] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:05:54,268 - INFO - 127.0.0.1 - - [06/Apr/2026 22:05:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:06:00,447 - INFO - 127.0.0.1 - - [06/Apr/2026 22:06:00] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:06:00,475 - INFO - 127.0.0.1 - - [06/Apr/2026 22:06:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:05,625 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:05] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:08:05,668 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:07,606 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:07] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:08:07,630 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:08,945 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:08] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:08:08,973 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:08] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:08:09,502 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:08:11,745 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:11] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 22:08:11,762 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:12,652 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:12] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:08:12,684 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:14,647 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:14] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:08:14,683 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:14] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:26,042 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:08:26,043 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:08:34,704 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:34] "GET / HTTP/1.1" 200 -
+2026-04-06 22:08:41,959 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 22:08:41,963 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:41] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:08:42,062 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:42] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:08:42,273 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:08:46,922 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:46] "GET /proveedores?q=la HTTP/1.1" 200 -
+2026-04-06 22:08:46,947 - INFO - 127.0.0.1 - - [06/Apr/2026 22:08:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:37,560 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:37] "GET /proveedores?q=la HTTP/1.1" 200 -
+2026-04-06 22:09:37,598 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:38,425 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:38] "GET /proveedores?q=la HTTP/1.1" 200 -
+2026-04-06 22:09:38,475 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:41,316 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:41] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 22:09:41,337 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:44,520 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:44] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:44,542 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:45,890 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:45] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:45,915 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:46,370 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:46,395 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:46,564 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:46,607 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:46,738 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:46,770 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:46,899 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:46,920 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:47,121 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:47] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:47,144 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:09:59,575 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:59] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:09:59,602 - INFO - 127.0.0.1 - - [06/Apr/2026 22:09:59] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:10:05,332 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:05] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:10:05,354 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:10:11,645 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:10:11,646 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:10:24,807 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:10:24,808 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:10:24,809 - INFO -  * Restarting with stat
+2026-04-06 22:10:25,484 - WARNING -  * Debugger is active!
+2026-04-06 22:10:25,487 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:10:27,903 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:27] "GET / HTTP/1.1" 200 -
+2026-04-06 22:10:34,380 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 22:10:34,384 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:34] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:10:34,474 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:34] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:10:34,659 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:34] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:10:38,900 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:38] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:10:38,960 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:10:41,557 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:41] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:10:41,592 - INFO - 127.0.0.1 - - [06/Apr/2026 22:10:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:11:07,665 - INFO - 127.0.0.1 - - [06/Apr/2026 22:11:07] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:11:07,689 - INFO - 127.0.0.1 - - [06/Apr/2026 22:11:07] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:11:08,229 - INFO - 127.0.0.1 - - [06/Apr/2026 22:11:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:13:14,513 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:13:14,795 - INFO -  * Restarting with stat
+2026-04-06 22:13:15,536 - WARNING -  * Debugger is active!
+2026-04-06 22:13:15,539 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:13:27,609 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:13:27,810 - INFO -  * Restarting with stat
+2026-04-06 22:13:28,566 - WARNING -  * Debugger is active!
+2026-04-06 22:13:28,570 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:13:36,249 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:13:36,467 - INFO -  * Restarting with stat
+2026-04-06 22:13:37,322 - WARNING -  * Debugger is active!
+2026-04-06 22:13:37,324 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:14:35,320 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:14:35,517 - INFO -  * Restarting with stat
+2026-04-06 22:18:00,391 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:18:00,392 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:18:00,393 - INFO -  * Restarting with stat
+2026-04-06 22:18:01,085 - WARNING -  * Debugger is active!
+2026-04-06 22:18:01,090 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:18:02,588 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:02] "GET / HTTP/1.1" 200 -
+2026-04-06 22:18:02,890 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:18:14,091 - WARNING - Fallo: Intento de conexion erroneo para jose.gerencia@empresa.com.
+2026-04-06 22:18:14,095 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:14] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:18:14,112 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:14] "GET / HTTP/1.1" 200 -
+2026-04-06 22:18:20,166 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:20] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:18:20,365 - INFO - 127.0.0.1 - - [06/Apr/2026 22:18:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:19:02,979 - INFO - 127.0.0.1 - - [06/Apr/2026 22:19:02] "[33mGET /proveedores/modificar HTTP/1.1[0m" 404 -
+2026-04-06 22:19:19,000 - INFO - 127.0.0.1 - - [06/Apr/2026 22:19:18] "[33mGET /proveedores/modificarhttp://localhost:5000/proveedores/test HTTP/1.1[0m" 404 -
+2026-04-06 22:19:21,656 - INFO - 127.0.0.1 - - [06/Apr/2026 22:19:21] "[33mGET /proveedores/test HTTP/1.1[0m" 404 -
+2026-04-06 22:19:21,732 - INFO - 127.0.0.1 - - [06/Apr/2026 22:19:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:20:32,592 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:20:32,823 - INFO -  * Restarting with stat
+2026-04-06 22:20:33,672 - WARNING -  * Debugger is active!
+2026-04-06 22:20:33,673 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:20:48,998 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:20:49,222 - INFO -  * Restarting with stat
+2026-04-06 22:20:50,043 - WARNING -  * Debugger is active!
+2026-04-06 22:20:50,045 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:20:52,179 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:20:52,262 - INFO -  * Restarting with stat
+2026-04-06 22:20:52,894 - WARNING -  * Debugger is active!
+2026-04-06 22:20:52,895 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:20:58,327 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:20:58,537 - INFO -  * Restarting with stat
+2026-04-06 22:20:59,480 - WARNING -  * Debugger is active!
+2026-04-06 22:20:59,481 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:21:01,076 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:01] "[33mGET /proveedores/test HTTP/1.1[0m" 404 -
+2026-04-06 22:21:01,121 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:21:01,700 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:01] "[33mGET /proveedores/modificarhttp://localhost:5000/proveedores/test HTTP/1.1[0m" 404 -
+2026-04-06 22:21:01,806 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:21:02,548 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:02] "[33mGET /proveedores/modificar HTTP/1.1[0m" 404 -
+2026-04-06 22:21:03,475 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:03] "GET / HTTP/1.1" 200 -
+2026-04-06 22:21:05,252 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:05] "GET / HTTP/1.1" 200 -
+2026-04-06 22:21:05,700 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:21:16,001 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 22:21:16,003 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:16] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:21:16,046 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:16] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:21:16,281 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:21:19,682 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:19] "GET /proveedores?q=lac HTTP/1.1" 200 -
+2026-04-06 22:21:19,712 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:21:45,149 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:21:45,149 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:21:45,150 - INFO -  * Restarting with stat
+2026-04-06 22:21:45,856 - WARNING -  * Debugger is active!
+2026-04-06 22:21:45,858 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:21:47,412 - INFO - 127.0.0.1 - - [06/Apr/2026 22:21:47] "GET / HTTP/1.1" 200 -
+2026-04-06 22:23:02,726 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:23:03,014 - INFO -  * Restarting with stat
+2026-04-06 22:23:03,864 - WARNING -  * Debugger is active!
+2026-04-06 22:23:03,866 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:23:30,170 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:23:30,362 - INFO -  * Restarting with stat
+2026-04-06 22:23:31,345 - WARNING -  * Debugger is active!
+2026-04-06 22:23:31,347 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:24:01,003 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:24:01,189 - INFO -  * Restarting with stat
+2026-04-06 22:24:01,911 - WARNING -  * Debugger is active!
+2026-04-06 22:24:01,914 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:24:11,823 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 22:24:11,828 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:11] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 22:24:11,876 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:11] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:24:12,055 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:24:15,172 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:15] "GET /proveedores/1 HTTP/1.1" 200 -
+2026-04-06 22:24:15,195 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:15] "GET /static/img/proveedor2.jpg HTTP/1.1" 200 -
+2026-04-06 22:24:15,196 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:24:17,202 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:17] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:24:17,225 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:24:19,912 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:19] "GET /proveedores/modificar/1 HTTP/1.1" 200 -
+2026-04-06 22:24:19,936 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:24:19,938 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:19] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 22:24:29,157 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:24:29,157 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:24:29,158 - INFO -  * Restarting with stat
+2026-04-06 22:24:29,851 - WARNING -  * Debugger is active!
+2026-04-06 22:24:29,852 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:24:31,302 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:31] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-06 22:24:31,332 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:31] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:24:31,387 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:24:42,452 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:24:42,453 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:24:42,454 - INFO -  * Restarting with stat
+2026-04-06 22:24:43,129 - WARNING -  * Debugger is active!
+2026-04-06 22:24:43,131 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:24:44,190 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:44] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-06 22:24:44,221 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:44] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:24:44,296 - INFO - 127.0.0.1 - - [06/Apr/2026 22:24:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:25:21,630 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:25:21,867 - INFO -  * Restarting with stat
+2026-04-06 22:25:22,718 - WARNING -  * Debugger is active!
+2026-04-06 22:25:22,719 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:25:38,168 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\decorators.py', reloading
+2026-04-06 22:25:38,405 - INFO -  * Restarting with stat
+2026-04-06 22:25:39,238 - WARNING -  * Debugger is active!
+2026-04-06 22:25:39,240 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:26:00,117 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:26:00,350 - INFO -  * Restarting with stat
+2026-04-06 22:26:01,254 - WARNING -  * Debugger is active!
+2026-04-06 22:26:01,258 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:26:13,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:26:13,359 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:26:13,360 - INFO -  * Restarting with stat
+2026-04-06 22:26:14,043 - WARNING -  * Debugger is active!
+2026-04-06 22:26:14,045 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:26:15,586 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:15] "GET / HTTP/1.1" 200 -
+2026-04-06 22:26:26,457 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:26] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:26:26,664 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:26:32,460 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:26:32,465 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:32] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-06 22:26:50,547 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:50] "GET /proveedores/modificar/1 HTTP/1.1" 200 -
+2026-04-06 22:26:50,590 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:26:50,593 - INFO - 127.0.0.1 - - [06/Apr/2026 22:26:50] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 22:27:23,531 - INFO - 127.0.0.1 - - [06/Apr/2026 22:27:23] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:27:23,556 - INFO - 127.0.0.1 - - [06/Apr/2026 22:27:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:29:52,659 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:29:52,918 - INFO -  * Restarting with stat
+2026-04-06 22:29:53,735 - WARNING -  * Debugger is active!
+2026-04-06 22:29:53,738 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:29:58,103 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:29:58,373 - INFO -  * Restarting with stat
+2026-04-06 22:29:59,193 - WARNING -  * Debugger is active!
+2026-04-06 22:29:59,195 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:30:22,388 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:22] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-06 22:30:22,499 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:22] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:30:22,698 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:22] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:30:23,254 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:30:30,839 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:30] "GET /proveedores/modificar/1 HTTP/1.1" 200 -
+2026-04-06 22:30:30,860 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:30:30,863 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:30] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 22:30:40,744 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:30:40,979 - INFO -  * Restarting with stat
+2026-04-06 22:30:41,724 - WARNING -  * Debugger is active!
+2026-04-06 22:30:41,725 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:30:42,567 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:42] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:30:42,615 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:42] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:30:43,196 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:30:56,881 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:30:56,881 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:30:56,883 - INFO -  * Restarting with stat
+2026-04-06 22:30:57,555 - WARNING -  * Debugger is active!
+2026-04-06 22:30:57,557 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:30:58,751 - INFO - 127.0.0.1 - - [06/Apr/2026 22:30:58] "GET / HTTP/1.1" 200 -
+2026-04-06 22:31:04,372 - INFO - 127.0.0.1 - - [06/Apr/2026 22:31:04] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:31:04,585 - INFO - 127.0.0.1 - - [06/Apr/2026 22:31:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:34:38,872 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:34:39,151 - INFO -  * Restarting with stat
+2026-04-06 22:34:39,915 - WARNING -  * Debugger is active!
+2026-04-06 22:34:39,917 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:35:30,229 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:35:30,461 - INFO -  * Restarting with stat
+2026-04-06 22:35:31,371 - WARNING -  * Debugger is active!
+2026-04-06 22:35:31,372 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:35:41,381 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:35:41,617 - INFO -  * Restarting with stat
+2026-04-06 22:40:34,989 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:40:34,992 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:40:34,993 - INFO -  * Restarting with stat
+2026-04-06 22:40:35,650 - WARNING -  * Debugger is active!
+2026-04-06 22:40:35,652 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:40:42,263 - INFO - 127.0.0.1 - - [06/Apr/2026 22:40:42] "GET / HTTP/1.1" 200 -
+2026-04-06 22:40:47,571 - INFO - 127.0.0.1 - - [06/Apr/2026 22:40:47] "GET /proveedores?q= HTTP/1.1" 200 -
+2026-04-06 22:40:47,807 - INFO - 127.0.0.1 - - [06/Apr/2026 22:40:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:41:00,541 - INFO - 127.0.0.1 - - [06/Apr/2026 22:41:00] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 22:41:00,566 - INFO - 127.0.0.1 - - [06/Apr/2026 22:41:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 22:43:50,013 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\utils.py', reloading
+2026-04-06 22:43:50,240 - INFO -  * Restarting with stat
+2026-04-06 22:43:51,029 - WARNING -  * Debugger is active!
+2026-04-06 22:43:51,031 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:44:14,250 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 22:44:14,250 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 22:44:14,252 - INFO -  * Restarting with stat
+2026-04-06 22:44:14,945 - WARNING -  * Debugger is active!
+2026-04-06 22:44:14,946 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:44:16,817 - INFO - 127.0.0.1 - - [06/Apr/2026 22:44:16] "GET / HTTP/1.1" 200 -
+2026-04-06 22:44:24,887 - INFO - 127.0.0.1 - - [06/Apr/2026 22:44:24] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 22:44:24,905 - INFO - 127.0.0.1 - - [06/Apr/2026 22:44:24] "GET / HTTP/1.1" 200 -
+2026-04-06 22:45:01,822 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:01] "GET / HTTP/1.1" 200 -
+2026-04-06 22:45:05,414 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:05] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 22:45:05,440 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:05] "GET / HTTP/1.1" 200 -
+2026-04-06 22:45:17,361 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:17] "GET /proveedores/modificar/1 HTTP/1.1" 200 -
+2026-04-06 22:45:17,687 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:17] "GET /static/img/proveedor2.jpg HTTP/1.1" 200 -
+2026-04-06 22:45:17,689 - INFO - 127.0.0.1 - - [06/Apr/2026 22:45:17] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 22:49:14,698 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 22:49:14,940 - INFO -  * Restarting with stat
+2026-04-06 22:49:15,740 - WARNING -  * Debugger is active!
+2026-04-06 22:49:15,743 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:49:26,178 - INFO - 127.0.0.1 - - [06/Apr/2026 22:49:26] "GET / HTTP/1.1" 200 -
+2026-04-06 22:49:27,073 - INFO - 127.0.0.1 - - [06/Apr/2026 22:49:27] "GET / HTTP/1.1" 200 -
+2026-04-06 22:49:28,361 - INFO - 127.0.0.1 - - [06/Apr/2026 22:49:28] "GET / HTTP/1.1" 200 -
+2026-04-06 22:49:31,574 - INFO - 127.0.0.1 - - [06/Apr/2026 22:49:31] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 22:49:31,593 - INFO - 127.0.0.1 - - [06/Apr/2026 22:49:31] "GET / HTTP/1.1" 200 -
+2026-04-06 22:51:10,470 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:51:10,652 - INFO -  * Restarting with stat
+2026-04-06 22:51:11,350 - WARNING -  * Debugger is active!
+2026-04-06 22:51:11,353 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:51:39,816 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 22:51:40,025 - INFO -  * Restarting with stat
+2026-04-06 22:51:40,798 - WARNING -  * Debugger is active!
+2026-04-06 22:51:40,799 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 22:51:42,301 - INFO - 127.0.0.1 - - [06/Apr/2026 22:51:42] "GET / HTTP/1.1" 200 -
+2026-04-06 22:51:43,269 - INFO - 127.0.0.1 - - [06/Apr/2026 22:51:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 22:51:51,176 - INFO - 127.0.0.1 - - [06/Apr/2026 22:51:51] "[32mGET /proveedores/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-06 22:51:51,194 - INFO - 127.0.0.1 - - [06/Apr/2026 22:51:51] "GET / HTTP/1.1" 200 -
+2026-04-06 22:52:12,141 - INFO - 127.0.0.1 - - [06/Apr/2026 22:52:12] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 22:52:12,168 - INFO - 127.0.0.1 - - [06/Apr/2026 22:52:12] "GET / HTTP/1.1" 200 -
+2026-04-06 22:52:18,547 - INFO - 127.0.0.1 - - [06/Apr/2026 22:52:18] "[32mGET /proveedores/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-06 22:52:18,567 - INFO - 127.0.0.1 - - [06/Apr/2026 22:52:18] "GET / HTTP/1.1" 200 -
+2026-04-06 23:30:49,697 - INFO - 127.0.0.1 - - [06/Apr/2026 23:30:49] "GET / HTTP/1.1" 200 -
+2026-04-06 23:30:57,362 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 23:30:57,378 - INFO - 127.0.0.1 - - [06/Apr/2026 23:30:57] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 23:30:57,605 - INFO - 127.0.0.1 - - [06/Apr/2026 23:30:57] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:30:57,832 - INFO - 127.0.0.1 - - [06/Apr/2026 23:30:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:31:04,829 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:04] "GET /proveedores/modificar/1 HTTP/1.1" 200 -
+2026-04-06 23:31:04,860 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:31:04,872 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:04] "[36mGET /static/img/proveedor2.jpg HTTP/1.1[0m" 304 -
+2026-04-06 23:31:07,327 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:07] "GET / HTTP/1.1" 200 -
+2026-04-06 23:31:08,486 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:08] "GET / HTTP/1.1" 200 -
+2026-04-06 23:31:12,848 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:12] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:31:12,877 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:31:24,321 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 23:31:24,321 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 23:31:24,322 - INFO -  * Restarting with stat
+2026-04-06 23:31:25,010 - WARNING -  * Debugger is active!
+2026-04-06 23:31:25,014 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 23:31:31,492 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:31] "GET / HTTP/1.1" 200 -
+2026-04-06 23:31:37,107 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:37] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:31:37,526 - INFO - 127.0.0.1 - - [06/Apr/2026 23:31:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:31:49,442 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\proveedores\\routes.py', reloading
+2026-04-06 23:31:49,640 - INFO -  * Restarting with stat
+2026-04-06 23:31:50,448 - WARNING -  * Debugger is active!
+2026-04-06 23:31:50,450 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 23:32:17,238 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 23:32:17,239 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 23:32:17,240 - INFO -  * Restarting with stat
+2026-04-06 23:32:17,905 - WARNING -  * Debugger is active!
+2026-04-06 23:32:17,908 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 23:32:21,146 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:21] "GET / HTTP/1.1" 200 -
+2026-04-06 23:32:22,038 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 23:32:24,902 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:24] "GET / HTTP/1.1" 200 -
+2026-04-06 23:32:30,950 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:30] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:32:30,965 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:30] "GET / HTTP/1.1" 200 -
+2026-04-06 23:32:54,164 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 23:32:54,180 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:54] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 23:32:54,244 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:54] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:32:54,365 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:54] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-06 23:32:59,215 - INFO - 127.0.0.1 - - [06/Apr/2026 23:32:59] "GET / HTTP/1.1" 200 -
+2026-04-06 23:33:03,756 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:03] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:33:03,779 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:33:07,242 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:07] "GET / HTTP/1.1" 200 -
+2026-04-06 23:33:07,406 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:07] "GET / HTTP/1.1" 200 -
+2026-04-06 23:33:07,574 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:07] "GET / HTTP/1.1" 200 -
+2026-04-06 23:33:07,729 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:07] "GET / HTTP/1.1" 200 -
+2026-04-06 23:33:28,688 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:28] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:33:28,710 - INFO - 127.0.0.1 - - [06/Apr/2026 23:33:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:33:58,093 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-06 23:33:58,093 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-06 23:33:58,094 - INFO -  * Restarting with stat
+2026-04-06 23:33:58,872 - WARNING -  * Debugger is active!
+2026-04-06 23:33:58,875 - INFO -  * Debugger PIN: 653-835-277
+2026-04-06 23:34:01,130 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:01] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:01,744 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-06 23:34:04,874 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:04] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:34:04,887 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:04] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:09,266 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:09] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:34:09,276 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:09] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:16,337 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:16] "[32mGET /proveedores/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-06 23:34:16,347 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:16] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:20,641 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:20] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:34:20,654 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:20] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:29,209 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:29] "[33mGET /materias_primas HTTP/1.1[0m" 404 -
+2026-04-06 23:34:33,433 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:33] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:34:33,442 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:33] "GET / HTTP/1.1" 200 -
+2026-04-06 23:34:36,292 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:36] "GET /empleados HTTP/1.1" 200 -
+2026-04-06 23:34:36,467 - INFO - 127.0.0.1 - - [06/Apr/2026 23:34:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:35:39,555 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:39] "GET / HTTP/1.1" 200 -
+2026-04-06 23:35:43,193 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:43] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-06 23:35:43,204 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:43] "GET / HTTP/1.1" 200 -
+2026-04-06 23:35:54,547 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-06 23:35:54,550 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:54] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-06 23:35:54,581 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:54] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:35:54,613 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:35:56,559 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:56] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:35:56,589 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:35:58,194 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:58] "GET /proveedores/1 HTTP/1.1" 200 -
+2026-04-06 23:35:58,220 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:58] "GET /static/img/proveedor2.jpg HTTP/1.1" 200 -
+2026-04-06 23:35:58,221 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:35:59,732 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:59] "GET /proveedores HTTP/1.1" 200 -
+2026-04-06 23:35:59,759 - INFO - 127.0.0.1 - - [06/Apr/2026 23:35:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-06 23:38:06,119 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-06 23:38:06,357 - INFO -  * Restarting with stat
+2026-04-06 23:38:07,166 - WARNING -  * Debugger is active!
+2026-04-06 23:38:07,168 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:21:37,142 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-07 08:21:37,143 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-07 08:21:37,144 - INFO -  * Restarting with stat
+2026-04-07 08:21:38,104 - WARNING -  * Debugger is active!
+2026-04-07 08:21:38,106 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:21:42,267 - INFO - 127.0.0.1 - - [07/Apr/2026 08:21:42] "GET / HTTP/1.1" 200 -
+2026-04-07 08:21:43,019 - INFO - 127.0.0.1 - - [07/Apr/2026 08:21:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 08:21:46,540 - INFO - 127.0.0.1 - - [07/Apr/2026 08:21:46] "[32mGET /proveedores HTTP/1.1[0m" 302 -
+2026-04-07 08:21:46,549 - INFO - 127.0.0.1 - - [07/Apr/2026 08:21:46] "GET / HTTP/1.1" 200 -
+2026-04-07 08:24:06,157 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-07 08:24:06,742 - INFO -  * Restarting with stat
+2026-04-07 08:24:09,033 - WARNING -  * Debugger is active!
+2026-04-07 08:24:09,038 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:27:26,167 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-07 08:27:26,661 - INFO -  * Restarting with stat
+2026-04-07 08:27:27,667 - WARNING -  * Debugger is active!
+2026-04-07 08:27:27,671 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:27:45,290 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-07 08:27:45,492 - INFO -  * Restarting with stat
+2026-04-07 08:27:46,459 - WARNING -  * Debugger is active!
+2026-04-07 08:27:46,462 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:29:26,643 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:26] "GET / HTTP/1.1" 200 -
+2026-04-07 08:29:33,816 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-07 08:29:33,820 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:33] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-07 08:29:33,880 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:33] "GET /proveedores HTTP/1.1" 200 -
+2026-04-07 08:29:34,012 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:34] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:41,708 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:41] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-07 08:29:41,731 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:43,714 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:43] "GET /ordenes HTTP/1.1" 200 -
+2026-04-07 08:29:43,742 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:45,297 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:45] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-07 08:29:45,322 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:47,021 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:29:47,046 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,049 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,050 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:47,055 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,066 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,066 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,077 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,083 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,087 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,091 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:47,095 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:47] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,866 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-07 08:29:54,882 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:29:54,924 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,924 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:29:54,925 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,937 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,938 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,942 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,948 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,954 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,956 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,961 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:29:54,966 - INFO - 127.0.0.1 - - [07/Apr/2026 08:29:54] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,512 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-07 08:30:02,534 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:02,584 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,585 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:02,589 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,601 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,603 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,608 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,615 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,645 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,681 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,701 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:02,744 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:02] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:13,905 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:13] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:30:13,934 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:18,930 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:18,971 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:18,972 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:18,976 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:18,984 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:18,986 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:18,990 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:18] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:19,000 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:19] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:19,002 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:19] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:19,020 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:19] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:19,029 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:19] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:19,030 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:19] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:20,162 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:20] "GET /proveedores HTTP/1.1" 200 -
+2026-04-07 08:30:20,189 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:24,193 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:24,231 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:24,237 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,241 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,246 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,250 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,261 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,263 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,269 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,272 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,277 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:24,282 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:24] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,014 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:26,048 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:26,049 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,052 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,064 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,187 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,218 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,250 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,268 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,279 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,292 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,311 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,636 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:26,666 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:26,668 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,670 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,682 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,685 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,687 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,697 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,740 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,756 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,798 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:26,816 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:26] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,006 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:27,033 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:27,056 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,077 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,111 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,127 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,134 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,146 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,163 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,187 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,195 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:27,204 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:27] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,115 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[32mGET /punto-venta/limpiar-carrito HTTP/1.1[0m" 302 -
+2026-04-07 08:30:30,133 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-07 08:30:30,179 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/choco70.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,182 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/almendras.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,182 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:30:30,195 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/sinazucar.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,197 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/proteina.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,198 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/blanco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,201 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/matcha.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,263 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/nuez.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,280 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/coco.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,320 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/bitter85.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:30:30,331 - INFO - 127.0.0.1 - - [07/Apr/2026 08:30:30] "[33mGET /punto-venta/mix.jpg HTTP/1.1[0m" 404 -
+2026-04-07 08:31:35,025 - INFO - 127.0.0.1 - - [07/Apr/2026 08:31:35] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:31:35,056 - INFO - 127.0.0.1 - - [07/Apr/2026 08:31:35] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:34:08,719 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-07 08:34:08,720 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-07 08:34:08,722 - INFO -  * Restarting with stat
+2026-04-07 08:34:09,406 - WARNING -  * Debugger is active!
+2026-04-07 08:34:09,407 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:34:12,061 - INFO - 127.0.0.1 - - [07/Apr/2026 08:34:12] "GET / HTTP/1.1" 200 -
+2026-04-07 08:34:57,463 - WARNING - Fallo: Intento de conexion erroneo para jose.gerencia@empresa.com.
+2026-04-07 08:34:57,467 - INFO - 127.0.0.1 - - [07/Apr/2026 08:34:57] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-07 08:34:57,474 - INFO - 127.0.0.1 - - [07/Apr/2026 08:34:57] "GET / HTTP/1.1" 200 -
+2026-04-07 08:35:05,515 - WARNING - Fallo: Intento de conexion erroneo para jose.gerencia@empresa.com.
+2026-04-07 08:35:05,518 - INFO - 127.0.0.1 - - [07/Apr/2026 08:35:05] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-07 08:35:05,530 - INFO - 127.0.0.1 - - [07/Apr/2026 08:35:05] "GET / HTTP/1.1" 200 -
+2026-04-07 08:35:57,287 - INFO - Acceso: Usuario jose.gerencia@empresa.com inicio sesion correctamente.
+2026-04-07 08:35:57,289 - INFO - 127.0.0.1 - - [07/Apr/2026 08:35:57] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-07 08:35:57,340 - INFO - 127.0.0.1 - - [07/Apr/2026 08:35:57] "GET /proveedores HTTP/1.1" 200 -
+2026-04-07 08:35:57,641 - INFO - 127.0.0.1 - - [07/Apr/2026 08:35:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:36:00,037 - INFO - 127.0.0.1 - - [07/Apr/2026 08:36:00] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:36:00,058 - INFO - 127.0.0.1 - - [07/Apr/2026 08:36:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:36:23,995 - INFO - 127.0.0.1 - - [07/Apr/2026 08:36:23] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:36:24,017 - INFO - 127.0.0.1 - - [07/Apr/2026 08:36:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:36:24,037 - INFO - 127.0.0.1 - - [07/Apr/2026 08:36:24] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:12,521 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:12] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:12,550 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:37:12,673 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:12] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:41,595 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:41] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:41,626 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:37:41,657 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:41] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:53,881 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:53] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:37:53,915 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:53] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:37:53,928 - INFO - 127.0.0.1 - - [07/Apr/2026 08:37:53] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:39:50,189 - INFO - 127.0.0.1 - - [07/Apr/2026 08:39:50] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:39:50,231 - INFO - 127.0.0.1 - - [07/Apr/2026 08:39:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:39:50,372 - INFO - 127.0.0.1 - - [07/Apr/2026 08:39:50] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:40:03,322 - INFO - 127.0.0.1 - - [07/Apr/2026 08:40:03] "[32mPOST /clientes/agregar HTTP/1.1[0m" 302 -
+2026-04-07 08:40:03,336 - INFO - 127.0.0.1 - - [07/Apr/2026 08:40:03] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:40:03,368 - INFO - 127.0.0.1 - - [07/Apr/2026 08:40:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:40:20,286 - INFO - 127.0.0.1 - - [07/Apr/2026 08:40:20] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 08:40:20,307 - INFO - 127.0.0.1 - - [07/Apr/2026 08:40:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:41:11,671 - INFO - 127.0.0.1 - - [07/Apr/2026 08:41:11] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:41:11,699 - INFO - 127.0.0.1 - - [07/Apr/2026 08:41:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:41:22,295 - INFO - 127.0.0.1 - - [07/Apr/2026 08:41:22] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:41:22,325 - INFO - 127.0.0.1 - - [07/Apr/2026 08:41:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:41:22,365 - INFO - 127.0.0.1 - - [07/Apr/2026 08:41:22] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:42:44,057 - INFO - 127.0.0.1 - - [07/Apr/2026 08:42:44] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:42:44,097 - INFO - 127.0.0.1 - - [07/Apr/2026 08:42:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:42:44,340 - INFO - 127.0.0.1 - - [07/Apr/2026 08:42:44] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:46:59,425 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:46:59,564 - INFO -  * Restarting with stat
+2026-04-07 08:47:00,397 - WARNING -  * Debugger is active!
+2026-04-07 08:47:00,399 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:47:09,672 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:09] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:47:09,796 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:47:09,831 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:09] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:47:16,568 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:16] "POST /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:47:16,600 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:47:16,628 - INFO - 127.0.0.1 - - [07/Apr/2026 08:47:16] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:48:30,858 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:30] "[32mPOST /clientes/agregar HTTP/1.1[0m" 302 -
+2026-04-07 08:48:30,903 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:30] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:48:30,937 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:48:39,097 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:39] "GET /clientes?q=oscar HTTP/1.1" 200 -
+2026-04-07 08:48:39,130 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:48:41,980 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:41] "GET /clientes?q= HTTP/1.1" 200 -
+2026-04-07 08:48:42,021 - INFO - 127.0.0.1 - - [07/Apr/2026 08:48:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:49:25,613 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:25] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 08:49:25,655 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:49:28,026 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:28] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:49:28,053 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:49:29,425 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:29] "[32mGET /clientes/eliminar/1 HTTP/1.1[0m" 302 -
+2026-04-07 08:49:29,447 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:29] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:49:29,486 - INFO - 127.0.0.1 - - [07/Apr/2026 08:49:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:53:49,016 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:53:49,364 - INFO -  * Restarting with stat
+2026-04-07 08:53:50,367 - WARNING -  * Debugger is active!
+2026-04-07 08:53:50,369 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:53:53,772 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:53] "GET /clientes/4 HTTP/1.1" 200 -
+2026-04-07 08:53:53,885 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:53] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:53:57,096 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:57] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:53:57,125 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:53:58,403 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:58] "[35m[1mGET /clientes/eliminar/4 HTTP/1.1[0m" 500 -
+2026-04-07 08:53:58,425 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:58] "GET /clientes/eliminar/4?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-07 08:53:58,488 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:58] "GET /clientes/eliminar/4?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-07 08:53:58,534 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:58] "GET /clientes/eliminar/4?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 08:53:58,555 - INFO - 127.0.0.1 - - [07/Apr/2026 08:53:58] "[36mGET /clientes/eliminar/4?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 08:54:19,866 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:54:20,292 - INFO -  * Restarting with stat
+2026-04-07 08:54:21,196 - WARNING -  * Debugger is active!
+2026-04-07 08:54:21,199 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:54:23,648 - INFO - 127.0.0.1 - - [07/Apr/2026 08:54:23] "GET /clientes/eliminar/4 HTTP/1.1" 200 -
+2026-04-07 08:54:23,758 - INFO - 127.0.0.1 - - [07/Apr/2026 08:54:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:54:43,325 - INFO - 127.0.0.1 - - [07/Apr/2026 08:54:43] "[32mPOST /clientes/desactivar/4 HTTP/1.1[0m" 302 -
+2026-04-07 08:54:43,383 - INFO - 127.0.0.1 - - [07/Apr/2026 08:54:43] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:54:43,409 - INFO - 127.0.0.1 - - [07/Apr/2026 08:54:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:00,267 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:55:00,510 - INFO -  * Restarting with stat
+2026-04-07 08:55:01,312 - WARNING -  * Debugger is active!
+2026-04-07 08:55:01,314 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:55:03,989 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:03] "GET /clientes/modificar/1 HTTP/1.1" 200 -
+2026-04-07 08:55:04,103 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:07,704 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:07] "[32mPOST /clientes/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-07 08:55:07,773 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:07] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:55:07,808 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:11,246 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:11] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 08:55:11,288 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:11] "GET /clientes/eliminar/1 HTTP/1.1" 200 -
+2026-04-07 08:55:11,314 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:21,386 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:21] "[32mPOST /clientes/desactivar/1 HTTP/1.1[0m" 302 -
+2026-04-07 08:55:21,413 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:21] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:55:21,441 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:33,412 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:33] "GET /clientes/modificar/1 HTTP/1.1" 200 -
+2026-04-07 08:55:33,444 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:36,675 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:36] "[32mPOST /clientes/modificar/1 HTTP/1.1[0m" 302 -
+2026-04-07 08:55:36,690 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:36] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:55:36,723 - INFO - 127.0.0.1 - - [07/Apr/2026 08:55:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:55:52,387 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:55:52,711 - INFO -  * Restarting with stat
+2026-04-07 08:55:53,526 - WARNING -  * Debugger is active!
+2026-04-07 08:55:53,531 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:55:55,663 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-07 08:55:55,782 - INFO -  * Restarting with stat
+2026-04-07 08:55:56,572 - WARNING -  * Debugger is active!
+2026-04-07 08:55:56,578 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 08:56:02,273 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:02] "GET /clientes/modificar/4 HTTP/1.1" 200 -
+2026-04-07 08:56:02,387 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:05,645 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:05] "[32mPOST /clientes/modificar/4 HTTP/1.1[0m" 302 -
+2026-04-07 08:56:05,687 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:05] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:56:05,715 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:13,990 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:13] "GET /clientes/eliminar/1 HTTP/1.1" 200 -
+2026-04-07 08:56:14,015 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:14] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:15,788 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:15] "[32mPOST /clientes/desactivar/1 HTTP/1.1[0m" 302 -
+2026-04-07 08:56:15,819 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:15] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:56:15,848 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:27,646 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:27] "GET /clientes/4 HTTP/1.1" 200 -
+2026-04-07 08:56:27,679 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:29,749 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:29] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:56:29,788 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:31,271 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:31] "GET /clientes/modificar/4 HTTP/1.1" 200 -
+2026-04-07 08:56:31,307 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:48,016 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:48] "[32mPOST /clientes/modificar/4 HTTP/1.1[0m" 302 -
+2026-04-07 08:56:48,029 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:48] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:56:48,066 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:52,034 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:52] "GET /clientes/4 HTTP/1.1" 200 -
+2026-04-07 08:56:52,067 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:56:58,983 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:58] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:56:59,008 - INFO - 127.0.0.1 - - [07/Apr/2026 08:56:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:57:07,451 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:07] "GET /clientes/eliminar/4 HTTP/1.1" 200 -
+2026-04-07 08:57:07,480 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:57:10,330 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:10] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:57:10,354 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:57:35,495 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:35] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 08:57:35,520 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:35] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:57:37,582 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:37] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:57:37,614 - INFO - 127.0.0.1 - - [07/Apr/2026 08:57:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:58:28,581 - INFO - 127.0.0.1 - - [07/Apr/2026 08:58:28] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 08:58:28,605 - INFO - 127.0.0.1 - - [07/Apr/2026 08:58:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:58:30,217 - INFO - 127.0.0.1 - - [07/Apr/2026 08:58:30] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 08:58:30,240 - INFO - 127.0.0.1 - - [07/Apr/2026 08:58:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 08:58:30,268 - INFO - 127.0.0.1 - - [07/Apr/2026 08:58:30] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:00:36,496 - INFO - 127.0.0.1 - - [07/Apr/2026 09:00:36] "[35m[1mGET /clientes/agregar HTTP/1.1[0m" 500 -
+2026-04-07 09:00:36,517 - INFO - 127.0.0.1 - - [07/Apr/2026 09:00:36] "GET /clientes/agregar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-07 09:00:36,523 - INFO - 127.0.0.1 - - [07/Apr/2026 09:00:36] "GET /clientes/agregar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-07 09:00:36,542 - INFO - 127.0.0.1 - - [07/Apr/2026 09:00:36] "GET /clientes/agregar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:00:36,578 - INFO - 127.0.0.1 - - [07/Apr/2026 09:00:36] "[36mGET /clientes/agregar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:03:39,806 - INFO - 127.0.0.1 - - [07/Apr/2026 09:03:39] "[35m[1mGET /clientes/agregar HTTP/1.1[0m" 500 -
+2026-04-07 09:03:39,831 - INFO - 127.0.0.1 - - [07/Apr/2026 09:03:39] "[36mGET /clientes/agregar?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-07 09:03:39,833 - INFO - 127.0.0.1 - - [07/Apr/2026 09:03:39] "[36mGET /clientes/agregar?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-07 09:03:39,848 - INFO - 127.0.0.1 - - [07/Apr/2026 09:03:39] "[36mGET /clientes/agregar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:03:39,877 - INFO - 127.0.0.1 - - [07/Apr/2026 09:03:39] "[36mGET /clientes/agregar?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:05:49,034 - INFO - 127.0.0.1 - - [07/Apr/2026 09:05:49] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:05:49,072 - INFO - 127.0.0.1 - - [07/Apr/2026 09:05:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:05:49,285 - INFO - 127.0.0.1 - - [07/Apr/2026 09:05:49] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:07:10,603 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:10] "[32mPOST /clientes/agregar HTTP/1.1[0m" 302 -
+2026-04-07 09:07:10,643 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:10] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:07:10,731 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:07:19,114 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:19] "GET /clientes/4 HTTP/1.1" 200 -
+2026-04-07 09:07:19,139 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:07:23,171 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:23] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:07:23,198 - INFO - 127.0.0.1 - - [07/Apr/2026 09:07:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:09:19,540 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:19] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:09:19,582 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:09:23,720 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:23] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 09:09:23,964 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:09:30,466 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:30] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:09:30,497 - INFO - 127.0.0.1 - - [07/Apr/2026 09:09:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:10:10,229 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:10] "GET /clientes/modificar/4 HTTP/1.1" 200 -
+2026-04-07 09:10:10,271 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:10:10,296 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:10] "GET /clientes/4 HTTP/1.1" 200 -
+2026-04-07 09:10:28,533 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:28] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:10:28,576 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:10:36,047 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:36] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:10:36,072 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:10:36,098 - INFO - 127.0.0.1 - - [07/Apr/2026 09:10:36] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:11:47,409 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:47] "[32mPOST /clientes/agregar HTTP/1.1[0m" 302 -
+2026-04-07 09:11:47,431 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:47] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:11:47,480 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:11:50,676 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:50] "GET /clientes/6 HTTP/1.1" 200 -
+2026-04-07 09:11:50,711 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:11:54,876 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:54] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:11:54,910 - INFO - 127.0.0.1 - - [07/Apr/2026 09:11:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:08,641 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:08] "GET /clientes/modificar/4 HTTP/1.1" 200 -
+2026-04-07 09:12:08,670 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:12,246 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:12] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:12:12,273 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:13,191 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:13] "GET /clientes/6 HTTP/1.1" 200 -
+2026-04-07 09:12:13,225 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:14,773 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:14] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:12:14,798 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:14] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:16,547 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:16] "GET /clientes/modificar/6 HTTP/1.1" 200 -
+2026-04-07 09:12:16,575 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:31,309 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:31] "[32mPOST /clientes/modificar/6 HTTP/1.1[0m" 302 -
+2026-04-07 09:12:31,348 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:31] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:12:31,380 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:12:41,141 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:41] "GET /clientes/6 HTTP/1.1" 200 -
+2026-04-07 09:12:41,190 - INFO - 127.0.0.1 - - [07/Apr/2026 09:12:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:13:39,547 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:39] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:13:39,588 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:39] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:13:43,296 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:43] "GET /clientes/eliminar/4 HTTP/1.1" 200 -
+2026-04-07 09:13:43,322 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:13:45,186 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:45] "[32mPOST /clientes/desactivar/4 HTTP/1.1[0m" 302 -
+2026-04-07 09:13:45,228 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:45] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:13:45,259 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:13:58,149 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:58] "GET /clientes?q=luc HTTP/1.1" 200 -
+2026-04-07 09:13:58,180 - INFO - 127.0.0.1 - - [07/Apr/2026 09:13:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:00,346 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:00] "GET /clientes?q= HTTP/1.1" 200 -
+2026-04-07 09:14:00,374 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:19,042 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:19] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-07 09:14:19,070 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:20,805 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:20] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:14:20,830 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:22,029 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:22] "GET /clientes/modificar/1 HTTP/1.1" 200 -
+2026-04-07 09:14:22,057 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:23,276 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:23] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:14:23,303 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:24,827 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:24] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:14:24,864 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:24,891 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:24] "GET /clientes/agregar HTTP/1.1" 200 -
+2026-04-07 09:14:26,030 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:26] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:14:26,057 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:14:27,638 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:27] "GET /clientes/eliminar/5 HTTP/1.1" 200 -
+2026-04-07 09:14:27,664 - INFO - 127.0.0.1 - - [07/Apr/2026 09:14:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:17:00,852 - INFO - 127.0.0.1 - - [07/Apr/2026 09:17:00] "GET /clientes/eliminar/5 HTTP/1.1" 200 -
+2026-04-07 09:17:00,880 - INFO - 127.0.0.1 - - [07/Apr/2026 09:17:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:18:30,084 - INFO - 127.0.0.1 - - [07/Apr/2026 09:18:30] "[32mPOST /clientes/desactivar/5 HTTP/1.1[0m" 302 -
+2026-04-07 09:18:30,106 - INFO - 127.0.0.1 - - [07/Apr/2026 09:18:30] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:18:30,154 - INFO - 127.0.0.1 - - [07/Apr/2026 09:18:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:19:40,591 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:40] "GET /clientes/5 HTTP/1.1" 200 -
+2026-04-07 09:19:40,619 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:19:51,156 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:51] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:19:51,182 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:19:54,590 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:54] "GET /clientes/6 HTTP/1.1" 200 -
+2026-04-07 09:19:54,612 - INFO - 127.0.0.1 - - [07/Apr/2026 09:19:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:20:01,994 - INFO - 127.0.0.1 - - [07/Apr/2026 09:20:01] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:20:02,019 - INFO - 127.0.0.1 - - [07/Apr/2026 09:20:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:21:23,289 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:23] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:21:23,366 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:21:26,258 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:26] "GET /empleados/detalle/1 HTTP/1.1" 200 -
+2026-04-07 09:21:26,291 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:21:32,270 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:32] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:21:32,294 - INFO - 127.0.0.1 - - [07/Apr/2026 09:21:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:22:44,750 - INFO - 127.0.0.1 - - [07/Apr/2026 09:22:44] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:22:44,780 - INFO - 127.0.0.1 - - [07/Apr/2026 09:22:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:22:46,547 - INFO - 127.0.0.1 - - [07/Apr/2026 09:22:46] "GET /empleados/detalle/1 HTTP/1.1" 200 -
+2026-04-07 09:22:46,570 - INFO - 127.0.0.1 - - [07/Apr/2026 09:22:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:23:05,870 - INFO - 127.0.0.1 - - [07/Apr/2026 09:23:05] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:23:05,894 - INFO - 127.0.0.1 - - [07/Apr/2026 09:23:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:23:17,356 - INFO - 127.0.0.1 - - [07/Apr/2026 09:23:17] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:23:17,381 - INFO - 127.0.0.1 - - [07/Apr/2026 09:23:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:23:17,416 - INFO - 127.0.0.1 - - [07/Apr/2026 09:23:17] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:24:30,596 - INFO - 127.0.0.1 - - [07/Apr/2026 09:24:30] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:24:30,628 - INFO - 127.0.0.1 - - [07/Apr/2026 09:24:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:24:30,751 - INFO - 127.0.0.1 - - [07/Apr/2026 09:24:30] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:26:07,297 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:07] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:26:07,333 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:26:07,501 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:07] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:26:59,499 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:59] "POST /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:26:59,539 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:26:59,598 - INFO - 127.0.0.1 - - [07/Apr/2026 09:26:59] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:29:52,353 - INFO - 127.0.0.1 - - [07/Apr/2026 09:29:52] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:29:52,391 - INFO - 127.0.0.1 - - [07/Apr/2026 09:29:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:29:52,565 - INFO - 127.0.0.1 - - [07/Apr/2026 09:29:52] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:31:08,862 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:08] "[32mPOST /agregar_empleado HTTP/1.1[0m" 302 -
+2026-04-07 09:31:08,879 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:08] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:31:08,923 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:31:28,030 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:28] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:31:28,057 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:31:29,929 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:29] "GET /proveedores HTTP/1.1" 200 -
+2026-04-07 09:31:29,955 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:31:30,751 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:30] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:31:30,783 - INFO - 127.0.0.1 - - [07/Apr/2026 09:31:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:35:46,085 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:46] "GET /empleados/detalle/2 HTTP/1.1" 200 -
+2026-04-07 09:35:46,113 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:35:48,798 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:48] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:35:48,823 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:35:50,650 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:50] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:35:50,676 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:35:57,045 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:57] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:35:57,072 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:35:58,415 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:58] "[32mGET /empleados/eliminar/2 HTTP/1.1[0m" 302 -
+2026-04-07 09:35:58,438 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:58] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:35:58,479 - INFO - 127.0.0.1 - - [07/Apr/2026 09:35:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:36:28,943 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:36:29,368 - INFO -  * Restarting with stat
+2026-04-07 09:36:30,690 - WARNING -  * Debugger is active!
+2026-04-07 09:36:30,693 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 09:36:32,879 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:36:33,063 - INFO -  * Restarting with stat
+2026-04-07 09:36:33,945 - WARNING -  * Debugger is active!
+2026-04-07 09:36:33,946 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 09:36:39,399 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:36:39,741 - INFO -  * Restarting with stat
+2026-04-07 09:36:40,604 - WARNING -  * Debugger is active!
+2026-04-07 09:36:40,606 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 09:36:49,639 - INFO - 127.0.0.1 - - [07/Apr/2026 09:36:49] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:36:50,004 - INFO - 127.0.0.1 - - [07/Apr/2026 09:36:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:38:34,268 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:38:34,537 - INFO -  * Restarting with stat
+2026-04-07 09:38:35,724 - WARNING -  * Debugger is active!
+2026-04-07 09:38:35,726 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 09:38:59,295 - INFO - 127.0.0.1 - - [07/Apr/2026 09:38:59] "[35m[1mGET /empleados HTTP/1.1[0m" 500 -
+2026-04-07 09:38:59,451 - INFO - 127.0.0.1 - - [07/Apr/2026 09:38:59] "GET /empleados?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-07 09:38:59,452 - INFO - 127.0.0.1 - - [07/Apr/2026 09:38:59] "GET /empleados?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-07 09:38:59,508 - INFO - 127.0.0.1 - - [07/Apr/2026 09:38:59] "GET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:38:59,536 - INFO - 127.0.0.1 - - [07/Apr/2026 09:38:59] "[36mGET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:40:05,441 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:05] "[35m[1mGET /empleados HTTP/1.1[0m" 500 -
+2026-04-07 09:40:05,479 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:05] "[36mGET /empleados?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-07 09:40:05,511 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:05] "[36mGET /empleados?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-07 09:40:05,558 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:05] "[36mGET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:40:05,601 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:05] "[36mGET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-07 09:40:13,433 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:13] "[35m[1mGET /empleados HTTP/1.1[0m" 500 -
+2026-04-07 09:40:13,460 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:13] "GET /empleados?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-07 09:40:13,462 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:13] "GET /empleados?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-07 09:40:13,477 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:13] "GET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:40:13,505 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:13] "GET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:40:49,118 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:49] "[35m[1mGET /empleados HTTP/1.1[0m" 500 -
+2026-04-07 09:40:49,141 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:49] "GET /empleados?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-07 09:40:49,143 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:49] "GET /empleados?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-07 09:40:49,177 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:49] "GET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:40:49,229 - INFO - 127.0.0.1 - - [07/Apr/2026 09:40:49] "GET /empleados?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-07 09:41:16,139 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:16] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:41:16,166 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:16] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:41:16,851 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:41:19,555 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:19] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:41:19,590 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:41:23,898 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:23] "[32mPOST /empleados/modificar/2 HTTP/1.1[0m" 302 -
+2026-04-07 09:41:23,911 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:23] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:41:23,954 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:41:36,459 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:36] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:41:36,484 - INFO - 127.0.0.1 - - [07/Apr/2026 09:41:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:24,353 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:24] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:42:24,383 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:27,040 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:27] "GET /clientes/modificar/5 HTTP/1.1" 200 -
+2026-04-07 09:42:27,061 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:30,654 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:30] "[32mPOST /clientes/modificar/5 HTTP/1.1[0m" 302 -
+2026-04-07 09:42:30,694 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:30] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:42:30,725 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:32,882 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:32] "GET /clientes/eliminar/5 HTTP/1.1" 200 -
+2026-04-07 09:42:32,900 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:44,324 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:44] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:42:44,353 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:46,908 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:46] "GET /empleados/eliminar/confirmar/1 HTTP/1.1" 200 -
+2026-04-07 09:42:46,933 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:49,370 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:49] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:42:49,405 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:42:51,383 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:51] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:42:51,409 - INFO - 127.0.0.1 - - [07/Apr/2026 09:42:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:44:40,074 - INFO - 127.0.0.1 - - [07/Apr/2026 09:44:40] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:44:40,115 - INFO - 127.0.0.1 - - [07/Apr/2026 09:44:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:07,801 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:07] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:45:07,837 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:07] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:45:08,384 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:45:23,579 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:23] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:45:23,612 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:23] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:45:23,961 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:45:26,570 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:26] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:45:26,597 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:27,614 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:27] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:45:27,641 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:29,373 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:29] "GET /clientes/eliminar/5 HTTP/1.1" 200 -
+2026-04-07 09:45:29,401 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:33,287 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:33] "GET /clientes HTTP/1.1" 200 -
+2026-04-07 09:45:33,312 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:35,015 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:35] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:45:35,057 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:35] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:45:37,488 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:37] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:45:37,524 - INFO - 127.0.0.1 - - [07/Apr/2026 09:45:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:46:07,943 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:07] "GET /empleados/eliminar/confirmar/2 HTTP/1.1" 200 -
+2026-04-07 09:46:07,975 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:07] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:46:08,450 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:46:22,035 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:22] "[32mPOST /empleados/desactivar/2 HTTP/1.1[0m" 302 -
+2026-04-07 09:46:22,052 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:22] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:46:22,087 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:46:36,708 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:46:36,982 - INFO -  * Restarting with stat
+2026-04-07 09:46:38,192 - WARNING -  * Debugger is active!
+2026-04-07 09:46:38,195 - INFO -  * Debugger PIN: 653-835-277
+2026-04-07 09:46:41,574 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:41] "GET /empleados/eliminar/confirmar/1 HTTP/1.1" 200 -
+2026-04-07 09:46:41,682 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:46:44,666 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:44] "[32mPOST /empleados/desactivar/1 HTTP/1.1[0m" 302 -
+2026-04-07 09:46:44,709 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:44] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:46:44,729 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:46:49,991 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:49] "GET /empleados/detalle/2 HTTP/1.1" 200 -
+2026-04-07 09:46:50,022 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:50] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:46:50,044 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:46:52,731 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:52] "[32mPOST /empleados/modificar/2 HTTP/1.1[0m" 302 -
+2026-04-07 09:46:52,747 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:52] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:46:52,776 - INFO - 127.0.0.1 - - [07/Apr/2026 09:46:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:15,978 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:15] "GET /empleados/detalle/1 HTTP/1.1" 200 -
+2026-04-07 09:47:16,004 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:22,136 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:22] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:47:22,159 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:28,058 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:28] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:47:28,085 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:30,617 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:30] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:47:30,651 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:31,783 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:31] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:47:31,807 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:47:31,823 - INFO - 127.0.0.1 - - [07/Apr/2026 09:47:31] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:48:46,016 - INFO - 127.0.0.1 - - [07/Apr/2026 09:48:46] "[32mPOST /agregar_empleado HTTP/1.1[0m" 302 -
+2026-04-07 09:48:46,038 - INFO - 127.0.0.1 - - [07/Apr/2026 09:48:46] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:48:46,066 - INFO - 127.0.0.1 - - [07/Apr/2026 09:48:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:49:56,818 - INFO - 127.0.0.1 - - [07/Apr/2026 09:49:56] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:49:56,849 - INFO - 127.0.0.1 - - [07/Apr/2026 09:49:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:49:59,784 - INFO - 127.0.0.1 - - [07/Apr/2026 09:49:59] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:49:59,812 - INFO - 127.0.0.1 - - [07/Apr/2026 09:49:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:50:01,427 - INFO - 127.0.0.1 - - [07/Apr/2026 09:50:01] "GET /empleados/detalle/1 HTTP/1.1" 200 -
+2026-04-07 09:50:01,456 - INFO - 127.0.0.1 - - [07/Apr/2026 09:50:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:50:32,803 - INFO - 127.0.0.1 - - [07/Apr/2026 09:50:32] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:50:32,840 - INFO - 127.0.0.1 - - [07/Apr/2026 09:50:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:51:28,218 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:28] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:51:28,246 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:51:52,752 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:52] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:51:52,782 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:51:58,066 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:58] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:51:58,097 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:51:59,882 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:59] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:51:59,912 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:51:59,932 - INFO - 127.0.0.1 - - [07/Apr/2026 09:51:59] "GET /agregar_empleado HTTP/1.1" 200 -
+2026-04-07 09:52:02,717 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:02] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:52:02,750 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:06,009 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:06] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:52:06,039 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:39,084 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:39] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:52:39,115 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:39] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:52:39,762 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:52:44,668 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:44] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:52:44,692 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:46,428 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:46] "GET /empleados/detalle/1 HTTP/1.1" 200 -
+2026-04-07 09:52:46,448 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:48,771 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:48] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:52:48,804 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:49,842 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:49] "GET /empleados/detalle/2 HTTP/1.1" 200 -
+2026-04-07 09:52:49,878 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:52,806 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:52] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:52:52,836 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:52:57,207 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:57] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:52:57,235 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:57] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:52:58,177 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:52:59,094 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:59] "GET /empleados/detalle/2 HTTP/1.1" 200 -
+2026-04-07 09:52:59,125 - INFO - 127.0.0.1 - - [07/Apr/2026 09:52:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:53:00,670 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:00] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:53:00,703 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:53:40,585 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:40] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:53:40,618 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:40] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:53:41,402 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:53:44,250 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:44] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:53:44,273 - INFO - 127.0.0.1 - - [07/Apr/2026 09:53:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:54:06,578 - INFO - 127.0.0.1 - - [07/Apr/2026 09:54:06] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:54:06,600 - INFO - 127.0.0.1 - - [07/Apr/2026 09:54:06] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:54:07,034 - INFO - 127.0.0.1 - - [07/Apr/2026 09:54:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:55:20,549 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:20] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:55:20,579 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:20] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:55:21,325 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:55:41,187 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:41] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:55:41,215 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:41] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:55:41,659 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:55:45,913 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:45] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:55:45,939 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:45] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:55:46,372 - INFO - 127.0.0.1 - - [07/Apr/2026 09:55:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:56:59,743 - INFO - 127.0.0.1 - - [07/Apr/2026 09:56:59] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:56:59,769 - INFO - 127.0.0.1 - - [07/Apr/2026 09:56:59] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-07 09:57:00,695 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 09:57:03,886 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:03] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:57:03,908 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:57:15,640 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:15] "GET /empleados?q=ana HTTP/1.1" 200 -
+2026-04-07 09:57:15,682 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:57:17,539 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:17] "GET /empleados?q= HTTP/1.1" 200 -
+2026-04-07 09:57:17,575 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:57:25,522 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:25] "GET /empleados?q=gere HTTP/1.1" 200 -
+2026-04-07 09:57:25,555 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:57:29,227 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:29] "GET /empleados?q= HTTP/1.1" 200 -
+2026-04-07 09:57:29,280 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:57:32,083 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:32] "GET /empleados/modificar/2 HTTP/1.1" 200 -
+2026-04-07 09:57:32,109 - INFO - 127.0.0.1 - - [07/Apr/2026 09:57:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:58:06,300 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:06] "[32mPOST /empleados/modificar/2 HTTP/1.1[0m" 302 -
+2026-04-07 09:58:06,322 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:06] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:58:06,360 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:58:12,828 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:12] "GET /empleados/detalle/2 HTTP/1.1" 200 -
+2026-04-07 09:58:12,863 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:58:15,623 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:15] "GET /empleados HTTP/1.1" 200 -
+2026-04-07 09:58:15,655 - INFO - 127.0.0.1 - - [07/Apr/2026 09:58:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-07 09:59:01,157 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\empleados\\routesE.py', reloading
+2026-04-07 09:59:01,419 - INFO -  * Restarting with stat

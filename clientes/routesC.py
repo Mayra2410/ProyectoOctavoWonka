@@ -57,8 +57,11 @@ def agregar_cliente():
                 return redirect(url_for("cliente.clientesAdmin"))
             except Exception as e:
                 db.session.rollback()
-                flash(f"Error: {str(e)}", "danger")
-
+                if "Duplicate entry" in str(e) and "email" in str(e):
+                    form.email.errors.append("Este correo electrónico ya está registrado en Wonka.")
+                else:
+                # Si es otro tipo de error, puedes dejar el flash o enviarlo a otro campo
+                    flash(f"Error inesperado: {str(e)}", "danger")
     return render_template("clientes/agregarClientes.html", form=form)
 
 @cliente.route("/clientes/modificar/<int:id>", methods=["GET", "POST"])
@@ -79,24 +82,31 @@ def modificar_cliente(id):
                 
                 form.populate_obj(cliente_obj)
                 db.session.commit()
-                flash("Cliente actualizado con exito", "success")
+                # flash("Cliente actualizado con exito", "success")
                 return redirect(url_for("cliente.clientesAdmin"))
             except Exception as e:
                 db.session.rollback()
                 flash(f"Error: {str(e)}", "danger")
 
     return render_template("clientes/modificarClientes.html", form=form, cliente_id=id, cliente=cliente_obj)
-
+# 1. Ruta para MOSTRAR la confirmación
 @cliente.route("/clientes/eliminar/<int:id>")
 def eliminar_cliente(id):
+    cliente_obj = Cliente.query.get_or_404(id)
+    # Simplemente enviamos al nuevo HTML
+    return render_template("clientes/eliminarCliente.html", cliente=cliente_obj)
+
+# 2. Ruta para PROCESAR la desactivación (POST)
+@cliente.route("/clientes/desactivar/<int:id>", methods=["POST"])
+def desactivar_confirmado(id):
     cliente_obj = Cliente.query.get_or_404(id)
     try:
         cliente_obj.estatus = 'INACTIVO'
         db.session.commit()
-        flash(f"Cliente desactivado con exito.", "success")
     except Exception as e:
         db.session.rollback()
-        flash(f"Error al eliminar: {str(e)}", "danger")
+        flash(f"Error al desactivar: {str(e)}", "danger")
+    
     return redirect(url_for("cliente.clientesAdmin"))
 
 @cliente.route("/clientes/<int:id>")

@@ -3,12 +3,11 @@
 {% block content %}
 <div class="max-w-[1200px] mx-auto p-6">
     <h1 class="text-3xl font-black text-wonka-purple mb-2">Nuevo Empleado</h1>
-    <p class="text-gray-400 text-[10px] font-bold mb-6 uppercase tracking-widest">Registro Administrativo Wonka</p>
+    <p class="text-gray-400 text-[10px] font-bold mb-6 uppercase tracking-widest">Gestion de Personal Wonka</p>
 
-    <form action="{{ url_for('empleado.agregar_empleado') }}" method="POST" enctype="multipart/form-data" novalidate>
+    <form action="{{ url_for('empleado.agregar_empleado') }}" method="POST" enctype="multipart/form-data" id="empleadoForm" novalidate>
         {{ form.csrf_token }}
         
-        <input type="hidden" name="estatus" value="ACTIVO">
         <input type="hidden" name="imagen_base64_recuperada" id="imagen_base64_recuperada">
 
         <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 grid grid-cols-1 lg:grid-cols-4 gap-10">
@@ -18,126 +17,112 @@
                     <i data-lucide="user-plus" id="placeholder-icon" class="w-12 h-12 text-wonka-purple/30"></i>
                     <img id="image-preview" src="#" class="hidden w-full h-full object-cover">
                 </div>
-
                 <div class="w-full space-y-3">
                     <button type="submit" class="w-full py-4 bg-wonka-purple text-white font-black rounded-2xl shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
-                        <i data-lucide="save" class="w-5 h-5"></i> Guardar Empleado
+                        <i data-lucide="save" class="w-5 h-5"></i> Guardar Registro
                     </button>
-                    <a href="{{ url_for('empleado.empleadosAdmin') }}" class="block w-full py-4 bg-gray-100 text-gray-500 font-bold rounded-2xl text-center text-xs transition-colors hover:bg-gray-200">
-                        Cancelar
-                    </a>
+                    <a href="{{ url_for('empleado.empleadosAdmin') }}" class="block w-full py-4 bg-gray-100 text-gray-500 font-bold rounded-2xl text-center text-xs">Cancelar</a>
                 </div>
             </div>
 
             <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
                 
-                {% macro input_wonka(field, label, col_span=False) %}
-                <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50 {{ 'md:col-span-2' if col_span }}">
-                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2">{{ label }}</label>
-                    {{ field(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700") }}
-                    {% for error in field.errors %}
-                        <span class="text-red-500 text-[10px] font-bold mt-1 block">❌ {{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% endmacro %}
+                {% macro input_wonka(field, label, col_span=False, extra_class="") %}
+<div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50 {{ 'md:col-span-2' if col_span }}">
+    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2">{{ label }}</label>
+    {# Aquí sumamos la clase extra si existe #}
+    {{ field(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700 " + extra_class) }}
+    {% for error in field.errors %}<span class="text-red-500 text-[10px] font-bold mt-1 block">{{ error }}</span>{% endfor %}
+</div>
+{% endmacro %}
 
                 {{ input_wonka(form.nombre, "Nombre") }}
-                {{ input_wonka(form.apellido, "Apellido") }}
-                {{ input_wonka(form.dni_cedula, "DNI / Identificación") }}
-                {{ input_wonka(form.telefono, "Teléfono de Contacto") }}
+                {{ input_wonka(form.apellido, "Apellidos") }}
+                {{ input_wonka(form.dni_cedula, "DNI / RFC") }}
+                {{ input_wonka(form.telefono, "Telefono") }}
+                {{ input_wonka(form.email, "Correo Electronico") }}
 
-                <div class="p-4 bg-purple-50/30 rounded-2xl border border-purple-100/50 md:col-span-2">
-                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-4 italic">Credenciales de Acceso</label>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-[9px] font-bold text-gray-400 uppercase mb-1 block">Email / Usuario</label>
-                            {{ form.email(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700") }}
-                            {% for error in form.email.errors %}<span class="text-red-500 text-[10px] font-bold mt-1 block">{{ error }}</span>{% endfor %}
-                        </div>
-                        <div>
-                            <label class="text-[9px] font-bold text-gray-400 uppercase mb-1 block">Contraseña</label>
-                            {{ form.password(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700") }}
-                            {% for error in form.password.errors %}<span class="text-red-500 text-[10px] font-bold mt-1 block">{{ error }}</span>{% endfor %}
-                        </div>
+                <div class="p-4 bg-purple-50/30 rounded-2xl border {{ 'border-red-200 bg-red-50/30' if form.password.errors else 'border-purple-100/50' }}">
+                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2">Contraseña</label>
+                    <div class="flex gap-2">
+                        {{ form.password(class="flex-1 bg-white border-0 rounded-xl p-3 shadow-sm outline-none text-sm text-gray-700", id="passInput") }}
+                        <button type="button" id="btnGen" onclick="generarPassword()" class="px-4 bg-wonka-purple text-white rounded-xl text-[10px] font-black uppercase hover:bg-wonka-purple/80 transition-colors">
+                            Generar
+                        </button>
                     </div>
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <span class="text-[9px] text-red-500 font-bold mt-1 block uppercase">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
                 </div>
 
-                {{ input_wonka(form.puesto, "Cargo / Puesto") }}
+                {{ input_wonka(form.puesto, "Cargo") }}
                 {{ input_wonka(form.salario_mensual, "Salario Mensual") }}
-                {{ input_wonka(form.fecha_contratacion, "Fecha de Contratación") }}
+                {{ input_wonka(form.fecha_contratacion, "Fecha de Contratacion", extra_class="wonka-date") }}
+                {{ input_wonka(form.estatus, "Estado Laboral") }}
 
-                <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50">
-                    <label class="text-[10px] font-black text-wonka-purple uppercase block mb-2">Foto de Perfil</label>
-                    <div class="relative w-full h-10">
-                        <input type="file" name="imagen_empleado" class="absolute inset-0 z-20 w-full h-full opacity-0 cursor-pointer" onchange="previewImage(this)">
-                        <div id="fake-input-container" class="absolute inset-0 z-10 w-full bg-white border-0 rounded-xl px-3 shadow-sm flex items-center gap-2 pointer-events-none">
-                            <span class="bg-gray-100 border border-gray-200 px-2 py-1 rounded text-[9px] font-bold text-gray-600">Elegir archivo</span>
-                            <span id="fake-file-name" class="text-xs text-gray-400 truncate flex-1 italic">Sin archivo</span>
-                            <span id="badge-memoria" class="hidden bg-wonka-purple/10 text-wonka-purple text-[8px] px-1.5 py-0.5 rounded-full font-bold">RECUPERADO</span>
+                <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50">
+                        <label class="text-[10px] font-black text-wonka-purple uppercase block mb-2">Foto de Perfil</label>
+                        <div class="relative w-full h-10">
+                            <input type="file" name="imagen_empleado" class="absolute inset-0 z-20 w-full h-full opacity-0 cursor-pointer" onchange="previewImage(this)">
+                            <div class="absolute inset-0 z-10 w-full bg-white border-0 rounded-xl px-3 shadow-sm flex items-center gap-2 pointer-events-none">
+                                <span class="bg-gray-100 border border-gray-200 px-2 py-1 rounded text-[9px] font-bold text-gray-600">Elegir</span>
+                                <span id="fake-file-name" class="text-xs text-gray-400 truncate flex-1 italic">JPG/PNG</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {{ input_wonka(form.direccion, "Dirección de Domicilio", col_span=True) }}
+                    {{ input_wonka(form.direccion, "Direccion") }}
+                </div>
             </div>
         </div>
     </form>
 </div>
 
 <script>
-    function previewImage(input) {
-        if (input.files && input.files[0]) {
-            const nombre = input.files[0].name;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const b64 = e.target.result;
-                const prev = document.getElementById('image-preview');
-                prev.src = b64;
-                prev.classList.remove('hidden');
-                document.getElementById('placeholder-icon').classList.add('hidden');
-                document.getElementById('imagen_base64_recuperada').value = b64;
-                
-                localStorage.setItem('emp_wonka_img', b64);
-                localStorage.setItem('emp_wonka_name', nombre);
-                actualizarInterfazArchivo(nombre, false);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
+    function generarPassword() {
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        let pass = "";
+        for (let i = 0; i < 12; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
+        const input = document.getElementById('passInput');
+        input.value = pass;
+        input.type = "text"; 
+        input.readOnly = true; 
+        document.getElementById('btnGen').innerText = "GENERADA";
+        document.getElementById('btnGen').classList.replace('bg-wonka-purple', 'bg-gray-300');
     }
 
-    function actualizarInterfazArchivo(nombre, esRecuperado) {
-        const textElem = document.getElementById('fake-file-name');
-        const badge = document.getElementById('badge-memoria');
-        textElem.innerText = nombre;
-        textElem.classList.replace('text-gray-400', 'text-gray-700');
-        if (esRecuperado) {
-            textElem.classList.add('font-bold', 'text-wonka-purple');
-            badge.classList.remove('hidden');
-        } else {
-            badge.classList.add('hidden');
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            document.getElementById('fake-file-name').innerText = file.name;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('image-preview').src = e.target.result;
+                document.getElementById('image-preview').classList.remove('hidden');
+                document.getElementById('placeholder-icon').classList.add('hidden');
+                document.getElementById('imagen_base64_recuperada').value = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        
-        const data = localStorage.getItem('emp_wonka_img');
-        const name = localStorage.getItem('emp_wonka_name');
-        const hayErrores = document.querySelectorAll('.text-red-500').length > 0;
-        
-        if (data && hayErrores) {
-            const prev = document.getElementById('image-preview');
-            prev.src = data;
-            prev.classList.remove('hidden');
-            document.getElementById('placeholder-icon').classList.add('hidden');
-            document.getElementById('imagen_base64_recuperada').value = data;
-            actualizarInterfazArchivo(name, true);
-        }
-        
-        if (!hayErrores) {
-            localStorage.removeItem('emp_wonka_img');
-            localStorage.removeItem('emp_wonka_name');
-        }
+        window.history.replaceState({}, document.title, window.location.pathname);
     });
 </script>
+<script>
+
+              flatpickr(".wonka-date", {
+
+                disableMobile: "true",
+
+                animate: true,
+
+              });
+
+            </script>
 {% endblock %}

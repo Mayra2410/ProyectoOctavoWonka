@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
+{% extends "base.html" %} 
+{% import "_macros.html" as m %} 
+
+{% block content %}
 <div class="max-w-[1800px] mx-auto">
   <div class="mb-6">
     <h1 class="text-4xl font-bold text-wonka-purple">Proveedores</h1>
@@ -12,7 +15,9 @@
   </div>
 
   <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-    {{ m.buscador("Buscar proveedor por nombre...") }}
+    <div id="contenedor-buscador">
+        {{ m.buscador("Buscar proveedor por nombre...") }}
+    </div>
 
     <div class="overflow-x-auto">
       <table class="w-full text-left">
@@ -79,4 +84,25 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contenedor = document.getElementById('contenedor-buscador');
+    const buscador = contenedor ? contenedor.querySelector('input') : null;
+
+    if (buscador) {
+        // Mantiene el texto escrito después de recargar la página
+        buscador.value = "{{ search_query or '' }}";
+
+        buscador.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = this.value.trim();
+                // Redirige a la ruta de proveedores con el parámetro ?q=
+                window.location.href = "{{ url_for('proveedores.lista_proveedores') }}?q=" + encodeURIComponent(query);
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

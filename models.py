@@ -116,15 +116,20 @@ class Producto(db.Model):
     categoria = db.Column(db.String(50))
     precio_venta = db.Column(db.Numeric(10, 2), nullable=False)
     costo_produccion_estimado = db.Column(db.Numeric(10, 2))
+    
+    # --- AGREGA ESTAS DOS LÍNEAS ---
+    stock_actual = db.Column(db.Integer, default=0) 
+    stock_minimo = db.Column(db.Integer, default=10)
+    # -------------------------------
+
     unidad_medida = db.Column(db.String(20), default="unidad")
-    tiempo_produccion_minutos = db.Column(db.Integer)  # Opcional si lo usas
+    tiempo_produccion_minutos = db.Column(db.Integer)
     imagen_producto = db.Column(db.Text, nullable=True)
     activo = db.Column(db.Boolean, default=True)
 
     recetas = db.relationship(
         "Receta", back_populates="producto", cascade="all, delete-orphan"
     )
-
 
 class Receta(db.Model):
     __tablename__ = "recetas"
@@ -263,3 +268,13 @@ class MovimientoInventario(db.Model):
     fecha_movimiento = db.Column(db.DateTime, default=datetime.now)
 
     producto = db.relationship("Producto", backref="movimientos")
+
+class TarjetaCliente(db.Model):
+    __tablename__ = 'tarjetas_clientes'
+    id_tarjeta = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id_cliente'), nullable=False)
+    numero_encriptado = db.Column(db.String(100), nullable=False) 
+    terminacion = db.Column(db.String(4), nullable=False) 
+    banco = db.Column(db.String(50))
+    activa = db.Column(db.Boolean, default=True)
+    cliente = db.relationship('Cliente', backref=db.backref('tarjetas', lazy=True))

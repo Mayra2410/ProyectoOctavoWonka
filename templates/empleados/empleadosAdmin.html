@@ -85,9 +85,13 @@
                             ${{ "{:,.2f}".format(emp.salario_mensual) if emp.salario_mensual else "0.00" }}
                         </td>
 
-                        <td class="py-5 px-4 text-center text-gray-400 text-[11px] font-medium">
-                            {{ emp.fecha_contratacion.strftime('%d/%m/%Y') if emp.fecha_contratacion else '---' }}
-                        </td>
+                       <td class="py-5 px-4 text-center text-gray-400 text-[11px] font-medium">
+    {% if emp.fecha_contratacion %}
+        {{ emp.fecha_contratacion.strftime('%d-%m-%Y') }}
+    {% else %}
+        ---
+    {% endif %}
+</td>
 
                         <td class="py-5 px-4 text-center">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if emp.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}">
@@ -95,13 +99,13 @@
                             </span>
                         </td>
                         
-                        <td class="py-5 px-6">
-                            {{ m.acciones_tabla(
-                                edit_link=url_for('empleado.modificar_empleado', id=emp.id_empleado),
-                                delete_link=url_for('empleado.eliminar_empleado', id=emp.id_empleado),
-                                es_activo=(emp.estatus == 'ACTIVO')
-                            ) }}
-                        </td>
+                      <td class="py-5 px-6">
+    {{ m.acciones_tabla(
+        edit_link=url_for('empleado.modificar_empleado', id=emp.id_empleado),
+        delete_link=url_for('empleado.eliminar_confirmar', id=emp.id_empleado),
+        es_activo=(emp.estatus == 'ACTIVO')
+    ) }}
+</td>
                     </tr>
                     {% endfor %}
                 </tbody>

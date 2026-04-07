@@ -60,9 +60,23 @@
 
         <div class="pt-2 text-right space-y-1 border-t border-wonka-brown/20">
             {% set total_num = venta.total | float %}
-            <p class="text-gray-500">Subtotal: ${{ "{:,.2f}".format(total_num / 1.16) }}</p>
+            {% set ahorro_num = request.args.get('ahorro', 0) | float %}
+            {% set subtotal_antes_desc = total_num + ahorro_num %}
+
+            <p class="text-gray-500 text-[8px]">Monto Bruto: ${{ "{:,.2f}".format(subtotal_antes_desc) }}</p>
+            
+            {# Solo mostramos esta línea si hubo descuento real #}
+            {% if ahorro_num > 0 %}
+            <p class="text-green-600 font-bold text-[9px]">
+                DESC. VIP WONKA: -${{ "{:,.2f}".format(ahorro_num) }}
+            </p>
+            {% endif %}
+
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <p class="text-gray-500">Subtotal (sin IVA): ${{ "{:,.2f}".format(total_num / 1.16) }}</p>
             <p class="text-gray-500">IVA (16%): ${{ "{:,.2f}".format(total_num - (total_num / 1.16)) }}</p>
-            <p class="text-base font-black text-wonka-purple">TOTAL: ${{ "{:,.2f}".format(total_num) }}</p>
+            <p class="text-base font-black text-wonka-purple">TOTAL PAGADO: ${{ "{:,.2f}".format(total_num) }}</p>
         </div>
 
         <div class="text-center mt-10">

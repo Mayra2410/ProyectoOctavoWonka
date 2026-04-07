@@ -27,18 +27,19 @@
 
             <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
                 
-                {% macro input_wonka(field, label, col_span=False) %}
-                <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50 {{ 'md:col-span-2' if col_span }}">
-                    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2">{{ label }}</label>
-                    {{ field(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700") }}
-                    {% for error in field.errors %}<span class="text-red-500 text-[10px] font-bold mt-1 block">{{ error }}</span>{% endfor %}
-                </div>
-                {% endmacro %}
+                {% macro input_wonka(field, label, col_span=False, extra_class="") %}
+<div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100/50 {{ 'md:col-span-2' if col_span }}">
+    <label class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2">{{ label }}</label>
+    {# Aquí sumamos la clase extra si existe #}
+    {{ field(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-sm text-gray-700 " + extra_class) }}
+    {% for error in field.errors %}<span class="text-red-500 text-[10px] font-bold mt-1 block">{{ error }}</span>{% endfor %}
+</div>
+{% endmacro %}
 
                 {{ input_wonka(form.nombre, "Nombre Completo") }}
                 {{ input_wonka(form.email, "Correo Electronico") }}
                 {{ input_wonka(form.telefono, "Telefono de Contacto") }}
-                {{ input_wonka(form.fecha_registro, "Fecha de Registro") }}
+                {{ input_wonka(form.fecha_registro, "Fecha de Registro", False, "wonka-date") }}
                 {{ input_wonka(form.tipo, "Tipo de Comprador") }}
                 {{ input_wonka(form.categoria_comprador, "Categoria") }}
 
@@ -114,4 +115,15 @@
         }
     });
 </script>
+<script>
+
+              flatpickr(".wonka-date", {
+
+                disableMobile: "true",
+
+                animate: true,
+
+              });
+
+            </script>
 {% endblock %}

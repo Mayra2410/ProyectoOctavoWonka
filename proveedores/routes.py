@@ -2,23 +2,40 @@ from flask import render_template, request, redirect, url_for
 from . import proveedores
 from . import forms
 from models import db, Proveedores
-
+from utils import login_required
+from sqlalchemy import or_ 
 
 # Mostrar lista de proveedores en la tabla
 @proveedores.route("/proveedores", methods=["GET", "POST"])
+@login_required
 def lista_proveedores():
     create_form = forms.ProveedorForm(request.form)
-    lista_de_proveedores = Proveedores.query.all()
+    
+    # Capturamos la búsqueda igual que en empleados
+    search_query = request.args.get('q', '').strip()
+    query = Proveedores.query
+
+    if search_query:
+        # Filtramos por nombre o contacto
+        filtros = [
+            Proveedores.nombre.ilike(f"%{search_query}%"),
+            Proveedores.contacto.ilike(f"%{search_query}%")
+        ]
+        query = query.filter(or_(*filtros))
+
+    lista_de_proveedores = query.all()
 
     return render_template(
         "proveedores/proveedoresAdmin.html",
         form=create_form,
         proveedores=lista_de_proveedores,
+        search_query=search_query # Pasamos esto para el script
     )
 
 
 # Mostrar detalles de proveedor
 @proveedores.route("/proveedores/<int:id>")
+@login_required
 def detalle_proveedor(id):
     proveedor = Proveedores.query.get_or_404(id)
     return render_template("proveedores/detallesProveedores.html", proveedor=proveedor)
@@ -26,6 +43,8 @@ def detalle_proveedor(id):
 
 # Agregar nuevo proveedor
 @proveedores.route("/proveedores/agregar", methods=["GET", "POST"])
+@login_required
+
 def agregar_proveedor():
     form = forms.ProveedorForm(request.form)
 
@@ -71,6 +90,8 @@ def agregar_proveedor():
 
 # Modificar proveedor
 @proveedores.route("/proveedores/modificar/<int:id>", methods=["GET", "POST"])
+@login_required
+
 def modificar_proveedor(id):
     proveedor = Proveedores.query.get_or_404(id)
     form = forms.ProveedorForm(request.form, obj=proveedor)
@@ -125,6 +146,8 @@ def modificar_proveedor(id):
 
 # Eliminar un proveedor (cambia a inactivo)
 @proveedores.route("/proveedores/eliminar/confirmar/<int:id>")
+@login_required
+
 def eliminar_proveedor(id):
     proveedor = Proveedores.query.get_or_404(id)
 
@@ -136,6 +159,8 @@ def eliminar_proveedor(id):
 
 
 @proveedores.route("/proveedores/desactivar/<int:id>", methods=["POST"])
+@login_required
+
 def desactivar_proveedor(id):
     proveedor = Proveedores.query.get_or_404(id)
     proveedor.activo = False

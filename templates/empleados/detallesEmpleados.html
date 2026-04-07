@@ -80,11 +80,17 @@
                     </div>
 
                     <div class="flex flex-col justify-center md:col-span-2">
-                        <label class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] block mb-1">Fecha de Contratacion</label>
-                        <p class="text-gray-700 font-bold text-sm">
-                            {{ empleado.fecha_contratacion.strftime('%d de %B, %Y') if empleado.fecha_contratacion else '---' }}
-                        </p>
-                    </div>
+    <label class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] block mb-1">Fecha de Contratación</label>
+    <p class="text-gray-700 font-bold text-sm">
+        {% if empleado.fecha_contratacion %}
+            {# Traducción manual de meses #}
+            {% set meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'] %}
+            {{ empleado.fecha_contratacion.day }} de {{ meses[empleado.fecha_contratacion.month - 1] }}, {{ empleado.fecha_contratacion.year }}
+        {% else %}
+            ---
+        {% endif %}
+    </p>
+</div>
 
                 </div>
 

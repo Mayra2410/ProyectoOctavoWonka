@@ -44,6 +44,12 @@ def cancelar_venta(id):
     flash(f"Venta #{id} cancelada y sus órdenes de producción eliminadas.", "warning")
     return redirect(url_for('gesVentas.mostrar_ventas'))
 
+@gesVentas.route('/historial-ventas')
+def historial_ventas():
+    ventas = Venta.query.join(Cliente).order_by(Venta.fecha_venta.desc()).all()
+    
+    return render_template('gesVentas/historial.html', ventas=ventas)
+
 @gesVentas.route('/ver-ticket/<int:id>')
 def ver_ticket(id):
     venta = Venta.query.get_or_404(id)
