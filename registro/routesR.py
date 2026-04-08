@@ -5,6 +5,7 @@ from . import registro
 from .formsR import ClienteForm
 from models import db, Usuario, Cliente
 from werkzeug.security import generate_password_hash
+from utils import login_required
 
 
 @registro.route("/registro_cliente", methods=["GET", "POST"])

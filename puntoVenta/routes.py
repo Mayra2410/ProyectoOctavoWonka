@@ -1,10 +1,13 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from models import db, OrdenProduccion, Producto, Venta, Cliente, TarjetaCliente
 from datetime import datetime
+from utils import login_required
+
 
 puntoVenta_bp = Blueprint('puntoVenta', __name__)
 
 @puntoVenta_bp.route('/')
+@login_required
 def index():
     productos = Producto.query.filter_by(activo=True).all()
     if 'carrito' not in session:
@@ -14,6 +17,7 @@ def index():
     return render_template('puntoVenta/pos.html', productos=productos, total=total_carrito)
 
 @puntoVenta_bp.route('/agregar-al-carrito', methods=['POST'])
+@login_required
 def agregar():
     id_p = request.form.get('producto_id')
     presentacion = int(request.form.get('presentacion')) 
@@ -39,6 +43,7 @@ def agregar():
     return redirect(url_for('puntoVenta.index'))
 
 @puntoVenta_bp.route('/quitar-del-carrito/<int:indice>')
+@login_required
 def quitar_item(indice):
     carrito = session.get('carrito', [])
     if 0 <= indice < len(carrito):
@@ -48,11 +53,13 @@ def quitar_item(indice):
     return redirect(url_for('puntoVenta.index'))
 
 @puntoVenta_bp.route('/limpiar-carrito')
+@login_required
 def limpiar():
     session.pop('carrito', None)
     return redirect(url_for('puntoVenta.index'))
 
 @puntoVenta_bp.route('/registrar-tarjeta', methods=['GET', 'POST'])
+@login_required
 def registrar_tarjeta_view():
     if request.method == 'POST':
         user_id = session.get('user_id')
@@ -88,6 +95,7 @@ def registrar_tarjeta_view():
     return render_template('puntoVenta/registrar_tarjeta.html')
 
 @puntoVenta_bp.route('/finalizar-venta', methods=['POST'])
+@login_required
 def finalizar_venta():
     carrito = session.get('carrito', [])
     if not carrito:

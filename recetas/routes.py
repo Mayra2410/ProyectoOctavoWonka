@@ -4,9 +4,12 @@ from sqlalchemy.exc import IntegrityError
 from . import recetas
 from .forms import RecetaForm
 from models import db, Receta, Producto, MateriasPrimas, RecetaDetalle
+from utils import login_required
+
 
 
 @recetas.route('/recetas')
+@login_required
 def lista_recetas():
     busqueda = request.args.get('q', '').strip()
 
@@ -26,6 +29,7 @@ def lista_recetas():
 
 
 @recetas.route('/recetas/agregar', methods=['GET', 'POST'])
+@login_required
 def agregar_receta():
     form = RecetaForm()
     form.producto_id.choices = [(p.id_producto, p.nombre) for p in Producto.query.all()]
@@ -76,6 +80,7 @@ def agregar_receta():
 
 
 @recetas.route('/recetas/editar/<int:id_receta>', methods=['GET', 'POST'])
+@login_required
 def modificar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     form = RecetaForm(obj=receta)
@@ -134,6 +139,7 @@ def modificar_receta(id_receta):
 
 
 @recetas.route("/recetas/eliminar/confirmar/<int:id_receta>")
+@login_required
 def confirmar_eliminar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     form = FlaskForm()
@@ -148,6 +154,7 @@ def confirmar_eliminar_receta(id_receta):
 
 
 @recetas.route("/recetas/desactivar/<int:id_receta>", methods=["POST"])
+@login_required
 def desactivar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     receta.activo = False
@@ -163,6 +170,7 @@ def desactivar_receta(id_receta):
 
 
 @recetas.route('/recetas/reactivar/<int:id_receta>', methods=['POST'])
+@login_required
 def reactivar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     receta.activo = True
@@ -178,6 +186,7 @@ def reactivar_receta(id_receta):
 
 
 @recetas.route('/recetas/detalles/<int:id_receta>')
+@login_required
 def detalle_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
 
@@ -189,6 +198,7 @@ def detalle_receta(id_receta):
 
 
 @recetas.route('/recetas/<int:id_receta>/ingredientes', methods=['GET', 'POST'])
+@login_required
 def gestionar_ingredientes(id_receta):
     receta = Receta.query.get_or_404(id_receta)
     materias = MateriasPrimas.query.filter_by(activo=True).order_by(MateriasPrimas.nombre.asc()).all()

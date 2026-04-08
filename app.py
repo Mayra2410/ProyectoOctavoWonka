@@ -73,7 +73,7 @@ def index():
             # REDIRECCIÓN SEGÚN ROL
             if user.rol == 'CLIENTE':
                 # Lo mandamos a su perfil o al punto de venta
-                return redirect(url_for('cliente.detalles_cliente_vista')) 
+                return redirect(url_for('puntoVenta.index')) 
             else:
                 # Si es empleado/gerente va al panel administrativo
                 return redirect(url_for('proveedores.lista_proveedores'))

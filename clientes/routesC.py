@@ -4,9 +4,12 @@ from models import db, Cliente, Usuario, Venta
 from .formsC import ClienteForm
 from sqlalchemy import or_
 import base64
+from utils import login_required
+
 
 
 @cliente.route("/clientes", methods=["GET"])
+@login_required
 def clientesAdmin():
     search_query = request.args.get("q", "").strip()
     query = Cliente.query
@@ -27,6 +30,7 @@ def clientesAdmin():
 
 
 @cliente.route("/clientes/agregar", methods=["GET", "POST"])
+@login_required
 def agregar_cliente():
     form = ClienteForm()
     if form.validate_on_submit():
@@ -71,6 +75,7 @@ def agregar_cliente():
 
 
 @cliente.route("/clientes/modificar/<int:id>", methods=["GET", "POST"])
+@login_required
 def modificar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
     form = ClienteForm(obj=cliente_obj)
@@ -104,6 +109,7 @@ def modificar_cliente(id):
 
 
 @cliente.route("/clientes/eliminar/<int:id>")
+@login_required
 def eliminar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
     # Simplemente enviamos al nuevo HTML
@@ -111,6 +117,7 @@ def eliminar_cliente(id):
 
 
 @cliente.route("/clientes/desactivar/<int:id>", methods=["POST"])
+@login_required
 def desactivar_confirmado(id):
     cliente_obj = Cliente.query.get_or_404(id)
     try:
@@ -124,6 +131,7 @@ def desactivar_confirmado(id):
 
 
 @cliente.route("/clientes/<int:id>")
+@login_required
 def detalle_cliente(id):
     return render_template(
         "clientes/detallesClientes.html", cliente=Cliente.query.get_or_404(id)
@@ -131,6 +139,7 @@ def detalle_cliente(id):
 
 
 @cliente.route("/mi-perfil")
+@login_required
 def detalles_cliente_vista():
     if "user_id" not in session:
         return redirect(url_for("index"))
@@ -142,6 +151,7 @@ def detalles_cliente_vista():
 
 
 @cliente.route("/mi-perfil/editar", methods=["GET", "POST"])
+@login_required
 def modificar_cliente_vista():
     if "user_id" not in session:
         return redirect(url_for("index"))
@@ -204,6 +214,7 @@ def modificar_cliente_vista():
 
 
 @cliente.route("/mis-pedidos")
+@login_required
 def mis_compras():
     if "user_id" not in session:
         return redirect(url_for("index"))

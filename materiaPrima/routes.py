@@ -3,21 +3,25 @@ from flask import render_template, redirect, request, url_for, flash
 from models import db, MateriasPrimas, Proveedores
 from . import materia_Prima
 from . import forms
+from utils import login_required
 
 
 @materia_Prima.route("/materias-primas")
+@login_required
 def admin_materias():
     materias = MateriasPrimas.query.all()
     return render_template("materiaPrima/materiaPrimaAdmin.html", materias=materias)
 
 
 @materia_Prima.route("/detalles/<int:id>")
+@login_required
 def detalle_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     return render_template("materiaPrima/detallesMateriaPrima.html", materia=materia)
 
 
 @materia_Prima.route("/agregar", methods=["GET", "POST"])
+@login_required
 def agregar_materia():
     form = forms.MateriaPrimaForm(request.form)
     form.proveedor_id.choices = [
@@ -65,6 +69,7 @@ def agregar_materia():
 
 
 @materia_Prima.route("/modificar/<int:id>", methods=["GET", "POST"])
+@login_required
 def modificar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     form = forms.MateriaPrimaForm(request.form, obj=materia)
@@ -112,6 +117,7 @@ def modificar_materia(id):
 
 
 @materia_Prima.route("/materias-primas/eliminar/confirmar/<int:id>")
+@login_required
 def eliminar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     form = forms.MateriaPrimaForm()
@@ -124,6 +130,8 @@ def eliminar_materia(id):
 
 
 @materia_Prima.route("/materias-primas/desactivar/<int:id>", methods=["POST"])
+@login_required
+
 def desactivar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     materia.activo = False

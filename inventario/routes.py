@@ -3,9 +3,12 @@ from . import inventario
 from models import db, Producto, MovimientoInventario
 from models import MateriasPrimas, Producto, MovimientoInventario, db
 from datetime import datetime
+from utils import login_required
+
 
 
 @inventario.route("/producto-terminado")
+@login_required
 def mostrar_inventario():
     productos = Producto.query.all()
 
@@ -29,6 +32,7 @@ def mostrar_inventario():
 
 
 @inventario.route("/registrar-ajuste", methods=["POST"])
+@login_required
 def registrar_ajuste():
     id_prod = request.form.get("producto_id")
     cantidad_input = int(request.form.get("cantidad"))

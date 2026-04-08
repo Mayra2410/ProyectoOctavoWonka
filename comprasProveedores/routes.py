@@ -2,9 +2,11 @@ from . import compras_bp
 from models import ComprasMateriaPrima, MateriasPrimas, Proveedores, db
 from flask import render_template, redirect, request, url_for, flash
 from . import forms
+from utils import login_required
 
 
 @compras_bp.route("/compras")
+@login_required
 def lista_compras():
     compras = ComprasMateriaPrima.query.all()
     return render_template(
@@ -13,6 +15,7 @@ def lista_compras():
 
 
 @compras_bp.route("/compras/registrar", methods=["GET", "POST"])
+@login_required
 def registrar_compra():
     form = forms.CompraMateriaPrimaForm(
         request.form if request.method == "POST" else None
@@ -65,6 +68,7 @@ def registrar_compra():
 
 
 @compras_bp.route("/compras/detalles/<int:id>")
+@login_required
 def detalles_compra(id):
     compra = ComprasMateriaPrima.query.get_or_404(id)
 

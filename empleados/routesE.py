@@ -8,6 +8,8 @@ from models import db, Empleado, Usuario
 from .formsE import EmpleadoForm
 from werkzeug.security import generate_password_hash
 from datetime import datetime
+from utils import login_required
+
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
@@ -25,6 +27,7 @@ def procesar_imagen_base64(archivo):
 
 
 @empleado.route("/empleados", methods=["GET"])
+@login_required
 def empleadosAdmin():
     search_query = request.args.get("q", "").strip()
     query = Empleado.query
@@ -47,6 +50,7 @@ def empleadosAdmin():
 
 
 @empleado.route("/agregar_empleado", methods=["GET", "POST"])
+@login_required
 def agregar_empleado():
     form = EmpleadoForm()
 
@@ -104,6 +108,7 @@ def agregar_empleado():
 
 
 @empleado.route("/empleados/modificar/<int:id>", methods=["GET", "POST"])
+@login_required
 def modificar_empleado(id):
     empleado_obj = Empleado.query.get_or_404(id)
     form = EmpleadoForm(obj=empleado_obj)
@@ -152,12 +157,14 @@ def modificar_empleado(id):
 
 
 @empleado.route("/empleados/eliminar/confirmar/<int:id>")
+@login_required
 def eliminar_confirmar(id):
     empleado_obj = Empleado.query.get_or_404(id)
     return render_template("empleados/eliminarEmpleados.html", empleado=empleado_obj)
 
 
 @empleado.route("/empleados/desactivar/<int:id>", methods=["POST"])
+@login_required
 def desactivar_empleado(id):
     empleado_obj = Empleado.query.get_or_404(id)
     try:
@@ -171,6 +178,7 @@ def desactivar_empleado(id):
 
 
 @empleado.route("/empleados/detalle/<int:id>")
+@login_required
 def detalle_empleado(id):
     empleado_obj = Empleado.query.get_or_404(id)
     return render_template("empleados/detallesEmpleados.html", empleado=empleado_obj)

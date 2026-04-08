@@ -1,182 +1,181 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WONKA</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            "wonka-purple": "#8b5cf6",
-            "wonka-purple-dark": "#7c3aed",
-            "wonka-brown": "#5c4033",
-            "wonka-cream": "#fdf8f3",
-            "wonka-gold": "#ffcc00",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WONKA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "wonka-purple": "#8b5cf6",
+              "wonka-purple-dark": "#7c3aed",
+              "wonka-brown": "#5c4033",
+              "wonka-cream": "#fdf8f3",
+              "wonka-gold": "#ffcc00",
+            },
           },
         },
-      },
-    };
-  </script>
-  <style>
-    .sidebar-item-active {
-      background-color: #8b5cf6 !important;
-      color: white !important;
-      border-radius: 0.75rem;
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/calendario.css') }}" />
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-</head>
+      };
+    </script>
+    <style>
+      .sidebar-item-active {
+        background-color: #8b5cf6 !important;
+        color: white !important;
+        border-radius: 0.75rem;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style/calendario.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
 
-<body class="flex h-screen bg-wonka-cream overflow-hidden">
-  <aside class="w-64 bg-[#5c4434] text-white flex flex-col flex-shrink-0 shadow-2xl">
-  <div class="p-6">
-    <div class="flex items-center gap-2 mb-8">
-      <i data-lucide="sparkles" class="text-wonka-gold w-8 h-8"></i>
-      <h1 class="text-2xl font-black tracking-tighter text-wonka-gold">WONKA</h1>
-    </div>
+  <body class="flex h-screen bg-wonka-cream overflow-hidden">
+    <aside
+      class="w-64 bg-[#5c4434] text-white flex flex-col flex-shrink-0 shadow-2xl"
+    >
+      <div class="p-6">
+        <div class="flex items-center gap-2 mb-8">
+          <i data-lucide="sparkles" class="text-wonka-gold w-8 h-8"></i>
+          <h1 class="text-2xl font-black tracking-tighter text-wonka-gold">
+            WONKA
+          </h1>
+        </div>
 
- <nav class="space-y-1">
-    {% if session['rol'] == 'CLIENTE' %}
-    {% set items = [
-        ('profile', 'Mi Perfil', 'user', 'cliente.detalles_cliente_vista'),
-        ('pos', 'Tienda Wonka', 'shopping-bag', 'puntoVenta.index'),
-        ('orders', 'Mis Pedidos', 'package', 'cliente.mis_compras')
-    ] %}
-
-    {% elif session['rol'] == 'GERENTE' %}
-        {# --- VISTA GERENTE: TODO --- #}
-        {% set items = [ 
-            ('pos', 'Punto de Venta', 'shopping-bag', 'puntoVenta.index'),
-            ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
-            ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
-            ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
-            ('materials', 'Materias Primas', 'package', 'materiaPrima.admin_materias'),
-            ('purchases', 'Pedidos', 'shopping-cart', 'comprasProveedores.lista_compras'),
-            ('payments', 'Pagos', 'credit-card', 'pagosProveedores.lista_pagos'),
-            ('products', 'Productos', 'boxes', 'productos.lista_productos'),
-            ('recipes', 'Recetas', 'chef-hat', 'recetas.lista_recetas'),
-            ('production', 'Producción', 'factory', 'produccion.mostrar_ordenes'),
-            ('inventory', 'Inventario', 'warehouse', 'inventario.mostrar_inventario'),
-            ('sales', 'Ventas', 'trending-up', 'gesVentas.mostrar_ventas')
-        ] %}
-
-    {% elif session['rol'] == 'CHOCOLATERO' %}
-        {# --- VISTA CHOCOLATERO --- #}
-        {% set items = [
-            ('products', 'Productos', 'boxes', 'productos.lista_productos'),
-            ('recipes', 'Recetas', 'chef-hat', 'recetas.lista_recetas'),
-            ('production', 'Producción', 'factory', 'produccion.mostrar_ordenes'),
-            ('inventory', 'Inventario', 'warehouse', 'inventario.mostrar_inventario')
-        ] %}
-
-    {% elif session['rol'] == 'VENTAS' %}
-        {# --- VISTA VENTAS --- #}
-        {% set items = [
-            ('pos', 'Punto de Venta', 'shopping-bag', 'puntoVenta.index'),
-            ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
-            ('sales', 'Ventas', 'trending-up', 'gesVentas.mostrar_ventas'),
-            ('products', 'Productos', 'boxes', 'productos.lista_productos')
-        ] %}
-
-    {% elif session['rol'] == 'CONTROL_CALIDAD' %}
-        {# --- VISTA CONTROL CALIDAD --- #}
-        {% set items = [
-            ('production', 'Producción', 'factory', 'produccion.mostrar_ordenes'),
-            ('materials', 'Materias Primas', 'package', 'materiaPrima.admin_materias'),
-            ('products', 'Productos', 'boxes', 'productos.lista_productos')
-        ] %}
-
-    {% elif session['rol'] == 'LOGISTICA' %}
-        {# --- VISTA LOGÍSTICA --- #}
-        {% set items = [
-            ('inventory', 'Inventario', 'warehouse', 'inventario.mostrar_inventario'),
-            ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
-            ('purchases', 'Pedidos', 'shopping-cart', 'comprasProveedores.lista_compras')
-        ] %}
-
-    {% elif session['rol'] == 'MANTENIMIENTO' %}
-        {# --- VISTA MANTENIMIENTO --- #}
-        {% set items = [
-            ('inventory', 'Equipo/Material', 'tool', 'inventario.mostrar_inventario')
-        ] %}
-    {% endif %}
-
-    {# --- RENDERIZADO FINAL --- #}
-    {% for id, label, icon, ruta in items %}
-    <a href="{{ url_for(ruta) if ruta != '#' else '#' }}"
-       class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group 
-       {% if request.endpoint == ruta %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}">
-      <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
-      {{ label }}
-    </a>
-    {% endfor %}
-</nav>
-  </div>
-</aside>
-
-<div class="flex-1 flex flex-col min-w-0">
-  <header class="h-16 bg-[#5c4434] flex items-center justify-between px-8 shadow-md">
-  {# TÍTULO DINÁMICO DEL PANEL SEGÚN EL ROL #}
-  <span class="text-white/70 text-sm font-black uppercase tracking-widest">
-    {% if session['rol'] == 'CLIENTE' %}
-      Panel de Cliente
-    {% else %}
-      Panel {{ session['rol']|replace('_', ' ') }}
-    {% endif %}
-  </span>
-
-  <div class="flex items-center gap-4">
-    <div class="flex items-center gap-2 text-white">
-      {# NOMBRE DEL USUARIO REAL #}
-      <div class="flex flex-col items-end">
-        <span class="text-xs font-bold text-wonka-gold leading-none mb-1">{{ session['rol'] }}</span>
-        <span class="text-sm font-black tracking-tight">{{ session['nombre'] if session['nombre'] else session['username'] }}</span>
+        <nav class="space-y-1">
+          {% if session['rol'] == 'CLIENTE' %} 
+          {% set items = [ ('pos', 'Tienda
+          Wonka', 'shopping-bag', 'puntoVenta.index'), ('orders', 'Mis Pedidos',
+          'package', 'cliente.mis_compras'), ('profile', 'Mi Perfil', 'user',
+          'cliente.detalles_cliente_vista'), ] %} {% elif session['rol'] ==
+          'GERENTE' %} 
+          {# --- VISTA GERENTE: TODO --- #} {% set items = [
+          ('pos', 'Punto de Venta', 'shopping-bag', 'puntoVenta.index'),
+          ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
+          ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
+          ('suppliers', 'Proveedores', 'truck',
+          'proveedores.lista_proveedores'), ('materials', 'Materias Primas',
+          'package', 'materiaPrima.admin_materias'), ('purchases', 'Pedidos',
+          'shopping-cart', 'comprasProveedores.lista_compras'), ('payments',
+          'Pagos', 'credit-card', 'pagosProveedores.lista_pagos'), ('products',
+          'Productos', 'boxes', 'productos.lista_productos'), ('recipes',
+          'Recetas', 'chef-hat', 'recetas.lista_recetas'), ('production',
+          'Producción', 'factory', 'produccion.mostrar_ordenes'), ('inventory',
+          'Inventario', 'warehouse', 'inventario.mostrar_inventario'), ('sales',
+          'Ventas', 'trending-up', 'gesVentas.mostrar_ventas') ] %} {% elif
+          session['rol'] == 'CHOCOLATERO' %} {# --- VISTA CHOCOLATERO --- #} {%
+          set items = [ ('products', 'Productos', 'boxes',
+          'productos.lista_productos'), ('recipes', 'Recetas', 'chef-hat',
+          'recetas.lista_recetas'), ('production', 'Producción', 'factory',
+          'produccion.mostrar_ordenes'), ('inventory', 'Inventario',
+          'warehouse', 'inventario.mostrar_inventario') ] %} {% elif
+          session['rol'] == 'VENTAS' %} {# --- VISTA VENTAS --- #} {% set items
+          = [ ('pos', 'Punto de Venta', 'shopping-bag', 'puntoVenta.index'),
+          ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'), ('sales',
+          'Ventas', 'trending-up', 'gesVentas.mostrar_ventas'), ('products',
+          'Productos', 'boxes', 'productos.lista_productos') ] %} {% elif
+          session['rol'] == 'CONTROL_CALIDAD' %} {# --- VISTA CONTROL CALIDAD
+          --- #} {% set items = [ ('production', 'Producción', 'factory',
+          'produccion.mostrar_ordenes'), ('materials', 'Materias Primas',
+          'package', 'materiaPrima.admin_materias'), ('products', 'Productos',
+          'boxes', 'productos.lista_productos') ] %} {% elif session['rol'] ==
+          'LOGISTICA' %} {# --- VISTA LOGÍSTICA --- #} {% set items = [
+          ('inventory', 'Inventario', 'warehouse',
+          'inventario.mostrar_inventario'), ('suppliers', 'Proveedores',
+          'truck', 'proveedores.lista_proveedores'), ('purchases', 'Pedidos',
+          'shopping-cart', 'comprasProveedores.lista_compras') ] %} {% elif
+          session['rol'] == 'MANTENIMIENTO' %} {# --- VISTA MANTENIMIENTO --- #}
+          {% set items = [ ('inventory', 'Equipo/Material', 'tool',
+          'inventario.mostrar_inventario') ] %} {% endif %} {# --- RENDERIZADO
+          FINAL --- #} {% for id, label, icon, ruta in items %}
+          <a
+            href="{{ url_for(ruta) if ruta != '#' else '#' }}"
+            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all group {% if request.endpoint == ruta %} sidebar-item-active {% else %} text-gray-300 hover:text-white hover:bg-white/10 rounded-xl {% endif %}"
+          >
+            <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+            {{ label }}
+          </a>
+          {% endfor %}
+        </nav>
       </div>
-      
-      {# AVATAR CON LA INICIAL #}
-      <div class="w-10 h-10 rounded-full bg-wonka-purple border-2 border-wonka-gold/30 flex items-center justify-center font-black text-sm shadow-inner">
-        {{ (session['nombre'][0] if session['nombre'] else session['username'][0])|upper }}
-      </div>
-    </div>
+    </aside>
 
-    {# BOTÓN DE SALIDA #}
-    <a href="{{ url_for('logout') }}" class="ml-2 p-2 text-white/50 hover:text-red-400 transition-colors" title="Cerrar Sesión">
-      <i data-lucide="log-out" class="w-5 h-5"></i>
-    </a>
-  </div>
-</header>
+    <div class="flex-1 flex flex-col min-w-0">
+      <header
+        class="h-16 bg-[#5c4434] flex items-center justify-between px-8 shadow-md"
+      >
+        {# TÍTULO DINÁMICO DEL PANEL SEGÚN EL ROL #}
+        <span
+          class="text-white/70 text-sm font-black uppercase tracking-widest"
+        >
+          {% if session['rol'] == 'CLIENTE' %} Panel de Cliente {% else %} Panel
+          {{ session['rol']|replace('_', ' ') }} {% endif %}
+        </span>
 
-    <main class="flex-1 overflow-y-auto p-8">
-      <div class="max-w-[1800px] mx-auto">
-        {% block content %}{% endblock %}
-      </div>
-    </main>
-  </div>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 text-white">
+            {# NOMBRE DEL USUARIO REAL #}
+            <div class="flex flex-col items-end">
+              <span class="text-xs font-bold text-wonka-gold leading-none mb-1"
+                >{{ session['rol'] }}</span
+              >
+              <span class="text-sm font-black tracking-tight"
+                >{{ session['nombre'] if session['nombre'] else
+                session['username'] }}</span
+              >
+            </div>
 
-  <script>
-    lucide.createIcons();
-  </script>
-
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      <div class="fixed top-6 right-6 z-50 space-y-3">
-        {% for category, message in messages %}
-          <div class="px-6 py-4 rounded-xl shadow-lg text-white font-semibold
-            {% if category == 'success' %} bg-green-500
-            {% elif category == 'warning' %} bg-yellow-500
-            {% elif category == 'danger' %} bg-red-500
-            {% else %} bg-gray-800 {% endif %}">
-            {{ message }}
+            {# AVATAR CON LA INICIAL #}
+            <div
+              class="w-10 h-10 rounded-full bg-wonka-purple border-2 border-wonka-gold/30 flex items-center justify-center font-black text-sm shadow-inner"
+            >
+              {{ (session['nombre'][0] if session['nombre'] else
+              session['username'][0])|upper }}
+            </div>
           </div>
-        {% endfor %}
+
+          {# BOTÓN DE SALIDA #}
+          <a
+            href="{{ url_for('logout') }}"
+            class="ml-2 p-2 text-white/50 hover:text-red-400 transition-colors"
+            title="Cerrar Sesión"
+          >
+            <i data-lucide="log-out" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="flex-1 overflow-y-auto p-8">
+        <div class="max-w-[1800px] mx-auto">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+    </div>
+
+    <script>
+      lucide.createIcons();
+    </script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="fixed top-6 right-6 z-50 space-y-3">
+      {% for category, message in messages %}
+      <div
+        class="px-6 py-4 rounded-xl shadow-lg text-white font-semibold {% if category == 'success' %} bg-green-500 {% elif category == 'warning' %} bg-yellow-500 {% elif category == 'danger' %} bg-red-500 {% else %} bg-gray-800 {% endif %}"
+      >
+        {{ message }}
       </div>
-    {% endif %}
-  {% endwith %}
-</body>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+  </body>
 </html>

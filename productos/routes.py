@@ -4,9 +4,11 @@ from . import productos
 from .forms import ProductoForm
 from models import db, Producto, Receta
 import base64
+from utils import login_required
 
 
 @productos.route("/productos")
+@login_required
 def lista_productos():
     busqueda = request.args.get("q", "").strip()
 
@@ -26,6 +28,7 @@ def lista_productos():
 
 
 @productos.route("/productos/detalles/<int:id_producto>")
+@login_required
 def detalle_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     form = ProductoForm(obj=producto)
@@ -39,6 +42,7 @@ def detalle_producto(id_producto):
 
 
 @productos.route("/productos/agregar", methods=["GET", "POST"])
+@login_required
 def agregar_producto():
     form = ProductoForm()
 
@@ -87,6 +91,7 @@ def agregar_producto():
 
 
 @productos.route("/productos/editar/<int:id_producto>", methods=["GET", "POST"])
+@login_required
 def editar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     form = ProductoForm(obj=producto)
@@ -136,6 +141,7 @@ def editar_producto(id_producto):
 
 
 @productos.route("/productos/eliminar/confirmar/<int:id_producto>")
+@login_required
 def confirmar_eliminar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     form = FlaskForm()
@@ -150,6 +156,7 @@ def confirmar_eliminar_producto(id_producto):
 
 
 @productos.route("/productos/desactivar/<int:id_producto>", methods=["POST"])
+@login_required
 def desactivar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
 
@@ -166,6 +173,7 @@ def desactivar_producto(id_producto):
 
 
 @productos.route("/productos/reactivar/<int:id_producto>", methods=["POST"])
+@login_required
 def reactivar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     producto.activo = True
@@ -176,6 +184,7 @@ def reactivar_producto(id_producto):
 
 
 @productos.route("/productos/<int:id_producto>/receta")
+@login_required
 def ver_receta_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
 
@@ -192,5 +201,5 @@ def ver_receta_producto(id_producto):
         "recetas/detalleRecetaProducto.html",
         receta=receta,
         producto=producto,
-        active_page="productos.lista_productos",
+        active_page="puntoVenta.index",
     )

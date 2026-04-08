@@ -2,11 +2,14 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request
 from datetime import datetime
 from .forms import PagoProveedorForm
 from models import db, ComprasMateriaPrima, PagoProveedor, MateriasPrimas
+from utils import login_required
+
 
 pagosProveedores = Blueprint("pagosProveedores", __name__)
 
 
 @pagosProveedores.route("/pagos-proveedores")
+@login_required
 def lista_pagos():
     compras_pendientes = ComprasMateriaPrima.query.filter_by(
         estatus_compra="PENDIENTE"
@@ -18,6 +21,7 @@ def lista_pagos():
 
 
 @pagosProveedores.route("/pagos-proveedores/<int:id_compra>", methods=["GET", "POST"])
+@login_required
 def gestionar_pago(id_compra):
     compra = ComprasMateriaPrima.query.get_or_404(id_compra)
 

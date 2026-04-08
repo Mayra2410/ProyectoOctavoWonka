@@ -3,8 +3,11 @@ from . import produccion
 from models import db, OrdenProduccion, Producto, Receta, RecetaDetalle, MateriasPrimas, Venta
 from datetime import datetime
 import random 
+from utils import login_required
+
 
 @produccion.route('/ordenes', methods=['GET', 'POST']) 
+@login_required
 def mostrar_ordenes():
     # if not session.get('username'):
     #     flash("Por favor, regístrate.", "warning")
@@ -25,6 +28,7 @@ def mostrar_ordenes():
         
     return render_template('produccion/ordenes.html', ordenes=ordenes)
 @produccion.route('/crear-orden', methods=['POST'])
+@login_required
 def crear_orden():
 
     id_prod = request.form.get('producto_id')
@@ -52,6 +56,7 @@ def crear_orden():
     return redirect(url_for('produccion.mostrar_ordenes'))
 
 @produccion.route('/completar-orden/<int:id>')
+@login_required
 def completar_orden(id):
 
     orden = OrdenProduccion.query.get_or_404(id)

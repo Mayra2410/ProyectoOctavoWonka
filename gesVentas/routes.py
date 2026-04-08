@@ -3,8 +3,11 @@ from . import gesVentas
 from models import db, Producto, Venta, OrdenProduccion, Cliente, PagoProveedor
 from datetime import datetime
 from sqlalchemy import func
+from utils import login_required
+
 
 @gesVentas.route('/gestion-ventas', methods=['GET', 'POST'])
+@login_required
 def mostrar_ventas():
     ventas_pendientes = Venta.query.filter_by(estado='PENDIENTE').all()
     for v in ventas_pendientes:
@@ -35,6 +38,7 @@ def mostrar_ventas():
                            utilidad=utilidad, productos=productos_db, hoy=hoy)
 
 @gesVentas.route('/cancelar-venta/<int:id>')
+@login_required
 def cancelar_venta(id):
     venta = Venta.query.get_or_404(id)
     OrdenProduccion.query.filter(OrdenProduccion.lote.like(f"AUTO-{id}-%")).delete(synchronize_session=False)
@@ -45,18 +49,21 @@ def cancelar_venta(id):
     return redirect(url_for('gesVentas.mostrar_ventas'))
 
 @gesVentas.route('/historial-ventas')
+@login_required
 def historial_ventas():
     ventas = Venta.query.join(Cliente).order_by(Venta.fecha_venta.desc()).all()
     
     return render_template('gesVentas/historial.html', ventas=ventas)
 
 @gesVentas.route('/ver-ticket/<int:id>')
+@login_required
 def ver_ticket(id):
     venta = Venta.query.get_or_404(id)
     productos_ticket = session.get('ultimo_carrito', [])
     return render_template('gesVentas/ticket.html', venta=venta, productos=productos_ticket)
 
 @gesVentas.route("/corte-caja")
+@login_required
 def corte_caja():
     hoy = datetime.now().date()
     
