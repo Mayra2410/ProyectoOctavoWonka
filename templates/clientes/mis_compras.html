@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+<div class="space-y-6">
+  <div class="flex justify-between items-center">
+    <h2
+      class="text-3xl font-black text-wonka-purple uppercase tracking-tighter italic"
+    >
+      Mis Pedidos Mágicos
+    </h2>
+  </div>
+
+  <div
+    class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden"
+  >
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr
+          class="bg-gray-50 text-wonka-brown font-black text-[10px] uppercase tracking-widest"
+        >
+          <th class="p-6">Folio</th>
+          <th class="p-6">Fecha</th>
+          <th class="p-6">Monto Total</th>
+          <th class="p-6">Estado</th>
+          <th class="p-6 text-center">Ticket</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-50">
+        {% for v in ventas %}
+        <tr class="hover:bg-wonka-purple/5 transition-colors">
+          <td class="p-6 font-bold text-wonka-purple">#{{ v.id_venta }}</td>
+          <td class="p-6 text-xs text-gray-500">
+            {{ v.fecha_venta.strftime('%d/%m/%Y %H:%M') }}
+          </td>
+          <td class="p-6 font-black text-wonka-brown text-lg">
+            ${{ "{:,.2f}".format(v.total) }}
+          </td>
+          <td class="p-6">
+            <span
+              class="px-3 py-1 rounded-full text-[9px] font-black uppercase {% if v.estado == 'COMPLETADA' %} bg-green-100 text-green-600 {% elif v.estado == 'PENDIENTE' %} bg-yellow-100 text-yellow-600 {% else %} bg-red-100 text-red-600 {% endif %}"
+            >
+              {{ v.estado }}
+            </span>
+          </td>
+          <td class="p-6 text-center">
+            <a
+              href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}"
+              class="p-2 bg-gray-100 rounded-xl inline-block hover:bg-wonka-purple hover:text-white transition-all"
+            >
+              <i data-lucide="receipt" class="w-5 h-5"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -6,50 +6,50 @@ from models import db, Producto, Receta
 import base64
 
 
-@productos.route('/productos')
+@productos.route("/productos")
 def lista_productos():
-    busqueda = request.args.get('q', '').strip()
+    busqueda = request.args.get("q", "").strip()
 
     query = Producto.query
 
     if busqueda:
-        query = query.filter(Producto.nombre.ilike(f'%{busqueda}%'))
+        query = query.filter(Producto.nombre.ilike(f"%{busqueda}%"))
 
     lista_productos = query.order_by(Producto.id_producto.asc()).all()
 
     return render_template(
-        'productos/productosAdmin.html',
+        "productos/productosAdmin.html",
         productos=lista_productos,
         busqueda=busqueda,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )
 
 
-@productos.route('/productos/detalles/<int:id_producto>')
+@productos.route("/productos/detalles/<int:id_producto>")
 def detalle_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     form = ProductoForm(obj=producto)
 
     return render_template(
-        'productos/detallesProductos.html',
+        "productos/detallesProductos.html",
         producto=producto,
         form=form,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )
 
 
-@productos.route('/productos/agregar', methods=['GET', 'POST'])
+@productos.route("/productos/agregar", methods=["GET", "POST"])
 def agregar_producto():
     form = ProductoForm()
 
     if form.validate_on_submit():
         existe = Producto.query.filter_by(nombre=form.nombre.data).first()
         if existe:
-            form.nombre.errors.append('Este producto ya existe.')
+            form.nombre.errors.append("Este producto ya existe.")
             return render_template(
-                'productos/agregarProductos.html',
+                "productos/agregarProductos.html",
                 form=form,
-                active_page='productos.lista_productos'
+                active_page="productos.lista_productos",
             )
 
         nuevo_producto = Producto(
@@ -60,7 +60,7 @@ def agregar_producto():
             costo_produccion_estimado=form.costo_produccion_estimado.data,
             unidad_medida=form.unidad_medida.data,
             tiempo_produccion_minutos=form.tiempo_produccion_minutos.data,
-            activo=form.activo.data
+            activo=form.activo.data,
         )
 
         file = request.files.get("imagen_producto")
@@ -68,40 +68,41 @@ def agregar_producto():
             try:
                 imagen_bytes = file.read()
                 encoded = base64.b64encode(imagen_bytes).decode("utf-8")
-                nuevo_producto.imagen_producto = f"data:{file.content_type};base64,{encoded}"
+                nuevo_producto.imagen_producto = (
+                    f"data:{file.content_type};base64,{encoded}"
+                )
             except Exception as e:
                 print(f"Error al procesar imagen del producto: {e}")
 
         db.session.add(nuevo_producto)
         db.session.commit()
-        flash('Producto agregado correctamente.', 'success')
-        return redirect(url_for('productos.lista_productos'))
+        flash("Producto agregado correctamente.", "success")
+        return redirect(url_for("productos.lista_productos"))
 
     return render_template(
-        'productos/agregarProductos.html',
+        "productos/agregarProductos.html",
         form=form,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )
 
 
-@productos.route('/productos/editar/<int:id_producto>', methods=['GET', 'POST'])
+@productos.route("/productos/editar/<int:id_producto>", methods=["GET", "POST"])
 def editar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     form = ProductoForm(obj=producto)
 
     if form.validate_on_submit():
         duplicado = Producto.query.filter(
-            Producto.nombre == form.nombre.data,
-            Producto.id_producto != id_producto
+            Producto.nombre == form.nombre.data, Producto.id_producto != id_producto
         ).first()
 
         if duplicado:
-            form.nombre.errors.append('Este nombre de producto ya está registrado.')
+            form.nombre.errors.append("Este nombre de producto ya está registrado.")
             return render_template(
-                'productos/modificarProductos.html',
+                "productos/modificarProductos.html",
                 form=form,
                 producto=producto,
-                active_page='productos.lista_productos'
+                active_page="productos.lista_productos",
             )
 
         producto.nombre = form.nombre.data
@@ -123,17 +124,15 @@ def editar_producto(id_producto):
                 print(f"Error al actualizar imagen del producto: {e}")
 
         db.session.commit()
-        flash('Producto actualizado correctamente.', 'success')
-        return redirect(url_for('productos.lista_productos'))
+        flash("Producto actualizado correctamente.", "success")
+        return redirect(url_for("productos.lista_productos"))
 
     return render_template(
-        'productos/modificarProductos.html',
+        "productos/modificarProductos.html",
         form=form,
         producto=producto,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )
-
-
 
 
 @productos.route("/productos/eliminar/confirmar/<int:id_producto>")
@@ -146,7 +145,7 @@ def confirmar_eliminar_producto(id_producto):
         producto=producto,
         form=form,
         producto_id=id_producto,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )
 
 
@@ -158,38 +157,40 @@ def desactivar_producto(id_producto):
 
     try:
         db.session.commit()
-        flash('Producto desactivado correctamente.', 'warning')
+        flash("Producto desactivado correctamente.", "warning")
         return redirect(url_for("productos.lista_productos"))
     except Exception as e:
         db.session.rollback()
-        flash('Ocurrió un error al desactivar el producto.', 'danger')
+        flash("Ocurrió un error al desactivar el producto.", "danger")
         return redirect(url_for("productos.lista_productos"))
 
 
-
-@productos.route('/productos/reactivar/<int:id_producto>', methods=['POST'])
+@productos.route("/productos/reactivar/<int:id_producto>", methods=["POST"])
 def reactivar_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
     producto.activo = True
     db.session.commit()
 
-    flash('Producto reactivado correctamente.', 'success')
-    return redirect(url_for('productos.lista_productos'))
+    flash("Producto reactivado correctamente.", "success")
+    return redirect(url_for("productos.lista_productos"))
 
 
-@productos.route('/productos/<int:id_producto>/receta')
+@productos.route("/productos/<int:id_producto>/receta")
 def ver_receta_producto(id_producto):
     producto = Producto.query.get_or_404(id_producto)
 
     receta = Receta.query.filter_by(producto_id=id_producto).first()
 
     if not receta:
-        flash(f'El producto "{producto.nombre}" no tiene una receta registrada.', 'warning')
-        return redirect(url_for('productos.detalle_producto', id_producto=id_producto))
+        flash(
+            f'El producto "{producto.nombre}" no tiene una receta registrada.',
+            "warning",
+        )
+        return redirect(url_for("productos.detalle_producto", id_producto=id_producto))
 
     return render_template(
-        'recetas/detalleRecetaProducto.html',
+        "recetas/detalleRecetaProducto.html",
         receta=receta,
         producto=producto,
-        active_page='productos.lista_productos'
+        active_page="productos.lista_productos",
     )

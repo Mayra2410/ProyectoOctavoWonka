@@ -1,7 +1,4 @@
-{% extends "base.html" %} 
-{% import "_macros.html" as m %} 
-
-{% block content %}
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
 <div class="max-w-[1800px] mx-auto px-4 py-8">
   <div class="mb-8 flex justify-between items-center">
     <div>
@@ -12,12 +9,17 @@
         Gestión de perfiles del personal
       </p>
     </div>
-    <a href="{{ url_for('empleado.agregar_empleado') }}" class="hover:scale-105 transition-transform duration-200">
+    <a
+      href="{{ url_for('empleado.agregar_empleado') }}"
+      class="hover:scale-105 transition-transform duration-200"
+    >
       {{ m.boton_principal("Nuevo Empleado") }}
     </a>
   </div>
 
-  <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
+  <div
+    class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden"
+  >
     <div class="p-6 border-b border-gray-50 bg-gray-50/30">
       <div class="max-w-md" id="contenedor-buscador">
         {{ m.buscador("Buscar por nombre, DNI o puesto...") }}
@@ -26,35 +28,79 @@
 
     <div class="overflow-x-auto">
       <table class="w-full text-left table-auto border-collapse">
-        <thead class="bg-white text-gray-400 text-[10px] uppercase tracking-[0.2em]">
+        <thead
+          class="bg-white text-gray-400 text-[10px] uppercase tracking-[0.2em]"
+        >
           <tr>
-            <th class="py-5 px-6 font-bold border-b border-gray-100 text-center w-16">ID</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 w-16">Foto</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100">Empleado</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Identificación</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Teléfono</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Puesto</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Salario</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Registro</th>
-            <th class="py-5 px-4 font-bold border-b border-gray-100 text-center">Estatus</th>
-            <th class="py-5 px-6 font-bold border-b border-gray-100 text-right">Acciones</th>
+            <th
+              class="py-5 px-6 font-bold border-b border-gray-100 text-center w-16"
+            >
+              ID
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100 w-16">
+              Foto
+            </th>
+            <th class="py-5 px-4 font-bold border-b border-gray-100">
+              Empleado
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Identificación
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Teléfono
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Puesto
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Salario
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Registro
+            </th>
+            <th
+              class="py-5 px-4 font-bold border-b border-gray-100 text-center"
+            >
+              Estatus
+            </th>
+            <th class="py-5 px-6 font-bold border-b border-gray-100 text-right">
+              Acciones
+            </th>
           </tr>
         </thead>
 
         <tbody class="divide-y divide-gray-50">
           {% for emp in empleados %}
-          <tr onclick="window.location.href='{{ url_for('empleado.detalle_empleado', id=emp.id_empleado) }}'"
-              class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer">
-            
-            <td class="py-5 px-6 text-center font-bold text-wonka-brown text-sm">
+          <tr
+            onclick="window.location.href='{{ url_for('empleado.detalle_empleado', id=emp.id_empleado) }}'"
+            class="group hover:bg-wonka-purple/[0.03] transition-all duration-200 cursor-pointer"
+          >
+            <td
+              class="py-5 px-6 text-center font-bold text-wonka-brown text-sm"
+            >
               {{ emp.id_empleado }}
             </td>
 
             <td class="py-5 px-4">
               {% if emp.imagen_empleado %}
-              <img src="{{ emp.imagen_empleado }}" class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm" />
+              <img
+                src="{{ emp.imagen_empleado }}"
+                class="w-10 h-10 rounded-xl object-cover border border-gray-100 shadow-sm"
+              />
               {% else %}
-              <div class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs">
+              <div
+                class="w-10 h-10 rounded-xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple font-bold text-xs"
+              >
                 {{ emp.nombre[0]|upper }}
               </div>
               {% endif %}
@@ -62,7 +108,9 @@
 
             <td class="py-5 px-4">
               <div class="flex flex-col">
-                <span class="text-gray-800 font-bold text-sm tracking-tight group-hover:text-wonka-purple transition-colors">
+                <span
+                  class="text-gray-800 font-bold text-sm tracking-tight group-hover:text-wonka-purple transition-colors"
+                >
                   {{ emp.nombre }} {{ emp.apellido or '' }}
                 </span>
                 <span class="text-gray-400 text-[10px]">{{ emp.email }}</span>
@@ -73,38 +121,47 @@
               {{ emp.dni_cedula }}
             </td>
 
-            <td class="py-5 px-4 text-center text-gray-600 text-xs font-semibold">
+            <td
+              class="py-5 px-4 text-center text-gray-600 text-xs font-semibold"
+            >
               {{ emp.telefono or '---' }}
             </td>
 
             <td class="py-5 px-4 text-center">
-              <span class="px-2 py-1 rounded-md text-[9px] font-black uppercase bg-blue-50 text-blue-600 border border-blue-100">
+              <span
+                class="px-2 py-1 rounded-md text-[9px] font-black uppercase bg-blue-50 text-blue-600 border border-blue-100"
+              >
                 {{ emp.puesto }}
               </span>
             </td>
 
             <td class="py-5 px-4 text-center text-gray-800 text-xs font-bold">
-              ${{ "{:,.2f}".format(emp.salario_mensual) if emp.salario_mensual else "0.00" }}
+              ${{ "{:,.2f}".format(emp.salario_mensual) if emp.salario_mensual
+              else "0.00" }}
             </td>
 
-            <td class="py-5 px-4 text-center text-gray-400 text-[11px] font-medium">
-              {% if emp.fecha_contratacion %} 
-                {{ emp.fecha_contratacion.strftime('%d-%m-%Y') }} 
-              {% else %} --- {% endif %}
+            <td
+              class="py-5 px-4 text-center text-gray-400 text-[11px] font-medium"
+            >
+              {% if emp.fecha_contratacion %} {{
+              emp.fecha_contratacion.strftime('%d-%m-%Y') }} {% else %} --- {%
+              endif %}
             </td>
 
             <td class="py-5 px-4 text-center">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if emp.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}">
+              <span
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-black uppercase border {{ 'bg-green-50 text-green-600 border-green-100' if emp.estatus == 'ACTIVO' else 'bg-red-50 text-red-600 border-red-100' }}"
+              >
                 {{ emp.estatus }}
               </span>
             </td>
 
             <td class="py-5 px-6 text-right">
               {{ m.acciones_tabla(
-                  edit_link=url_for('empleado.modificar_empleado', id=emp.id_empleado),
-                  delete_link=url_for('empleado.eliminar_confirmar', id=emp.id_empleado), 
-                  es_activo=(emp.estatus == 'ACTIVO') 
-              ) }}
+              edit_link=url_for('empleado.modificar_empleado',
+              id=emp.id_empleado),
+              delete_link=url_for('empleado.eliminar_confirmar',
+              id=emp.id_empleado), es_activo=(emp.estatus == 'ACTIVO') ) }}
             </td>
           </tr>
           {% endfor %}
@@ -124,7 +181,9 @@
         if (e.key === "Enter") {
           e.preventDefault();
           const query = this.value.trim();
-          window.location.href = "{{ url_for('empleado.empleadosAdmin') }}?q=" + encodeURIComponent(query);
+          window.location.href =
+            "{{ url_for('empleado.empleadosAdmin') }}?q=" +
+            encodeURIComponent(query);
         }
       });
     }

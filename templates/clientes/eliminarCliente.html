@@ -43,8 +43,7 @@ block content %}
       Cancelar Operación
     </a>
   </div>
-  {% endset %} {# Renderizamos la tarjeta usando tu macro de clientes #} {{
-  mp.tarjeta_cliente(cliente, botones=botones_desactivar) }}
+  {% endset %} {{ mp.tarjeta_cliente(cliente, botones=botones_desactivar) }}
 </div>
 
 <script>

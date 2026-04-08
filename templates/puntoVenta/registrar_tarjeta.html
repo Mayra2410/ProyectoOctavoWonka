@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[80vh] p-4">
+    
+    <div class="mb-6 w-full max-w-md">
+        <a href="{{ url_for('puntoVenta.index') }}" class="text-gray-400 hover:text-wonka-purple transition-all flex items-center gap-2 font-bold text-xs uppercase tracking-widest">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i> Cancelar y volver al carrito
+        </a>
+    </div>
+ 
+    <div class="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl border border-gray-100 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-wonka-gold/10 rounded-full -mr-16 -mt-16"></div>
+        
+        <div class="text-center mb-8 relative">
+            <div class="bg-wonka-purple w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg rotate-3">
+                <i data-lucide="credit-card" class="text-white w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl font-black text-wonka-brown italic tracking-tighter">Método de Pago</h2>
+            <p class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold mt-2">Seguridad Bancaria Wonka</p>
+        </div>
+ 
+        <form action="{{ url_for('puntoVenta.registrar_tarjeta_view') }}" method="POST" class="space-y-6 relative">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
+            <div class="space-y-1">
+                <label class="text-[10px] font-black text-wonka-purple uppercase ml-2">Número de Tarjeta</label>
+                <input type="text" name="numero_tarjeta" placeholder="0000 0000 0000 0000" maxlength="16" required
+                    class="w-full bg-gray-50 border-2 border-transparent focus:border-wonka-gold focus:bg-white rounded-2xl p-4 text-sm font-mono outline-none transition-all">
+            </div>
+ 
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black text-wonka-purple uppercase ml-2">Expira</label>
+                    <input type="text" placeholder="MM/AA" maxlength="5" required
+                        class="w-full bg-gray-50 border-2 border-transparent focus:border-wonka-gold focus:bg-white rounded-2xl p-4 text-sm font-mono outline-none transition-all text-center">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black text-wonka-purple uppercase ml-2">CVV</label>
+                    <input type="password" placeholder="***" maxlength="3" required
+                        class="w-full bg-gray-50 border-2 border-transparent focus:border-wonka-gold focus:bg-white rounded-2xl p-4 text-sm font-mono outline-none transition-all text-center">
+                </div>
+            </div>
+ 
+            <div class="pt-4">
+                <button type="submit"
+                    class="w-full bg-wonka-purple text-white py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-wonka-brown hover:scale-[1.02] transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i> Vincular Tarjeta Ahora
+                </button>
+            </div>
+        </form>
+ 
+        <p class="text-[8px] text-center text-gray-300 mt-8 uppercase font-bold tracking-widest">
+            Sus datos están protegidos por el Banco Central de la Fábrica
+        </p>
+    </div>
+</div>
+{% endblock %}

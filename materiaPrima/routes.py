@@ -4,28 +4,33 @@ from models import db, MateriasPrimas, Proveedores
 from . import materia_Prima
 from . import forms
 
+
 @materia_Prima.route("/materias-primas")
 def admin_materias():
     materias = MateriasPrimas.query.all()
     return render_template("materiaPrima/materiaPrimaAdmin.html", materias=materias)
+
 
 @materia_Prima.route("/detalles/<int:id>")
 def detalle_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     return render_template("materiaPrima/detallesMateriaPrima.html", materia=materia)
 
+
 @materia_Prima.route("/agregar", methods=["GET", "POST"])
 def agregar_materia():
     form = forms.MateriaPrimaForm(request.form)
-    form.proveedor_id.choices = [(p.id_proveedor, p.nombre) for p in Proveedores.query.all()]
+    form.proveedor_id.choices = [
+        (p.id_proveedor, p.nombre) for p in Proveedores.query.all()
+    ]
 
     if form.validate_on_submit():
-        file = request.files.get('imagen_materia')
+        file = request.files.get("imagen_materia")
         imagen_base64 = None
 
-        if file and file.filename != '':
+        if file and file.filename != "":
             img_bytes = file.read()
-            encoded = base64.b64encode(img_bytes).decode('utf-8')
+            encoded = base64.b64encode(img_bytes).decode("utf-8")
             imagen_base64 = f"data:{file.content_type};base64,{encoded}"
 
         try:
@@ -40,25 +45,32 @@ def agregar_materia():
                 proveedor_id=form.proveedor_id.data,
                 descripcion=form.descripcion.data,
                 imagen_materia=imagen_base64,
-                activo=bool(form.activo.data)
+                activo=bool(form.activo.data),
             )
-            
+
             db.session.add(nueva_materia)
             db.session.commit()
             return redirect(url_for("materiaPrima.admin_materias"))
-            
+
         except Exception as e:
             db.session.rollback()
             print(f"Error al guardar: {e}")
-            return render_template("materiaPrima/agregarMateriaPrima.html", form=form, error_img="Error al guardar.")
+            return render_template(
+                "materiaPrima/agregarMateriaPrima.html",
+                form=form,
+                error_img="Error al guardar.",
+            )
 
     return render_template("materiaPrima/agregarMateriaPrima.html", form=form)
+
 
 @materia_Prima.route("/modificar/<int:id>", methods=["GET", "POST"])
 def modificar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     form = forms.MateriaPrimaForm(request.form, obj=materia)
-    form.proveedor_id.choices = [(p.id_proveedor, p.nombre) for p in Proveedores.query.order_by("nombre").all()]
+    form.proveedor_id.choices = [
+        (p.id_proveedor, p.nombre) for p in Proveedores.query.order_by("nombre").all()
+    ]
 
     if request.method == "POST" and form.validate():
         duplicado = MateriasPrimas.query.filter(
@@ -68,7 +80,12 @@ def modificar_materia(id):
 
         if duplicado:
             form.nombre.errors.append("Este nombre de insumo ya está registrado.")
-            return render_template("materiaPrima/modificarMateriaPrima.html", form=form, materia_id=id, materia=materia)
+            return render_template(
+                "materiaPrima/modificarMateriaPrima.html",
+                form=form,
+                materia_id=id,
+                materia=materia,
+            )
 
         file = request.files.get("imagen_materia")
         if file and file.filename != "":
@@ -86,13 +103,25 @@ def modificar_materia(id):
             db.session.rollback()
             print(f"Error al modificar: {e}")
 
-    return render_template("materiaPrima/modificarMateriaPrima.html", form=form, materia_id=id, materia=materia)
+    return render_template(
+        "materiaPrima/modificarMateriaPrima.html",
+        form=form,
+        materia_id=id,
+        materia=materia,
+    )
+
 
 @materia_Prima.route("/materias-primas/eliminar/confirmar/<int:id>")
 def eliminar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     form = forms.MateriaPrimaForm()
-    return render_template("materiaPrima/eliminarMateriaPrima.html", materia=materia, form=form, materia_id=id)
+    return render_template(
+        "materiaPrima/eliminarMateriaPrima.html",
+        materia=materia,
+        form=form,
+        materia_id=id,
+    )
+
 
 @materia_Prima.route("/materias-primas/desactivar/<int:id>", methods=["POST"])
 def desactivar_materia(id):

@@ -52,17 +52,15 @@ def agregar_empleado():
 
     if form.validate_on_submit():
         try:
-            # Obtenemos el puesto del formulario para usarlo como ROL
-            puesto_seleccionado = form.puesto.data 
+            puesto_seleccionado = form.puesto.data
 
             pass_hash = generate_password_hash(form.password.data)
-            
-            # Creamos el Usuario con el rol dinámico
+
             nuevo_usuario = Usuario(
                 username=form.email.data,
                 email=form.email.data,
                 password_hash=pass_hash,
-                rol=puesto_seleccionado,  # Se asigna GERENTE, CHOCOLATERO, etc.
+                rol=puesto_seleccionado,  
                 activo=True,
             )
             db.session.add(nuevo_usuario)
@@ -78,7 +76,6 @@ def agregar_empleado():
             if not img_final:
                 img_final = request.form.get("imagen_base64_recuperada")
 
-            # Creamos el Empleado vinculado al usuario
             nuevo_empleado = Empleado(
                 usuario_id=nuevo_usuario.id_usuario,
                 nombre=form.nombre.data,

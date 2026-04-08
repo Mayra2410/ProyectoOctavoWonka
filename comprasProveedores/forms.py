@@ -34,8 +34,9 @@ class CompraMateriaPrimaForm(Form):
 
     costo_unitario = DecimalField(
         "Costo Unitario",
-        [validators.DataRequired(message="Ingresa el costo"),
-         validators.NumberRange(min=0, message="El costo no puede ser negativo")
+        [
+            validators.DataRequired(message="Ingresa el costo"),
+            validators.NumberRange(min=0, message="El costo no puede ser negativo"),
         ],
         places=2,
     )
@@ -43,7 +44,7 @@ class CompraMateriaPrimaForm(Form):
     fecha_compra = DateTimeField(
         "Fecha de Compra",
         [validators.DataRequired(message="Selecciona la fecha y hora")],
-        format="%Y-%m-%d %H:%M",  # Formato: Año-Mes-Día Hora:Minuto
+        format="%Y-%m-%d %H:%M",  
     )
 
     observaciones = TextAreaField(
