@@ -52,6 +52,7 @@
     {% elif session['rol'] == 'GERENTE' %}
         {# --- VISTA GERENTE: TODO --- #}
         {% set items = [ 
+            ('pos', 'Punto de Venta', 'shopping-bag', 'puntoVenta.index'),
             ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
             ('employees', 'Empleados', 'user-cog', 'empleado.empleadosAdmin'),
             ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),

@@ -7,20 +7,24 @@
         
         {% if session['rol'] == 'CLIENTE' %}
             {# --- OPCIONES PARA EL CLIENTE --- #}
-            <a href="{{ url_for('puntoVenta.index') }}" class="bg-wonka-purple text-white px-6 py-2 rounded-xl font-bold hover:bg-wonka-purple-dark shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
+            <a href="{{ url_for('puntoVenta.index') }}" 
+               class="bg-wonka-purple text-white px-6 py-2 rounded-xl font-bold hover:bg-wonka-purple-dark shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
                 <i data-lucide="shopping-bag" class="w-4 h-4"></i> Seguir Comprando
             </a>
-            <a href="{{ url_for('cliente.detalles_cliente_vista') }}" class="bg-white text-wonka-brown px-6 py-2 rounded-xl font-bold border border-gray-200 hover:bg-gray-50 transition-all flex items-center gap-2 text-sm">
+            <a href="{{ url_for('cliente.detalles_cliente_vista') }}" 
+               class="bg-white text-wonka-brown px-6 py-2 rounded-xl font-bold border border-gray-200 hover:bg-gray-50 transition-all flex items-center gap-2 text-sm">
                 <i data-lucide="user" class="w-4 h-4"></i> Ir a mi Perfil
             </a>
         {% else %}
-            {# --- OPCIONES PARA EMPLEADOS / ADMIN --- #}
-            <a href="{{ url_for('gesVentas.mostrar_ventas') }}" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-xl font-bold hover:bg-gray-300 transition-all flex items-center gap-2 text-sm">
+            {# --- OPCIONES PARA STAFF (GERENTE, VENTAS, ETC) --- #}
+            <a href="{{ url_for('gesVentas.mostrar_ventas') }}" 
+               class="bg-gray-200 text-gray-700 px-6 py-2 rounded-xl font-bold hover:bg-gray-300 transition-all flex items-center gap-2 text-sm">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Gestión de Ventas
             </a>
         {% endif %}
 
-        <button onclick="window.print()" class="bg-wonka-gold text-wonka-brown px-6 py-2 rounded-xl font-bold shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
+        <button onclick="window.print()" 
+                class="bg-wonka-gold text-wonka-brown px-6 py-2 rounded-xl font-bold shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
             <i data-lucide="printer" class="w-4 h-4"></i> Imprimir / Guardar PDF
         </button>
     </div>
@@ -31,6 +35,7 @@
             <h2 class="text-lg font-black tracking-tighter uppercase italic">Fábrica Wonka</h2>
             <p>Blvr. Mariano Escobedo Pte. 1702</p>
             <p>León de los Aldama, Gto</p>
+            <p class="text-[8px] mt-1 italic">"Cualquier cosa es posible si lo imaginas"</p>
         </div>
 
         <div class="border-b border-dashed border-gray-300 my-4"></div>
@@ -39,6 +44,7 @@
             <p><b>FOLIO:</b> #{{ venta.id_venta }}</p>
             <p><b>FECHA:</b> {{ venta.fecha_venta.strftime('%d/%m/%Y %H:%M') }}</p>
             <p><b>PAGO:</b> {{ venta.metodo_pago }}</p>
+            <p><b>ESTADO:</b> {{ venta.estado }}</p>
         </div>
 
         <div class="border-b border-dashed border-gray-300 my-4"></div>
@@ -78,7 +84,6 @@
 
             <p class="text-gray-500 text-[8px]">Monto Bruto: ${{ "{:,.2f}".format(subtotal_antes_desc) }}</p>
             
-            {# Solo mostramos esta línea si hubo descuento real #}
             {% if ahorro_num > 0 %}
             <p class="text-green-600 font-bold text-[9px]">
                 DESC. VIP WONKA: -${{ "{:,.2f}".format(ahorro_num) }}
@@ -106,7 +111,7 @@
 </div>
 
 <style>
-/* Estilos para que el ticket salga centrado y limpio al imprimir */
+/* CONFIGURACIÓN PARA IMPRESIÓN LIMPIA */
 @media print {
     body * { visibility: hidden; }
     #ticket-recibo, #ticket-recibo * { visibility: visible; }
@@ -120,6 +125,12 @@
         border-top: none;
     }
     .no-print-bg { background-color: white !important; }
+}
+
+/* Estilos extra para fuentes si es necesario */
+#ticket-recibo {
+    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 </style>
 {% endblock %}
