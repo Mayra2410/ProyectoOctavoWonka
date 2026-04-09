@@ -237,7 +237,7 @@ materia_obj) %}
             >Stock Actual</label
           >
           {{ form.stock_actual(class="w-full bg-transparent border-0 text-xl
-          font-medium focus:ring-0 outline-none text-gray-700", required=false)
+          font-medium focus:ring-0 outline-none text-gray-700", required=false, readonly=True)
           }} {% if form.stock_actual.errors %} {% for error in
           form.stock_actual.errors %}
           <span

@@ -45,7 +45,7 @@ def cancelar_venta(id):
     
     venta.estado = 'CANCELADA'
     db.session.commit()
-    flash(f"Venta #{id} cancelada y sus órdenes de producción eliminadas.", "warning")
+    # flash(f"Venta #{id} cancelada y sus órdenes de producción eliminadas.", "warning")
     return redirect(url_for('gesVentas.mostrar_ventas'))
 
 @gesVentas.route('/historial-ventas')
@@ -99,6 +99,25 @@ def corte_caja():
 
     labels_dias = [v[0].strftime('%d/%m') for v in ventas_semana]
     values_dias = [float(v[1]) for v in ventas_semana]
+    
+    labels_rating = []
+    values_rating = []
+    try:
+        from clientes.routesC import get_mongo_db # Asegúrate de que la ruta sea correcta
+        db_mongo = get_mongo_db()
+        pipeline = [
+            {"$group": {
+                "_id": "$nombre_producto",
+                "promedio": {"$avg": "$calificacion"}
+            }},
+            {"$sort": {"promedio": -1}}
+        ]
+        stats = list(db_mongo.resenas_productos.aggregate(pipeline))
+        labels_rating = [s['_id'] for s in stats]
+        values_rating = [round(s['promedio'], 2) for s in stats]
+    except Exception as e:
+        print(f"Error Mongo: {e}")
+    
 
     return render_template(
         "gesVentas/corte.html",
@@ -109,5 +128,7 @@ def corte_caja():
         labels_prod=labels_prod,
         values_prod=values_prod,
         labels_dias=labels_dias,
-        values_dias=values_dias
+        values_dias=values_dias,
+        labels_rating=labels_rating,
+        values_rating=values_rating
     )

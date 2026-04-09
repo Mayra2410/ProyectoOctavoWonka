@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from sqlalchemy.dialects.mysql import LONGTEXT
+from sqlalchemy import FetchedValue
 
 # ÚNICA INSTANCIA DE DB
 db = SQLAlchemy()
@@ -13,11 +14,24 @@ class Usuario(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    rol = db.Column(db.Enum('GERENTE', 'CHOCOLATERO', 'CONTROL_CALIDAD', 'VENTAS', 'LOGISTICA', 'MANTENIMIENTO', 'CLIENTE'), 
-                    nullable=False, default="CLIENTE")
+    rol = db.Column(
+        db.Enum(
+            "GERENTE",
+            "CHOCOLATERO",
+            "CONTROL_CALIDAD",
+            "VENTAS",
+            "LOGISTICA",
+            "MANTENIMIENTO",
+            "CLIENTE",
+        ),
+        nullable=False,
+        default="CLIENTE",
+    )
     activo = db.Column(db.Boolean, default=True)
+    
+    intentos_fallidos = db.Column(db.Integer, default=0)
+    bloqueado_hasta = db.Column(db.DateTime, nullable=True)
 
-    # Relación 1 a 1 con Cliente
     cliente = db.relationship("Cliente", backref="usuario", uselist=False)
 
 
@@ -117,9 +131,9 @@ class Producto(db.Model):
     categoria = db.Column(db.String(50))
     precio_venta = db.Column(db.Numeric(10, 2), nullable=False)
     costo_produccion_estimado = db.Column(db.Numeric(10, 2))
-    
+
     # --- AGREGA ESTAS DOS LÍNEAS ---
-    stock_actual = db.Column(db.Integer, default=0) 
+    stock_actual = db.Column(db.Integer, default=0)
     stock_minimo = db.Column(db.Integer, default=10)
     # -------------------------------
 
@@ -131,6 +145,7 @@ class Producto(db.Model):
     recetas = db.relationship(
         "Receta", back_populates="producto", cascade="all, delete-orphan"
     )
+
 
 class Receta(db.Model):
     __tablename__ = "recetas"
@@ -270,12 +285,31 @@ class MovimientoInventario(db.Model):
 
     producto = db.relationship("Producto", backref="movimientos")
 
+
 class TarjetaCliente(db.Model):
-    __tablename__ = 'tarjetas_clientes'
+    __tablename__ = "tarjetas_clientes"
     id_tarjeta = db.Column(db.Integer, primary_key=True)
-    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id_cliente'), nullable=False)
-    numero_encriptado = db.Column(db.String(100), nullable=False) 
-    terminacion = db.Column(db.String(4), nullable=False) 
+    cliente_id = db.Column(
+        db.Integer, db.ForeignKey("clientes.id_cliente"), nullable=False
+    )
+    numero_encriptado = db.Column(db.String(100), nullable=False)
+    terminacion = db.Column(db.String(4), nullable=False)
     banco = db.Column(db.String(50))
     activa = db.Column(db.Boolean, default=True)
-    cliente = db.relationship('Cliente', backref=db.backref('tarjetas', lazy=True))
+    cliente = db.relationship("Cliente", backref=db.backref("tarjetas", lazy=True))
+
+
+class DetalleVenta(db.Model):
+    __tablename__ = "detalles_ventas"
+    id_detalle = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    venta_id = db.Column(db.Integer, db.ForeignKey("ventas.id_venta"), nullable=False)
+    producto_id = db.Column(
+        db.Integer, db.ForeignKey("productos.id_producto"), nullable=False
+    )
+    cantidad = db.Column(db.Integer, nullable=False)
+    precio_unitario = db.Column(db.Numeric(10, 2), nullable=False)
+
+    subtotal = db.Column(db.Numeric(10, 2), server_default=FetchedValue())
+
+    producto = db.relationship("Producto")
+    venta = db.relationship("Venta", backref=db.backref("detalles", lazy=True))

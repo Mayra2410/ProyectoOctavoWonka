@@ -7180,3 +7180,964 @@
 2026-04-08 23:12:54,657 - INFO - 127.0.0.1 - - [08/Apr/2026 23:12:54] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
 2026-04-08 23:12:56,706 - INFO - 127.0.0.1 - - [08/Apr/2026 23:12:56] "GET /mi-perfil HTTP/1.1" 200 -
 2026-04-08 23:12:56,741 - INFO - 127.0.0.1 - - [08/Apr/2026 23:12:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 10:59:22,563 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-09 10:59:22,564 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-09 10:59:22,567 - INFO -  * Restarting with stat
+2026-04-09 10:59:23,202 - WARNING -  * Debugger is active!
+2026-04-09 10:59:23,204 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 10:59:26,585 - INFO - 127.0.0.1 - - [09/Apr/2026 10:59:26] "GET / HTTP/1.1" 200 -
+2026-04-09 10:59:27,688 - INFO - 127.0.0.1 - - [09/Apr/2026 10:59:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 11:00:07,578 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:07] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 11:00:07,656 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:07] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 11:00:07,783 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:00:17,328 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:17] "GET /empleados HTTP/1.1" 200 -
+2026-04-09 11:00:17,346 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:00:24,611 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:24] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 11:00:24,648 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:00:30,444 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:30] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 11:00:30,473 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:00:33,179 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:33] "GET /productos HTTP/1.1" 200 -
+2026-04-09 11:00:33,211 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:33] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-09 11:00:33,214 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:00:35,688 - INFO - Salida: El usuario id 1 cerro sesion.
+2026-04-09 11:00:35,698 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 11:00:35,755 - INFO - 127.0.0.1 - - [09/Apr/2026 11:00:35] "GET / HTTP/1.1" 200 -
+2026-04-09 11:08:03,537 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\config.py', reloading
+2026-04-09 11:08:04,080 - INFO -  * Restarting with stat
+2026-04-09 11:08:05,852 - WARNING -  * Debugger is active!
+2026-04-09 11:08:05,859 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:08:35,120 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 11:08:35,316 - INFO -  * Restarting with stat
+2026-04-09 11:14:10,318 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-09 11:14:10,319 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-09 11:14:10,321 - INFO -  * Restarting with stat
+2026-04-09 11:14:11,223 - WARNING -  * Debugger is active!
+2026-04-09 11:14:11,225 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:14:13,048 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:13] "GET / HTTP/1.1" 200 -
+2026-04-09 11:14:14,426 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 11:14:20,183 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:20] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 11:14:20,379 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:20] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:14:20,526 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:20] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:14:20,694 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:14:20,717 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:20] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:14:24,304 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:24] "[35m[1mGET /mis-pedidos HTTP/1.1[0m" 500 -
+2026-04-09 11:14:24,343 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:24] "GET /mis-pedidos?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-09 11:14:24,354 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:24] "GET /mis-pedidos?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-09 11:14:24,401 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:24] "GET /mis-pedidos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-09 11:14:24,421 - INFO - 127.0.0.1 - - [09/Apr/2026 11:14:24] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 11:15:10,946 - INFO - 127.0.0.1 - - [09/Apr/2026 11:15:10] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:15:10,966 - INFO - 127.0.0.1 - - [09/Apr/2026 11:15:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:16:08,076 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 11:16:09,165 - INFO -  * Restarting with stat
+2026-04-09 11:16:10,348 - WARNING -  * Debugger is active!
+2026-04-09 11:16:10,353 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:17:29,701 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 11:17:29,923 - INFO -  * Restarting with stat
+2026-04-09 11:17:30,957 - WARNING -  * Debugger is active!
+2026-04-09 11:17:30,959 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:18:47,301 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 11:18:47,630 - INFO -  * Restarting with stat
+2026-04-09 11:18:48,805 - WARNING -  * Debugger is active!
+2026-04-09 11:18:48,809 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:18:51,062 - INFO - 127.0.0.1 - - [09/Apr/2026 11:18:51] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:18:51,154 - INFO - 127.0.0.1 - - [09/Apr/2026 11:18:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:18:55,986 - INFO - 127.0.0.1 - - [09/Apr/2026 11:18:55] "GET /ver-ticket/20 HTTP/1.1" 200 -
+2026-04-09 11:18:56,007 - INFO - 127.0.0.1 - - [09/Apr/2026 11:18:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:19:06,611 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:06] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:19:06,629 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:19:08,366 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:08] "GET /ver-ticket/3 HTTP/1.1" 200 -
+2026-04-09 11:19:08,384 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:19:10,454 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:10] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:19:10,487 - INFO - 127.0.0.1 - - [09/Apr/2026 11:19:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:20:08,021 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:08] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:20:08,045 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:08] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 11:20:08,983 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 11:20:41,394 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:41] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 11:20:41,406 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:41] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:20:41,440 - INFO - 127.0.0.1 - - [09/Apr/2026 11:20:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:21:55,918 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:55] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:21:55,941 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:55] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:21:55,953 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:55] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:21:56,554 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:56] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:21:58,250 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:58] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:21:58,275 - INFO - 127.0.0.1 - - [09/Apr/2026 11:21:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:01,051 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:01] "GET /ver-ticket/20 HTTP/1.1" 200 -
+2026-04-09 11:22:01,085 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:05,174 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:05] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:22:05,198 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:07,574 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:07] "GET /ver-ticket/1 HTTP/1.1" 200 -
+2026-04-09 11:22:07,603 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:09,253 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:09] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:22:09,277 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:09,278 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:22:09,327 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:22:10,407 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:10] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:22:10,447 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:14,981 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:14] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:22:15,015 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:15,021 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:15] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:22:17,551 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:17] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 11:22:17,573 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:17] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:22:17,608 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:17,621 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:17] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:22:20,016 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:20] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 11:22:20,034 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:20] "GET /ver-ticket/27?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 11:22:20,071 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:22:47,830 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:47] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:22:47,853 - INFO - 127.0.0.1 - - [09/Apr/2026 11:22:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:23:01,140 - INFO - 127.0.0.1 - - [09/Apr/2026 11:23:01] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 11:23:01,162 - INFO - 127.0.0.1 - - [09/Apr/2026 11:23:01] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:23:01,206 - INFO - 127.0.0.1 - - [09/Apr/2026 11:23:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:54:52,140 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 11:54:53,028 - INFO -  * Restarting with stat
+2026-04-09 11:54:54,823 - WARNING -  * Debugger is active!
+2026-04-09 11:54:54,829 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:55:56,617 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 11:55:56,984 - INFO -  * Restarting with stat
+2026-04-09 11:55:58,229 - WARNING -  * Debugger is active!
+2026-04-09 11:55:58,231 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 11:56:01,298 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:01] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:56:01,458 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:56:03,174 - INFO - Salida: El usuario id 2 cerro sesion.
+2026-04-09 11:56:03,176 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 11:56:03,258 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:03] "GET / HTTP/1.1" 200 -
+2026-04-09 11:56:11,382 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:11] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 11:56:11,553 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:11] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 11:56:11,580 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:56:13,801 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:13] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-09 11:56:13,830 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:56:15,582 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:15] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-09 11:56:15,604 - INFO - 127.0.0.1 - - [09/Apr/2026 11:56:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:58:41,091 - INFO - Salida: El usuario id 1 cerro sesion.
+2026-04-09 11:58:41,095 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:41] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 11:58:41,109 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:41] "GET / HTTP/1.1" 200 -
+2026-04-09 11:58:49,775 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:49] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 11:58:49,833 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:49] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:58:49,863 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:58:49,883 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:58:54,622 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:54] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 11:58:54,647 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:54] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 11:58:54,687 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:54] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:58:54,689 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:58:54,704 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:54] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 11:58:58,180 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:58] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 11:58:58,249 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:58] "GET /ver-ticket/28?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 11:58:58,303 - INFO - 127.0.0.1 - - [09/Apr/2026 11:58:58] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:59:03,432 - INFO - 127.0.0.1 - - [09/Apr/2026 11:59:03] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:59:03,456 - INFO - 127.0.0.1 - - [09/Apr/2026 11:59:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 11:59:17,499 - INFO - 127.0.0.1 - - [09/Apr/2026 11:59:17] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 11:59:17,525 - INFO - 127.0.0.1 - - [09/Apr/2026 11:59:17] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 11:59:17,608 - INFO - 127.0.0.1 - - [09/Apr/2026 11:59:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:09,841 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:09] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:03:09,868 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:21,385 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:21] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 12:03:21,408 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:21] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:03:21,448 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:31,785 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:31] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:03:31,811 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:31,817 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:31] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:03:39,943 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:39] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:03:39,969 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:39] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:03:39,999 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:39] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:03:40,006 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:40,020 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:03:42,328 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:42] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:03:42,344 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:42] "GET /ver-ticket/29?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:03:42,371 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:44,639 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:44] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:03:44,667 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:44,672 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:44] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:03:45,325 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:45] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:03:45,358 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:03:54,243 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:54] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 12:03:54,259 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:54] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:03:54,293 - INFO - 127.0.0.1 - - [09/Apr/2026 12:03:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:05:21,351 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 12:05:21,911 - INFO -  * Restarting with stat
+2026-04-09 12:05:25,847 - WARNING -  * Debugger is active!
+2026-04-09 12:05:25,857 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:05:39,901 - INFO - 127.0.0.1 - - [09/Apr/2026 12:05:39] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:05:40,296 - INFO - 127.0.0.1 - - [09/Apr/2026 12:05:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:05:42,198 - INFO - 127.0.0.1 - - [09/Apr/2026 12:05:42] "GET /mi-perfil HTTP/1.1" 200 -
+2026-04-09 12:05:42,261 - INFO - 127.0.0.1 - - [09/Apr/2026 12:05:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:07:06,785 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:06] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:07:06,870 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:07:06,900 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:06] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:07,548 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:07] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:07,762 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:07] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:21,448 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:07:21,483 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:07:21,570 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:07:21,585 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:21,811 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:21,908 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:21] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:07:28,944 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:28] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:07:29,011 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:29] "GET /ver-ticket/30?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:07:29,070 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:07:46,944 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:46] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:07:47,002 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:07:55,043 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:55] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 12:07:55,072 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:55] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:07:55,161 - INFO - 127.0.0.1 - - [09/Apr/2026 12:07:55] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:12:56,171 - INFO - 127.0.0.1 - - [09/Apr/2026 12:12:56] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:12:56,241 - INFO - 127.0.0.1 - - [09/Apr/2026 12:12:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:04,061 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:04] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:13:04,131 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:04,168 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:04] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:04,252 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:04] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:04,458 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:04] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:09,777 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:09] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:13:09,811 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:09] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:13:09,891 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:09,903 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:09,936 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:10,127 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:10] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:13,411 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:13] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:13:13,445 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:13] "GET /ver-ticket/31?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:13:13,523 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:13] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:15,888 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:15] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:13:15,947 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:15,949 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:15] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:16,001 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:16] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:16,223 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:16] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:17,465 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:17] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:13:17,532 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:59,305 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:59] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:13:59,381 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:13:59,426 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:59] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:59,586 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:59] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:13:59,815 - INFO - 127.0.0.1 - - [09/Apr/2026 12:13:59] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:01,375 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:01] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:14:01,414 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:01] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:14:01,499 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:01,500 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:14:01,733 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:03,323 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:14:03,368 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:14:03,453 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:03,456 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:14:03,492 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:03,672 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:05,165 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:14:05,207 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:14:05,304 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:14:05,323 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:05,365 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:05,551 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:05] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:14:08,872 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:08] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:14:08,904 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:08] "GET /ver-ticket/32?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:14:08,971 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:14:27,751 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:27] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:14:27,805 - INFO - 127.0.0.1 - - [09/Apr/2026 12:14:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:15:55,514 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:15:56,077 - INFO -  * Restarting with stat
+2026-04-09 12:15:59,714 - WARNING -  * Debugger is active!
+2026-04-09 12:15:59,724 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:17:14,614 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:14] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:17:14,932 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:14] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:17:17,993 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:17] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:17:18,051 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:17:18,114 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:17:18,307 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:17:18,338 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:17:20,078 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:20] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:17:20,120 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:20] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:17:20,210 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:17:20,227 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:20] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:17:20,461 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:20] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:17:24,298 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:24] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:17:24,372 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:24] "GET /ver-ticket/33?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:17:24,432 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:17:27,272 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:27] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:17:27,331 - INFO - 127.0.0.1 - - [09/Apr/2026 12:17:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:18:37,781 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:18:38,127 - INFO -  * Restarting with stat
+2026-04-09 12:18:41,636 - WARNING -  * Debugger is active!
+2026-04-09 12:18:41,644 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:19:14,954 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:19:15,325 - INFO -  * Restarting with stat
+2026-04-09 12:19:19,013 - WARNING -  * Debugger is active!
+2026-04-09 12:19:19,023 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:19:29,664 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:29] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:19:29,882 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:29] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:19:34,694 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:34] "GET /ver-ticket/27 HTTP/1.1" 200 -
+2026-04-09 12:19:34,748 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:34] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:19:37,877 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:37] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:19:37,943 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:37] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:19:37,948 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:37] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:19:37,996 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:37] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:19:38,208 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:38] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:19:39,865 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:39] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:19:39,915 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:39] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:19:40,017 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:19:40,036 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:19:40,274 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:19:42,911 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:42] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:19:42,946 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:42] "GET /ver-ticket/34?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:19:43,006 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:19:45,274 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:45] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:19:45,333 - INFO - 127.0.0.1 - - [09/Apr/2026 12:19:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:26:45,027 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:26:45,342 - INFO -  * Restarting with stat
+2026-04-09 12:26:48,446 - WARNING -  * Debugger is active!
+2026-04-09 12:26:48,452 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:27:12,876 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:27:13,133 - INFO -  * Restarting with stat
+2026-04-09 12:27:16,282 - WARNING -  * Debugger is active!
+2026-04-09 12:27:16,288 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:27:41,340 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:41] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:27:41,696 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:27:45,478 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:45] "GET /ver-ticket/34 HTTP/1.1" 200 -
+2026-04-09 12:27:45,533 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:27:47,882 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:47] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:27:47,947 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:27:47,995 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:47] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:27:48,218 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:48] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:27:49,555 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:27:49,599 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:27:49,683 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:27:49,699 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:27:49,737 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:27:49,933 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:27:52,513 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:52] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:27:52,547 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:52] "GET /ver-ticket/35?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:27:52,609 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:27:54,849 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:54] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:27:54,900 - INFO - 127.0.0.1 - - [09/Apr/2026 12:27:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:29:43,648 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:29:44,201 - INFO -  * Restarting with stat
+2026-04-09 12:29:47,340 - WARNING -  * Debugger is active!
+2026-04-09 12:29:47,350 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:29:59,370 - INFO - 127.0.0.1 - - [09/Apr/2026 12:29:59] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:29:59,761 - INFO - 127.0.0.1 - - [09/Apr/2026 12:29:59] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 12:30:00,402 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 12:30:04,628 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:04] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:30:04,707 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:04,765 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:04] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:04,989 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:04] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:06,390 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:30:06,428 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:30:06,511 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:06,513 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:06,561 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:06,765 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:06] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:08,668 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:30:08,705 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:30:08,785 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:08,796 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:08,829 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:08,992 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:08] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:30:12,177 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:12] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:30:12,272 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:12] "GET /ver-ticket/36?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:30:12,350 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:15,461 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:15] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:30:15,520 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:17,913 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:17] "GET /ver-ticket/36 HTTP/1.1" 200 -
+2026-04-09 12:30:17,976 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:17] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:30:26,221 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:26] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:30:26,285 - INFO - 127.0.0.1 - - [09/Apr/2026 12:30:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:33:21,689 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 12:33:22,079 - INFO -  * Restarting with stat
+2026-04-09 12:33:25,717 - WARNING -  * Debugger is active!
+2026-04-09 12:33:25,724 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:35:31,636 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 12:35:31,970 - INFO -  * Restarting with stat
+2026-04-09 12:35:35,621 - WARNING -  * Debugger is active!
+2026-04-09 12:35:35,627 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:36:15,474 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 12:36:15,868 - INFO -  * Restarting with stat
+2026-04-09 12:36:18,787 - WARNING -  * Debugger is active!
+2026-04-09 12:36:18,794 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:36:30,509 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 12:36:30,887 - INFO -  * Restarting with stat
+2026-04-09 12:36:34,104 - WARNING -  * Debugger is active!
+2026-04-09 12:36:34,112 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:36:48,966 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:36:49,238 - INFO -  * Restarting with stat
+2026-04-09 12:36:52,219 - WARNING -  * Debugger is active!
+2026-04-09 12:36:52,224 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:39:38,550 - INFO - 127.0.0.1 - - [09/Apr/2026 12:39:38] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:39:38,883 - INFO - 127.0.0.1 - - [09/Apr/2026 12:39:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:40:24,645 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:24] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:40:24,705 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:40:26,030 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:26] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:40:26,091 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:40:26,108 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:26] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:40:26,366 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:26] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:40:27,929 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:27] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:40:27,970 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:27] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:40:28,056 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:40:28,068 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:28] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:40:28,320 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:28] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:40:30,944 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:30] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:40:31,090 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:31] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:40:31,201 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:31] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:40:31,220 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:31] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:40:31,417 - INFO - 127.0.0.1 - - [09/Apr/2026 12:40:31] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:41:11,060 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 12:41:11,475 - INFO -  * Restarting with stat
+2026-04-09 12:48:10,569 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-09 12:48:10,570 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-09 12:48:10,574 - INFO -  * Restarting with stat
+2026-04-09 12:48:14,079 - WARNING -  * Debugger is active!
+2026-04-09 12:48:14,087 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:48:14,932 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:14] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:15,044 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:15] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:15,430 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:15] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 12:48:15,806 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:15] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:16,077 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 12:48:18,512 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:48:18,573 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:18,663 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:18,678 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:18,753 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:18,967 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:18] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:21,651 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:21] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:48:21,714 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:21] "GET /ver-ticket/38?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:48:21,778 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:25,461 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:25] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:48:25,524 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:36,263 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:36] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:36,344 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:36,347 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:36] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:36,393 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:36] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:36,694 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:36] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:40,540 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:48:40,573 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:40,653 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:40,654 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:40,698 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:40,897 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:40] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:44,969 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:44] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:48:45,001 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:45] "GET /ver-ticket/39?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:48:45,067 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:46,530 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:46] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:48:46,582 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:49,732 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:49] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:49,789 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:49,827 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:50,108 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:50] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:56,743 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:56] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:48:56,776 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:56] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:48:56,865 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:48:56,867 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:56] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:56,915 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:56] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:48:57,094 - INFO - 127.0.0.1 - - [09/Apr/2026 12:48:57] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:00,534 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:49:00,576 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:49:00,659 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:49:00,673 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:00,707 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:00,883 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:00] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:03,121 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 12:49:03,161 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 12:49:03,245 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:49:03,262 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:03,322 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:03,497 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:03] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 12:49:06,218 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:06] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 12:49:06,245 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:06] "GET /ver-ticket/40?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 12:49:06,303 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:49:10,178 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:10] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:49:10,236 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:49:20,006 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:20] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 12:49:20,148 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:20] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:49:20,253 - INFO - 127.0.0.1 - - [09/Apr/2026 12:49:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:51:16,355 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:16] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:51:16,428 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:16] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 12:51:17,435 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 12:51:40,889 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:40] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 12:51:41,042 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:41] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 12:51:41,129 - INFO - 127.0.0.1 - - [09/Apr/2026 12:51:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 12:52:39,450 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:52:39,903 - INFO -  * Restarting with stat
+2026-04-09 12:52:44,115 - WARNING -  * Debugger is active!
+2026-04-09 12:52:44,123 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:53:25,185 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 12:53:25,558 - INFO -  * Restarting with stat
+2026-04-09 12:53:29,183 - WARNING -  * Debugger is active!
+2026-04-09 12:53:29,195 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:54:25,691 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:54:26,061 - INFO -  * Restarting with stat
+2026-04-09 12:54:29,886 - WARNING -  * Debugger is active!
+2026-04-09 12:54:29,891 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:54:33,240 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:54:33,743 - INFO -  * Restarting with stat
+2026-04-09 12:54:37,465 - WARNING -  * Debugger is active!
+2026-04-09 12:54:37,471 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:54:47,434 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 12:54:47,825 - INFO -  * Restarting with stat
+2026-04-09 12:54:51,696 - WARNING -  * Debugger is active!
+2026-04-09 12:54:51,704 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:55:07,041 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 12:55:07,410 - INFO -  * Restarting with stat
+2026-04-09 12:55:11,782 - WARNING -  * Debugger is active!
+2026-04-09 12:55:11,790 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:55:16,326 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 12:55:16,621 - INFO -  * Restarting with stat
+2026-04-09 12:55:20,360 - WARNING -  * Debugger is active!
+2026-04-09 12:55:20,372 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:58:43,949 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 12:58:44,224 - INFO -  * Restarting with stat
+2026-04-09 12:58:48,618 - WARNING -  * Debugger is active!
+2026-04-09 12:58:48,628 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 12:59:49,531 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 12:59:49,897 - INFO -  * Restarting with stat
+2026-04-09 12:59:51,502 - WARNING -  * Debugger is active!
+2026-04-09 12:59:51,505 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:00:06,189 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:00:06,453 - INFO -  * Restarting with stat
+2026-04-09 13:00:07,411 - WARNING -  * Debugger is active!
+2026-04-09 13:00:07,413 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:00:17,885 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:00:18,152 - INFO -  * Restarting with stat
+2026-04-09 13:00:19,116 - WARNING -  * Debugger is active!
+2026-04-09 13:00:19,118 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:00:21,215 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:00:21,474 - INFO -  * Restarting with stat
+2026-04-09 13:00:22,555 - WARNING -  * Debugger is active!
+2026-04-09 13:00:22,558 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:00:27,831 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\config.py', reloading
+2026-04-09 13:00:28,047 - INFO -  * Restarting with stat
+2026-04-09 13:00:29,229 - WARNING -  * Debugger is active!
+2026-04-09 13:00:29,232 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:00:31,353 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 13:00:31,651 - INFO -  * Restarting with stat
+2026-04-09 13:00:32,561 - WARNING -  * Debugger is active!
+2026-04-09 13:00:32,562 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:02:42,687 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\puntoVenta\\routes.py', reloading
+2026-04-09 13:02:43,034 - INFO -  * Restarting with stat
+2026-04-09 13:02:44,475 - WARNING -  * Debugger is active!
+2026-04-09 13:02:44,479 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:02:50,758 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 13:02:50,993 - INFO -  * Restarting with stat
+2026-04-09 13:02:51,789 - WARNING -  * Debugger is active!
+2026-04-09 13:02:51,791 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:04:22,532 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:22] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:04:22,587 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:22] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:04:22,846 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:22,867 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:22] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:04:25,347 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:25] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:04:25,376 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:25] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:04:25,429 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:25] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:04:25,430 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:25,458 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:25] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:04:27,316 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:27] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:04:27,345 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:27] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:04:27,390 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:27] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:27,392 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:27] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:04:30,132 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:30] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:04:30,182 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:30] "GET /ver-ticket/41?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:04:30,244 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:37,930 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:37] "[35m[1mGET /mis-pedidos HTTP/1.1[0m" 500 -
+2026-04-09 13:04:37,978 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:37] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:37,979 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:37] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-09 13:04:37,998 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:37] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 13:04:38,032 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:38] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 13:04:42,400 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:42] "[35m[1mGET /mis-pedidos HTTP/1.1[0m" 500 -
+2026-04-09 13:04:42,425 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:42] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-09 13:04:42,427 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:42] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-09 13:04:42,443 - INFO - 127.0.0.1 - - [09/Apr/2026 13:04:42] "[36mGET /mis-pedidos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 13:05:14,973 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:14] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:05:15,007 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:15] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 13:05:15,392 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 13:05:51,016 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:51] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 13:05:51,089 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:51] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:05:51,167 - INFO - 127.0.0.1 - - [09/Apr/2026 13:05:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:06:43,763 - INFO - Salida: El usuario id 2 cerro sesion.
+2026-04-09 13:06:43,765 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:43] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 13:06:43,787 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:43] "GET / HTTP/1.1" 200 -
+2026-04-09 13:06:50,504 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:50] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 13:06:50,569 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:50] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 13:06:50,619 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:50] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:06:52,945 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:52] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:06:52,972 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:06:56,626 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:56] "[32mGET /completar-orden/20 HTTP/1.1[0m" 302 -
+2026-04-09 13:06:56,643 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:56] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:06:56,676 - INFO - 127.0.0.1 - - [09/Apr/2026 13:06:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:01,470 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:01] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-09 13:07:01,500 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:04,160 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:04] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-09 13:07:04,196 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:04] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:14,480 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:14] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 13:07:14,513 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:14] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:15,367 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:15] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:07:15,401 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:15] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:18,801 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:18] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 13:07:18,835 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:19,617 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:19] "GET /compras HTTP/1.1" 200 -
+2026-04-09 13:07:19,641 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:19] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:20,862 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:20] "GET /compras/registrar HTTP/1.1" 200 -
+2026-04-09 13:07:20,887 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:20,892 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:20] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-09 13:07:38,060 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:38] "[32mPOST /compras/registrar HTTP/1.1[0m" 302 -
+2026-04-09 13:07:38,078 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:38] "GET /compras HTTP/1.1" 200 -
+2026-04-09 13:07:38,110 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:44,226 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:44] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 13:07:44,261 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:46,741 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:46] "GET /pagos-proveedores/1 HTTP/1.1" 200 -
+2026-04-09 13:07:46,770 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:52,916 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:52] "[32mPOST /pagos-proveedores/1 HTTP/1.1[0m" 302 -
+2026-04-09 13:07:52,935 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:52] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 13:07:52,986 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:56,160 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:56] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:07:56,196 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:07:59,944 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:59] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-09 13:07:59,989 - INFO - 127.0.0.1 - - [09/Apr/2026 13:07:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:08:00,553 - INFO - 127.0.0.1 - - [09/Apr/2026 13:08:00] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:08:00,596 - INFO - 127.0.0.1 - - [09/Apr/2026 13:08:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:08:02,710 - INFO - 127.0.0.1 - - [09/Apr/2026 13:08:02] "[32mGET /completar-orden/20 HTTP/1.1[0m" 302 -
+2026-04-09 13:08:02,741 - INFO - 127.0.0.1 - - [09/Apr/2026 13:08:02] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:08:02,797 - INFO - 127.0.0.1 - - [09/Apr/2026 13:08:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:08:39,868 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 13:08:40,243 - INFO -  * Restarting with stat
+2026-04-09 13:08:41,480 - WARNING -  * Debugger is active!
+2026-04-09 13:08:41,484 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:09:02,511 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\produccion\\routes.py', reloading
+2026-04-09 13:09:02,745 - INFO -  * Restarting with stat
+2026-04-09 13:09:03,795 - WARNING -  * Debugger is active!
+2026-04-09 13:09:03,797 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:09:26,907 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\produccion\\routes.py', reloading
+2026-04-09 13:09:27,138 - INFO -  * Restarting with stat
+2026-04-09 13:09:28,090 - WARNING -  * Debugger is active!
+2026-04-09 13:09:28,093 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:09:34,349 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\produccion\\routes.py', reloading
+2026-04-09 13:09:34,604 - INFO -  * Restarting with stat
+2026-04-09 13:09:35,679 - WARNING -  * Debugger is active!
+2026-04-09 13:09:35,682 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:09:50,398 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\produccion\\routes.py', reloading
+2026-04-09 13:09:50,569 - INFO -  * Restarting with stat
+2026-04-09 13:09:51,532 - WARNING -  * Debugger is active!
+2026-04-09 13:09:51,535 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:09:53,892 - INFO - 127.0.0.1 - - [09/Apr/2026 13:09:53] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:09:53,951 - INFO - 127.0.0.1 - - [09/Apr/2026 13:09:53] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:09:54,118 - INFO - 127.0.0.1 - - [09/Apr/2026 13:09:54] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:09:54,136 - INFO - 127.0.0.1 - - [09/Apr/2026 13:09:54] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:10:09,708 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:09] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:10:09,736 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:09] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:10:09,779 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:09,780 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:10:09,812 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:09] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:10:16,666 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:16] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:10:16,696 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:16] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:10:16,753 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:16] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:10:16,754 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:16] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:16,773 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:16] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:10:21,569 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:21] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:10:21,636 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:21] "GET /ver-ticket/42?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:10:21,681 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:32,854 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:32] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:32,880 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:34,300 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:34] "[32mGET /completar-orden/23 HTTP/1.1[0m" 302 -
+2026-04-09 13:10:34,319 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:34] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:34,348 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:34] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:35,742 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:35] "[32mGET /completar-orden/23 HTTP/1.1[0m" 302 -
+2026-04-09 13:10:35,773 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:35] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:35,826 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:35] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:36,384 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "[32mGET /completar-orden/23 HTTP/1.1[0m" 302 -
+2026-04-09 13:10:36,413 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:36,452 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:36,815 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "[32mGET /completar-orden/23 HTTP/1.1[0m" 302 -
+2026-04-09 13:10:36,858 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:36,938 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:36] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:10:52,531 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\produccion\\routes.py', reloading
+2026-04-09 13:10:52,851 - INFO -  * Restarting with stat
+2026-04-09 13:10:53,721 - WARNING -  * Debugger is active!
+2026-04-09 13:10:53,722 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:10:53,823 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:53] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:53,885 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:53] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 13:10:54,438 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 13:10:55,712 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:55] "[32mGET /completar-orden/23 HTTP/1.1[0m" 302 -
+2026-04-09 13:10:55,730 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:55] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:10:55,767 - INFO - 127.0.0.1 - - [09/Apr/2026 13:10:55] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:11:09,504 - INFO - 127.0.0.1 - - [09/Apr/2026 13:11:09] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:11:09,552 - INFO - 127.0.0.1 - - [09/Apr/2026 13:11:09] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:15:04,600 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\materiaPrima\\routes.py', reloading
+2026-04-09 13:15:04,887 - INFO -  * Restarting with stat
+2026-04-09 13:15:06,191 - WARNING -  * Debugger is active!
+2026-04-09 13:15:06,193 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:15:34,599 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\materiaPrima\\routes.py', reloading
+2026-04-09 13:15:34,804 - INFO -  * Restarting with stat
+2026-04-09 13:15:36,284 - WARNING -  * Debugger is active!
+2026-04-09 13:15:36,286 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:15:38,307 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:38] "GET /detalles/8 HTTP/1.1" 200 -
+2026-04-09 13:15:38,541 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:15:40,092 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:40] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:15:40,121 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:40] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:15:41,245 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:41] "GET /modificar/1 HTTP/1.1" 200 -
+2026-04-09 13:15:41,296 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:15:48,024 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:48] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:15:48,050 - INFO - 127.0.0.1 - - [09/Apr/2026 13:15:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:16:58,084 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\materiaPrima\\routes.py', reloading
+2026-04-09 13:16:58,408 - INFO -  * Restarting with stat
+2026-04-09 13:16:59,426 - WARNING -  * Debugger is active!
+2026-04-09 13:16:59,427 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:17:02,153 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:02] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:17:02,362 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:17:05,323 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:05] "GET /modificar/1 HTTP/1.1" 200 -
+2026-04-09 13:17:05,343 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:17:10,014 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:10] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:17:10,044 - INFO - 127.0.0.1 - - [09/Apr/2026 13:17:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:19:23,037 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:23] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:19:23,080 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:23] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:19:25,555 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:25] "GET /modificar/1 HTTP/1.1" 200 -
+2026-04-09 13:19:25,580 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:19:36,094 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\materiaPrima\\routes.py', reloading
+2026-04-09 13:19:36,555 - INFO -  * Restarting with stat
+2026-04-09 13:19:38,000 - WARNING -  * Debugger is active!
+2026-04-09 13:19:38,005 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:19:38,790 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:38] "GET /modificar/1 HTTP/1.1" 200 -
+2026-04-09 13:19:38,868 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:19:44,177 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:44] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:19:44,215 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:44] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:19:49,337 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:49] "GET /modificar/9 HTTP/1.1" 200 -
+2026-04-09 13:19:49,371 - INFO - 127.0.0.1 - - [09/Apr/2026 13:19:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:20:00,668 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:00] "[32mPOST /modificar/9 HTTP/1.1[0m" 302 -
+2026-04-09 13:20:00,683 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:00] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:20:00,717 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:20:18,457 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:18] "GET /modificar/9 HTTP/1.1" 200 -
+2026-04-09 13:20:18,486 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:18] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:20:22,562 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:22] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:20:22,587 - INFO - 127.0.0.1 - - [09/Apr/2026 13:20:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:08,079 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:08] "GET /compras HTTP/1.1" 200 -
+2026-04-09 13:22:08,106 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:11,044 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:11] "GET /compras/registrar HTTP/1.1" 200 -
+2026-04-09 13:22:11,078 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:11,082 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:11] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-09 13:22:25,947 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:25] "[32mPOST /compras/registrar HTTP/1.1[0m" 302 -
+2026-04-09 13:22:25,964 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:25] "GET /compras HTTP/1.1" 200 -
+2026-04-09 13:22:25,993 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:25] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:28,765 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:28] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 13:22:28,812 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:30,603 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:30] "GET /pagos-proveedores/2 HTTP/1.1" 200 -
+2026-04-09 13:22:30,631 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:30] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:33,287 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:33] "POST /pagos-proveedores/2 HTTP/1.1" 200 -
+2026-04-09 13:22:33,322 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:41,008 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:41] "[32mPOST /pagos-proveedores/2 HTTP/1.1[0m" 302 -
+2026-04-09 13:22:41,021 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:41] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-09 13:22:41,055 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:42,731 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:42] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:22:42,772 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:45,960 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:45] "GET /detalles/9 HTTP/1.1" 200 -
+2026-04-09 13:22:45,990 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:45] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:22:52,698 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:52] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-09 13:22:52,723 - INFO - 127.0.0.1 - - [09/Apr/2026 13:22:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:28:05,153 - INFO - 127.0.0.1 - - [09/Apr/2026 13:28:05] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 13:28:05,199 - INFO - 127.0.0.1 - - [09/Apr/2026 13:28:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:28,543 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:28] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 13:31:28,587 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:28] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:31,823 - INFO - Salida: El usuario id 1 cerro sesion.
+2026-04-09 13:31:31,826 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 13:31:31,856 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:31] "GET / HTTP/1.1" 200 -
+2026-04-09 13:31:41,321 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:41] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 13:31:41,394 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:41] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:41,445 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:41,456 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:41] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:41,474 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:41] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:43,377 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:43] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:31:43,405 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:43] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:43,454 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:43,458 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:43] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:47,048 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:47] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:31:47,108 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:47] "GET /ver-ticket/43?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:31:47,139 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:49,428 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:49] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:49,472 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:49,474 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:49,494 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:49] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:51,665 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:51] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:31:51,706 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:51] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:51,776 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:51,779 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:51] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:51,794 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:51] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:53,177 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:53] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:31:53,208 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:53] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:53,263 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:53] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:53,265 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:53] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:55,305 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:55] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:31:55,336 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:55] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:55,379 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:55] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:55,380 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:55] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:55,396 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:55] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:57,903 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:57] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:31:57,933 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:57] "GET /ver-ticket/44?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:31:57,987 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:57] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:59,293 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:59] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:31:59,339 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:59] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:31:59,342 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:59] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:31:59,365 - INFO - 127.0.0.1 - - [09/Apr/2026 13:31:59] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:00,600 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:00] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:00,628 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:00] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:00,677 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:00] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:00,678 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:00] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:00,696 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:00] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:01,434 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:01,466 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:01,534 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:01,536 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:01,555 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:01,822 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:01,856 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:01,910 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:01,912 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:01,959 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:01,984 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:01] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:02,232 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:02,270 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:02,312 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:02,312 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:02,332 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:02,696 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:02,718 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:02,761 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:02,762 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:02] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:05,406 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:05] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:32:05,437 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:05] "GET /ver-ticket/45?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:32:05,482 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:05] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:06,907 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:06] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:06,935 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:06] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:06,940 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:06] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:08,457 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:08] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:32:08,484 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:08] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:32:08,547 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:08] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:08,550 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:08] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:32:10,940 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:10] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:32:10,965 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:10] "GET /ver-ticket/46?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:32:11,020 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:12,943 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:12] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:32:12,973 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:12] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:22,661 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:22] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 13:32:22,854 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:22] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:32:22,916 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:39,345 - INFO - Salida: El usuario id 2 cerro sesion.
+2026-04-09 13:32:39,346 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 13:32:39,357 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:39] "GET / HTTP/1.1" 200 -
+2026-04-09 13:32:45,985 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:45] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 13:32:46,026 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:46] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 13:32:46,068 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:46] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:47,805 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:47] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 13:32:47,825 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:49,515 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:49] "GET /clientes/1 HTTP/1.1" 200 -
+2026-04-09 13:32:49,551 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:49] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:32:52,887 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:52] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 13:32:52,912 - INFO - 127.0.0.1 - - [09/Apr/2026 13:32:52] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:40:20,187 - INFO - 127.0.0.1 - - [09/Apr/2026 13:40:20] "GET /clientes HTTP/1.1" 200 -
+2026-04-09 13:40:20,223 - INFO - 127.0.0.1 - - [09/Apr/2026 13:40:20] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:40:23,170 - INFO - Salida: El usuario id 1 cerro sesion.
+2026-04-09 13:40:23,172 - INFO - 127.0.0.1 - - [09/Apr/2026 13:40:23] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 13:40:23,182 - INFO - 127.0.0.1 - - [09/Apr/2026 13:40:23] "GET / HTTP/1.1" 200 -
+2026-04-09 13:41:30,713 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\models.py', reloading
+2026-04-09 13:41:31,321 - INFO -  * Restarting with stat
+2026-04-09 13:41:32,660 - WARNING -  * Debugger is active!
+2026-04-09 13:41:32,664 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:44:41,613 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:44:41,859 - INFO -  * Restarting with stat
+2026-04-09 13:44:42,680 - WARNING -  * Debugger is active!
+2026-04-09 13:44:42,682 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:44:47,849 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:44:48,059 - INFO -  * Restarting with stat
+2026-04-09 13:44:48,882 - WARNING -  * Debugger is active!
+2026-04-09 13:44:48,885 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:45:08,785 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\app.py', reloading
+2026-04-09 13:45:09,007 - INFO -  * Restarting with stat
+2026-04-09 13:45:09,840 - WARNING -  * Debugger is active!
+2026-04-09 13:45:09,842 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:47:04,115 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:04] "GET / HTTP/1.1" 200 -
+2026-04-09 13:47:06,201 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:06] "GET /catalogo HTTP/1.1" 200 -
+2026-04-09 13:47:25,284 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:25] "GET / HTTP/1.1" 200 -
+2026-04-09 13:47:27,210 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:27] "GET /catalogo HTTP/1.1" 200 -
+2026-04-09 13:47:42,265 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:42] "GET / HTTP/1.1" 200 -
+2026-04-09 13:47:47,292 - INFO - 127.0.0.1 - - [09/Apr/2026 13:47:47] "GET /registro HTTP/1.1" 200 -
+2026-04-09 13:48:30,850 - INFO - INTENTO DE REGISTRO: juanito@gmail.com
+2026-04-09 13:48:31,306 - INFO - REGISTRO EXITOSO: Cliente juanito@gmail.com creado.
+2026-04-09 13:48:31,308 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:31] "POST /registro_cliente HTTP/1.1" 200 -
+2026-04-09 13:48:33,750 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:33] "GET / HTTP/1.1" 200 -
+2026-04-09 13:48:42,109 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:42] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 13:48:42,216 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:42] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:48:42,272 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:42] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:42,454 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:42] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:48:42,469 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:42] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:47,871 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:47] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:48:47,901 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:47] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:48:48,802 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:48] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:48:48,824 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:48] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:48,824 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:48] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:48:48,834 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:48] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:51,206 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:51] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:48:51,227 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:51] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:48:51,278 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:51] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:51,278 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:48:51,293 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:51] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:52,984 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:52] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-09 13:48:53,006 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:53] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-09 13:48:53,039 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:53] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:53,040 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:53] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:48:53,053 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:53] "[33mGET /static/img/productos.jpg HTTP/1.1[0m" 404 -
+2026-04-09 13:48:56,157 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:56] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-09 13:48:56,207 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:56] "GET /ver-ticket/1?ahorro=0 HTTP/1.1" 200 -
+2026-04-09 13:48:56,263 - INFO - 127.0.0.1 - - [09/Apr/2026 13:48:56] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:01,284 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:01] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:49:01,337 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:01] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:10,207 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:10] "[32mPOST /calificar-producto HTTP/1.1[0m" 302 -
+2026-04-09 13:49:10,223 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:10] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:49:10,258 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:10] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:21,522 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:21] "GET /mi-perfil HTTP/1.1" 200 -
+2026-04-09 13:49:21,554 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:21] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:22,503 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:22] "GET /mis-pedidos HTTP/1.1" 200 -
+2026-04-09 13:49:22,530 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:22] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:24,819 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:24] "GET /mi-perfil HTTP/1.1" 200 -
+2026-04-09 13:49:24,843 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:24] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:26,099 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:26] "GET /mi-perfil/editar HTTP/1.1" 200 -
+2026-04-09 13:49:26,147 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:26] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:49:32,690 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:32] "[32mPOST /mi-perfil/editar HTTP/1.1[0m" 302 -
+2026-04-09 13:49:32,705 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:32] "GET /mi-perfil HTTP/1.1" 200 -
+2026-04-09 13:49:32,747 - INFO - 127.0.0.1 - - [09/Apr/2026 13:49:32] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:05,137 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\clientes\\routesC.py', reloading
+2026-04-09 13:50:05,508 - INFO -  * Restarting with stat
+2026-04-09 13:50:06,798 - WARNING -  * Debugger is active!
+2026-04-09 13:50:06,799 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:50:07,382 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:07] "GET /mi-perfil/editar HTTP/1.1" 200 -
+2026-04-09 13:50:07,479 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:07] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:10,891 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:10] "[32mPOST /mi-perfil/editar HTTP/1.1[0m" 302 -
+2026-04-09 13:50:10,954 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:10] "GET /mi-perfil HTTP/1.1" 200 -
+2026-04-09 13:50:11,011 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:11] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:14,457 - INFO - Salida: El usuario id 2 cerro sesion.
+2026-04-09 13:50:14,459 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:14] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-09 13:50:14,498 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:14] "GET / HTTP/1.1" 200 -
+2026-04-09 13:50:22,315 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:22] "[32mGET /proveedores/agregar HTTP/1.1[0m" 302 -
+2026-04-09 13:50:22,342 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:22] "GET / HTTP/1.1" 200 -
+2026-04-09 13:50:24,494 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:24] "GET / HTTP/1.1" 200 -
+2026-04-09 13:50:26,990 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:26] "[32mGET /mis-pedidos HTTP/1.1[0m" 302 -
+2026-04-09 13:50:26,997 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:26] "GET / HTTP/1.1" 200 -
+2026-04-09 13:50:33,174 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:33] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-09 13:50:33,220 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:33] "GET /proveedores HTTP/1.1" 200 -
+2026-04-09 13:50:33,288 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:33] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:34,847 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:34] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-09 13:50:34,876 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:34] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:38,911 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:38] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:50:38,933 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:38] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:41,644 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:41] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-09 13:50:41,668 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:41] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:43,164 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:43] "GET /ordenes HTTP/1.1" 200 -
+2026-04-09 13:50:43,194 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:43] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:51,552 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:51] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-09 13:50:51,577 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:51] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:50:53,227 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:53] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-09 13:50:53,261 - INFO - 127.0.0.1 - - [09/Apr/2026 13:50:53] "[36mGET /static/style/calendario.css HTTP/1.1[0m" 304 -
+2026-04-09 13:52:56,906 - INFO - 127.0.0.1 - - [09/Apr/2026 13:52:56] "[35m[1mGET /corte-caja HTTP/1.1[0m" 500 -
+2026-04-09 13:52:56,967 - INFO - 127.0.0.1 - - [09/Apr/2026 13:52:56] "[36mGET /corte-caja?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-09 13:52:56,969 - INFO - 127.0.0.1 - - [09/Apr/2026 13:52:56] "[36mGET /corte-caja?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-09 13:52:57,004 - INFO - 127.0.0.1 - - [09/Apr/2026 13:52:57] "[36mGET /corte-caja?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 13:52:57,036 - INFO - 127.0.0.1 - - [09/Apr/2026 13:52:57] "[36mGET /corte-caja?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-09 13:53:27,787 - INFO - 127.0.0.1 - - [09/Apr/2026 13:53:27] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-09 13:53:27,829 - INFO - 127.0.0.1 - - [09/Apr/2026 13:53:27] "GET /static/style/calendario.css HTTP/1.1" 200 -
+2026-04-09 13:53:28,445 - INFO - 127.0.0.1 - - [09/Apr/2026 13:53:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-09 13:55:22,168 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 13:55:22,587 - INFO -  * Restarting with stat
+2026-04-09 13:55:23,480 - WARNING -  * Debugger is active!
+2026-04-09 13:55:23,482 - INFO -  * Debugger PIN: 102-485-939
+2026-04-09 13:55:40,187 - INFO -  * Detected change in 'C:\\PROYECTO WONKA\\Wonka\\gesVentas\\routes.py', reloading
+2026-04-09 13:55:40,487 - INFO -  * Restarting with stat

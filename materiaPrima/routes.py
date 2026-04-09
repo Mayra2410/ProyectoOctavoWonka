@@ -72,6 +72,7 @@ def agregar_materia():
 @login_required
 def modificar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
+    stock_real_db = materia.stock_actual
     form = forms.MateriaPrimaForm(request.form, obj=materia)
     form.proveedor_id.choices = [
         (p.id_proveedor, p.nombre) for p in Proveedores.query.order_by("nombre").all()
@@ -99,6 +100,8 @@ def modificar_materia(id):
             materia.imagen_materia = f"data:{file.content_type};base64,{encoded_string}"
 
         form.populate_obj(materia)
+        
+        materia.stock_actual = stock_real_db
         materia.activo = bool(form.activo.data)
 
         try:

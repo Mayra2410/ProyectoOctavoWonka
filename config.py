@@ -1,13 +1,17 @@
 import os
 
+
 class Config(object):
-    SECRET_KEY = 'ClaveSecreta'
+    SECRET_KEY = "ClaveSecreta"
     SESSION_COOKIE_SECURE = False
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://wonka_app:Wonka2026*@127.0.0.1/wonka'
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://wonka_app:Wonka2026*@127.0.0.1/wonka"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MONGO_URI = "mongodb://localhost:27017/"
+    MONGO_DB = "wonka_feedback"
+
+
 from sqlalchemy import create_engine
-
-

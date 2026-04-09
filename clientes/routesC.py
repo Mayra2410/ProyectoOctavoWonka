@@ -5,7 +5,15 @@ from .formsC import ClienteForm
 from sqlalchemy import or_
 import base64
 from utils import login_required
+from datetime import datetime
+from pymongo import MongoClient
+from flask import current_app
+from models import db, Cliente, Usuario, Venta, OrdenProduccion, Producto
 
+
+def get_mongo_db():
+    client = MongoClient(current_app.config["MONGO_URI"])
+    return client[current_app.config["MONGO_DB"]]
 
 
 @cliente.route("/clientes", methods=["GET"])
@@ -198,10 +206,10 @@ def modificar_cliente_vista():
 
             session["nombre"] = form.nombre.data
 
-            flash(
-                "¡Datos actualizados! Ya puedes usar tu nuevo correo para entrar.",
-                "success",
-            )
+            # flash(
+            #     "¡Datos actualizados! Ya puedes usar tu nuevo correo para entrar.",
+            #     "success",
+            # )
             return redirect(url_for("cliente.detalles_cliente_vista"))
 
         except Exception as e:
@@ -221,10 +229,6 @@ def mis_compras():
 
     obj_cliente = Cliente.query.filter_by(usuario_id=session["user_id"]).first()
 
-    if not obj_cliente:
-        flash("Perfil de cliente no encontrado", "danger")
-        return redirect(url_for("index"))
-
     mis_ventas = (
         Venta.query.filter_by(cliente_id=obj_cliente.id_cliente)
         .order_by(Venta.fecha_venta.desc())
@@ -232,3 +236,34 @@ def mis_compras():
     )
 
     return render_template("clientes/mis_compras.html", ventas=mis_ventas)
+
+
+@cliente.route("/calificar-producto", methods=["POST"])
+@login_required
+def calificar_producto():
+    id_producto = request.form.get("id_producto")
+    nombre_producto = request.form.get("nombre_producto")
+    calificacion = request.form.get("calificacion")  
+    comentario = request.form.get("comentario")
+
+    user_id = session.get("user_id")
+    cliente_obj = Cliente.query.filter_by(usuario_id=user_id).first()
+
+    resena = {
+        "producto_id": int(id_producto),
+        "nombre_producto": nombre_producto,
+        "cliente_id": cliente_obj.id_cliente,
+        "cliente_nombre": cliente_obj.nombre,
+        "calificacion": int(calificacion),
+        "comentario": comentario,
+        "fecha": datetime.now(),
+    }
+
+    try:
+        db_mongo = get_mongo_db()
+        db_mongo.resenas_productos.insert_one(resena)
+        # flash("¡Gracias por tu reseña mágica!", "success")
+    except Exception as e:
+        flash(f"Error al guardar reseña: {e}", "danger")
+
+    return redirect(url_for("cliente.mis_compras"))
