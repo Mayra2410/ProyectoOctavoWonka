@@ -55,13 +55,19 @@ def historial_ventas():
     
     return render_template('gesVentas/historial.html', ventas=ventas)
 
-@gesVentas.route('/ver-ticket/<int:id>')
+@gesVentas.route("/ver-ticket/<int:id>")
 @login_required
 def ver_ticket(id):
     venta = Venta.query.get_or_404(id)
+    
     productos_ticket = session.get('ultimo_carrito', [])
-    return render_template('gesVentas/ticket.html', venta=venta, productos=productos_ticket)
-
+    
+    ahorro = request.args.get('ahorro', 0)
+    
+    return render_template('gesVentas/ticket.html', 
+                           venta=venta, 
+                           productos=productos_ticket, 
+                           ahorro=ahorro)
 @gesVentas.route("/corte-caja")
 @login_required
 def corte_caja():

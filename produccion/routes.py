@@ -3,6 +3,7 @@ from . import produccion
 from models import db, OrdenProduccion, Producto, Receta, RecetaDetalle, MateriasPrimas, Venta
 from datetime import datetime
 import random 
+from decimal import Decimal
 from utils import login_required
 
 
@@ -55,36 +56,45 @@ def crear_orden():
     flash(f"Orden {nuevo_lote} generada exitosamente.", "success")
     return redirect(url_for('produccion.mostrar_ordenes'))
 
+from decimal import Decimal
+from datetime import datetime
+
 @produccion.route('/completar-orden/<int:id>')
 @login_required
 def completar_orden(id):
-
     orden = OrdenProduccion.query.get_or_404(id)
     if orden.estado == 'COMPLETADA':
         return redirect(url_for('produccion.mostrar_ordenes'))
 
     receta = Receta.query.filter_by(producto_id=orden.producto_id, activo=True).first()
     if not receta:
-        flash("Sin receta activa.", "danger")
+        flash("Error: No hay una receta activa para fabricar este chocolate.", "danger")
         return redirect(url_for('produccion.mostrar_ordenes'))
 
     detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
-    for item in detalles:
-        insumo = MateriasPrimas.query.get(item.materia_prima_id)
-        cantidad_necesaria = (item.cantidad_necesaria * orden.cantidad_requerida) / receta.cantidad_lote
-        if insumo.stock_actual < cantidad_necesaria:
-            faltante = float(cantidad_necesaria) - float(insumo.stock_actual)
-            flash(f"Falta {faltante:.2f} {insumo.unidad_medida} de {insumo.nombre}.", "danger")
-            return redirect(url_for('produccion.mostrar_ordenes'))
+    faltantes = []
 
     for item in detalles:
-        insumo = MateriasPrimas.query.get(item.materia_prima_id)
-        cantidad_necesaria = (item.cantidad_necesaria * orden.cantidad_requerida) / receta.cantidad_lote
-        insumo.stock_actual -= cantidad_necesaria
+        materia = MateriasPrimas.query.get(item.materia_prima_id)
+        necesario = Decimal(str((float(item.cantidad_necesaria) * float(orden.cantidad_requerida)) / float(receta.cantidad_lote)))
+        
+        if materia.stock_actual < necesario:
+            diferencia = necesario - materia.stock_actual
+            faltantes.append(f"{materia.nombre} (Faltan: {diferencia:.2f} {materia.unidad_medida})")
+
+    if faltantes:
+        flash(" PRODUCCIÓN BLOQUEADA. Faltan insumos: " + ", ".join(faltantes), "danger")
+        return redirect(url_for('produccion.mostrar_ordenes'))
+
+    for item in detalles:
+        materia = MateriasPrimas.query.get(item.materia_prima_id)
+        necesario = Decimal(str((float(item.cantidad_necesaria) * float(orden.cantidad_requerida)) / float(receta.cantidad_lote)))
+        materia.stock_actual -= necesario
 
     producto = Producto.query.get(orden.producto_id)
-    producto.stock_actual += orden.cantidad_requerida
-
+    if "AUTO-" not in orden.lote:
+        producto.stock_actual += orden.cantidad_requerida
+    
     orden.estado = 'COMPLETADA'
     orden.fecha_fin = datetime.now()
     orden.usuario_fin = session.get('username')
@@ -92,18 +102,13 @@ def completar_orden(id):
     if "AUTO-" in orden.lote:
         try:
             id_venta = int(orden.lote.split('-')[1])
-            otras = OrdenProduccion.query.filter(
-                OrdenProduccion.lote.like(f"AUTO-{id_venta}-%"),
-                OrdenProduccion.estado == 'PENDIENTE',
-                OrdenProduccion.id_orden_produccion != id
-            ).first()
-
-            if not otras:
-                v_asociada = Venta.query.get(id_venta)
-                if v_asociada:
-                    v_asociada.estado = 'COMPLETADA'
-        except: pass
+            v_asociada = Venta.query.get(id_venta)
+            if v_asociada:
+                v_asociada.estado = 'COMPLETADA'
+                flash(f"¡Venta #{id_venta} surtida y completada!", "success")
+        except:
+            pass
 
     db.session.commit()
-    flash(f"Lote {orden.lote} terminado.", "success")
+    flash(f"Lote {orden.lote} finalizado correctamente.", "success")
     return redirect(url_for('produccion.mostrar_ordenes'))

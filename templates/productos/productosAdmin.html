@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% import "_macros.html" as m %}
-{% block content %}
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
 
 <div class="max-w-[1800px] mx-auto">
   <div class="mb-6">
@@ -15,9 +13,16 @@
   </div>
 
   <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-    <form method="GET" action="{{ url_for('productos.lista_productos') }}" class="mb-8">
+    <form
+      method="GET"
+      action="{{ url_for('productos.lista_productos') }}"
+      class="mb-8"
+    >
       <div class="relative max-w-md">
-        <i data-lucide="search" class="absolute left-4 top-3.5 text-gray-400 w-5 h-5"></i>
+        <i
+          data-lucide="search"
+          class="absolute left-4 top-3.5 text-gray-400 w-5 h-5"
+        ></i>
         <input
           type="text"
           name="q"
@@ -53,16 +58,18 @@
               {{ producto.id_producto }}
             </td>
 
-<td class="py-5 px-2">
-  <div class="w-12 h-12 rounded-full overflow-hidden border border-gray-200 bg-gray-50 shadow-sm">
-    <img
-      src="{{ producto.imagen_producto if producto.imagen_producto else url_for('static', filename='img/producto.png') }}"
-      onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/producto.png') }}';"
-      class="w-full h-full object-cover"
-      alt="{{ producto.nombre }}"
-    />
-  </div>
-</td>
+            <td class="py-5 px-2">
+              <div
+                class="w-12 h-12 rounded-full overflow-hidden border border-gray-200 bg-gray-50 shadow-sm"
+              >
+                <img
+                  src="{{ producto.imagen_producto if producto.imagen_producto else url_for('static', filename='img/producto.png') }}"
+                  onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/producto.png') }}';"
+                  class="w-full h-full object-cover"
+                  alt="{{ producto.nombre }}"
+                />
+              </div>
+            </td>
 
             <td class="py-5 px-2 text-gray-700 font-semibold">
               {{ producto.nombre }}
@@ -82,22 +89,26 @@
 
             <td class="py-5 px-2">
               {% if producto.activo %}
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs bg-green-100 text-green-700 font-bold">
-                  Activo
-                </span>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs bg-green-100 text-green-700 font-bold"
+              >
+                Activo
+              </span>
               {% else %}
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs bg-red-100 text-red-700 font-bold">
-                  Inactivo
-                </span>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs bg-red-100 text-red-700 font-bold"
+              >
+                Inactivo
+              </span>
               {% endif %}
             </td>
 
             <td class="py-5 px-2 text-center" onclick="event.stopPropagation()">
               {{ m.acciones_tabla(
-                edit_link=url_for('productos.editar_producto', id_producto=producto.id_producto),
-                delete_link=url_for('productos.confirmar_eliminar_producto', id_producto=producto.id_producto),
-                es_activo=producto.activo
-              ) }}
+              edit_link=url_for('productos.editar_producto',
+              id_producto=producto.id_producto),
+              delete_link=url_for('productos.confirmar_eliminar_producto',
+              id_producto=producto.id_producto), es_activo=producto.activo ) }}
             </td>
           </tr>
           {% else %}
