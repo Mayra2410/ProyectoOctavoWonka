@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WONKA</title>
@@ -8,110 +8,91 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-      body {
-        font-family: 'Inter', sans-serif;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-      .magic-shine {
-        position: relative;
-        overflow: hidden;
-      }
-      .magic-shine::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -100%;
-        width: 100%;
-        height: 200%;
-        background: linear-gradient(
-          to right,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-        );
-        transform: rotate(45deg);
-        transition: all 0.6s;
-      }
-      .magic-shine:hover::after {
-        left: 100%;
-      }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(45, 10, 46, 0.82), rgba(61, 28, 2, 0.75)), 
+                        url('https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-      .golden-ticket-tab {
-        background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-        border: 2px solid rgba(255, 255, 255, 0.6);
-        box-shadow: -5px 0 20px rgba(0,0,0,0.2);
-      }
+        .font-wonka { font-family: 'Playfair Display', serif; }
+
+        .dot-pattern {
+            background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        .input-wonka:focus {
+            border-color: #D4AF37;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+        }
+
+        .golden-ticket-gradient {
+            background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+        }
     </style>
-  </head>
+</head>
 
-  <body class="bg-white">
-    <a href="{{ url_for('catalogo') }}" class="fixed right-[-10px] top-1/2 -translate-y-1/2 z-50 group transition-all duration-500 hover:right-0">
-      <div class="magic-shine golden-ticket-tab px-5 py-10 rounded-l-3xl flex flex-col items-center gap-4 transition-transform group-hover:scale-105">
-        <span class="[writing-mode:vertical-lr] rotate-180 font-black text-[#6F4E37] tracking-[0.3em] text-[10px] uppercase">Productos Wonka</span>
-        <i data-lucide="ticket" class="w-6 h-6 text-[#6F4E37] animate-bounce"></i>
-        <span class="[writing-mode:vertical-lr] rotate-180 font-bold text-[#6F4E37] text-xs uppercase italic">Ver Catálogo</span>
-      </div>
+<body class="min-h-screen flex items-center justify-center p-6">
+
+    <a href="{{ url_for('catalogo') }}" class="fixed right-0 top-1/2 -translate-y-1/2 z-50 group">
+        <div class="golden-ticket-gradient px-3 py-9 rounded-l-2xl flex flex-col items-center gap-4 shadow-2xl border-l-2 border-white/40 transition-all group-hover:-translate-x-1">
+            <span class="[writing-mode:vertical-lr] rotate-180 font-bold text-[#3d1c02] tracking-[0.3em] text-[9px] uppercase">Catálogo Wonka</span>
+            <i data-lucide="ticket" class="w-5 h-5 text-[#3d1c02]"></i>
+        </div>
     </a>
 
-    <div class="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-[#7B2CBF] via-[#6F4E37] to-[#D4AF37] opacity-20"></div>
-      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-[#FFD700] opacity-30 blur-2xl"></div>
-      <div class="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-[#7B2CBF] opacity-30 blur-3xl"></div>
-
-      <div class="w-full max-w-md mx-4 relative z-10 bg-white rounded-xl shadow-2xl border-2 border-[#D4AF37]/30 overflow-hidden">
-        <div class="p-8 text-center space-y-4">
-          <div class="flex justify-center items-center gap-3">
-            <i data-lucide="chef-hat" class="w-10 h-10 text-[#7B2CBF]"></i>
-            <div class="relative">
-              <h1 class="text-4xl font-bold bg-gradient-to-r from-[#7B2CBF] via-[#D4AF37] to-[#7B2CBF] bg-clip-text text-transparent">WONKA</h1>
-              <i data-lucide="sparkles" class="w-6 h-6 text-[#FFD700] absolute -top-2 -right-8 animate-pulse"></i>
+    <div class="w-full max-w-[400px] bg-white rounded-[2.5rem] shadow-[0_25px_50px_rgba(0,0,0,0.5)] overflow-hidden relative border border-white/20">
+        <div class="dot-pattern p-8 md:p-12">
+            
+            <div class="text-center mb-10 flex flex-col items-center">
+                <div class="mb-6 relative">
+                    <div class="w-24 h-24 rounded-full border-2 border-[#D4AF37]/30 p-1 bg-white shadow-lg overflow-hidden flex items-center justify-center">
+                        <img src="{{ url_for('static', filename='img/log_wonka.jpeg') }}" alt="Logo Wonka" class="w-full h-full object-cover rounded-full">
+                    </div>
+                </div>
+                <h1 class="text-4xl font-wonka text-[#3d1c02] font-bold">Wonka</h1>
+                <p class="text-[#D4AF37] text-[9px] font-bold tracking-[0.4em] uppercase mt-2">Dos hermanos, dos artesanos</p>
             </div>
-          </div>
-          <h2 class="text-2xl font-semibold text-[#6F4E37]">Chocolateria Magica</h2>
-          <p class="text-[#6F4E37] opacity-80">Ingresa tus credenciales para acceder</p>
+
+            <form action="{{ url_for('index') }}" method="POST" class="space-y-5" novalidate>
+                {{ form.csrf_token }}
+
+                <div class="space-y-1.5">
+                    <label class="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400 ml-2">Correo Electrónico</label>
+                    <div class="relative">
+                        <i data-lucide="mail" class="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                        {{ form.email(class='w-full pl-12 pr-6 py-4 bg-[#f8fafc] border-2 border-transparent rounded-2xl text-sm text-gray-700 font-semibold input-wonka transition-all outline-none', placeholder='nombre@wonka.com') }}
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400 ml-2">Contraseña</label>
+                    <div class="relative">
+                        <i data-lucide="key-round" class="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                        {{ form.password(class='w-full pl-12 pr-6 py-4 bg-[#f8fafc] border-2 border-transparent rounded-2xl text-sm text-gray-700 font-semibold input-wonka transition-all outline-none', placeholder='••••••••') }}
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-[#3d1c02] hover:bg-[#2d0a2e] text-white font-bold rounded-2xl shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group uppercase text-[10px] tracking-widest mt-6">
+                    <span>Ingresar</span>
+                </button>
+            </form>
+
+            <div class="mt-10 text-center space-y-4">
+                <a href="/registro" class="text-[10px] font-bold text-[#7B2CBF] hover:text-[#3d1c02] transition-colors flex items-center justify-center gap-2">
+                    ¿Nuevo artesano? Regístrate aquí
+                </a>
+                <div>
+                    <a href="{{ url_for('recuperar_password') }}" class="text-[9px] text-gray-400 hover:text-[#D4AF37] font-bold uppercase tracking-tighter transition-colors">¿Olvidaste tu contrasena?</a>
+                </div>
+            </div>
         </div>
-
-        <div class="px-8 pb-8">
-          <form action="{{ url_for('index') }}" method="POST" class="space-y-4" novalidate>
-            {{ form.csrf_token }}
-
-            <div class="space-y-2">
-              <label for="email" class="block text-sm font-medium text-[#6F4E37]">Email</label>
-              {{ form.email(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all') }}
-
-              {% if form.email.errors %}
-                {% for error in form.email.errors %}
-                  <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
-                {% endfor %}
-              {% endif %}
-            </div>
-
-            <div class="space-y-2">
-              <label for="password" class="block text-sm font-medium text-[#6F4E37]">Contrasena</label>
-              {{ form.password(class='w-full px-3 py-2 border border-[#D4AF37]/50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent transition-all') }}
-
-              {% if form.password.errors %}
-                {% for error in form.password.errors %}
-                  <p class="text-red-500 text-xs font-bold mt-1">{{ error }}</p>
-                {% endfor %}
-              {% endif %}
-            </div>
-
-            <button type="submit" class="w-full py-2 px-4 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1FAF] hover:to-[#7B2CBF] text-white font-semibold rounded-md shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
-              Ingresar
-            </button>
-
-            <div class="mt-4 text-center">
-              <a href="{{ url_for('recuperar_password') }}" class="text-[#6F4E37] hover:text-[#7B2CBF] text-xs font-medium transition-all duration-300">¿Olvidaste tu contraseña?</a>
-            </div>
-          </form>
-
-          <div class="mt-4 text-center">
-            <a href="/registro" class="text-sm font-semibold text-[#7B2CBF] hover:text-[#6F4E37] transition-colors flex items-center justify-center gap-1">¿No tienes cuenta? Registrate aqui</a>
-          </div>
-        </div>
-      </div>
     </div>
 
     {% with messages=get_flashed_messages(with_categories=true) %}
@@ -119,12 +100,13 @@
         {% for category, message in messages %}
           <script>
             Swal.fire({
-              title: '{{ "Acceso Restringido" if category in ["error", "danger"] else "Mensaje de la Fábrica" }}',
+              title: '{{ "Aviso" if category == "info" else "Error de Acceso" }}',
               text: '{{ message }}',
               icon: '{{ "error" if category in ["error", "danger"] else "info" }}',
-              confirmButtonColor: '#7B2CBF',
-              background: '#fff',
-              color: '#6F4E37'
+              confirmButtonColor: '#3d1c02',
+              background: '#ffffff',
+              color: '#3d1c02',
+              customClass: { popup: 'rounded-[2rem]' }
             })
           </script>
         {% endfor %}
@@ -132,7 +114,7 @@
     {% endwith %}
 
     <script>
-      lucide.createIcons()
+        lucide.createIcons();
     </script>
-  </body>
+</body>
 </html>
