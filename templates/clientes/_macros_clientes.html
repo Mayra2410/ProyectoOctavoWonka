@@ -1,0 +1,198 @@
+{% macro tarjeta_cliente(datos, botones=None) %}
+<div
+  class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+>
+  <div class="absolute top-0 left-0 bottom-0 w-2 bg-wonka-purple"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+    <div
+      class="lg:col-span-1 flex flex-col items-center border-r border-gray-50 pr-8"
+    >
+      <div class="relative mb-6">
+        {% if datos.imagen_cliente %}
+        <img
+          class="w-32 h-32 rounded-3xl border-4 border-white shadow-md object-cover transition-transform hover:scale-105"
+          src="{{ datos.imagen_cliente }}"
+          alt="Cliente"
+        />
+        {% else %}
+        <div
+          class="w-32 h-32 rounded-3xl bg-wonka-purple/5 flex items-center justify-center text-wonka-purple text-4xl font-black uppercase tracking-tighter"
+        >
+          {{ datos.nombre[0] }}
+        </div>
+        {% endif %}
+      </div>
+
+      <h2
+        class="text-2xl font-extrabold text-wonka-brown text-center leading-tight mb-1"
+      >
+        {{ datos.nombre }}
+      </h2>
+      <p
+        class="text-wonka-purple/60 font-bold text-[10px] uppercase tracking-[0.2em] mb-8"
+      >
+        ID Registro #{{ datos.id_cliente }}
+      </p>
+
+      <div class="w-full space-y-3">
+        {% if botones %} {{ botones }} {% else %}
+        <a
+          href="{{ url_for('cliente.clientesAdmin') }}"
+          class="w-full py-3 bg-gray-50 hover:bg-gray-100 text-gray-500 font-bold rounded-xl text-center transition-all text-xs block border border-transparent hover:border-gray-200"
+        >
+          Regresar al listado
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-5 bg-gray-50/50 rounded-2xl border border-gray-100">
+          <span
+            class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-1"
+            >Correo Electronico</span
+          >
+          <span class="text-gray-700 font-semibold truncate block"
+            >{{ datos.email }}</span
+          >
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-2xl border border-gray-100">
+          <span
+            class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-1"
+            >Telefono</span
+          >
+          <span class="text-gray-700 font-semibold"
+            >{{ datos.telefono or 'Sin registrar' }}</span
+          >
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-2xl border border-gray-100">
+          <span
+            class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-1"
+            >Perfil Comercial</span
+          >
+          <div class="flex gap-2 mt-2">
+            <span
+              class="px-2.5 py-1 rounded-md text-[9px] font-black bg-blue-50 text-blue-500 uppercase border border-blue-100"
+              >{{ datos.tipo }}</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md text-[9px] font-black bg-wonka-purple/5 text-wonka-purple uppercase border border-wonka-purple/10"
+              >{{ datos.categoria_comprador }}</span
+            >
+          </div>
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-2xl border border-gray-100">
+          <span
+            class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-1"
+            >Direccion de Entrega</span
+          >
+          <span class="text-gray-700 text-sm font-medium"
+            >{{ datos.direccion or 'No registrada' }}</span
+          >
+        </div>
+
+        <div
+          class="p-6 bg-wonka-purple/[0.02] rounded-2xl border border-dashed border-wonka-purple/20 md:col-span-2"
+        >
+          <div class="flex items-center gap-2 mb-3">
+            <i
+              data-lucide="sticky-note"
+              class="w-3.5 h-3.5 text-wonka-purple"
+            ></i>
+            <span
+              class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block"
+              >Notas de Preferencia</span
+            >
+          </div>
+          <p
+            class="text-gray-500 italic text-sm leading-relaxed bg-white/50 p-4 rounded-xl border border-white"
+          >
+            "{{ datos.notas or 'Sin observaciones adicionales para este
+            cliente.' }}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %} {% macro formulario_edicion_cliente(form, cliente_id) %}
+<div
+  class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
+>
+  <div class="absolute top-0 left-0 bottom-0 w-2 bg-wonka-purple"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+    <div
+      class="lg:col-span-1 flex flex-col items-center border-r border-gray-50 pr-8 justify-center"
+    >
+      <div
+        class="w-20 h-20 rounded-3xl bg-wonka-purple/5 flex items-center justify-center mb-4 text-wonka-purple"
+      >
+        <i data-lucide="user-cog" class="w-10 h-10"></i>
+      </div>
+      <p
+        class="text-wonka-purple font-black text-[10px] uppercase tracking-[0.2em] mb-8 text-center"
+      >
+        Edicion de Perfil<br /><span class="text-gray-400 font-bold"
+          >#{{ cliente_id }}</span
+        >
+      </p>
+
+      <div class="w-full space-y-3">
+        <button
+          type="submit"
+          class="w-full py-3.5 bg-wonka-purple hover:scale-[1.02] text-white font-bold rounded-xl text-center transition-all shadow-lg shadow-wonka-purple/10 text-sm active:scale-95"
+        >
+          Guardar Cambios
+        </button>
+        <a
+          href="{{ url_for('cliente.clientesAdmin') }}"
+          class="w-full py-3.5 bg-gray-50 text-gray-400 hover:text-gray-600 font-bold rounded-xl text-center transition-all text-sm block border border-transparent hover:border-gray-200"
+        >
+          Cancelar
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {% set fields = [ ('Nombre Completo', form.nombre), ('Correo
+        Electronico', form.email), ('Tipo de Cliente', form.tipo), ('Categoria',
+        form.categoria_comprador), ('Telefono', form.telefono), ('Direccion
+        Principal', form.direccion) ] %} {% for label, field in fields %}
+        <div
+          class="p-4 bg-gray-50/50 rounded-xl border border-gray-100 focus-within:border-wonka-purple/30 transition-all"
+        >
+          <label
+            class="text-[10px] font-black text-wonka-purple/50 uppercase tracking-widest block mb-1"
+            >{{ label }}</label
+          >
+          {{ field(class="w-full bg-transparent border-0 text-gray-800 font-bold
+          p-0 focus:ring-0 outline-none text-base placeholder:text-gray-300") }}
+          {% for error in field.errors %}<span
+            class="text-[10px] text-red-500 font-bold tracking-tight block mt-1"
+            >* {{ error }}</span
+          >{% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="md:col-span-2 mt-2">
+          <label
+            class="text-[10px] font-black text-wonka-purple uppercase tracking-widest block mb-2 px-1"
+            >Notas Internas / Preferencias</label
+          >
+          {{ form.notas(class="w-full bg-gray-50 border border-gray-100
+          rounded-2xl p-4 focus:ring-2 focus:ring-wonka-purple/10
+          focus:border-wonka-purple/20 outline-none text-gray-600 text-sm italic
+          transition-all", rows="3") }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100 no-print-bg">
+    
+    <div class="flex flex-wrap justify-center gap-4 mb-6 print:hidden">
+        
+        {% if session['rol'] == 'CLIENTE' %}
+            <a href="{{ url_for('puntoVenta.index') }}" 
+               class="bg-wonka-purple text-white px-6 py-2 rounded-xl font-bold hover:bg-wonka-purple-dark shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i> Seguir Comprando
+            </a>
+            <a href="{{ url_for('cliente.detalles_cliente_vista') }}" 
+               class="bg-white text-wonka-brown px-6 py-2 rounded-xl font-bold border border-gray-200 hover:bg-gray-50 transition-all flex items-center gap-2 text-sm">
+                <i data-lucide="user" class="w-4 h-4"></i> Ir a mi Perfil
+            </a>
+        {% else %}
+            <a href="{{ url_for('gesVentas.mostrar_ventas') }}" 
+               class="bg-gray-200 text-gray-700 px-6 py-2 rounded-xl font-bold hover:bg-gray-300 transition-all flex items-center gap-2 text-sm">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Gestión de Ventas
+            </a>
+        {% endif %}
+
+        <button onclick="window.print()" 
+                class="bg-wonka-gold text-wonka-brown px-6 py-2 rounded-xl font-bold shadow-lg hover:scale-105 transition-all flex items-center gap-2 text-sm">
+            <i data-lucide="printer" class="w-4 h-4"></i> Imprimir / Guardar PDF
+        </button>
+    </div>
+
+    <div id="ticket-recibo" class="bg-white w-[300px] p-8 shadow-2xl border-t-8 border-wonka-gold relative font-mono text-[10px] text-wonka-brown">
+        
+        <div class="text-center mb-4">
+            <h2 class="text-lg font-black tracking-tighter uppercase italic text-wonka-brown">Fábrica Wonka</h2>
+            <p>Blvr. Mariano Escobedo Pte. 1702</p>
+            <p>León de los Aldama, Gto</p>
+            <p class="text-[8px] mt-1 italic">"Cualquier cosa es posible si lo imaginas"</p>
+        </div>
+
+        <div class="border-b border-dashed border-gray-300 my-4"></div>
+
+        <div class="space-y-1 mb-2">
+            <p><b>FOLIO:</b> #{{ venta.id_venta }}</p>
+            <p><b>FECHA:</b> {{ venta.fecha_venta.strftime('%d/%m/%Y %H:%M') }}</p>
+            <p><b>PAGO:</b> {{ venta.metodo_pago }}</p>
+        </div>
+
+        <div class="mt-3 mb-4 p-2 bg-wonka-purple/5 rounded-lg border border-wonka-purple/10">
+            <p class="text-[8px] font-black uppercase text-wonka-purple mb-1">Estatus del Pedido:</p>
+            {% if venta.estado == 'PENDIENTE' %}
+                <p class="text-[9px] leading-tight text-wonka-brown"> <b>En cola de producción:</b> El sistema detectó falta de stock. Tiempo estimado de entrega: 45-60 min.</p>
+            {% else %}
+                <p class="text-[9px] leading-tight text-green-600"> <b>¡Completado!</b> Su chocolate ha sido fabricado y está listo para ser disfrutado.</p>
+            {% endif %}
+        </div>
+
+        <div class="border-b border-dashed border-gray-300 my-4"></div>
+
+        <table class="w-full mb-4">
+            <thead>
+                <tr class="text-left border-b border-gray-100 uppercase font-black text-[9px]">
+                    <th class="pb-2">CANT / PRODUCTO</th>
+                    <th class="pb-2 text-right">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if productos %}
+                    {% for item in productos %}
+                    <tr class="border-b border-gray-50">
+                        <td class="py-2">
+                            <p class="font-bold">{{ item.cantidad_cajas }}x {{ item.nombre }}</p>
+                            <p class="text-[8px] text-gray-400 italic">{{ item.presentacion }}</p>
+                        </td>
+                        <td class="py-2 text-right font-bold">
+                            ${{ "{:,.2f}".format(item.subtotal) }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="2" class="py-4 text-center italic opacity-50 text-[8px]">
+                            Detalle no disponible (Sesión expirada)
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="pt-2 text-right space-y-1 border-t border-wonka-brown/20">
+            {% set total_num = venta.total | float %}
+            {% set ahorro_num = ahorro | float %}
+            {% set subtotal_antes_desc = total_num + ahorro_num %}
+
+            <p class="text-gray-500 text-[8px]">Monto Bruto: ${{ "{:,.2f}".format(subtotal_antes_desc) }}</p>
+            
+            {% if ahorro_num > 0 %}
+            <p class="text-green-600 font-bold text-[9px]">
+                DESC. VIP WONKA: -${{ "{:,.2f}".format(ahorro_num) }}
+            </p>
+            {% endif %}
+
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <p class="text-gray-500">Subtotal (sin IVA): ${{ "{:,.2f}".format(total_num / 1.16) }}</p>
+            <p class="text-gray-500">IVA (16%): ${{ "{:,.2f}".format(total_num - (total_num / 1.16)) }}</p>
+            <p class="text-base font-black text-wonka-purple">TOTAL PAGADO: ${{ "{:,.2f}".format(total_num) }}</p>
+        </div>
+
+        <div class="text-center mt-10">
+            <p class="font-bold uppercase">¡Gracias por su compra!</p>
+            <p class="text-[7px] mt-2 opacity-50 uppercase tracking-widest italic">Dos hermanos, dos artesanos</p>
+        </div>
+
+        <div class="absolute -bottom-2 left-0 right-0 flex justify-around overflow-hidden h-4">
+            {% for i in range(15) %}
+                <div class="w-4 h-4 bg-gray-100 rounded-full -mb-2"></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+@media print {
+    body * { visibility: hidden; }
+    #ticket-recibo, #ticket-recibo * { visibility: visible; }
+    #ticket-recibo {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 300px;
+        box-shadow: none;
+        border-top: none;
+    }
+    .no-print-bg { background-color: white !important; }
+}
+
+#ticket-recibo {
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+</style>
+{% endblock %}

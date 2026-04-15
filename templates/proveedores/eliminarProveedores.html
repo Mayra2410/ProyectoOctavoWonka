@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% import "proveedores/_macros_prov.html" as mp %} {%
+block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div
+    class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2rem] border border-red-100 shadow-sm"
+  >
+    <div class="p-4 bg-white rounded-2xl shadow-sm">
+      <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
+    </div>
+    <div>
+      <h1 class="text-4xl font-black text-red-600 tracking-tight">
+        Desactivar Proveedor
+      </h1>
+      <p class="text-red-800/60 font-medium text-lg">
+        El estado del proveedor cambiará a
+        <span class="font-bold underline">Inactivo</span>. Podrás reactivarlo
+        después si lo necesitas.
+      </p>
+    </div>
+  </div>
+
+  {% set botones_desactivar %}
+  <div class="flex flex-col gap-4 w-full mt-4">
+    <form
+      action="{{ url_for('proveedores.desactivar_proveedor', id=proveedor.id_proveedor) }}"
+      method="POST"
+      class="w-full"
+    >
+      {{ form.csrf_token }}
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button
+        type="submit"
+        class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group"
+      >
+        Confirmar Desactivación
+      </button>
+    </form>
+
+    <a
+      href="{{ url_for('proveedores.lista_proveedores') }}"
+      class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all border border-gray-200"
+    >
+      Cancelar
+    </a>
+  </div>
+  {% endset %} {{ mp.tarjeta_proveedor(proveedor, botones=botones_desactivar) }}
+</div>
+
+<script>
+  lucide.createIcons();
+</script>
+{% endblock %}

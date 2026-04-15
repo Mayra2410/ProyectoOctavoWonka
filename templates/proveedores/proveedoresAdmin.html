@@ -1,37 +1,106 @@
-{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
-<div class="max-w-[1600px] mx-auto">
+{% extends "base.html" %} 
+{% import "_macros.html" as m %} 
+
+{% block content %}
+<div class="max-w-[1800px] mx-auto">
   <div class="mb-6">
     <h1 class="text-4xl font-bold text-wonka-purple">Proveedores</h1>
     <p class="text-gray-500">Gestiona la base de datos de suministros</p>
   </div>
 
   <div class="flex justify-end mb-4">
-    {{ m.boton_principal("Nuevo Proveedor") }}
+    <a href="{{ url_for('proveedores.agregar_proveedor') }}">
+      {{ m.boton_principal("Nuevo Proveedor") }}
+    </a>
   </div>
 
   <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-    {{ m.buscador("Buscar proveedor por nombre...") }}
+    <div id="contenedor-buscador">
+        {{ m.buscador("Buscar proveedor por nombre...") }}
+    </div>
 
     <div class="overflow-x-auto">
       <table class="w-full text-left">
         <thead class="text-gray-400 text-sm border-b border-gray-50">
           <tr>
-            <th class="pb-4 px-2">Proveedor</th>
+            <th class="pb-4 px-2">ID</th>
+            <th class="pb-4 px-2">Nombre</th>
+            <th class="pb-4 px-2">Teléfono</th>
             <th class="pb-4 px-2">Email</th>
+            <th class="pb-4 px-2">Dirección</th>
+            <th class="pb-4 px-2">Estado</th>
+            <th class="pb-4 px-2">Registro</th>
             <th class="pb-4 px-2 text-right">Acciones</th>
           </tr>
         </thead>
+
         <tbody class="divide-y divide-gray-50">
-          <tr class="group hover:bg-gray-50/50 transition-all">
+          {% for proveedor in proveedores %}
+          <tr
+            class="group hover:bg-wonka-purple/5 transition-all cursor-pointer"
+            onclick="window.location.href='{{ url_for('proveedores.detalle_proveedor', id=proveedor.id_proveedor) }}'"
+          >
             <td class="py-5 px-2 font-bold text-wonka-brown">
-              Cacao Premium S.A.
+              {{ proveedor.id_proveedor }}
             </td>
-            <td class="py-5 px-2 text-gray-500">cacao@wonka.com</td>
-            <td class="py-5 px-2">{{ m.acciones_tabla() }}</td>
+            <td class="py-5 px-2 text-gray-700 font-medium">
+              {{ proveedor.nombre }}
+            </td>
+            <td class="py-5 px-2 text-gray-500">{{ proveedor.telefono }}</td>
+            <td class="py-5 px-2 text-gray-500">{{ proveedor.email }}</td>
+            <td class="py-5 px-2 text-gray-500">{{ proveedor.direccion }}</td>
+
+            <td class="py-5 px-2">
+              {% if proveedor.activo %}
+              <span
+                class="px-3 py-1 rounded-full text-xs bg-green-100 text-green-600 font-bold"
+                >Activo</span
+              >
+              {% else %}
+              <span
+                class="px-3 py-1 rounded-full text-xs bg-red-100 text-red-600 font-bold"
+                >Inactivo</span
+              >
+              {% endif %}
+            </td>
+
+            <td class="py-5 px-2 text-gray-500">
+              {{ proveedor.fecha_registro }}
+            </td>
+
+            <td class="py-5 px-2 text-right" onclick="event.stopPropagation()">
+              {{ m.acciones_tabla(
+              edit_link=url_for('proveedores.modificar_proveedor',
+              id=proveedor.id_proveedor),
+              delete_link=url_for('proveedores.eliminar_proveedor',
+              id=proveedor.id_proveedor), es_activo=proveedor.activo ) }}
+            </td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contenedor = document.getElementById('contenedor-buscador');
+    const buscador = contenedor ? contenedor.querySelector('input') : null;
+
+    if (buscador) {
+        // Mantiene el texto escrito después de recargar la página
+        buscador.value = "{{ search_query or '' }}";
+
+        buscador.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = this.value.trim();
+                // Redirige a la ruta de proveedores con el parámetro ?q=
+                window.location.href = "{{ url_for('proveedores.lista_proveedores') }}?q=" + encodeURIComponent(query);
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

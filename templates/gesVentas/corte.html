@@ -1,0 +1,166 @@
+{% extends "base.html" %} {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="space-y-8">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <a href="{{ url_for('gesVentas.mostrar_ventas') }}" class="p-2 bg-white rounded-xl border no-print shadow-sm transition-hover hover:bg-gray-50">
+                <i data-lucide="arrow-left" class="w-6 h-6 text-wonka-brown"></i>
+            </a>
+            <div>
+                <h2 class="text-3xl font-bold text-wonka-brown">Corte de Caja Diario</h2>
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-widest">Reporte Generado: {{ hoy }}</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-3 no-print">
+          <form action="{{ url_for('gesVentas.guardar_corte') }}" method="POST">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+              
+              <input type="hidden" name="f_inicio" value="{{ fecha_inicio }}">
+              <input type="hidden" name="f_fin" value="{{ fecha_fin }}">
+              <input type="hidden" name="ingresos" value="{{ ingresos }}">
+              <input type="hidden" name="egresos" value="{{ egresos }}">
+              <input type="hidden" name="reserva" value="{{ reserva }}">
+              <input type="hidden" name="utilidad" value="{{ utilidad }}">
+              
+              <button type="submit" class="bg-wonka-gold text-wonka-brown px-6 py-2.5 rounded-xl font-black text-xs hover:scale-105 transition-all shadow-md flex items-center gap-2 border-b-4 border-wonka-brown/10">
+                  <i data-lucide="archive" class="w-4 h-4"></i> Archivar Ciclo
+              </button>
+          </form>
+          
+          <button onclick="window.print()" class="bg-wonka-brown text-white px-6 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-black transition-all">
+              <i data-lucide="printer" class="w-4 h-4"></i> Imprimir Reporte
+          </button>
+        </div>
+      </div>
+
+    <form method="GET" class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-wrap items-end gap-4 no-print">
+        <div class="flex-1 min-w-[200px]">
+            <label class="text-[10px] font-black text-gray-400 uppercase mb-2 block">Desde:</label>
+            <input type="date" name="fecha_inicio" value="{{ fecha_inicio }}" class="w-full p-3 bg-gray-50 rounded-xl border-none text-sm focus:ring-2 focus:ring-wonka-purple/20 outline-none">
+        </div>
+        <div class="flex-1 min-w-[200px]">
+            <label class="text-[10px] font-black text-gray-400 uppercase mb-2 block">Hasta:</label>
+            <input type="date" name="fecha_fin" value="{{ fecha_fin }}" class="w-full p-3 bg-gray-50 rounded-xl border-none text-sm focus:ring-2 focus:ring-wonka-purple/20 outline-none">
+        </div>
+        <button type="submit" class="bg-wonka-purple text-white px-10 py-3 rounded-xl font-bold text-sm hover:bg-wonka-purple-dark transition-all shadow-lg">
+            Actualizar Análisis
+        </button>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-3xl border-b-8 border-green-500 shadow-sm">
+            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2">Ventas Brutas</p>
+            <h3 class="text-2xl font-black text-green-600">${{ "{:,.2f}".format(ingresos) }}</h3>
+        </div>
+        <div class="bg-white p-6 rounded-3xl border-b-8 border-red-500 shadow-sm">
+            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2">Egresos Realizados</p>
+            <h3 class="text-2xl font-black text-red-600">-${{ "{:,.2f}".format(egresos) }}</h3>
+        </div>
+        <div class="bg-white p-6 rounded-3xl border-b-8 border-wonka-gold shadow-sm">
+            <p class="text-wonka-gold text-[10px] font-bold uppercase tracking-widest mb-2">Reserva Proveedores</p>
+            <h3 class="text-2xl font-black text-wonka-brown">${{ "{:,.2f}".format(reserva) }}</h3>
+            <p class="text-[8px] text-gray-400 italic mt-1">(20% Retenido del Ingreso)</p>
+        </div>
+        <div class="bg-wonka-purple p-6 rounded-3xl shadow-xl border-b-8 border-wonka-gold">
+            <p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-2">Utilidad Libre</p>
+            <h3 class="text-2xl font-black text-wonka-gold">${{ "{:,.2f}".format(utilidad) }}</h3>
+        </div>
+    </div>
+
+    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 no-print">
+        <h4 class="text-wonka-brown font-black uppercase text-xs tracking-widest mb-6 flex items-center gap-2">
+            <i data-lucide="book-open" class="w-4 h-4 text-wonka-purple"></i> Historial de Ciclos Archivados
+        </h4>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-[10px]">
+                <thead class="text-gray-400 font-black uppercase border-b border-gray-100">
+                    <tr>
+                        <th class="py-3 px-2">Periodo</th>
+                        <th>Ingresos</th>
+                        <th>Egresos</th>
+                        <th>Reserva</th>
+                        <th>Utilidad Neta</th>
+                        <th>Fecha Registro</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                    {% for c in historial_cortes %}
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="py-3 px-2 font-bold">{{ c.fecha_inicio }} al {{ c.fecha_fin }}</td>
+                        <td class="text-green-600 font-black">${{ "{:,.2f}".format(c.total_ingresos) }}</td>
+                        <td class="text-red-500">-${{ "{:,.2f}".format(c.total_egresos) }}</td>
+                        <td class="text-wonka-gold font-black">${{ "{:,.2f}".format(c.monto_reserva) }}</td>
+                        <td class="font-black text-wonka-purple">${{ "{:,.2f}".format(c.utilidad_neta) }}</td>
+                        <td class="text-gray-400 italic">{{ c.fecha_registro.strftime('%d/%m/%Y %H:%M') }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="py-10 text-center text-gray-400 italic">No hay ciclos archivados aún.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm h-[400px]">
+            <h4 class="text-wonka-brown font-black uppercase text-xs mb-4">Top 5 Productos</h4>
+            <canvas id="chartProductos"></canvas>
+        </div>
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm h-[400px]">
+            <h4 class="text-wonka-brown font-black uppercase text-xs mb-4">Tendencia de Ingresos</h4>
+            <canvas id="chartVentas"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Configuración de Lucide Icons
+    lucide.createIcons();
+
+    // Gráfica Productos
+    new Chart(document.getElementById('chartProductos'), {
+        type: 'bar',
+        data: {
+            labels: {{ labels_prod|tojson }},
+            datasets: [{
+                label: 'Ventas',
+                data: {{ values_prod|tojson }},
+                backgroundColor: '#8b5cf6',
+                borderRadius: 12
+            }]
+        },
+        options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+    });
+
+    // Gráfica Tendencia
+    new Chart(document.getElementById('chartVentas'), {
+        type: 'line',
+        data: {
+            labels: {{ labels_dias|tojson }},
+            datasets: [{
+                label: 'Ingresos $',
+                data: {{ values_dias|tojson }},
+                borderColor: '#ffcc00',
+                backgroundColor: 'rgba(255, 204, 0, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+    });
+</script>
+
+<style>
+    @media print {
+        .no-print { display: none !important; }
+        aside, header { display: none !important; }
+        main { padding: 0 !important; }
+        .grid { display: block !important; }
+        .bg-white { border: none !important; box-shadow: none !important; }
+    }
+</style>
+{% endblock %}

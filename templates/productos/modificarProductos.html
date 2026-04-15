@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "productos/_macros_prod.html" as mm %}
+{% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="flex items-center gap-4 mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">
+      Modificar Producto
+    </h1>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ mm.formulario_edicion_producto(form, producto.id_producto, producto, 'editar') }}
+  </form>
+</div>
+{% endblock %}

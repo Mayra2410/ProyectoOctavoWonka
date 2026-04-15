@@ -1,0 +1,149 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Nueva Materia Prima</h1>
+  </div>
+
+  <form action="{{ url_for('materiaPrima.agregar_materia') }}" method="POST" enctype="multipart/form-data" novalidate>
+    {{ form.csrf_token }}
+
+    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
+      <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
+        
+        <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
+          <div class="relative mb-6">
+            <img id="preview" class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover" 
+                 src="{{ url_for('static', filename='img/materias_primas.jpg') }}" alt="Previsualización" />
+            <div class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"></div>
+          </div>
+
+          <div class="w-full space-y-4">
+            <button type="submit" class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-black rounded-2xl text-center transition-all shadow-lg">
+                Guardar Insumo
+            </button>
+            <a href="{{ url_for('materiaPrima.admin_materias') }}" class="block w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all">
+                Cancelar
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 md:col-span-2">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Fotografía del Insumo</label>
+              <input type="file" name="imagen_materia" id="imagen_input" accept="image/png, image/jpeg, image/jpg" onchange="previewImage(event)" 
+                     class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-wonka-purple file:text-white cursor-pointer" />
+              
+              <span id="error-img-js" class="text-red-500 text-xs font-bold mt-1 hidden">Solo se permiten imágenes (PNG, JPG, JPEG)</span>
+              {% if error_img %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error_img }}</span>
+              {% endif %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Nombre del Insumo</label>
+              {{ form.nombre(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.nombre.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Unidad de Medida</label>
+              {{ form.unidad_medida(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.unidad_medida.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Stock Inicial</label>
+              {{ form.stock_actual(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.stock_actual.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Stock Mínimo</label>
+              {{ form.stock_minimo(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.stock_minimo.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Costo Unitario ($)</label>
+              {{ form.costo_unitario(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.costo_unitario.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Porcentaje de Merma (%)</label>
+              {{ form.porcentaje_merma(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.porcentaje_merma.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Fecha de Registro/Compra</label>
+              {{ form.fecha_ultima_compra(class="wonka-date w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+              {% for error in form.fecha_ultima_compra.errors %}
+                <span class="text-red-500 text-xs font-bold mt-1 block">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Proveedor</label>
+              {{ form.proveedor_id(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+            </div>
+
+            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 md:col-span-2">
+              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">Descripción</label>
+              {{ form.descripcion(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none text-gray-700") }}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function previewImage(event) {
+    const file = event.target.files[0];
+    const output = document.getElementById("preview");
+    const errorSpan = document.getElementById("error-img-js");
+
+    if (file) {
+      if (!file.type.match('image.*')) {
+        errorSpan.classList.remove('hidden');
+        errorSpan.classList.add('block');
+        event.target.value = ''; 
+        output.src = "{{ url_for('static', filename='img/materias_primas.jpg') }}";
+        return;
+      }
+
+      errorSpan.classList.add('hidden');
+      var reader = new FileReader();
+      reader.onload = function () {
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  flatpickr(".wonka-date", {
+    disableMobile: "true",
+    animate: true,
+  });
+</script>
+{% endblock %}

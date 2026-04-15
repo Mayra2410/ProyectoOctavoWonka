@@ -1,5 +1,4 @@
-{# Macro para Botón de Acción Principal #} 
-{% macro boton_principal(texto,
+{# Macro para Botón de Acción Principal #} {% macro boton_principal(texto,
 icono='plus', id='') %}
 <button
   class="bg-wonka-purple hover:bg-wonka-purple-dark text-white px-5 py-2 rounded-xl font-bold flex items-center gap-2 shadow-sm transition-all"
@@ -7,9 +6,7 @@ icono='plus', id='') %}
   <i data-lucide="{{ icono }}" class="w-5 h-5"></i>
   {{ texto }}
 </button>
-{% endmacro %} 
-
-{# Macro para el Buscador #} {% macro
+{% endmacro %} {# Macro para el Buscador #} {% macro
 buscador(placeholder="Buscar...") %}
 <div class="relative mb-8 max-w-md">
   <i
@@ -22,22 +19,29 @@ buscador(placeholder="Buscar...") %}
     class="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-wonka-purple/20 outline-none text-sm"
   />
 </div>
-{% endmacro %} 
-
-{# Macro para las Acciones #} {% macro
-acciones_tabla(edit_link="#", delete_link="#") %}
+{% endmacro %} {% macro acciones_tabla(edit_link="#", delete_link="#",
+es_activo=True) %}
 <div class="flex justify-end gap-3">
+  {# Botón de editar siempre activo #}
   <a
     href="{{ edit_link }}"
     class="text-wonka-purple hover:scale-110 transition-transform"
   >
     <i data-lucide="pencil" class="w-5 h-5"></i>
   </a>
-  <button
-    onclick="confirmDelete('{{ delete_link }}')"
+
+  {% if es_activo %} {# Botón eliminar activo #}
+  <a
+    href="{{ delete_link }}"
     class="text-red-400 hover:scale-110 transition-transform"
+    title="Desactivar"
   >
     <i data-lucide="trash-2" class="w-5 h-5"></i>
-  </button>
+  </a>
+  {% else %} {# Botón deshabilitado cuando ya está inactivo #}
+  <span class="text-gray-300 cursor-not-allowed" title="Ya está inactivo">
+    <i data-lucide="trash-2" class="w-5 h-5"></i>
+  </span>
+  {% endif %}
 </div>
 {% endmacro %}

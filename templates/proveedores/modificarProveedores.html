@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% import "proveedores/_macros_prov.html" as mp %} {%
+block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Modificar Proveedor</h1>
+  </div>
+
+  <form
+    action="{{ url_for('proveedores.modificar_proveedor', id=proveedor_id) }}"
+    method="POST"
+  >
+    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+    {{ mp.formulario_edicion_proveedor(form, proveedor_id) }}
+  </form>
+</div>
+{% endblock %}

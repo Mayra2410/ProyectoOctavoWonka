@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import "recetas/_macros_recetas.html" as mr %}
+
+{% block content %}
+<div class="max-w-[1800px] mx-auto p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-wonka-purple">Receta del producto</h1>
+    <p class="text-gray-500">{{ producto.nombre }}</p>
+  </div>
+
+  {% set botones %}
+    {% if session['rol'] == 'CLIENTE' %}
+        <a
+          href="{{ url_for('puntoVenta.index') }}"
+          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block"
+        >
+          Regresar a la Tienda
+        </a>
+    {% else %}
+        <a
+          href="{{ url_for('productos.detalle_producto', id_producto=producto.id_producto) }}"
+          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block"
+        >
+          Regresar al producto
+        </a>
+
+        <a
+          href="{{ url_for('productos.lista_productos') }}"
+          class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block mt-4"
+        >
+          Ir al listado
+        </a>
+    {% endif %}
+  {% endset %}
+
+  {{ mr.tarjeta_receta(receta, botones=botones) }}
+</div>
+{% endblock %}
