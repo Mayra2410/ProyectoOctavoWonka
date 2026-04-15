@@ -6,14 +6,14 @@ from sqlalchemy import or_
 import base64
 from utils import login_required
 from datetime import datetime
-from pymongo import MongoClient
+#from pymongo import MongoClient
 from flask import current_app
 from models import db, Cliente, Usuario, Venta, OrdenProduccion, Producto
 
 
-def get_mongo_db():
-    client = MongoClient(current_app.config["MONGO_URI"])
-    return client[current_app.config["MONGO_DB"]]
+#def get_mongo_db():
+#    client = MongoClient(current_app.config["MONGO_URI"])
+ #   return client[current_app.config["MONGO_DB"]]
 
 
 @cliente.route("/clientes", methods=["GET"])
