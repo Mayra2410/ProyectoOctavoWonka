@@ -17,17 +17,19 @@ def lista_compras():
 @compras_bp.route("/compras/registrar", methods=["GET", "POST"])
 @login_required
 def registrar_compra():
+    materias_query = MateriasPrimas.query.all()
+    proveedores_query = Proveedores.query.all()
+
     form = forms.CompraMateriaPrimaForm(
         request.form if request.method == "POST" else None
     )
 
-    form.materia_prima_id.choices = [
-        (m.id_materia_prima, m.nombre) for m in MateriasPrimas.query.all()
+    form.materia_prima_id.choices = [(0, "SELECCIONA UN INSUMO")] + [
+        (m.id_materia_prima, m.nombre) for m in materias_query
     ]
-    form.proveedor_id.choices = [
-        (p.id_proveedor, p.nombre) for p in Proveedores.query.all()
+    form.proveedor_id.choices = [(0, "SELECCIONA UN PROVEEDOR")] + [
+        (p.id_proveedor, p.nombre) for p in proveedores_query
     ]
-
     if request.method == "POST" and form.validate():
         materia = MateriasPrimas.query.get(form.materia_prima_id.data)
 
@@ -46,17 +48,16 @@ def registrar_compra():
         )
 
         try:
-
             materia.costo_unitario = form.costo_unitario.data
             materia.fecha_ultima_compra = form.fecha_compra.data
 
             db.session.add(nueva_compra)
             db.session.commit()
 
-            flash(
-                "Compra registrada correctamente. El stock no se verá afectado hasta que se procese la producción.",
-                "success",
-            )
+            # flash(
+            #     "Compra registrada correctamente. El stock no se verá afectado hasta que se procese la producción.",
+            #     "success",
+            # )
             return redirect(url_for("comprasProveedores.lista_compras"))
 
         except Exception as e:
@@ -64,7 +65,9 @@ def registrar_compra():
             print(f"Error en transacción Wonka: {e}")
             flash("Ocurrió un error al registrar la compra.", "danger")
 
-    return render_template("comprasProveedores/registrarCompra.html", form=form)
+    return render_template(
+        "comprasProveedores/registrarCompra.html", form=form, materias=materias_query
+    )
 
 
 @compras_bp.route("/compras/detalles/<int:id>")

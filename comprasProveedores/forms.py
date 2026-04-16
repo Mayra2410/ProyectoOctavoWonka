@@ -14,15 +14,14 @@ class CompraMateriaPrimaForm(Form):
     materia_prima_id = SelectField(
         "Insumo / Materia Prima",
         coerce=int,
-        validators=[validators.DataRequired(message="Selecciona un insumo")],
+        validators=[validators.NumberRange(min=1, message="Selecciona un insumo")],
     )
 
     proveedor_id = SelectField(
         "Proveedor",
         coerce=int,
-        validators=[validators.DataRequired(message="Selecciona un proveedor")],
+        validators=[validators.NumberRange(min=1, message="Selecciona un proveedor")],
     )
-
     cantidad = DecimalField(
         "Cantidad Comprada",
         [
@@ -44,7 +43,7 @@ class CompraMateriaPrimaForm(Form):
     fecha_compra = DateTimeField(
         "Fecha de Compra",
         [validators.DataRequired(message="Selecciona la fecha y hora")],
-        format="%Y-%m-%d %H:%M",  
+        format="%Y-%m-%d %H:%M",
     )
 
     observaciones = TextAreaField(

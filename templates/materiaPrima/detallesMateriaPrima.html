@@ -1,11 +1,240 @@
-{% extends "base.html" %} {% import "materiaPrima/_macros_mate.html" as mm %} {%
-block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="flex items-center gap-4 mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">
-      Detalles de Materia Prima
-    </h1>
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center gap-4">
+      <a
+        href="{{ url_for('materiaPrima.admin_materias') }}"
+        class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all group"
+      >
+        <i
+          data-lucide="chevron-left"
+          class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"
+        ></i>
+      </a>
+      <div>
+        <h1
+          class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none"
+        >
+          Ficha Detallada
+        </h1>
+        <p
+          class="text-[#d4af37] font-bold text-[10px] uppercase tracking-[0.2em] mt-1"
+        >
+          Gestión de Inventario
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-4">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center sticky top-6"
+        >
+          <div class="relative mb-6">
+            <div
+              class="w-40 h-40 rounded-full p-1 bg-white shadow-lg border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden"
+            >
+              <div class="w-full h-full rounded-full overflow-hidden">
+                {% if materia.imagen_materia %}
+                <img
+                  src="{{ materia.imagen_materia }}"
+                  class="w-full h-full object-cover"
+                />
+                {% else %}
+                <div
+                  class="w-full h-full bg-[#fdfaf3] flex items-center justify-center text-wonka-chocolate font-black text-5xl"
+                >
+                  {{ materia.nombre[0]|upper }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div
+              class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-md border-2 border-white {{ 'bg-emerald-500 text-white' if materia.activo else 'bg-rose-500 text-white' }}"
+            >
+              {{ 'ACTIVO' if materia.activo else 'INACTIVO' }}
+            </div>
+          </div>
+          <h2
+            class="text-2xl font-black text-wonka-chocolate text-center leading-tight"
+          >
+            {{ materia.nombre }}
+          </h2>
+          <p
+            class="text-[#d4af37] font-black text-xs uppercase tracking-[0.3em] mt-2"
+          >
+            ID MATERIA #{{ materia.id_materia_prima }}
+          </p>
+
+          <div class="w-full mt-8">
+            <a
+              href="{{ url_for('materiaPrima.admin_materias') }}"
+              class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95"
+            >
+              Regresar al listado
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20"
+        >
+          <div
+            class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4"
+          >
+            <div
+              class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md"
+            >
+              <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+            </div>
+            <h3
+              class="text-xl font-black text-wonka-chocolate uppercase tracking-tight"
+            >
+              Especificaciones de Base de Datos
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10"
+            >
+              <label
+                class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2"
+                >Inventario Disponible</label
+              >
+              <p
+                class="text-wonka-chocolate font-black text-2xl tracking-tighter"
+              >
+                {{ materia.stock_actual }}
+                <span class="text-sm text-gray-400"
+                  >{{ materia.unidad_medida }}</span
+                >
+              </p>
+            </div>
+
+            <div
+              class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10"
+            >
+              <label
+                class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2"
+                >Stock Mínimo (Alerta)</label
+              >
+              <p class="text-rose-600 font-black text-2xl tracking-tighter">
+                {{ materia.stock_minimo }}
+                <span class="text-sm text-rose-300"
+                  >{{ materia.unidad_medida }}</span
+                >
+              </p>
+            </div>
+
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Costo Unitario</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="banknote" class="w-5 h-5 text-emerald-500"></i>
+                <p class="text-wonka-chocolate font-black text-xl">
+                  ${{ materia.costo_unitario }}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Porcentaje de Merma</label
+              >
+              <div class="flex items-center gap-2">
+                <i
+                  data-lucide="trending-down"
+                  class="w-5 h-5 text-orange-400"
+                ></i>
+                <p class="text-wonka-chocolate font-black text-xl">
+                  {{ materia.porcentaje_merma }}%
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Proveedor Asignado</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="truck" class="w-5 h-5 text-blue-400"></i>
+                <p class="text-wonka-chocolate font-bold">
+                  {{ materia.proveedor.nombre or 'Sin proveedor' }}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Última Compra Realizada</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-5 h-5 text-purple-400"></i>
+                <p class="text-wonka-chocolate font-bold">
+                  {{ materia.fecha_ultima_compra.strftime('%d/%m/%Y') if
+                  materia.fecha_ultima_compra else 'No hay registros' }}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="md:col-span-2 p-6 bg-[#3d1c02]/[0.02] rounded-3xl border-2 border-dashed border-[#3d1c02]/10"
+            >
+              <label
+                class="text-[10px] font-black text-wonka-chocolate uppercase tracking-widest block mb-3"
+                >Descripción del Insumo</label
+              >
+              <p
+                class="text-wonka-chocolate/70 font-medium italic text-sm leading-relaxed"
+              >
+                "{{ materia.descripcion or 'Sin descripción disponible para este
+                insumo mágico.' }}"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  {{ mm.tarjeta_materia(materia) }}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
+</script>
 {% endblock %}

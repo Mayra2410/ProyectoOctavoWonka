@@ -7,6 +7,8 @@ from wtforms import (
     validators,
     TextAreaField,
 )
+from flask_wtf.file import FileField, FileAllowed
+from flask import request
 
 
 class MateriaPrimaForm(FlaskForm):
@@ -27,7 +29,6 @@ class MateriaPrimaForm(FlaskForm):
             ("lt", "Litros (lt)"),
             ("ml", "Mililitros (ml)"),
             ("pza", "Piezas (pza)"),
-            ("paq", "Paquete (paq)"),
         ],
         validators=[validators.DataRequired(message="Debes seleccionar una unidad")],
     )
@@ -83,3 +84,18 @@ class MateriaPrimaForm(FlaskForm):
     activo = SelectField(
         "Estado", choices=[(1, "Activo"), (0, "Inactivo")], coerce=int, default=1
     )
+
+    imagen_materia = FileField(
+        "Fotografía del Insumo",
+        validators=[
+            FileAllowed(
+                ["jpg", "png", "jpeg"], message="Solo se permiten imágenes (jpg, png)"
+            )
+        ],
+    )
+
+    def validate_imagen_materia(self, field):
+        archivo = request.files.get(field.name)
+        if "agregar" in request.endpoint:
+            if not archivo or archivo.filename == "":
+                raise validators.ValidationError("La fotografía es obligatoria")

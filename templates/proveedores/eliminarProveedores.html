@@ -1,52 +1,177 @@
-{% extends "base.html" %} {% import "proveedores/_macros_prov.html" as mp %} {%
-block content %}
-<div class="max-w-[1800px] mx-auto p-8">
+{% extends "base.html" %} {% block content %}
+<div class="max-w-[1200px] mx-auto p-8">
   <div
-    class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2rem] border border-red-100 shadow-sm"
+    class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2.5rem] border border-red-100 shadow-sm"
   >
     <div class="p-4 bg-white rounded-2xl shadow-sm">
       <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
     </div>
     <div>
-      <h1 class="text-4xl font-black text-red-600 tracking-tight">
-        Desactivar Proveedor
+      <h1 class="text-3xl font-black text-red-600 tracking-tight uppercase">
+        Desactivar Registro de Proveedor
       </h1>
-      <p class="text-red-800/60 font-medium text-lg">
-        El estado del proveedor cambiará a
-        <span class="font-bold underline">Inactivo</span>. Podrás reactivarlo
-        después si lo necesitas.
+      <p class="text-red-800/60 font-bold text-sm tracking-wide">
+        EL ESTADO DEL PROVEEDOR CAMBIARÁ A
+        <span class="font-black underline decoration-2 underline-offset-4"
+          >INACTIVO</span
+        >. PODRÁS REACTIVARLO DESDE EL PANEL DE ADMINISTRACIÓN.
       </p>
     </div>
   </div>
 
-  {% set botones_desactivar %}
-  <div class="flex flex-col gap-4 w-full mt-4">
-    <form
-      action="{{ url_for('proveedores.desactivar_proveedor', id=proveedor.id_proveedor) }}"
-      method="POST"
-      class="w-full"
+  <div
+    class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-gray-50 grid grid-cols-1 md:grid-cols-12 gap-8"
+  >
+    <div
+      class="md:col-span-4 flex flex-col items-center border-r border-gray-50 pr-8"
     >
-      {{ form.csrf_token }}
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-      <button
-        type="submit"
-        class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group"
-      >
-        Confirmar Desactivación
-      </button>
-    </form>
+      <div class="w-40 h-40 rounded-full p-1 bg-gray-100 shadow-inner mb-6">
+        <div
+          class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white shadow-sm"
+        >
+          <div class="text-red-600 font-black text-5xl">
+            {{ proveedor.nombre[0]|upper }}
+          </div>
+        </div>
+      </div>
 
-    <a
-      href="{{ url_for('proveedores.lista_proveedores') }}"
-      class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all border border-gray-200"
-    >
-      Cancelar
-    </a>
+      <h2
+        class="text-2xl font-black text-[#3d1c02] text-center leading-tight mb-1"
+      >
+        {{ proveedor.nombre }}
+      </h2>
+      <p
+        class="text-gray-400 font-bold text-[10px] uppercase tracking-widest mb-6"
+      >
+        ID PROVEEDOR #{{ proveedor.id_proveedor }}
+      </p>
+
+      <div class="flex flex-col gap-3 w-full">
+        <form
+          action="{{ url_for('proveedores.desactivar_proveedor', id=proveedor.id_proveedor) }}"
+          method="POST"
+          class="w-full"
+        >
+          {{ form.csrf_token }}
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <button
+            type="submit"
+            class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group text-sm uppercase tracking-tighter"
+          >
+            <i
+              data-lucide="power"
+              class="w-5 h-5 group-hover:rotate-12 transition-transform"
+            ></i>
+            Confirmar Desactivación
+          </button>
+        </form>
+
+        <a
+          href="{{ url_for('proveedores.lista_proveedores') }}"
+          class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-500 font-bold rounded-2xl text-center transition-all border border-gray-200 text-xs uppercase"
+        >
+          Cancelar Operación
+        </a>
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col gap-6">
+      <div class="flex items-center gap-2 px-2">
+        <i data-lucide="file-text" class="w-4 h-4 text-gray-400"></i>
+        <span
+          class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]"
+          >Resumen de Socio Comercial</span
+        >
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100">
+          <label
+            class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 opacity-70"
+            >Persona de Contacto</label
+          >
+          <div class="flex items-center gap-3">
+            <i data-lucide="user" class="w-4 h-4 text-gray-300"></i>
+            <p class="text-gray-700 font-bold text-sm">
+              {{ proveedor.contacto }}
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100">
+          <label
+            class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 opacity-70"
+            >Identificación</label
+          >
+          <div class="flex items-center gap-3">
+            <i data-lucide="file-digit" class="w-4 h-4 text-gray-300"></i>
+            <p class="text-gray-700 font-bold text-sm">{{ proveedor.ruc }}</p>
+          </div>
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100">
+          <label
+            class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 opacity-70"
+            >Email
+          </label>
+          <div class="flex items-center gap-3">
+            <i data-lucide="mail" class="w-4 h-4 text-gray-300"></i>
+            <p class="text-gray-700 font-bold text-sm">{{ proveedor.email }}</p>
+          </div>
+        </div>
+
+        <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100">
+          <label
+            class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 opacity-70"
+            >Teléfono</label
+          >
+          <div class="flex items-center gap-3">
+            <i data-lucide="phone" class="w-4 h-4 text-gray-300"></i>
+            <p class="text-gray-700 font-bold text-sm">
+              {{ proveedor.telefono }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 md:col-span-2"
+        >
+          <label
+            class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 opacity-70"
+            >Dirección Registrada</label
+          >
+          <div class="flex items-start gap-3">
+            <i data-lucide="map-pin" class="w-4 h-4 text-gray-300 mt-0.5"></i>
+            <p class="text-gray-600 font-medium text-sm leading-relaxed">
+              {{ proveedor.direccion or 'Sin dirección registrada.' }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-5 bg-[#3d1c02]/[0.02] rounded-3xl border border-[#3d1c02]/5 md:col-span-2"
+        >
+          <label
+            class="text-[9px] font-black text-[#3d1c02] uppercase tracking-widest block mb-2 opacity-70"
+            >Fecha de Alta en Sistema</label
+          >
+          <div class="flex items-center gap-3">
+            <i data-lucide="calendar" class="w-4 h-4 text-[#d4af37]"></i>
+            <p class="text-gray-700 font-bold text-sm">
+              {% if proveedor.fecha_registro %} {{
+              proveedor.fecha_registro.strftime('%d - %m - %Y') }} {% else %}
+              Fecha no disponible {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  {% endset %} {{ mp.tarjeta_proveedor(proveedor, botones=botones_desactivar) }}
 </div>
 
 <script>
-  lucide.createIcons();
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
 </script>
 {% endblock %}

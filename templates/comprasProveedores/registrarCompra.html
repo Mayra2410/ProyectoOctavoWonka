@@ -1,167 +1,264 @@
-{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">Registrar Nueva Compra</h1>
-    <p class="text-gray-500">
-      Ingresa los detalles del suministro recibido de tus proveedores
-    </p>
-  </div>
+{% extends "base.html" %} {% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
 
-  <form
-    action="{{ url_for('comprasProveedores.registrar_compra') }}"
-    method="POST"
-    novalidate
-  >
-    {{ form.csrf_token }}
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
 
-    <div
-      class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8"
-    >
-      <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+  .wonka-input {
+    background: rgba(253, 250, 243, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+  }
 
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-        <div
-          class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12"
+  .wonka-input:focus {
+    background: white;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  }
+
+  .error-text {
+    color: #ef4444;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+</style>
+
+<div class="relative min-h-screen p-4 md:p-8">
+  <div
+    class="absolute inset-0 opacity-5 pointer-events-none"
+    style="
+      background-image: radial-gradient(#3d1c02 0.5px, transparent 0.5px);
+      background-size: 30px 30px;
+    "
+  ></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-10 flex items-center gap-5">
+      <a
+        href="{{ url_for('comprasProveedores.lista_compras') }}"
+        class="w-12 h-12 rounded-2xl bg-white border border-[#d4af37]/20 flex items-center justify-center text-[#3d1c02] shadow-sm hover:shadow-md transition-all active:scale-95"
+      >
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </a>
+      <div>
+        <h1
+          class="text-3xl font-wonka-title text-[#3d1c02] font-bold tracking-tight italic"
         >
-          <div class="relative mb-6">
-            <img
-              class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
-              src="{{ url_for('static', filename='img/materias_primas.jpg') }}"
-              alt="Nueva Compra"
-            />
-            <div
-              class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"
-            ></div>
-          </div>
+          Nueva Adquisición
+        </h1>
+        <p
+          class="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.2em]"
+        >
+          Registrar suministro de proveedores
+        </p>
+      </div>
+    </div>
 
-          <div class="w-full space-y-4">
-            <button
-              type="submit"
-              class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-black rounded-2xl text-center transition-all shadow-lg flex items-center justify-center gap-2"
-            >
-              <i class="fas fa-plus-circle"></i>
-              Guardar Compra
-            </button>
+    <form
+      action="{{ url_for('comprasProveedores.registrar_compra') }}"
+      method="POST"
+      novalidate
+    >
+      {{ form.csrf_token }}
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
-            <a
-              href="{{ url_for('comprasProveedores.lista_compras') }}"
-              class="block w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all"
-            >
-              Cancelar
-            </a>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-4 space-y-6">
+          <div
+            class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center relative overflow-hidden text-center sticky top-8"
+          >
+            <div class="absolute top-0 left-0 w-full h-2 bg-[#3d1c02]"></div>
+            <div class="relative group">
+              <div
+                class="w-44 h-44 rounded-full border-4 border-[#fdfaf3] shadow-2xl bg-gray-50 flex items-center justify-center overflow-hidden mb-6 ring-4 ring-[#d4af37]/10 transition-transform"
+              >
+                <img
+                  id="preview-materia"
+                  src="{{ url_for('static', filename='img/materias_primas.jpg') }}"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div class="w-full space-y-4">
+              <button
+                type="submit"
+                class="w-full py-4 bg-[#3d1c02] text-white font-black rounded-2xl shadow-xl hover:brightness-125 transition-all flex items-center justify-center gap-3 uppercase text-xs tracking-widest"
+              >
+                <i data-lucide="save" class="w-4 h-4 text-[#d4af37]"></i>
+                Guardar Compra
+              </button>
+              <a
+                href="{{ url_for('comprasProveedores.lista_compras') }}"
+                class="block w-full py-3 text-gray-400 font-bold rounded-2xl text-center text-[10px] uppercase tracking-widest hover:text-[#3d1c02] transition-colors"
+              >
+                Cancelar Registro
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="lg:col-span-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label
-                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
-                >Insumo / Materia Prima</label
-              >
-              {{ form.materia_prima_id(class="w-full bg-white border-0
-              rounded-xl p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple
-              outline-none text-gray-700") }} {% for error in
-              form.materia_prima_id.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
-            </div>
+        {# FORMULARIO #}
+        <div class="lg:col-span-8">
+          <div
+            class="bg-white rounded-[2.5rem] p-10 shadow-xl border border-[#d4af37]/20 relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-2 bg-[#d4af37]"></div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label
-                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
-                >Proveedor</label
-              >
-              {{ form.proveedor_id(class="w-full bg-white border-0 rounded-xl
-              p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
-              text-gray-700") }} {% for error in form.proveedor_id.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {# SELECTOR DE MATERIA PRIMA #}
+              <div class="md:col-span-2 space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2"
+                >
+                  <i data-lucide="box" class="w-3 h-3 text-[#d4af37]"></i>
+                  Insumo a Recibir
+                </label>
+                {{ form.materia_prima_id(id="select-materia", class="wonka-input
+                w-full rounded-2xl p-4 text-sm font-bold text-[#3d1c02]
+                outline-none cursor-pointer appearance-none") }} {% if
+                form.materia_prima_id.errors %} {% for error in
+                form.materia_prima_id.errors %}
+                <span class="error-text">* {{ error }}</span>
+                {% endfor %} {% endif %}
+              </div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label
-                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
-                >Cantidad a Ingresar</label
-              >
-              {{ form.cantidad(class="w-full bg-white border-0 rounded-xl p-3
-              shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
-              text-gray-700", placeholder="Ej: 50.5") }} {% for error in
-              form.cantidad.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
-            </div>
+              {# PROVEEDOR #}
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2"
+                >
+                  <i data-lucide="truck" class="w-3 h-3 text-[#d4af37]"></i>
+                  Proveedor
+                </label>
+                {{ form.proveedor_id(class="wonka-input w-full rounded-2xl p-4
+                text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+                form.proveedor_id.errors %} {% for error in
+                form.proveedor_id.errors %}
+                <span class="error-text">* {{ error }}</span>
+                {% endfor %} {% endif %}
+              </div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label
-                class="text-sm font-bold text-wonka-purple uppercase block mb-2"
-                >Costo Unitario ($)</label
-              >
-              {{ form.costo_unitario(class="w-full bg-white border-0 rounded-xl
-              p-3 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
-              text-gray-700", placeholder="0.00") }} {% for error in
-              form.costo_unitario.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
-            </div>
+              {# CANTIDAD #}
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2"
+                >
+                  <i data-lucide="scale" class="w-3 h-3 text-[#d4af37]"></i>
+                  Cantidad (<span id="unidad-label" class="text-[#d4af37]"
+                    >---</span
+                  >)
+                </label>
+                {{ form.cantidad(class="wonka-input w-full rounded-2xl p-4
+                text-sm font-bold text-[#3d1c02] outline-none",
+                placeholder="0.00") }} {% if form.cantidad.errors %} {% for
+                error in form.cantidad.errors %}
+                <span class="error-text">* {{ error }}</span>
+                {% endfor %} {% endif %}
+              </div>
 
-            <div
-              class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner"
-            >
-              <label
-                class="text-sm font-bold text-wonka-purple uppercase block mb-1"
-                >Fecha del Movimiento</label
-              >
-              {{ form.fecha_compra(class="wonka-date w-full bg-transparent
-              border-0 text-xl font-medium focus:ring-0 outline-none
-              text-gray-700", placeholder="Seleccionar fecha y hora...") }} {%
-              for error in form.fecha_compra.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
-            </div>
+              {# COSTO UNITARIO #}
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2"
+                >
+                  <i data-lucide="banknote" class="w-3 h-3 text-[#d4af37]"></i>
+                  Costo Unitario ($)
+                </label>
+                {{ form.costo_unitario(class="wonka-input w-full rounded-2xl p-4
+                text-sm font-bold text-[#3d1c02] outline-none",
+                placeholder="0.00") }} {% if form.costo_unitario.errors %} {%
+                for error in form.costo_unitario.errors %}
+                <span class="error-text">* {{ error }}</span>
+                {% endfor %} {% endif %}
+              </div>
 
-            <div
-              class="p-6 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2"
-            >
-              <label
-                class="text-lg font-bold text-wonka-purple uppercase block mb-3"
-                >Observaciones de Entrega</label
+              {# FECHA #}
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2"
+                >
+                  <i data-lucide="calendar" class="w-3 h-3 text-[#d4af37]"></i>
+                  Fecha de Movimiento
+                </label>
+                {{ form.fecha_compra(class="wonka-date wonka-input w-full
+                rounded-2xl p-4 text-sm font-bold text-[#3d1c02] outline-none")
+                }} {% if form.fecha_compra.errors %} {% for error in
+                form.fecha_compra.errors %}
+                <span class="error-text">* {{ error }}</span>
+                {% endfor %} {% endif %}
+              </div>
+
+              {# OBSERVACIONES #}
+              <div
+                class="p-6 bg-[#3d1c02]/5 rounded-[2rem] border-2 border-dashed border-[#d4af37]/30 md:col-span-2 mt-4"
               >
-              {{ form.observaciones(class="w-full bg-white border-0 rounded-xl
-              p-4 shadow-sm focus:ring-2 focus:ring-wonka-purple outline-none
-              text-gray-600 italic", rows="3") }} {% for error in
-              form.observaciones.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block"
-                >* {{ error }}</span
-              >
-              {% endfor %}
+                <label
+                  class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] mb-3 flex items-center gap-2"
+                >
+                  <i
+                    data-lucide="message-square"
+                    class="w-3 h-3 text-[#d4af37]"
+                  ></i>
+                  Notas de Entrega
+                </label>
+                {{ form.observaciones(class="w-full bg-white/80 border-0
+                rounded-2xl p-4 text-sm italic text-[#3d1c02] focus:ring-0",
+                rows="3", placeholder="Ej. El empaque venía ligeramente
+                húmedo...") }}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  const materiasData = {
+    {% for m in materias %}
+      "{{ m.id_materia_prima }}": {
+        "unidad": "{{ m.unidad_medida }}",
+        "imagen": "{{ m.imagen_materia if m.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+      },
+    {% endfor %}
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+
+    const selectMateria = document.getElementById('select-materia');
+    const unidadLabel = document.getElementById('unidad-label');
+    const imgPreview = document.getElementById('preview-materia');
+
+    function updateMateriaInfo() {
+      const id = selectMateria.value;
+      if (materiasData[id]) {
+        unidadLabel.textContent = materiasData[id].unidad;
+        imgPreview.src = materiasData[id].imagen;
+      } else {
+        unidadLabel.textContent = "---";
+        imgPreview.src = "{{ url_for('static', filename='img/materias_primas.jpg') }}";
+      }
+    }
+
+    selectMateria.addEventListener('change', updateMateriaInfo);
+    updateMateriaInfo();
+
     flatpickr(".wonka-date", {
       enableTime: true,
       time_24hr: true,
       dateFormat: "Y-m-d H:i",
-      allowInput: true,
-      defaultDate: new Date(),
+      defaultDate: new Date()
     });
   });
 </script>
