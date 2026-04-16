@@ -4189,3 +4189,7 @@
 2026-04-16 14:27:20,568 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\recuperarContrasenia\\routesRC.py', reloading
 2026-04-16 14:27:20,568 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\recuperarContrasenia\\routesRC.py', reloading
 2026-04-16 14:27:20,873 - INFO -  * Restarting with stat
+2026-04-16 14:27:22,043 - WARNING -  * Debugger is active!
+2026-04-16 14:27:22,049 - INFO -  * Debugger PIN: 726-348-709
+2026-04-16 14:28:09,258 - INFO -  * Detected change in 'C:\\ProyectoWonka\\ProyectoOctavoWonka\\recuperarContrasenia\\routesRC.py', reloading
+2026-04-16 14:28:09,423 - INFO -  * Restarting with stat

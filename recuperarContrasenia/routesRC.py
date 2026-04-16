@@ -31,7 +31,7 @@ def recuperar_password():
             flash("Hemos enviado un codigo a tu correo para autorizar el cambio.", "info")
             return redirect(url_for('recuperarContrasenia.verificar_recuperacion', email=email))
         else:
-            flash("El correo electronico no pertenece a ningun ciudadano de la fabrica.", "error")
+            flash("El correo electronico no pertenece a ningun usuario", "error")
             
     return render_template("recuperarContrasenia/recuperar.html", form=form)
 
