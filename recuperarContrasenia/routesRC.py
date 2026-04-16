@@ -24,14 +24,14 @@ def recuperar_password():
             user.verificado = False 
             db.session.commit()
 
-            msg = Message("Seguridad Wonka: Restablecer Contraseña", recipients=[email])
-            msg.body = f"Tu código de seguridad para el cambio de contraseña es: {codigo}"
+            msg = Message("Seguridad Wonka: Restablecer Contrasena", recipients=[email])
+            msg.body = f"Tu codigo de seguridad para el cambio de contrasena es: {codigo}"
             mail.send(msg)
             
-            flash("Hemos enviado un código a tu correo para autorizar el cambio.", "info")
+            flash("Hemos enviado un codigo a tu correo para autorizar el cambio.", "info")
             return redirect(url_for('recuperarContrasenia.verificar_recuperacion', email=email))
         else:
-            flash("El correo electrónico no pertenece a ningún ciudadano de la fábrica.", "error")
+            flash("El correo electronico no pertenece a ningun ciudadano de la fabrica.", "error")
             
     return render_template("recuperarContrasenia/recuperar.html", form=form)
 
@@ -46,10 +46,10 @@ def verificar_recuperacion(email):
             user.codigo_verificacion = None 
             db.session.commit()
 
-            flash("Tu contraseña se ha actualizado correctamente.", "success")
+            flash("Tu contrasena se ha actualizado correctamente.", "success")
             return redirect(url_for('index'))
         else:
-            flash("Código incorrecto.", "error")
+            flash("Codigo incorrecto.", "error")
             return redirect(url_for('recuperarContrasenia.verificar_recuperacion', email=email))
 
     return render_template("recuperarContrasenia/verificar_RC.html", email=email)
