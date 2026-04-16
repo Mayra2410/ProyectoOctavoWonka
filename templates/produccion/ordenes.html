@@ -1,4 +1,4 @@
- {% extends "base.html" %}
+{% extends "base.html" %}
 {% from "_macros.html" import acciones_tabla %}
 
 {% block content %}
@@ -70,21 +70,16 @@
                 <td class="px-6 py-4">
                     <div class="font-mono font-bold text-wonka-purple">{{ orden.lote }}</div>
                     <div class="text-[10px] text-gray-400 mt-1">
-                        <span class="font-bold">Inició:</span> {{ orden.usuario_inicio or 'Sistema' }} <br>
-                        {% if orden.estado == 'COMPLETADA' %}
-                        <span class="font-bold">Finalizó:</span> {{ orden.usuario_fin or 'Admin' }}
-                        {% endif %}
+                        <span class="font-bold text-wonka-brown/60 italic">{{ orden.observaciones if orden.observaciones else 'Sin observaciones' }}</span>
                     </div>
                 </td>
                 <td class="px-6 py-4">
-                    <div class="text-wonka-brown font-bold">{{ orden.producto.nombre if orden.producto else 'Producto no
-                        especificado' }}</div>
-                    <div class="text-[10px] text-gray-400 uppercase">Receta Activa</div>
+                    <div class="text-wonka-brown font-bold">{{ orden.producto.nombre if orden.producto else 'No especificado' }}</div>
                 </td>
                 <td class="px-6 py-4 font-medium">{{ orden.cantidad_requerida }} Uds</td>
                 <td class="px-6 py-4">
                     <span class="text-[10px] font-black tracking-tighter 
-                        {% if orden.prioridad == 'ALTA' or orden.prioridad == 'URGENTE' %} text-red-500 
+                        {% if orden.prioridad in ['ALTA', 'URGENTE'] %} text-red-500 
                         {% else %} text-blue-500 {% endif %}">
                         {{ orden.prioridad }}
                     </span>
@@ -97,26 +92,32 @@
                         {{ orden.estado }}
                     </span>
                 </td>
+                
                 <td class="px-6 py-4 text-right">
-                    {% if orden.estado != 'COMPLETADA' %}
-                    <a href="{{ url_for('produccion.completar_orden', id=orden.id_orden_produccion) }}"
-                        class="bg-green-500 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-green-600 transition-all shadow-md inline-flex items-center gap-2">
-                        <i data-lucide="check" class="w-3 h-3"></i> Terminar
-                    </a>
+                    {% if orden.estado == 'PENDIENTE' %}
+                        <a href="{{ url_for('produccion.surtir_insumos_orden', id=orden.id_orden_produccion) }}"
+                            class="bg-wonka-purple text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-wonka-purple-dark transition-all shadow-md inline-flex items-center gap-2">
+                            <i data-lucide="package-check" class="w-3 h-3"></i> Surtir Insumos
+                        </a>
+                    {% elif orden.estado == 'EN_PROCESO' %}
+                        <a href="{{ url_for('produccion.completar_orden', id=orden.id_orden_produccion) }}"
+                            class="bg-green-500 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-green-600 transition-all shadow-md inline-flex items-center gap-2">
+                            <i data-lucide="check" class="w-3 h-3"></i> Terminar
+                        </a>
                     {% else %}
-                    <div class="flex flex-col items-end opacity-40">
-                        <span class="text-gray-500 font-bold text-xs italic">Completada</span>
-                        <span class="text-[9px] text-gray-400">{{ orden.fecha_fin.strftime('%d/%m/%Y') if
-                            orden.fecha_fin }}</span>
-                    </div>
+                        <div class="flex flex-col items-end opacity-40">
+                            <span class="text-gray-500 font-bold text-xs italic">✨ Completada</span>
+                            <span class="text-[9px] text-gray-400">{{ orden.fecha_fin.strftime('%d/%m/%Y') if orden.fecha_fin }}</span>
+                        </div>
                     {% endif %}
                 </td>
             </tr>
             {% endfor %}
+            
             {% if not ordenes %}
             <tr>
                 <td colspan="6" class="px-6 py-10 text-center text-gray-400 italic">
-                    No se encontraron órdenes para "{{ request.args.get('q') }}".
+                    No se encontraron órdenes.
                 </td>
             </tr>
             {% endif %}
@@ -126,8 +127,7 @@
 
 <div class="mt-4 p-4 bg-wonka-cream/50 rounded-2xl border border-dashed border-gray-200">
     <p class="text-[10px] text-gray-500 text-center">
-        <b>Nota de Calidad:</b> El buscador permite trazabilidad por folio de venta (ej: escriba "18" para ver lotes
-        AUTO-18).
+        <b>Trazabilidad Wonka:</b> El proceso requiere primero <b>Surtir</b> (validar stock y descontar materia prima) y luego <b>Terminar</b> para liberar el producto.
     </p>
 </div>
 {% endblock %}

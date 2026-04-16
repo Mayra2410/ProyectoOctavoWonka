@@ -258,9 +258,7 @@ class Venta(db.Model):
     fecha_venta = db.Column(db.DateTime, default=datetime.now)
     total = db.Column(db.Numeric(12, 2), nullable=False)
     metodo_pago = db.Column(db.Enum("EFECTIVO", "TARJETA"), nullable=False)
-    estado = db.Column(
-        db.Enum("PENDIENTE", "COMPLETADA", "CANCELADA"), default="COMPLETADA"
-    )
+    estado = db.Column(db.Enum('PENDIENTE', 'COMPLETADA', 'CANCELADA', 'ENTREGADA'), default='PENDIENTE')
 
     # Relación con el cliente para saber quién compró
     cliente = db.relationship("Cliente", backref="ventas")
