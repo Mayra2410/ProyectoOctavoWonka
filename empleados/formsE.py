@@ -86,7 +86,10 @@ class EmpleadoForm(FlaskForm):
 
     imagen_empleado = FileField(
         "Foto",
-        validators=[Optional(), FileAllowed(["jpg", "png", "jpeg"], "Solo imagenes")],
+        validators=[
+            DataRequired(message="La foto es obligatoria"),
+            FileAllowed(["jpg", "png", "jpeg"], "Solo se aceptan formatos JPG, PNG o JPEG")
+        ],
     )
 
     direccion = StringField("Direccion", validators=[Optional()])

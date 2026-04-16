@@ -1,6 +1,4 @@
 import base64
-import secrets
-import string
 from flask import render_template, request, redirect, url_for, flash
 from sqlalchemy import or_
 from . import empleado
@@ -10,13 +8,10 @@ from werkzeug.security import generate_password_hash
 from datetime import datetime
 from utils import login_required
 
-
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
-
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 def procesar_imagen_base64(archivo):
     if archivo and archivo.filename != "":
@@ -24,6 +19,8 @@ def procesar_imagen_base64(archivo):
         encoded_string = base64.b64encode(contenido_binario).decode("utf-8")
         return f"data:{archivo.content_type};base64,{encoded_string}"
     return None
+
+
 
 
 @empleado.route("/empleados", methods=["GET"])
@@ -47,7 +44,9 @@ def empleadosAdmin():
         form=EmpleadoForm(),
         query=search_query,
     )
-
+    
+    
+    
 
 @empleado.route("/agregar_empleado", methods=["GET", "POST"])
 @login_required
@@ -57,7 +56,6 @@ def agregar_empleado():
     if form.validate_on_submit():
         try:
             puesto_seleccionado = form.puesto.data
-
             pass_hash = generate_password_hash(form.password.data)
 
             nuevo_usuario = Usuario(
@@ -70,7 +68,6 @@ def agregar_empleado():
             db.session.add(nuevo_usuario)
             db.session.flush()
 
-            # Manejo de imagen
             archivo = request.files.get("imagen_empleado")
             img_final = None
 
@@ -107,6 +104,8 @@ def agregar_empleado():
     return render_template("empleados/agregarEmpleados.html", form=form)
 
 
+
+
 @empleado.route("/empleados/modificar/<int:id>", methods=["GET", "POST"])
 @login_required
 def modificar_empleado(id):
@@ -114,46 +113,41 @@ def modificar_empleado(id):
     form = EmpleadoForm(obj=empleado_obj)
 
     if request.method == "POST":
-        try:
-            archivo = request.files.get("imagen_empleado")
-            if archivo and archivo.filename != "":
-                empleado_obj.imagen_empleado = procesar_imagen_base64(archivo)
+        form.validate()
+        form.password.errors = [] 
 
-            empleado_obj.nombre = request.form.get("nombre")
-            empleado_obj.apellido = request.form.get("apellido")
-            empleado_obj.email = request.form.get("email")
-            empleado_obj.telefono = request.form.get("telefono")
-            empleado_obj.dni_cedula = request.form.get("dni_cedula")
-            empleado_obj.puesto = request.form.get("puesto")
-            empleado_obj.salario_mensual = request.form.get("salario_mensual")
-            empleado_obj.direccion = request.form.get("direccion")
-            empleado_obj.estatus = request.form.get("estatus")
+        if form.email.data == empleado_obj.email:
+            form.email.errors = [e for e in form.email.errors if "registrado" not in e]
+        if form.dni_cedula.data == empleado_obj.dni_cedula:
+            form.dni_cedula.errors = [e for e in form.dni_cedula.errors if "duplicada" not in e]
 
-            fecha_raw = request.form.get("fecha_contratacion")
-            if fecha_raw:
-                empleado_obj.fecha_contratacion = datetime.strptime(
-                    fecha_raw, "%Y-%m-%d"
-                )
+        if not form.errors: 
+            try:
+                form.populate_obj(empleado_obj)
+                
+                archivo = request.files.get("imagen_empleado")
+                if archivo and archivo.filename != "":
+                    if allowed_file(archivo.filename):
+                        nueva_imagen = procesar_imagen_base64(archivo)
+                        empleado_obj.imagen_empleado = nueva_imagen
+                    else:
+                        flash("Formato no permitido", "danger")
+                        return render_template("empleados/modificarEmpleados.html", form=form, empleado=empleado_obj, empleado_id=id)
 
-            db.session.commit()
-            # flash("Empleado actualizado con exito", "success")
-            return redirect(url_for("empleado.empleadosAdmin"))
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error: {str(e)}", "danger")
+                empleado_obj.estatus = request.form.get("estatus")
 
-    fecha_string = (
-        empleado_obj.fecha_contratacion.strftime("%Y-%m-%d")
-        if empleado_obj.fecha_contratacion
-        else ""
-    )
-    return render_template(
-        "empleados/modificarEmpleados.html",
-        form=form,
-        empleado=empleado_obj,
-        empleado_id=id,
-        fecha_string=fecha_string,
-    )
+                db.session.commit()
+                return redirect(url_for("empleado.empleadosAdmin"))
+                
+            except Exception as e:
+                db.session.rollback()
+                flash(f"Error: {str(e)}", "danger")
+        else:
+            print(f"Errores: {form.errors}")
+
+    return render_template("empleados/modificarEmpleados.html", form=form, empleado=empleado_obj, empleado_id=id)
+
+
 
 
 @empleado.route("/empleados/eliminar/confirmar/<int:id>")
@@ -162,7 +156,6 @@ def eliminar_confirmar(id):
     empleado_obj = Empleado.query.get_or_404(id)
     return render_template("empleados/eliminarEmpleados.html", empleado=empleado_obj)
 
-
 @empleado.route("/empleados/desactivar/<int:id>", methods=["POST"])
 @login_required
 def desactivar_empleado(id):
@@ -170,11 +163,11 @@ def desactivar_empleado(id):
     try:
         empleado_obj.estatus = "INACTIVO"
         db.session.commit()
-        # flash("Empleado desactivado correctamente", "success")
     except Exception:
         db.session.rollback()
         flash("Error al desactivar empleado", "danger")
     return redirect(url_for("empleado.empleadosAdmin"))
+
 
 
 @empleado.route("/empleados/detalle/<int:id>")

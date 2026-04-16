@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-[1200px] mx-auto p-8">
+    <div class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2.5rem] border border-red-100 shadow-sm">
+        <div class="p-4 bg-white rounded-2xl shadow-sm">
+            <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
+        </div>
+        <div>
+            <h1 class="text-3xl font-black text-red-600 tracking-tight uppercase">
+                Desactivar Registro de Cliente
+            </h1>
+            <p class="text-red-800/60 font-bold text-sm tracking-wide">
+                EL ESTADO DEL CLIENTE CAMBIARÁ A 
+                <span class="font-black underline decoration-2 underline-offset-4">INACTIVO</span>. 
+                ESTO RESTRINGIRÁ SUS OPERACIONES EN EL SISTEMA
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-gray-50 grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <div class="md:col-span-4 flex flex-col items-center border-r border-gray-50 pr-8">
+            <div class="w-40 h-40 rounded-full p-1 bg-gray-100 shadow-inner mb-6">
+                <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white shadow-sm">
+                    {% if cliente.imagen_cliente %}
+                        <img src="{{ cliente.imagen_cliente }}" class="w-full h-full object-cover" />
+                    {% else %}
+                        <div class="text-[#7B2CBF] font-black text-5xl">
+                            {{ cliente.nombre[0]|upper }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-black text-[#3d1c02] text-center leading-tight mb-1">
+                {{ cliente.nombre }}
+            </h2>
+            <p class="text-gray-400 font-bold text-[10px] uppercase tracking-widest mb-6">
+                ID CLIENTE #{{ cliente.id_cliente }}
+            </p>
+
+            <div class="flex flex-col gap-3 w-full">
+                <form action="{{ url_for('cliente.desactivar_confirmado', id=cliente.id_cliente) }}" method="POST" class="w-full">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <button type="submit" class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group text-sm uppercase tracking-tighter">
+                        <i data-lucide="power" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                        Confirmar Desactivación
+                    </button>
+                </form>
+
+                <a href="{{ url_for('cliente.clientesAdmin') }}" class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-500 font-bold rounded-2xl text-center transition-all border border-gray-200 text-xs uppercase">
+                    Cancelar Operación
+                </a>
+            </div>
+        </div>
+
+        <div class="md:col-span-8 flex flex-col gap-6">
+            <div class="flex items-center gap-2 px-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-gray-400"></i>
+                <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Resumen del Expediente</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#7B2CBF] uppercase tracking-widest block mb-2 opacity-70">Correo Electrónico</label>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-4 h-4 text-gray-300"></i>
+                        <p class="text-gray-700 font-bold text-sm">{{ cliente.email }}</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#7B2CBF] uppercase tracking-widest block mb-2 opacity-70">Teléfono de Contacto</label>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-4 h-4 text-gray-300"></i>
+                        <p class="text-gray-700 font-bold text-sm">{{ cliente.telefono or '---' }}</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#7B2CBF] uppercase tracking-widest block mb-2 opacity-70">Tipo de Perfil</label>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="user-cog" class="w-4 h-4 text-gray-300"></i>
+                        <p class="text-gray-700 font-black text-sm uppercase">{{ cliente.tipo }}</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-[#fdfaf5] rounded-3xl border border-[#D4AF37]/20 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#D4AF37] uppercase tracking-widest block mb-2 opacity-70">Categoría de Compra</label>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="award" class="w-4 h-4 text-[#D4AF37]"></i>
+                        <p class="text-[#3d1c02] font-black text-sm uppercase">{{ cliente.categoria_comprador }}</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#7B2CBF] uppercase tracking-widest block mb-2 opacity-70">Fecha de Alta</label>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="calendar" class="w-4 h-4 text-gray-300"></i>
+                        <p class="text-gray-700 font-bold text-sm">{{ cliente.fecha_registro }}</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-gray-50/50 rounded-3xl border border-gray-100 md:col-span-2 group hover:bg-white hover:shadow-md transition-all duration-300">
+                    <label class="text-[9px] font-black text-[#7B2CBF] uppercase tracking-widest block mb-2 opacity-70">Ubicación / Dirección</label>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-gray-300 mt-0.5"></i>
+                        <p class="text-gray-600 font-medium text-sm leading-relaxed">
+                            {{ cliente.direccion or 'No se ha registrado una dirección fiscal para este cliente.' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof lucide !== "undefined") lucide.createIcons();
+    });
+</script>
+{% endblock %}

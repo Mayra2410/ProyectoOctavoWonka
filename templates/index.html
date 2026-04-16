@@ -60,7 +60,7 @@
                 <p class="text-[#D4AF37] text-[9px] font-bold tracking-[0.4em] uppercase mt-2">Dos hermanos, dos artesanos</p>
             </div>
 
-            <form action="{{ url_for('index') }}" method="POST" class="space-y-5" novalidate>
+            <form action="{{ url_for('index') }}" method="POST" class="space-y-5">
                 {{ form.csrf_token }}
 
                 <div class="space-y-1.5">
@@ -85,33 +85,41 @@
             </form>
 
             <div class="mt-10 text-center space-y-4">
-                <a href="/registro" class="text-[10px] font-bold text-[#7B2CBF] hover:text-[#3d1c02] transition-colors flex items-center justify-center gap-2">
-                    ¿Nuevo artesano? Regístrate aquí
-                </a>
+                <a href="{{ url_for('registro.registro_cliente') }}" class="text-[10px] font-bold text-[#7B2CBF] hover:text-[#3d1c02] transition-colors flex items-center justify-center gap-2">
+    ¿No tienes cuenta? Regístrate aquí
+</a>
                 <div>
-                    <a href="{{ url_for('recuperar_password') }}" class="text-[9px] text-gray-400 hover:text-[#D4AF37] font-bold uppercase tracking-tighter transition-colors">¿Olvidaste tu contrasena?</a>
+                   <a href="{{ url_for('recuperarContrasenia.recuperar_password') }}">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </div>
     </div>
 
     {% with messages=get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <script>
-            Swal.fire({
-              title: '{{ "Aviso" if category == "info" else "Error de Acceso" }}',
-              text: '{{ message }}',
-              icon: '{{ "error" if category in ["error", "danger"] else "info" }}',
-              confirmButtonColor: '#3d1c02',
-              background: '#ffffff',
-              color: '#3d1c02',
-              customClass: { popup: 'rounded-[2rem]' }
-            })
-          </script>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <script>
+        Swal.fire({
+          /* 1. Título dinámico para que no siempre sea error */
+          title: '{{ "¡Éxito!" if category == "success" else ("Aviso" if category == "info" else "Error de Acceso") }}',
+          
+          text: '{{ message }}',
+          
+          /* 2. Icono dinámico: si es success, que salga la palomita verde */
+          icon: '{{ "success" if category == "success" else ("error" if category in ["error", "danger"] else "info") }}',
+          
+          confirmButtonColor: '#3d1c02',
+          background: '#ffffff',
+          color: '#3d1c02',
+          customClass: { 
+            popup: 'rounded-[2rem]',
+            confirmButton: 'rounded-xl px-6 py-2 font-bold uppercase text-xs'
+          }
+        })
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
     <script>
         lucide.createIcons();

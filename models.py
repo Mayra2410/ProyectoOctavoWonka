@@ -23,6 +23,8 @@ class Usuario(db.Model):
         nullable=False,
         default="CLIENTE",
     )
+    codigo_verificacion = db.Column(db.String(6), nullable=True)
+    verificado = db.Column(db.Boolean, default=False)
     activo = db.Column(db.Boolean, default=True)
     
     intentos_fallidos = db.Column(db.Integer, default=0)

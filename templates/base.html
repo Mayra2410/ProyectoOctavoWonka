@@ -79,29 +79,38 @@
         </div>
 
         <nav class="flex-1 overflow-y-auto px-6 space-y-2 custom-scroll mb-4">
-            {# --- CONFIGURACIÓN DE MENÚ SEGÚN ROL --- #}
-            {% if session['rol'] == 'GERENTE' or session['rol'] == 'EMPLEADO' %} 
-                {% set items = [
-                    ('customers', 'Gestión Clientes', 'users', 'cliente.clientesAdmin'),
-                    ('employees', 'Gestión Empleados', 'user-cog', 'empleado.empleadosAdmin'),
-                    ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
-                    ('catalogo', 'Vista Catálogo', 'book-open', 'catalogo')
-                ] %} 
-            {% elif session['rol'] == 'CLIENTE' %}
-                {% set items = [ 
-                    ('pos', 'Tienda Wonka', 'shopping-bag', 'catalogo'), 
-                    ('profile', 'Mi Perfil', 'user', 'cliente.detalles_cliente_vista') 
-                ] %}
-            {% endif %}
+    {# Convertimos a mayúsculas para comparar siempre igual #}
+    {% set user_role = session.get('rol', '') | upper %}
+    
+    {% set items = [] %}
+    
+    {% if user_role == 'GERENTE' %} 
+        {% set items = [
+            ('pos', 'Punto de Venta', 'shopping-bag', '#'),
+            ('customers', 'Clientes', 'users', 'cliente.clientesAdmin'),
+            ('employees', 'Empleados', 'settings', 'empleado.empleadosAdmin'),
+            ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
+            ('materials', 'Materias Primas', 'package', '#'),
+            ('purchases', 'Pedidos', 'shopping-cart', '#'),
+            ('payments', 'Pagos', 'credit-card', '#'),
+            ('products', 'Productos', 'boxes', '#'),
+            ('recipes', 'Recetas', 'utensils', '#'),
+            ('production', 'Producción', 'factory', '#'),
+            ('inventory', 'Inventario', 'warehouse', '#'),
+            ('sales', 'Ventas', 'trending-up', '#') 
+        ] %} 
+    {% elif user_role == 'CLIENTE' %}
+        {% set items = [ ('pos', 'Tienda Wonka', 'shopping-bag', '#'), ('orders', 'Mis Pedidos', 'package', '#'), ('profile', 'Mi Perfil', 'user', '#') ] %}
+    {% endif %}
 
-            {% for id, label, icon, ruta in items %}
-            <a href="{{ url_for(ruta) if ruta != '#' else '#' }}"
-               class="flex items-center gap-4 px-5 py-3 text-[11px] font-extrabold uppercase tracking-widest rounded-xl sidebar-link {% if request.endpoint == ruta %} sidebar-item-active {% endif %}">
-                <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
-                {{ label }}
-            </a>
-            {% endfor %}
-        </nav>
+    {% for id, label, icon, ruta in items %}
+    <a href="{{ url_for(ruta) if ruta != '#' else '#' }}"
+       class="flex items-center gap-4 px-5 py-3 text-[11px] font-extrabold uppercase tracking-widest rounded-xl sidebar-link {% if request.endpoint == ruta %} sidebar-item-active {% endif %}">
+        <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+        <span>{{ label }}</span>
+    </a>
+    {% endfor %}
+</nav>
 
         <div class="p-8 border-t border-wonka-gold/10 bg-white/30">
             <a href="{{ url_for('logout') }}" class="flex items-center gap-3 text-wonka-brown/60 hover:text-red-600 font-black text-[10px] uppercase tracking-widest transition-colors">

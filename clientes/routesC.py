@@ -64,39 +64,46 @@ def agregar_cliente():
 @cliente.route("/clientes/modificar/<int:id>", methods=["GET", "POST"])
 def modificar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
+    foto_actual = cliente_obj.imagen_cliente 
     form = ClienteForm(obj=cliente_obj)
 
     if form.validate_on_submit():
-        duplicado = Cliente.query.filter(Cliente.email == form.email.data, Cliente.id_cliente != id).first()
-        if duplicado:
-            form.email.errors.append("Este correo ya esta registrado.")
-        else:
-            try:
-                archivo = request.files.get('imagen_cliente')
-                if archivo and archivo.filename != '':
-                    encoded_string = base64.b64encode(archivo.read()).decode('utf-8')
-                    cliente_obj.imagen_cliente = f"data:{archivo.content_type};base64,{encoded_string}"
-                
-                form.populate_obj(cliente_obj)
-                db.session.commit()
-                flash("Cliente actualizado con exito", "success")
-                return redirect(url_for("cliente.clientesAdmin"))
-            except Exception as e:
-                db.session.rollback()
-                flash(f"Error: {str(e)}", "danger")
+        try:
+            form.populate_obj(cliente_obj)
+            
+            archivo = request.files.get('imagen_cliente')
+            if archivo and archivo.filename != '':
+                contenido = archivo.read()
+                encoded = base64.b64encode(contenido).decode('utf-8')
+                cliente_obj.imagen_cliente = f"data:{archivo.content_type};base64,{encoded}"
+            else:
+                cliente_obj.imagen_cliente = foto_actual
+            
+            db.session.commit()
+            flash("Cliente actualizado con éxito", "success")
+            return redirect(url_for("cliente.clientesAdmin"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error: {str(e)}", "danger")
 
     return render_template("clientes/modificarClientes.html", form=form, cliente_id=id, cliente=cliente_obj)
 
-@cliente.route("/clientes/eliminar/<int:id>")
+@cliente.route("/clientes/confirmar-desactivar/<int:id>")
 def eliminar_cliente(id):
+    cliente_obj = Cliente.query.get_or_404(id)
+    return render_template("clientes/eliminarClientes.html", cliente=cliente_obj)
+
+@cliente.route("/clientes/desactivar-confirmado/<int:id>", methods=["POST"])
+def desactivar_confirmado(id):
     cliente_obj = Cliente.query.get_or_404(id)
     try:
         cliente_obj.estatus = 'INACTIVO'
         db.session.commit()
-        flash(f"Cliente desactivado con exito.", "success")
+        flash(f"El cliente {cliente_obj.nombre} ha sido desactivado.", "success")
     except Exception as e:
         db.session.rollback()
-        flash(f"Error al eliminar: {str(e)}", "danger")
+        flash(f"Error al desactivar: {str(e)}", "danger")
+    
     return redirect(url_for("cliente.clientesAdmin"))
 
 @cliente.route("/clientes/<int:id>")

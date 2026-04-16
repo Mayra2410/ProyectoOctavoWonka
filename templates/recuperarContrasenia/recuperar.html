@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WONKA | Acceso</title>
+    <title>WONKA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -16,7 +16,6 @@
         }
         .font-wonka-title { font-family: 'Playfair Display', serif; }
 
-        /* Fondo de puntos sutil */
         .bg-pattern {
             background-color: #fdfaf3;
             background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
@@ -34,7 +33,7 @@
         .wonka-input {
             transition: all 0.3s ease;
             border: 1px solid #f0ede6;
-            background-color: #f0f7ff; /* Tono azulado suave de tu captura */
+            background-color: #f0f7ff;
         }
 
         .wonka-input:focus {
@@ -44,7 +43,7 @@
         }
 
         .btn-wonka {
-            background: #3d1c02; /* Color chocolate sólido */
+            background: #3d1c02;
             transition: all 0.3s ease;
         }
 
@@ -70,11 +69,10 @@
                          class="w-full h-full object-cover">
                 </div>
                 
-                <h2 class="text-2xl font-bold text-[#3d1c02] mb-1">Actualizar Acceso</h2>
-                <p class="text-gray-400 text-sm font-medium">Ingresa tus datos para restablecer tu contraseña</p>
+                <h2 class="text-2xl font-bold text-[#3d1c02] mb-1">Actualizar Contrasenia</h2>
             </div>
 
-            <form method="POST" class="space-y-6" novalidate>
+            <form action="{{ url_for('recuperarContrasenia.recuperar_password') }}" method="POST" class="space-y-6" novalidate>
                 {{ form.csrf_token }}
 
                 <div class="space-y-2">
@@ -104,7 +102,7 @@
                 </div>
 
                 <button type="submit" class="btn-wonka w-full py-4 px-6 text-white font-bold rounded-2xl shadow-lg flex items-center justify-center gap-3 group">
-                    <span class="text-base">Actualizar Acceso</span>
+                    <span class="text-base">Enviar Código de Verificación</span>
                 </button>
             </form>
 
@@ -118,27 +116,26 @@
     </div>
 
     <script>
-        // Inicializar iconos de Lucide
         lucide.createIcons();
     </script>
 
     {% with messages=get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <script>
-            Swal.fire({
-              title: '{{ "¡Éxito!" if category == "success" else "Aviso" }}',
-              text: '{{ message }}',
-              icon: '{{ "success" if category == "success" else "error" }}',
-              confirmButtonColor: '#3d1c02',
-              customClass: {
-                popup: 'rounded-[2rem]',
-                confirmButton: 'rounded-xl px-6 py-2 font-bold uppercase text-xs'
-              }
-            })
-          </script>
-        {% endfor %}
-      {% endif %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <script>
+                    Swal.fire({
+                        title: '{{ "¡Éxito!" if category == "success" else "Aviso Wonka" }}',
+                        text: '{{ message }}',
+                        icon: '{{ "success" if category == "success" else ("error" if category in ["error", "danger"] else "info") }}',
+                        confirmButtonColor: '#3d1c02',
+                        customClass: {
+                            popup: 'rounded-[2rem]',
+                            confirmButton: 'rounded-xl px-6 py-2 font-bold uppercase text-xs'
+                        }
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
     {% endwith %}
 </body>
 </html>
