@@ -4118,3 +4118,5 @@
 2026-04-16 14:10:59,524 - INFO -  * Restarting with stat
 2026-04-16 14:11:00,889 - WARNING -  * Debugger is active!
 2026-04-16 14:11:00,933 - INFO -  * Debugger PIN: 726-348-709
+2026-04-16 14:12:30,170 - INFO - 127.0.0.1 - - [16/Apr/2026 14:12:30] "GET / HTTP/1.1" 200 -
+2026-04-16 14:12:30,315 - INFO - 127.0.0.1 - - [16/Apr/2026 14:12:30] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
