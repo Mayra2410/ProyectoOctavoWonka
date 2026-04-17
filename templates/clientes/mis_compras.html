@@ -1,0 +1,147 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h2 class="text-3xl font-black text-wonka-purple uppercase tracking-tighter italic">
+            Mis Pedidos Mágicos
+        </h2>
+    </div>
+
+    <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 text-wonka-brown font-black text-[10px] uppercase tracking-widest">
+                    <th class="p-6">Folio</th>
+                    <th class="p-6">Fecha</th>
+                    <th class="p-6">Monto Total</th>
+                    <th class="p-6">Estado</th>
+                    <th class="p-6 text-center">Ticket</th>
+                    <th class="p-6 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                {% for v in ventas %}
+                <tr class="hover:bg-wonka-purple/5 transition-colors">
+                    <td class="p-6 font-bold text-wonka-purple">#{{ v.id_venta }}</td>
+                    <td class="p-6 text-xs text-gray-500">
+                        {{ v.fecha_venta.strftime('%d/%m/%Y %H:%M') }}
+                    </td>
+                    <td class="p-6 font-black text-wonka-brown text-lg">
+                        ${{ "{:,.2f}".format(v.total) }}
+                    </td>
+                    <td class="p-6">
+                        <span class="px-3 py-1 rounded-full text-[9px] font-black uppercase {% if v.estado == 'COMPLETADA' %} bg-green-100 text-green-600 {% elif v.estado == 'PENDIENTE' %} bg-yellow-100 text-yellow-600 {% else %} bg-red-100 text-red-600 {% endif %}">
+                            {{ v.estado }}
+                        </span>
+                    </td>
+                    <td class="p-6 text-center">
+                        <a href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}"
+                            class="p-2 bg-gray-100 rounded-xl inline-block hover:bg-wonka-purple hover:text-white transition-all">
+                            <i data-lucide="receipt" class="w-5 h-5"></i>
+                        </a>
+                    </td>
+
+                    <td class="p-6 text-center">
+                        {% if v.detalles %}
+                        <button onclick="toggleChocolates('{{ v.id_venta }}')" 
+                                class="flex items-center gap-2 px-4 py-2 bg-wonka-purple text-white rounded-full text-[10px] font-bold hover:bg-wonka-purple-dark transition-all mx-auto">
+                            <i data-lucide="star" class="w-3 h-3"></i> CALIFICAR
+                        </button>
+                        {% else %}
+                        <span class="text-[9px] text-gray-400 italic">Venta antigua</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                
+                <tr id="extra-{{ v.id_venta }}" class="hidden bg-wonka-gold/5">
+                    <td colspan="6" class="p-6 border-t border-wonka-gold/10">
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <p class="w-full text-center text-[10px] font-bold text-wonka-brown uppercase mb-2 opacity-60">Selecciona el chocolate a calificar:</p>
+                            {% for d in v.detalles %}
+                            <button onclick="abrirModalCalificar('{{ d.producto.id_producto }}', '{{ d.producto.nombre }}')"
+                                    class="flex items-center gap-2 px-4 py-2 bg-white border-2 border-wonka-gold/30 rounded-2xl text-[11px] font-bold text-wonka-brown hover:border-wonka-purple hover:text-wonka-purple transition-all shadow-sm active:scale-95">
+                                <span class="bg-wonka-gold/20 p-1 rounded-lg">🍬</span>
+                                {{ d.producto.nombre }}
+                            </button>
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modalCalificar" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[70] flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl relative border border-wonka-purple/10">
+        <h3 id="tituloModal" class="text-3xl font-black text-wonka-purple mb-2 italic tracking-tighter">Calificar Producto</h3>
+        <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-6">Tu opinión es magia para nosotros</p>
+        
+        <form action="{{ url_for('cliente.calificar_producto') }}" method="POST" class="space-y-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" id="modal_id_producto" name="id_producto">
+            <input type="hidden" id="modal_nombre_producto" name="nombre_producto">
+
+            <div>
+                <label class="block text-[10px] font-black text-wonka-brown uppercase mb-2">Puntuación</label>
+                <div class="grid grid-cols-5 gap-2">
+                    {% for i in range(1, 6) %}
+                    <label class="cursor-pointer">
+                        <input type="radio" name="calificacion" value="{{ i }}" class="hidden peer" {% if i == 5 %}checked{% endif %}>
+                        <div class="text-center py-2 rounded-xl bg-gray-50 border-2 border-transparent peer-checked:border-wonka-gold peer-checked:bg-wonka-gold/10 transition-all font-bold text-lg">
+                            {{ i }}⭐
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-[10px] font-black text-wonka-brown uppercase mb-2">Comentario</label>
+                <textarea name="comentario" rows="3" required
+                    class="w-full bg-gray-50 border-none rounded-[1.5rem] p-4 text-sm focus:ring-4 focus:ring-wonka-purple/10 resize-none"
+                    placeholder="¿Qué te pareció el sabor y la textura?"></textarea>
+            </div>
+
+            <div class="flex flex-col gap-3 pt-4">
+                <button type="submit" class="w-full bg-wonka-purple text-white py-4 rounded-2xl font-black shadow-xl hover:bg-wonka-purple-dark hover:-translate-y-1 transition-all active:scale-95">
+                    ENVIAR CALIFICACIÓN
+                </button>
+                <button type="button" onclick="cerrarModal()" class="w-full py-2 text-gray-400 font-bold text-[10px] uppercase hover:text-red-500 transition-colors">
+                    Tal vez después
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleChocolates(idVenta) {
+        const extraRow = document.getElementById('extra-' + idVenta);
+        const isHidden = extraRow.classList.contains('hidden');
+        
+        document.querySelectorAll('[id^="extra-"]').forEach(row => row.classList.add('hidden'));
+        
+        if (isHidden) {
+            extraRow.classList.remove('hidden');
+        }
+    }
+
+    function abrirModalCalificar(idProd, nombreProd) {
+        document.getElementById('modal_id_producto').value = idProd;
+        document.getElementById('modal_nombre_producto').value = nombreProd;
+        document.getElementById('tituloModal').innerText = "Calificar: " + nombreProd;
+        document.getElementById('modalCalificar').classList.remove('hidden');
+    }
+
+    function cerrarModal() {
+        document.getElementById('modalCalificar').classList.add('hidden');
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modalCalificar')) { cerrarModal(); }
+    }
+</script>
+{% endblock %}

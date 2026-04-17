@@ -1,0 +1,247 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+  .wonka-input {
+    background-color: #fdfaf3;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.2s ease;
+  }
+  .wonka-input:focus {
+    border-color: #d4af37;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.05);
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1100px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center gap-4">
+      <div class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md">
+        <i data-lucide="factory" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h1
+          class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none"
+        >
+          Modificar Proveedor
+        </h1>
+      </div>
+    </div>
+
+    <form
+      action="{{ url_for('proveedores.modificar_proveedor', id=proveedor_id) }}"
+      method="POST"
+      class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start"
+    >
+      {{ form.csrf_token }}
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+      <div
+        class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 flex flex-col items-center sticky top-6"
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"
+        ></div>
+
+        <div class="relative mb-6">
+          <div
+            class="w-40 h-40 rounded-full p-1 bg-white shadow-2xl border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden"
+          >
+            <div
+              class="w-full h-full rounded-full bg-wonka-cream flex items-center justify-center"
+            >
+              <i
+                data-lucide="truck"
+                class="w-16 h-16 text-wonka-chocolate/10"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mb-8">
+          <p class="text-[#3d1c02] font-black text-sm uppercase">ID Registro</p>
+          <p class="text-[#d4af37] font-bold text-xs">#{{ proveedor_id }}</p>
+        </div>
+
+        <div class="w-full space-y-3">
+          <button
+            type="submit"
+            class="w-full py-4 bg-wonka-chocolate text-white rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg hover:brightness-125 transition-all flex items-center justify-center gap-2"
+          >
+            <i data-lucide="save" class="w-4 h-4"></i> Guardar Cambios
+          </button>
+          <a
+            href="{{ url_for('proveedores.lista_proveedores') }}"
+            class="block w-full py-4 bg-[#fdfaf3] text-gray-400 rounded-2xl font-bold text-xs text-center uppercase tracking-widest border border-[#d4af37]/10 hover:text-wonka-chocolate transition-colors"
+          >
+            Cancelar
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="lg:col-span-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 relative overflow-hidden"
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"
+        ></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+          <div class="md:col-span-2 space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Nombre de la Empresa</label
+            >
+            {{ form.nombre(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+            form.nombre.errors %}{% for error in form.nombre.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div class="space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Contacto</label
+            >
+            {{ form.contacto(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+            form.contacto.errors %}{% for error in form.contacto.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div class="space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Email</label
+            >
+            {{ form.email(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+            form.email.errors %}{% for error in form.email.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div class="space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Teléfono</label
+            >
+            {{ form.telefono(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none", oninput="this.value
+            = this.value.replace(/[^0-9+]/g, '')") }} {% if form.telefono.errors
+            %}{% for error in form.telefono.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div class="space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Estatus del Proveedor</label
+            >
+            <div class="relative">
+              <select
+                name="activo"
+                class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none"
+              >
+                <option value="1" {% if form.activo.data %}selected{% endif %}>
+                  ACTIVO
+                </option>
+                <option
+                  value="0"
+                  {%
+                  if
+                  not
+                  form.activo.data
+                  %}selected{%
+                  endif
+                  %}
+                >
+                  INACTIVO
+                </option>
+              </select>
+              <i
+                data-lucide="chevron-down"
+                class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"
+              ></i>
+            </div>
+            {% if form.activo.errors %} {% for error in form.activo.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %} {% endif %}
+          </div>
+          <div class="space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >RUC</label
+            >
+            {{ form.ruc(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+            form.ruc.errors %}{% for error in form.ruc.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div class="md:col-span-2 space-y-1.5">
+            <label
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+              >Dirección</label
+            >
+            {{ form.direccion(class="wonka-input w-full rounded-2xl px-5 py-3.5
+            text-sm font-bold text-[#3d1c02] outline-none") }} {% if
+            form.direccion.errors %}{% for error in form.direccion.errors %}
+            <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">
+              * {{ error }}
+            </p>
+            {% endfor %}{% endif %}
+          </div>
+
+          <div
+            class="md:col-span-2 p-6 bg-[#3d1c02]/5 rounded-3xl border-2 border-dashed border-[#d4af37]/30"
+          >
+            <label
+              class="text-[10px] font-black text-[#3d1c02] uppercase tracking-widest mb-3 block"
+              >Notas</label
+            >
+            {{ form.notas(class="w-full bg-white/80 border-0 rounded-2xl p-4
+            text-sm italic text-[#3d1c02] outline-none", rows="3") }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.321.0/dist/umd/lucide.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) lucide.createIcons();
+  });
+</script>
+{% endblock %}

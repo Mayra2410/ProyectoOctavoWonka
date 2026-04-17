@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% import "recetas/_macros_recetas.html" as mr %}
+
+{% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
+
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 3rem;
+  }
+</style>
+
+<div class="relative min-h-screen p-4 md:p-10">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1300px] mx-auto relative z-10">
+    <div class="mb-10 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a
+          href="{{ url_for('recetas.lista_recetas') }}"
+          class="w-14 h-14 rounded-2xl bg-white border border-[#d4af37]/20 flex items-center justify-center text-[#3d1c02] shadow-sm hover:shadow-xl hover:scale-105 transition-all"
+        >
+          <i data-lucide="arrow-left" class="w-6 h-6"></i>
+        </a>
+        <div>
+          <h1
+            class="text-4xl font-wonka-title text-[#3d1c02] font-bold italic tracking-tight"
+          >
+            Ajustar Receta
+          </h1>
+          <p
+            class="text-[#d4af37] text-xs font-black uppercase tracking-[0.3em] mt-1"
+          >
+            Modificando Receta #{{ receta.id_receta }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <form
+      action="{{ url_for('recetas.modificar_receta', id_receta=receta.id_receta) }}"
+      method="POST"
+      novalidate
+      class="relative"
+    >
+      {{ form.csrf_token }}
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+      <div class="wonka-form-container">
+        {{ mr.formulario_edicion_receta(form, receta.id_receta) }}
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) lucide.createIcons();
+
+    const inputs = document.querySelectorAll("input, select, textarea");
+    inputs.forEach((input) => {
+      input.classList.add("transition-all", "duration-300");
+    });
+  });
+</script>
+{% endblock %}

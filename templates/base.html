@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WONKA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "wonka-purple": "#7B2CBF",
+              "wonka-brown": "#3d1c02",
+              "wonka-cream": "#fdfaf5",
+              "wonka-gold": "#D4AF37",
+              "wonka-gold-light": "#FCF6BA",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap");
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #fdfaf5;
+      }
+
+      .font-wonka {
+        font-family: "Playfair Display", serif;
+      }
+
+      .sidebar-wonka {
+        background-color: #fdfaf5;
+        background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+        background-size: 20px 20px;
+        border-right: 1px solid rgba(212, 175, 55, 0.2);
+      }
+
+      .custom-scroll::-webkit-scrollbar {
+        width: 5px;
+      }
+      .custom-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scroll::-webkit-scrollbar-thumb {
+        background: rgba(212, 175, 55, 0.3);
+        border-radius: 10px;
+      }
+
+      .sidebar-item-active {
+        background: linear-gradient(
+          135deg,
+          #bf953f,
+          #fcf6ba,
+          #d4af37,
+          #fbf5b7,
+          #aa771c
+        ) !important;
+        color: #3d1c02 !important;
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        font-weight: 800 !important;
+        opacity: 1 !important;
+      }
+
+      .sidebar-link {
+        color: #3d1c02;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+
+      .sidebar-link:hover {
+        opacity: 1;
+        background-color: rgba(212, 175, 55, 0.1);
+        transform: translateX(5px);
+      }
+
+      .header-border {
+        border-bottom: 2px solid;
+        border-image: linear-gradient(to right, #d4af37, transparent) 1;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
+
+  <body class="flex h-screen overflow-hidden">
+    <aside class="w-72 sidebar-wonka flex flex-col flex-shrink-0 z-20">
+      <div class="p-8 pb-4 text-center">
+        <div
+          class="inline-block w-20 h-20 rounded-full border-4 border-wonka-gold p-1 bg-white mb-4 shadow-xl overflow-hidden"
+        >
+          <img
+            src="{{ url_for('static', filename='img/log_wonka.jpeg') }}"
+            alt="Logo Wonka"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+        <h1
+          class="text-3xl font-wonka font-bold text-wonka-brown italic leading-none"
+        >
+          Wonka
+        </h1>
+        <div class="h-1 w-10 bg-wonka-gold mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto px-6 space-y-1.5 custom-scroll mb-4">
+        {% if session['rol'] == 'CLIENTE' %} {% set items = [ ('pos', 'Tienda
+        Wonka', 'shopping-bag', 'puntoVenta.index'), ('orders', 'Mis Pedidos',
+        'package', 'cliente.mis_compras'), ('profile', 'Mi Perfil', 'user',
+        'cliente.detalles_cliente_vista') ] %} {% elif session['rol'] ==
+        'GERENTE' %} {% set items = [ ('pos', 'Punto de Venta', 'shopping-bag',
+        'puntoVenta.index'), ('customers', 'Clientes', 'users',
+        'cliente.clientesAdmin'), ('employees', 'Empleados', 'user-cog',
+        'empleado.empleadosAdmin'), ('suppliers', 'Proveedores', 'truck',
+        'proveedores.lista_proveedores'), ('materials', 'Materias Primas',
+        'package', 'materiaPrima.admin_materias'), ('purchases', 'Pedidos',
+        'shopping-cart', 'comprasProveedores.lista_compras'), ('payments',
+        'Pagos', 'credit-card', 'pagosProveedores.lista_pagos'), ('products',
+        'Productos', 'boxes', 'productos.lista_productos'), ('recipes',
+        'Recetas', 'chef-hat', 'recetas.lista_recetas'), ('production',
+        'Producción', 'factory', 'produccion.mostrar_ordenes'), ('inventory',
+        'Inventario', 'warehouse', 'inventario.mostrar_inventario'), ('sales',
+        'Ventas', 'trending-up', 'gesVentas.mostrar_ventas') ] %} {% elif
+        session['rol'] == 'CHOCOLATERO' %} {% set items = [ ('products',
+        'Productos', 'boxes', 'productos.lista_productos'), ('recipes',
+        'Recetas', 'chef-hat', 'recetas.lista_recetas'), ('production',
+        'Producción', 'factory', 'produccion.mostrar_ordenes'), ('inventory',
+        'Inventario', 'warehouse', 'inventario.mostrar_inventario') ] %} {% elif
+        session['rol'] == 'VENTAS' %} {% set items = [ ('pos', 'Punto de Venta',
+        'shopping-bag', 'puntoVenta.index'), ('customers', 'Clientes', 'users',
+        'cliente.clientesAdmin'), ('sales', 'Ventas', 'trending-up',
+        'gesVentas.mostrar_ventas'), ('products', 'Productos', 'boxes',
+        'productos.lista_productos') ] %} {% elif session['rol'] ==
+        'CONTROL_CALIDAD' %} {% set items = [ ('production', 'Producción',
+        'factory', 'produccion.mostrar_ordenes'), ('materials', 'Materias
+        Primas', 'package', 'materiaPrima.admin_materias'), ('products',
+        'Productos', 'boxes', 'productos.lista_productos') ] %} {% elif
+        session['rol'] == 'LOGISTICA' %} {% set items = [ ('inventory',
+        'Inventario', 'warehouse', 'inventario.mostrar_inventario'),
+        ('suppliers', 'Proveedores', 'truck', 'proveedores.lista_proveedores'),
+        ('purchases', 'Pedidos', 'shopping-cart',
+        'comprasProveedores.lista_compras') ] %} {% elif session['rol'] ==
+        'MANTENIMIENTO' %} {% set items = [ ('inventory', 'Equipo/Material',
+        'tool', 'inventario.mostrar_inventario') ] %} {% endif %} {% for id,
+        label, icon, ruta in items %}
+        <a
+          href="{{ url_for(ruta) if ruta != '#' else '#' }}"
+          class="flex items-center gap-4 px-5 py-3 text-[10px] font-extrabold uppercase tracking-widest rounded-xl sidebar-link {% if request.endpoint == ruta %} sidebar-item-active {% endif %}"
+        >
+          <i data-lucide="{{ icon }}" class="w-5 h-5"></i>
+          {{ label }}
+        </a>
+        {% endfor %}
+      </nav>
+
+      <div class="p-8 border-t border-wonka-gold/10 bg-white/30">
+        <a
+          href="{{ url_for('logout') }}"
+          class="flex items-center gap-3 text-wonka-brown/60 hover:text-red-600 font-black text-[10px] uppercase tracking-widest transition-colors"
+        >
+          <i data-lucide="log-out" class="w-4 h-4"></i>
+          Cerrar Sesión
+        </a>
+      </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col min-w-0">
+      <header
+        class="h-24 bg-white/80 backdrop-blur-md flex items-center justify-between px-12 header-border"
+      >
+        <div>
+          <h2 class="text-wonka-brown font-black text-2xl tracking-tight">
+            {% if session['rol'] == 'CLIENTE' %} Mi Dulce Panel {% else %} Panel
+            {{ session['rol']|replace('_', ' ') }} {% endif %}
+          </h2>
+          <p
+            class="text-wonka-gold text-[10px] font-bold uppercase tracking-[0.3em]"
+          >
+            Sistema de Gestión Wonka
+          </p>
+        </div>
+
+        <div
+          class="flex items-center gap-4 bg-wonka-cream px-5 py-2 rounded-2xl border border-wonka-gold/20 shadow-sm"
+        >
+          <div class="text-right">
+            <p
+              class="text-[9px] font-black text-wonka-purple uppercase tracking-tighter"
+            >
+              {{ session['rol'] }}
+            </p>
+            <p
+              class="text-sm font-extrabold text-wonka-brown italic leading-none"
+            >
+              {{ session['nombre'] if session['nombre'] else session['username']
+              }}
+            </p>
+          </div>
+          <div
+            class="w-10 h-10 rounded-xl bg-wonka-gold flex items-center justify-center font-black text-white shadow-md"
+          >
+            {{ (session['nombre'][0] if session['nombre'] else
+            session['username'][0])|upper }}
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 overflow-y-auto p-12 custom-scroll">
+        <div class="max-w-[1700px] mx-auto">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="fixed top-6 right-6 z-50 space-y-3">
+      {% for category, message in messages %}
+      <div
+        class="px-6 py-4 rounded-xl shadow-lg text-white font-semibold transform transition-all animate-bounce {% if category == 'success' %} bg-green-500 {% elif category == 'warning' %} bg-yellow-500 {% elif category == 'danger' %} bg-red-500 {% else %} bg-wonka-purple {% endif %}"
+      >
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

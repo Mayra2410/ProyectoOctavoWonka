@@ -1,0 +1,247 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <a
+          href="{{ url_for('comprasProveedores.lista_compras') }}"
+          class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all group"
+        >
+          <i
+            data-lucide="chevron-left"
+            class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"
+          ></i>
+        </a>
+        <div>
+          <h1
+            class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none"
+          >
+            Detalle de Adquisición
+          </h1>
+          <p
+            class="text-[#d4af37] font-bold text-[10px] uppercase tracking-[0.2em] mt-1"
+          >
+            Compra Wonka
+          </p>
+        </div>
+      </div>
+
+      {% if compra.estatus_compra == 'PENDIENTE' %}
+      <a
+        href="{{ url_for('pagosProveedores.gestionar_pago', id_compra=compra.id_compra) }}"
+        class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest shadow-lg transition-all active:scale-95"
+      >
+        <i data-lucide="wallet" class="w-4 h-4"></i>
+        Proceder al Pago
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      {# PERFIL DEL INSUMO #}
+      <div class="lg:col-span-4">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center sticky top-6"
+        >
+          <div class="relative mb-6">
+            <div
+              class="w-40 h-40 rounded-full p-1 bg-white shadow-lg border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden"
+            >
+              <div class="w-full h-full rounded-full overflow-hidden">
+                <img
+                  src="{{ compra.materia_prima.imagen_materia if compra.materia_prima.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {# Estatus #}
+            <div
+              class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-md border-2 border-white {% if compra.estatus_compra == 'PAGADO' %} bg-emerald-500 text-white {% elif compra.estatus_compra == 'CANCELADO' %} bg-rose-500 text-white {% else %} bg-amber-500 text-white {% endif %}"
+            >
+              {{ compra.estatus_compra }}
+            </div>
+          </div>
+
+          <h2
+            class="text-2xl font-black text-wonka-chocolate text-center leading-tight"
+          >
+            {{ compra.materia_prima.nombre }}
+          </h2>
+          <p
+            class="text-[#d4af37] font-black text-xs uppercase tracking-[0.3em] mt-2"
+          >
+            COMPRA #{{ compra.id_compra }}
+          </p>
+
+          <div class="w-full mt-8 border-t border-gray-100 pt-6 space-y-3">
+            <div class="flex justify-between items-center px-4">
+              <span class="text-[10px] font-black text-gray-400 uppercase"
+                >Inversión Total</span
+              >
+              <span class="text-xl font-black text-emerald-600"
+                >${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario)
+                }}</span
+              >
+            </div>
+            <a
+              href="{{ url_for('comprasProveedores.lista_compras') }}"
+              class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95"
+            >
+              Regresar al historial
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {# DETALLES #}
+      <div class="lg:col-span-8">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20"
+        >
+          <div
+            class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4"
+          >
+            <div
+              class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md"
+            >
+              <i data-lucide="receipt" class="w-6 h-6"></i>
+            </div>
+            <h3
+              class="text-xl font-black text-wonka-chocolate uppercase tracking-tight"
+            >
+              Información de Transacción
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {# PROVEEDOR #}
+            <div
+              class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10"
+            >
+              <label
+                class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2"
+                >Proveedor Suministrante</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="truck" class="w-5 h-5 text-blue-400"></i>
+                <p class="text-wonka-chocolate font-black text-lg">
+                  {{ compra.proveedor.nombre if compra.proveedor else 'SIN
+                  ASIGNAR' }}
+                </p>
+              </div>
+            </div>
+
+            {# CANTIDAD #}
+            <div
+              class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10"
+            >
+              <label
+                class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2"
+                >Cantidad Ingresada</label
+              >
+              <p
+                class="text-wonka-chocolate font-black text-2xl tracking-tighter"
+              >
+                {{ compra.cantidad }}
+                <span class="text-sm text-gray-400"
+                  >{{ compra.materia_prima.unidad_medida }}</span
+                >
+              </p>
+            </div>
+
+            {# COSTO UNITARIO #}
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Costo Unitario</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="tag" class="w-5 h-5 text-emerald-500"></i>
+                <p class="text-wonka-chocolate font-black text-xl">
+                  ${{ "{:,.2f}".format(compra.costo_unitario) }}
+                </p>
+              </div>
+            </div>
+
+            {# FECHA #}
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Fecha de Operación</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-5 h-5 text-purple-400"></i>
+                <p class="text-wonka-chocolate font-bold">
+                  {{ compra.fecha_compra.day }} de {{
+                  meses[compra.fecha_compra.month] }}, {{
+                  compra.fecha_compra.year }}
+                </p>
+              </div>
+            </div>
+
+            {# HORA #}
+            <div
+              class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+            >
+              <label
+                class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2"
+                >Hora de Registro</label
+              >
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-5 h-5 text-orange-400"></i>
+                <p class="text-wonka-chocolate font-bold">
+                  {{ compra.fecha_compra.strftime('%H:%M:%S') }}
+                </p>
+              </div>
+            </div>
+
+            {# OBSERVACIONES #}
+            <div
+              class="md:col-span-2 p-6 bg-[#3d1c02]/[0.02] rounded-3xl border-2 border-dashed border-[#3d1c02]/10"
+            >
+              <label
+                class="text-[10px] font-black text-wonka-chocolate uppercase tracking-widest block mb-3"
+                >Observaciones de la Compra</label
+              >
+              <p
+                class="text-wonka-chocolate/70 font-medium italic text-sm leading-relaxed"
+              >
+                "{{ compra.observaciones or 'Sin observaciones registradas para
+                esta transacción.' }}"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
+</script>
+{% endblock %}

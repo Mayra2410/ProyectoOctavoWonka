@@ -1,0 +1,265 @@
+{% extends "base.html" %} {% import "_macros.html" as m %} {% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
+
+  .chocolate-source {
+    background: linear-gradient(135deg, #3d1c02 0%, #5d2e06 100%);
+    border-radius: 2.5rem 2.5rem 0 0;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(61, 28, 2, 0.15);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 3rem 3rem;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-top: none;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(61, 28, 2, 0.04);
+    position: relative;
+  }
+
+  .search-mini-bar {
+    background: white;
+    border: 1px solid #f0ede6;
+    transition: all 0.3s ease;
+  }
+
+  .search-mini-bar:focus-within {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  }
+
+  .chocolate-row {
+    background: white;
+    border: 1px solid #f8f5f0;
+    transition: all 0.2s ease;
+  }
+
+  .chocolate-row:hover {
+    border-color: #d4af37;
+    background: #fffdfa;
+    transform: translateY(-1px);
+  }
+
+  .text-wonka-gold {
+    color: #d4af37;
+  }
+</style>
+
+<div class="max-w-[1900px] mx-auto px-10 py-8 relative">
+  {# PRINCIPAL #}
+  <div class="chocolate-source flex justify-between items-center relative">
+    <div class="z-20">
+      <h1 class="text-4xl font-wonka-title text-white font-bold tracking-tight">
+        Pedidos a Proveedores
+      </h1>
+      <p class="text-white/60 text-xs mt-2 font-bold uppercase tracking-widest">
+        Gestión de Abastecimiento y Compras de Materia Prima
+      </p>
+    </div>
+
+    <div class="flex items-center gap-4 z-20">
+      <div
+        id="contenedor-buscador"
+        class="search-mini-bar flex items-center px-5 py-3 rounded-2xl gap-3 w-80 shadow-inner"
+      >
+        <i data-lucide="search" class="text-[#D4AF37] w-5 h-5"></i>
+        <input
+          type="text"
+          placeholder="Buscar por insumo o proveedor..."
+          value="{{ search_query or '' }}"
+          class="w-full bg-transparent outline-none border-none text-xs font-bold text-[#3d1c02]"
+        />
+      </div>
+
+      <a href="{{ url_for('comprasProveedores.registrar_compra') }}">
+        <button
+          class="bg-white text-[#3d1c02] hover:bg-[#D4AF37] hover:text-white px-8 py-4 rounded-2xl font-bold text-[11px] uppercase tracking-widest shadow-lg transition-all active:scale-95 flex items-center gap-2"
+        >
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          Registrar Compra
+        </button>
+      </a>
+    </div>
+  </div>
+
+  {# LISTADO DE PEDIDOS #}
+  <div class="glass-panel overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-separate border-spacing-y-3">
+        <thead
+          class="text-[#3d1c02]/50 text-[10px] font-black uppercase tracking-[0.2em]"
+        >
+          <tr>
+            <th class="pb-4 px-6 text-center">ID</th>
+            <th class="pb-4 px-4">Insumo</th>
+            <th class="pb-4 px-4">Proveedor</th>
+            <th class="pb-4 px-4 text-center">Cantidad</th>
+            <th class="pb-4 px-4 text-center">Costo Unit.</th>
+            <th class="pb-4 px-4 text-center">Total</th>
+            <th class="pb-4 px-4 text-center">Estatus</th>
+            <th class="pb-4 px-4 text-center">Fecha y Hora</th>
+            <th class="pb-4 px-6 text-right">Notas</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          {% for compra in compras %}
+          <tr
+            class="chocolate-row rounded-2xl cursor-pointer"
+            onclick="window.location.href='{{ url_for('comprasProveedores.detalles_compra', id=compra.id_compra) }}'"
+          >
+            <td class="py-5 px-6 text-center">
+              <span
+                class="text-wonka-gold font-black text-lg italic tracking-tighter"
+                >#{{ compra.id_compra }}</span
+              >
+            </td>
+
+            <td class="py-5 px-4">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden border-2 border-[#f0ede6] shadow-sm flex-shrink-0"
+                >
+                  <img
+                    src="{{ compra.materia_prima.imagen_materia if compra.materia_prima.imagen_materia else url_for('static', filename='img/materias_primas.jpg') }}"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-[#3d1c02] font-extrabold text-sm tracking-tight"
+                    >{{ compra.materia_prima.nombre }}</span
+                  >
+                  <span
+                    class="text-[8px] text-wonka-gold font-black uppercase tracking-tighter"
+                    >Insumo</span
+                  >
+                </div>
+              </div>
+            </td>
+
+            {# PROVEEDOR #}
+            <td class="py-5 px-4 text-[#5d2e06] font-bold text-xs">
+              {{ compra.proveedor.nombre if compra.proveedor else 'SIN
+              PROVEEDOR' }}
+            </td>
+
+            {# CANTIDAD #}
+            <td class="py-5 px-4 text-center">
+              <div class="flex flex-col items-center">
+                <span class="text-[#3d1c02] font-bold text-sm"
+                  >{{ compra.cantidad }}</span
+                >
+                <span class="text-[9px] font-black text-wonka-gold uppercase"
+                  >{{ compra.materia_prima.unidad_medida }}</span
+                >
+              </div>
+            </td>
+
+            {# COSTO UNITARIO #}
+            <td
+              class="py-5 px-4 text-center text-[#3d1c02]/60 font-black text-xs"
+            >
+              ${{ "{:,.2f}".format(compra.costo_unitario) }}
+            </td>
+
+            {# TOTAL #}
+            <td class="py-5 px-4 text-center text-[#3d1c02] font-black text-sm">
+              ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
+            </td>
+
+            {# ESTATUS #}
+            <td class="py-5 px-4 text-center">
+              {% if compra.estatus_compra == 'PAGADO' %}
+              <span
+                class="text-[9px] font-black text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-100"
+                >PAGADO</span
+              >
+              {% elif compra.estatus_compra == 'CANCELADO' %}
+              <span
+                class="text-[9px] font-black text-red-400 bg-red-50 px-3 py-1 rounded-full border border-red-100"
+                >CANCELADO</span
+              >
+              {% else %}
+              <span
+                class="text-[9px] font-black text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-100"
+                >PENDIENTE</span
+              >
+              {% endif %}
+            </td>
+
+            {# FECHA Y HORA #}
+            <td class="py-5 px-4 text-center">
+              {% if compra.fecha_compra %}
+              <div class="flex flex-col">
+                <span class="text-[#3d1c02] font-bold text-[11px]"
+                  >{{ compra.fecha_compra.strftime('%Y-%m-%d') }}</span
+                >
+                <span
+                  class="text-wonka-gold font-black text-[9px] tracking-widest"
+                  >{{ compra.fecha_compra.strftime('%H:%M') }}</span
+                >
+              </div>
+              {% else %}
+              <span class="text-gray-300">S/F</span>
+              {% endif %}
+            </td>
+
+            {# NOTAS #}
+            <td
+              class="py-5 px-6 text-right text-gray-400 italic text-[11px] truncate max-w-[150px]"
+            >
+              {{ compra.observaciones or '-' }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.lucide) lucide.createIcons();
+
+    const input = document.querySelector("#contenedor-buscador input");
+    if (input) {
+      input.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          // CORREGIDO: Usando 'lista_compras' que es tu nombre real
+          window.location.href =
+            "{{ url_for('comprasProveedores.lista_compras') }}?q=" +
+            encodeURIComponent(this.value.trim());
+        }
+      });
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const buscador = document.getElementById("input-buscador-compras");
+
+    if (buscador) {
+      buscador.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          const query = buscador.value.trim();
+          // Redirige a la ruta de lista_compras con el parámetro q
+          window.location.href =
+            "{{ url_for('comprasProveedores.lista_compras') }}?q=" +
+            encodeURIComponent(query);
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

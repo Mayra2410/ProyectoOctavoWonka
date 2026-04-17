@@ -1,0 +1,159 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+
+  /* Scrollbar personalizada estilo Wonka */
+  .wonka-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .wonka-scrollbar::-webkit-scrollbar-track {
+    background: #fdfaf3;
+    border-radius: 10px;
+  }
+  .wonka-scrollbar::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+  }
+  .wonka-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c19c31;
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center gap-4">
+      <a href="{{ url_for('recetas.lista_recetas') }}"
+        class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all group">
+        <i data-lucide="chevron-left" class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"></i>
+      </a>
+      <div>
+        <h1 class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none">
+          Ficha Detallada
+        </h1>
+        <p class="text-[#d4af37] font-bold text-[10px] uppercase tracking-[0.2em] mt-1">
+          Gestión de Fórmulas Mágicas
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-4">
+        <div class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center sticky top-6">
+          <div class="relative mb-6">
+            <div class="w-40 h-40 rounded-full p-1 bg-white shadow-lg border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden">
+              <div class="w-full h-full rounded-full overflow-hidden bg-[#fdfaf3] flex items-center justify-center">
+                <img src="{{ url_for('static', filename='img/receta.png') }}" class="w-full h-full object-cover"
+                  onerror="this.src='https://cdn-icons-png.flaticon.com/512/3565/3565407.png';">
+              </div>
+            </div>
+
+            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-md border-2 border-white {{ 'bg-emerald-500 text-white' if receta.activo else 'bg-rose-500 text-white' }}">
+              {{ 'ACTIVA' if receta.activo else 'INACTIVA' }}
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-black text-wonka-chocolate text-center leading-tight uppercase">
+            {{ receta.nombre_receta }}
+          </h2>
+          <p class="text-[#d4af37] font-black text-xs uppercase tracking-[0.3em] mt-2">
+            ID RECETA #{{ receta.id_receta }}
+          </p>
+
+          <div class="w-full mt-8 space-y-3">
+            <a href="{{ url_for('recetas.gestionar_ingredientes', id_receta=receta.id_receta) }}"
+              class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95 gap-2">
+              <i data-lucide="beaker" class="w-4 h-4 text-[#d4af37]"></i>
+              Gestionar Ingredientes
+            </a>
+
+            <a href="{{ url_for('recetas.lista_recetas') }}"
+              class="w-full py-4 bg-white text-[#3d1c02] border border-gray-100 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#fdfaf3] transition-all flex items-center justify-center shadow-sm active:scale-95">
+              Regresar al listado
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col gap-6">
+          
+          <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+            <div class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md">
+              <i data-lucide="scroll" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-black text-wonka-chocolate uppercase tracking-tight">
+              Especificaciones de la Receta
+            </h3>
+          </div>
+
+          <div class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10">
+            <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2">Producto Asignado</label>
+            <div class="flex items-center gap-2">
+              <i data-lucide="package" class="w-5 h-5 text-wonka-chocolate"></i>
+              <p class="text-wonka-chocolate font-black text-lg tracking-tighter uppercase">
+                {{ receta.producto.nombre if receta.producto else 'Sin asignar' }}
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm">
+            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-4">Ingredientes Requeridos</label>
+
+            {% if receta.detalles %}
+            <div class="grid grid-cols-1 gap-3 max-h-[250px] overflow-y-auto pr-2 wonka-scrollbar">
+              {% for detalle in receta.detalles %}
+              <div class="flex justify-between items-center p-4 bg-[#fdfaf3] rounded-2xl border border-[#d4af37]/5 hover:border-[#d4af37]/20 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-[#d4af37]"></div>
+                  <span class="text-wonka-chocolate font-bold text-sm uppercase">{{ detalle.materia_prima.nombre }}</span>
+                </div>
+                <span class="text-wonka-chocolate font-black bg-white px-4 py-1.5 rounded-xl border border-gray-100 shadow-sm text-xs">
+                  {{ detalle.cantidad_necesaria | float }} {{ detalle.unidad_medida }}
+                </span>
+              </div>
+              {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-10 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-100">
+              <p class="text-gray-400 font-medium italic text-sm">Esta receta aún no cuenta con ingredientes registrados.</p>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="p-6 bg-[#3d1c02]/[0.02] rounded-3xl border-2 border-dashed border-[#d4af37]/20">
+            <label class="text-[10px] font-black text-wonka-chocolate uppercase tracking-widest block mb-3">Método de Elaboración</label>
+            
+            <div class="bg-white/50 rounded-2xl p-1">
+                <div class="max-h-[200px] overflow-y-auto pr-4 wonka-scrollbar p-4 text-wonka-chocolate/80 font-medium italic text-sm leading-relaxed whitespace-pre-line">
+                    "{{ receta.instrucciones or 'Sin instrucciones registradas para este proceso mágico.' }}"
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
+</script>
+{% endblock %}
