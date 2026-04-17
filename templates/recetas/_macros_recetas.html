@@ -1,220 +1,112 @@
-{% macro tarjeta_receta(datos, botones=None) %}
-<div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
-  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+{% macro formulario_edicion_receta(form, receta_id) %}
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-    <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
-      <div class="relative mb-6">
-        <div
-          class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 flex items-center justify-center overflow-hidden">
-          <img src="{{ url_for('static', filename='img/receta.png') }}" alt="Receta" class="w-full h-full object-cover">
+  <!-- IZQUIERDA -->
+  <div class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 flex flex-col items-center sticky top-6">
+    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"></div>
+
+    <div class="relative mb-6">
+      <div class="w-40 h-40 rounded-full p-1 bg-white shadow-2xl border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden">
+        <div class="w-full h-full rounded-full bg-[#fdfaf3] flex items-center justify-center overflow-hidden">
+          <img src="{{ url_for('static', filename='img/receta.png') }}" class="w-full h-full object-cover">
         </div>
-
-        <div
-          class="absolute bottom-3 right-3 w-8 h-8 {% if datos.activo %}bg-green-500{% else %}bg-red-500{% endif %} border-4 border-white rounded-full">
-        </div>
-      </div>
-
-      <h2 class="text-4xl font-extrabold text-wonka-brown text-center leading-tight mb-2">
-        {{ datos.nombre_receta }}
-      </h2>
-
-      <p class="text-wonka-purple font-medium text-lg mb-8">
-        ID Receta: {{ datos.id_receta }}
-      </p>
-
-      <div class="w-full space-y-3">
-        {% if botones %}
-        {{ botones }}
-        {% else %}
-        <a href="{{ url_for('recetas.lista_recetas') }}"
-          class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg hover:shadow-wonka-purple/20 inline-block">
-          Regresar al listado
-        </a>
-        {% endif %}
       </div>
     </div>
 
-    <div class="lg:col-span-3">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Producto
-          </span>
-          <span class="text-gray-700 text-xl font-medium">
-            {{ datos.producto.nombre if datos.producto else 'Sin producto asignado' }}
-          </span>
-        </div>
+    <div class="text-center mb-8">
+      <p class="text-[#3d1c02] font-black text-sm uppercase">ID Receta</p>
+      <p class="text-[#d4af37] font-bold text-xs">#{{ receta_id }}</p>
+    </div>
 
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Cantidad del lote
-          </span>
-          <span class="text-gray-700 text-xl font-medium">
-            {{ datos.cantidad_lote or '0' }}
-          </span>
-        </div>
+    <div class="w-full space-y-3">
+      <button type="submit"
+        class="w-full py-4 bg-[#3d1c02] text-[#d4af37] rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-lg hover:brightness-125 transition-all flex items-center justify-center gap-2 border border-[#d4af37]/20">
+        <i data-lucide="save" class="w-4 h-4"></i> Guardar Cambios
+      </button>
 
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Estado
-          </span>
-          <span class="text-gray-700 text-xl font-medium">
-            {% if datos.activo %}Activa{% else %}Inactiva{% endif %}
-          </span>
-        </div>
-
-        <div class="p-8 bg-wonka-purple/5 rounded-2xl border-2 border-dashed border-wonka-purple/20 md:col-span-2">
-          <span class="text-lg font-bold text-wonka-purple uppercase block mb-3">
-            Instrucciones
-          </span>
-          <p class="text-gray-600 italic text-base leading-relaxed p-4 bg-white rounded-xl shadow-sm">
-            {{ datos.instrucciones or 'Esta receta no tiene instrucciones registradas aún.' }}
-          </p>
-        </div>
-        <div class="p-8 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2">
-          <span class="text-lg font-bold text-wonka-purple uppercase block mb-4">
-            Ingredientes
-          </span>
-
-          {% if datos.detalles %}
-          <div class="space-y-3">
-            {% for detalle in datos.detalles %}
-            <div class="flex justify-between items-center bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-              <span class="text-gray-700 font-medium">
-                {{ detalle.materia_prima.nombre }}
-              </span>
-              <span class="text-wonka-brown font-bold">
-                {{ detalle.cantidad_necesaria }} {{ detalle.unidad_medida }}
-              </span>
-            </div>
-            {% endfor %}
-          </div>
-          {% else %}
-          <p class="text-gray-500 italic">
-            Esta receta aún no tiene ingredientes registrados.
-          </p>
-          {% endif %}
-        </div>
-      </div>
+      <a href="{{ url_for('recetas.lista_recetas') }}"
+        class="block w-full py-4 bg-[#fdfaf3] text-gray-400 rounded-2xl font-bold text-[10px] text-center uppercase tracking-[0.2em] border border-[#d4af37]/10 hover:text-[#3d1c02] transition-colors">
+        Cancelar
+      </a>
     </div>
   </div>
-</div>
-{% endmacro %}
 
+  <!-- DERECHA -->
+  <div class="lg:col-span-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"></div>
 
-{% macro formulario_edicion_receta(form, receta_id) %}
-<div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
-  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-    <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
-      <div class="relative mb-6">
-        <div
-          class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 flex items-center justify-center overflow-hidden">
-          <img src="{{ url_for('static', filename='img/receta.png') }}" alt="Receta" class="w-full h-full object-cover">
-        </div>
+      <!-- NOMBRE -->
+      <div class="md:col-span-2 space-y-1.5">
+        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">
+          Nombre de la Receta
+        </label>
+        {{ form.nombre_receta(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
+
+        {% if form.nombre_receta.errors %}
+        {% for error in form.nombre_receta.errors %}
+        <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">* {{ error }}</p>
+        {% endfor %}
+        {% endif %}
       </div>
 
-      <p class="text-wonka-purple font-medium text-lg mb-8">
-        ID Receta: {{ receta_id }}
-      </p>
+      <!-- PRODUCTO -->
+      <div class="space-y-1.5">
+        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">
+          Producto
+        </label>
+        <div class="relative">
+          {{ form.producto_id(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none") }}
+          <i data-lucide="chevron-down"
+            class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"></i>
+        </div>
 
-      <div class="w-full space-y-3">
-        <button type="submit"
-          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg">
-          Guardar Cambios
-        </button>
-        <a href="{{ url_for('recetas.lista_recetas') }}"
-          class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all inline-block">
-          Cancelar
-        </a>
+        {% if form.producto_id.errors %}
+        {% for error in form.producto_id.errors %}
+        <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">* {{ error }}</p>
+        {% endfor %}
+        {% endif %}
       </div>
-    </div>
 
-    <div class="lg:col-span-3">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Nombre de la Receta
-          </label>
-          {{ form.nombre_receta(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% if form.nombre_receta.errors %}
-          {% for error in form.nombre_receta.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-            * {{ error }}
-          </span>
-          {% endfor %}
-          {% endif %}
-        </div>
+      <!-- ESTADO -->
+      <div class="space-y-1.5">
+        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">
+          Estatus de la Receta
+        </label>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Producto
-          </label>
-          {{ form.producto_id(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% if form.producto_id.errors %}
-          {% for error in form.producto_id.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-            * {{ error }}
-          </span>
-          {% endfor %}
-          {% endif %}
-        </div>
-
-        <div
-          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Instrucciones
-          </label>
-          {{ form.instrucciones(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% if form.instrucciones.errors %}
-          {% for error in form.instrucciones.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-            * {{ error }}
-          </span>
-          {% endfor %}
-          {% endif %}
-        </div>
-
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Cantidad del lote
-          </label>
-          {{ form.cantidad_lote(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% if form.cantidad_lote.errors %}
-          {% for error in form.cantidad_lote.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-            * {{ error }}
-          </span>
-          {% endfor %}
-          {% endif %}
-        </div>
-
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">
-            Estado
-          </label>
-
+        <div class="relative">
           <select name="activo"
-            class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700">
-            <option value="1" {% if form.activo.data %}selected{% endif %}>Activo</option>
-            <option value="0" {% if not form.activo.data %}selected{% endif %}>Inactivo</option>
+            class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none">
+            <option value="1" {% if form.activo.data %}selected{% endif %}>ACTIVO</option>
+            <option value="0" {% if not form.activo.data %}selected{% endif %}>INACTIVO</option>
           </select>
 
-          {% if form.activo.errors %}
-          {% for error in form.activo.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-            * {{ error }}
-          </span>
-          {% endfor %}
-          {% endif %}
+          <i data-lucide="chevron-down"
+            class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"></i>
         </div>
+
+        {% if form.activo.errors %}
+        {% for error in form.activo.errors %}
+        <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">* {{ error }}</p>
+        {% endfor %}
+        {% endif %}
       </div>
+
+      <!-- INSTRUCCIONES -->
+      <div class="md:col-span-2 p-6 bg-[#3d1c02]/5 rounded-3xl border-2 border-dashed border-[#d4af37]/30">
+        <label class="text-[10px] font-black text-[#3d1c02] uppercase tracking-widest mb-3 block">
+          Instrucciones
+        </label>
+        {{ form.instrucciones(class="w-full bg-white/80 border-0 rounded-2xl p-4 text-sm italic text-[#3d1c02] outline-none", rows="4") }}
+
+        {% if form.instrucciones.errors %}
+        {% for error in form.instrucciones.errors %}
+        <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">* {{ error }}</p>
+        {% endfor %}
+        {% endif %}
+      </div>
+
     </div>
   </div>
 </div>

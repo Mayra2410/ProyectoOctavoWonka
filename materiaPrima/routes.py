@@ -4,13 +4,30 @@ from models import db, MateriasPrimas, Proveedores
 from . import materia_Prima
 from . import forms
 from utils import login_required
+from sqlalchemy import or_ 
 
 
 @materia_Prima.route("/materias-primas")
 @login_required
 def admin_materias():
-    materias = MateriasPrimas.query.all()
-    return render_template("materiaPrima/materiaPrimaAdmin.html", materias=materias)
+    search_query = request.args.get("q", "").strip()
+
+    query = MateriasPrimas.query
+
+    if search_query:
+        filtros = [
+            MateriasPrimas.nombre.ilike(f"%{search_query}%"),
+            MateriasPrimas.descripcion.ilike(f"%{search_query}%"),
+        ]
+        query = query.filter(or_(*filtros))
+
+    materias = query.all()
+
+    return render_template(
+        "materiaPrima/materiaPrimaAdmin.html",
+        materias=materias,
+        search_query=search_query,
+    )
 
 
 @materia_Prima.route("/detalles/<int:id>")
@@ -93,14 +110,14 @@ def modificar_materia(id):
                 materia=materia,
             )
 
+        form.populate_obj(materia)
+
         file = request.files.get("imagen_materia")
         if file and file.filename != "":
             imagen_bytes = file.read()
             encoded_string = base64.b64encode(imagen_bytes).decode("utf-8")
             materia.imagen_materia = f"data:{file.content_type};base64,{encoded_string}"
 
-        form.populate_obj(materia)
-        
         materia.stock_actual = stock_real_db
         materia.activo = bool(form.activo.data)
 
@@ -134,7 +151,6 @@ def eliminar_materia(id):
 
 @materia_Prima.route("/materias-primas/desactivar/<int:id>", methods=["POST"])
 @login_required
-
 def desactivar_materia(id):
     materia = MateriasPrimas.query.get_or_404(id)
     materia.activo = False

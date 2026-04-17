@@ -11649,3 +11649,308 @@
 2026-04-16 21:31:47,313 - INFO -  * Debugger PIN: 443-857-532
 2026-04-16 21:32:20,762 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\puntoVenta\\routes.py', reloading
 2026-04-16 21:32:21,084 - INFO -  * Restarting with stat
+2026-04-16 21:32:23,754 - WARNING -  * Debugger is active!
+2026-04-16 21:32:23,760 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:19:06,758 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\routes.py', reloading
+2026-04-16 22:19:07,425 - INFO -  * Restarting with stat
+2026-04-16 22:19:10,108 - WARNING -  * Debugger is active!
+2026-04-16 22:19:10,119 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:19:32,050 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\recetas\\routes.py', reloading
+2026-04-16 22:19:32,274 - INFO -  * Restarting with stat
+2026-04-16 22:19:35,000 - WARNING -  * Debugger is active!
+2026-04-16 22:19:35,011 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:23:34,027 - INFO - 127.0.0.1 - - [16/Apr/2026 22:23:34] "GET /punto-venta/registrar-tarjeta HTTP/1.1" 200 -
+2026-04-16 22:23:34,136 - INFO - 127.0.0.1 - - [16/Apr/2026 22:23:34] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 22:23:43,309 - INFO - 127.0.0.1 - - [16/Apr/2026 22:23:43] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 22:25:31,419 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\recetas\\forms.py', reloading
+2026-04-16 22:25:31,820 - INFO -  * Restarting with stat
+2026-04-16 22:25:34,333 - WARNING -  * Debugger is active!
+2026-04-16 22:25:34,341 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:25:48,193 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\recetas\\__init__.py', reloading
+2026-04-16 22:25:48,622 - INFO -  * Restarting with stat
+2026-04-16 22:25:51,028 - WARNING -  * Debugger is active!
+2026-04-16 22:25:51,042 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:26:15,764 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\forms.py', reloading
+2026-04-16 22:26:15,974 - INFO -  * Restarting with stat
+2026-04-16 22:26:18,348 - WARNING -  * Debugger is active!
+2026-04-16 22:26:18,357 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:26:28,443 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\__init__.py', reloading
+2026-04-16 22:26:28,675 - INFO -  * Restarting with stat
+2026-04-16 22:26:31,031 - WARNING -  * Debugger is active!
+2026-04-16 22:26:31,046 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:34:33,254 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\pagosProveedores\\routes.py', reloading
+2026-04-16 22:34:34,284 - INFO -  * Restarting with stat
+2026-04-16 22:34:41,610 - WARNING -  * Debugger is active!
+2026-04-16 22:34:41,716 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:35:12,841 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\pagosProveedores\\forms.py', reloading
+2026-04-16 22:35:12,998 - INFO -  * Restarting with stat
+2026-04-16 22:35:14,290 - WARNING -  * Debugger is active!
+2026-04-16 22:35:14,294 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 22:44:49,946 - INFO - 127.0.0.1 - - [16/Apr/2026 22:44:49] "GET /punto-venta/registrar-tarjeta HTTP/1.1" 200 -
+2026-04-16 22:44:50,184 - INFO - 127.0.0.1 - - [16/Apr/2026 22:44:50] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:44:52,175 - INFO - Salida: El usuario id 5 cerro sesion.
+2026-04-16 22:44:52,177 - INFO - 127.0.0.1 - - [16/Apr/2026 22:44:52] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-16 22:44:52,282 - INFO - 127.0.0.1 - - [16/Apr/2026 22:44:52] "GET / HTTP/1.1" 200 -
+2026-04-16 22:44:52,318 - INFO - 127.0.0.1 - - [16/Apr/2026 22:44:52] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:05,327 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:05] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-16 22:45:05,560 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:05] "GET /proveedores HTTP/1.1" 200 -
+2026-04-16 22:45:05,600 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:05] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:08,321 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:08] "GET /proveedores HTTP/1.1" 200 -
+2026-04-16 22:45:08,349 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:08] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:09,373 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:09] "GET /compras HTTP/1.1" 200 -
+2026-04-16 22:45:09,403 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:09] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:11,898 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:11] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-16 22:45:11,957 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:11] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:15,836 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:15] "GET /productos HTTP/1.1" 200 -
+2026-04-16 22:45:15,870 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:15] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:45:20,959 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:20] "[35m[1mGET /recetas HTTP/1.1[0m" 500 -
+2026-04-16 22:45:21,060 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:21] "GET /recetas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-16 22:45:21,143 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:21] "GET /recetas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-16 22:45:21,195 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:21] "GET /recetas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-16 22:45:21,355 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:21] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-16 22:45:26,174 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:26] "[35m[1mGET /recetas HTTP/1.1[0m" 500 -
+2026-04-16 22:45:26,192 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:26] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-16 22:45:26,207 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:26] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-16 22:45:26,223 - INFO - 127.0.0.1 - - [16/Apr/2026 22:45:26] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-16 22:46:17,603 - INFO - 127.0.0.1 - - [16/Apr/2026 22:46:17] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 22:46:17,646 - INFO - 127.0.0.1 - - [16/Apr/2026 22:46:17] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:46:19,659 - INFO - 127.0.0.1 - - [16/Apr/2026 22:46:19] "GET /compras HTTP/1.1" 200 -
+2026-04-16 22:46:19,695 - INFO - 127.0.0.1 - - [16/Apr/2026 22:46:19] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:47:47,523 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:47] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-16 22:47:47,573 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:47] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:47:52,093 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:52] "GET /proveedores HTTP/1.1" 200 -
+2026-04-16 22:47:52,215 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:52] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:47:54,429 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:54] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 22:47:54,466 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:54] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:47:56,224 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:56] "GET /compras HTTP/1.1" 200 -
+2026-04-16 22:47:56,253 - INFO - 127.0.0.1 - - [16/Apr/2026 22:47:56] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:48:03,467 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:03] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-16 22:48:03,532 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:03] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:48:05,800 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:05] "GET /productos HTTP/1.1" 200 -
+2026-04-16 22:48:05,831 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:05] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 22:48:06,927 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:06] "[35m[1mGET /recetas HTTP/1.1[0m" 500 -
+2026-04-16 22:48:07,480 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:07] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-16 22:48:07,483 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:07] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-16 22:48:07,512 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:07] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-16 22:48:11,444 - INFO - 127.0.0.1 - - [16/Apr/2026 22:48:11] "GET /productos HTTP/1.1" 200 -
+2026-04-16 22:49:01,634 - INFO - 127.0.0.1 - - [16/Apr/2026 22:49:01] "[35m[1mGET /recetas HTTP/1.1[0m" 500 -
+2026-04-16 22:49:01,696 - INFO - 127.0.0.1 - - [16/Apr/2026 22:49:01] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-04-16 22:49:01,800 - INFO - 127.0.0.1 - - [16/Apr/2026 22:49:01] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-04-16 22:49:02,051 - INFO - 127.0.0.1 - - [16/Apr/2026 22:49:02] "[36mGET /recetas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-16 22:52:50,211 - INFO - 127.0.0.1 - - [16/Apr/2026 22:52:50] "GET /recetas HTTP/1.1" 200 -
+2026-04-16 22:52:50,259 - INFO - 127.0.0.1 - - [16/Apr/2026 22:52:50] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:01:38,965 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\models.py', reloading
+2026-04-16 23:01:42,145 - INFO -  * Restarting with stat
+2026-04-16 23:01:45,895 - WARNING -  * Debugger is active!
+2026-04-16 23:01:45,905 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 23:27:03,501 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:03] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:27:05,014 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:05] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:10,875 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:10] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:27:10,940 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:10] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:17,162 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:17] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 23:27:17,197 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:17] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:27,960 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:27] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-16 23:27:29,083 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:29] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 23:27:29,396 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:29] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:38,903 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:38] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-16 23:27:39,267 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:39] "GET /ver-ticket/11?ahorro=0 HTTP/1.1" 200 -
+2026-04-16 23:27:39,390 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:39] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:43,600 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:43] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:27:43,615 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:43] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:47,717 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:47] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-16 23:27:47,810 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:47] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:54,659 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:54] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:27:54,806 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:54] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:27:58,885 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:58] "[32mGET /surtir-insumos/8 HTTP/1.1[0m" 302 -
+2026-04-16 23:27:59,319 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:59] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:27:59,558 - INFO - 127.0.0.1 - - [16/Apr/2026 23:27:59] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:05,465 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:05] "[32mGET /completar-orden/8 HTTP/1.1[0m" 302 -
+2026-04-16 23:28:06,097 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:06] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:28:06,278 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:06] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:11,486 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:11] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:28:12,112 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:12] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:14,007 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:14] "[32mGET /entregar-venta/11 HTTP/1.1[0m" 302 -
+2026-04-16 23:28:14,096 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:14] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:28:14,236 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:14] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:18,470 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:18] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-16 23:28:18,719 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:18] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:23,025 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:23] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:28:23,346 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:23] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:26,246 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:26] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:28:26,454 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:26] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:42,989 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:42] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:28:43,207 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:43] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:28:48,541 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:48] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 23:28:48,817 - INFO - 127.0.0.1 - - [16/Apr/2026 23:28:48] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:06,049 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:06] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-16 23:29:07,930 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:07] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 23:29:08,210 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:08] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-16 23:29:09,247 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:09] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-16 23:29:09,563 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:09] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:18,137 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:18] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-16 23:29:18,232 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:18] "GET /ver-ticket/12?ahorro=0 HTTP/1.1" 200 -
+2026-04-16 23:29:18,454 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:18] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:26,819 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:26] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:29:26,948 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:26] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:31,601 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:31] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:29:31,687 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:31] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:36,828 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:36] "[32mGET /surtir-insumos/10 HTTP/1.1[0m" 302 -
+2026-04-16 23:29:39,866 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:39] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:29:40,418 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:40] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:29:45,512 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:45] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:29:45,864 - INFO - 127.0.0.1 - - [16/Apr/2026 23:29:45] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:04,974 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:04] "GET /compras HTTP/1.1" 200 -
+2026-04-16 23:30:05,370 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:05] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:11,838 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:11] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-16 23:30:12,090 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:12] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:15,874 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:15] "GET /productos HTTP/1.1" 200 -
+2026-04-16 23:30:16,480 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:16] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:23,769 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:23] "GET /recetas HTTP/1.1" 200 -
+2026-04-16 23:30:23,930 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:23] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:28,689 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:28] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:30:28,863 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:28] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:39,163 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:39] "[32mGET /completar-orden/10 HTTP/1.1[0m" 302 -
+2026-04-16 23:30:39,832 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:39] "GET /ordenes HTTP/1.1" 200 -
+2026-04-16 23:30:39,992 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:39] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:44,633 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:44] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:30:44,877 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:44] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:30:48,119 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:48] "[32mGET /entregar-venta/12 HTTP/1.1[0m" 302 -
+2026-04-16 23:30:48,141 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:48] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:30:48,167 - INFO - 127.0.0.1 - - [16/Apr/2026 23:30:48] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:31:00,424 - INFO - 127.0.0.1 - - [16/Apr/2026 23:31:00] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:31:00,588 - INFO - 127.0.0.1 - - [16/Apr/2026 23:31:00] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:38:51,505 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\inventario\\routes.py', reloading
+2026-04-16 23:38:53,361 - INFO -  * Restarting with stat
+2026-04-16 23:38:59,751 - WARNING -  * Debugger is active!
+2026-04-16 23:38:59,761 - INFO -  * Debugger PIN: 443-857-532
+2026-04-16 23:39:12,318 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:12] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-16 23:39:12,501 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:12] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:39:28,813 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:28] "[32mPOST /registrar-ajuste HTTP/1.1[0m" 302 -
+2026-04-16 23:39:29,447 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:29] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-16 23:39:29,590 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:29] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:39:36,590 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:36] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:39:36,622 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:36] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:39:38,661 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:38] "GET /proveedores HTTP/1.1" 200 -
+2026-04-16 23:39:38,700 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:38] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:39:41,474 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:41] "GET /productos HTTP/1.1" 200 -
+2026-04-16 23:39:41,531 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:41] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:39:44,209 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:44] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:39:44,254 - INFO - 127.0.0.1 - - [16/Apr/2026 23:39:44] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:40:38,561 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:38] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-16 23:40:38,589 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:38] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:40:46,602 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:46] "GET /productos HTTP/1.1" 200 -
+2026-04-16 23:40:46,643 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:46] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:40:48,637 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:48] "GET /compras HTTP/1.1" 200 -
+2026-04-16 23:40:48,663 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:48] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:40:49,433 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:49] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-16 23:40:49,456 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:49] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:40:53,302 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:53] "GET /productos HTTP/1.1" 200 -
+2026-04-16 23:40:53,394 - INFO - 127.0.0.1 - - [16/Apr/2026 23:40:53] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:41:02,434 - INFO - 127.0.0.1 - - [16/Apr/2026 23:41:02] "GET /productos/agregar HTTP/1.1" 200 -
+2026-04-16 23:41:02,460 - INFO - 127.0.0.1 - - [16/Apr/2026 23:41:02] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:41:02,471 - INFO - 127.0.0.1 - - [16/Apr/2026 23:41:02] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-16 23:41:19,179 - INFO - 127.0.0.1 - - [16/Apr/2026 23:41:19] "GET /compras HTTP/1.1" 200 -
+2026-04-16 23:41:19,246 - INFO - 127.0.0.1 - - [16/Apr/2026 23:41:19] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:43:08,772 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:08] "GET /recetas HTTP/1.1" 200 -
+2026-04-16 23:43:08,817 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:08] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:43:10,780 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:10] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-16 23:43:10,808 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:10] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:43:20,006 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:20] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-16 23:43:20,052 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:20] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-16 23:43:23,392 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:23] "GET /productos HTTP/1.1" 200 -
+2026-04-16 23:43:23,436 - INFO - 127.0.0.1 - - [16/Apr/2026 23:43:23] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:08:26,878 - INFO - 127.0.0.1 - - [17/Apr/2026 00:08:26] "GET /productos HTTP/1.1" 200 -
+2026-04-17 00:08:26,977 - INFO - 127.0.0.1 - - [17/Apr/2026 00:08:26] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:09:24,613 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\routes.py', reloading
+2026-04-17 00:09:25,323 - INFO -  * Restarting with stat
+2026-04-17 00:09:28,837 - WARNING -  * Debugger is active!
+2026-04-17 00:09:28,858 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:10:12,148 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\forms.py', reloading
+2026-04-17 00:10:12,677 - INFO -  * Restarting with stat
+2026-04-17 00:10:15,039 - WARNING -  * Debugger is active!
+2026-04-17 00:10:15,047 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:10:25,547 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\productos\\__init__.py', reloading
+2026-04-17 00:10:25,884 - INFO -  * Restarting with stat
+2026-04-17 00:10:28,270 - WARNING -  * Debugger is active!
+2026-04-17 00:10:28,279 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:10:30,311 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:30] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-17 00:10:30,519 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:30] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:10:46,734 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:46] "[32mPOST /registrar-ajuste HTTP/1.1[0m" 302 -
+2026-04-17 00:10:46,937 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:46] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-17 00:10:46,977 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:46] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:10:49,641 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:49] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-17 00:10:49,665 - INFO - 127.0.0.1 - - [17/Apr/2026 00:10:49] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:12:01,618 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\inventario\\routes.py', reloading
+2026-04-17 00:12:01,972 - INFO -  * Restarting with stat
+2026-04-17 00:12:04,629 - WARNING -  * Debugger is active!
+2026-04-17 00:12:04,637 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:13:15,989 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\produccion\\routes.py', reloading
+2026-04-17 00:13:16,183 - INFO -  * Restarting with stat
+2026-04-17 00:13:19,274 - WARNING -  * Debugger is active!
+2026-04-17 00:13:19,284 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:13:40,684 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\produccion\\routes.py', reloading
+2026-04-17 00:13:41,045 - INFO -  * Restarting with stat
+2026-04-17 00:13:43,524 - WARNING -  * Debugger is active!
+2026-04-17 00:13:43,533 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:15:53,375 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\produccion\\routes.py', reloading
+2026-04-17 00:15:53,618 - INFO -  * Restarting with stat
+2026-04-17 00:15:56,239 - WARNING -  * Debugger is active!
+2026-04-17 00:15:56,247 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:35:59,399 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\produccion\\routes.py', reloading
+2026-04-17 00:36:00,137 - INFO -  * Restarting with stat
+2026-04-17 00:36:04,088 - WARNING -  * Debugger is active!
+2026-04-17 00:36:04,099 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:44:01,807 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\inventario\\routes.py', reloading
+2026-04-17 00:44:02,190 - INFO -  * Restarting with stat
+2026-04-17 00:44:04,669 - WARNING -  * Debugger is active!
+2026-04-17 00:44:04,677 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:44:09,823 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:09] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-17 00:44:10,007 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:10] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:16,751 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:16] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-17 00:44:16,775 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:16] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:19,647 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:19] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-17 00:44:19,678 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:19] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:27,297 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:27] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-17 00:44:27,648 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:27] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-17 00:44:27,711 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:27] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:34,928 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:34] "[32mPOST /punto-venta/agregar-al-carrito HTTP/1.1[0m" 302 -
+2026-04-17 00:44:35,332 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:35] "GET /punto-venta/ HTTP/1.1" 200 -
+2026-04-17 00:44:35,468 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:35] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:41,350 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:41] "[32mPOST /punto-venta/finalizar-venta HTTP/1.1[0m" 302 -
+2026-04-17 00:44:41,392 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:41] "GET /ver-ticket/13?ahorro=0 HTTP/1.1" 200 -
+2026-04-17 00:44:41,440 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:41] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:43,229 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:43] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-17 00:44:43,257 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:43] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:46,929 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:46] "GET /ver-ticket/13 HTTP/1.1" 200 -
+2026-04-17 00:44:46,961 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:46] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:52,244 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:52] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-17 00:44:52,270 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:52] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:54,356 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:54] "GET /ordenes HTTP/1.1" 200 -
+2026-04-17 00:44:54,395 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:54] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:44:57,873 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:57] "[32mGET /surtir-insumos/12 HTTP/1.1[0m" 302 -
+2026-04-17 00:44:58,123 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:58] "GET /ordenes HTTP/1.1" 200 -
+2026-04-17 00:44:58,166 - INFO - 127.0.0.1 - - [17/Apr/2026 00:44:58] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:01,795 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:01] "GET /productos HTTP/1.1" 200 -
+2026-04-17 00:45:01,823 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:01] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:06,226 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:06] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-17 00:45:06,262 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:06] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:16,017 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:16] "GET /productos HTTP/1.1" 200 -
+2026-04-17 00:45:16,051 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:16] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:25,856 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:25] "GET /productos/agregar HTTP/1.1" 200 -
+2026-04-17 00:45:25,880 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:25] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:25,890 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:25] "[36mGET /static/img/producto.png HTTP/1.1[0m" 304 -
+2026-04-17 00:45:53,005 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:53] "GET /productos HTTP/1.1" 200 -
+2026-04-17 00:45:53,035 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:53] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:45:57,667 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:57] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-17 00:45:57,696 - INFO - 127.0.0.1 - - [17/Apr/2026 00:45:57] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:46:01,755 - INFO - 127.0.0.1 - - [17/Apr/2026 00:46:01] "GET /agregar HTTP/1.1" 200 -
+2026-04-17 00:46:01,786 - INFO - 127.0.0.1 - - [17/Apr/2026 00:46:01] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:46:01,807 - INFO - 127.0.0.1 - - [17/Apr/2026 00:46:01] "[36mGET /static/img/materias_primas.jpg HTTP/1.1[0m" 304 -
+2026-04-17 00:46:04,335 - INFO - 127.0.0.1 - - [17/Apr/2026 00:46:04] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-17 00:46:04,380 - INFO - 127.0.0.1 - - [17/Apr/2026 00:46:04] "[36mGET /static/img/log_wonka.jpeg HTTP/1.1[0m" 304 -
+2026-04-17 00:46:51,037 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\materiaPrima\\routes.py', reloading
+2026-04-17 00:46:51,351 - INFO -  * Restarting with stat
+2026-04-17 00:46:53,884 - WARNING -  * Debugger is active!
+2026-04-17 00:46:53,892 - INFO -  * Debugger PIN: 443-857-532
+2026-04-17 00:47:12,440 - INFO -  * Detected change in 'C:\\Users\\THINKPAD\\ProyectoWonka\\Wonka\\ProyectoOctavoWonka\\materiaPrima\\forms.py', reloading
+2026-04-17 00:47:12,674 - INFO -  * Restarting with stat

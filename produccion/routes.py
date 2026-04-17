@@ -71,38 +71,39 @@ def surtir_insumos_orden(id):
     detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
     faltantes = []
     
+    # --- LÓGICA CORREGIDA: LA RECETA ES POR DOCENA (12 PIEZAS) ---
+    # Factor = (Piezas pedidas / 12)
+    factor_receta = Decimal(str(orden.cantidad_requerida)) / Decimal("12")
+
     for item in detalles:
         materia = MateriasPrimas.query.get(item.materia_prima_id)
-        
-        necesario = Decimal(str((float(item.cantidad_necesaria) * float(orden.cantidad_requerida)) / float(receta.cantidad_lote)))
+        # Multiplicamos lo que pide la receta (que es para 12) por el factor
+        necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
         
         if materia.stock_actual < necesario:
             diferencia = necesario - materia.stock_actual
             faltantes.append(f"{materia.nombre}: faltan {diferencia:.2f} {materia.unidad_medida}")
 
     if faltantes:
-        mensaje_error = " PRODUCCIÓN BLOQUEADA. Lista de compras necesaria: " + " | ".join(faltantes)
-        flash(mensaje_error, "danger")
-        
-        orden.observaciones = "BLOQUEADO: Esperando insumos específicos."
-        db.session.commit()
-        
+        flash(" PRODUCCIÓN BLOQUEADA. Faltan: " + " | ".join(faltantes), "danger")
         return redirect(url_for("produccion.mostrar_ordenes"))
 
+    # SI HAY TODO, DESCONTAMOS
     for item in detalles:
         materia = MateriasPrimas.query.get(item.materia_prima_id)
-        necesario = Decimal(str((float(item.cantidad_necesaria) * float(orden.cantidad_requerida)) / float(receta.cantidad_lote)))
+        necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
         materia.stock_actual -= necesario
 
+    # Cálculo de tiempo (aquí usamos 12 como lote base para el tiempo también)
     tiempo_base = producto.tiempo_produccion_minutos or 10
-    num_lotes = math.ceil(orden.cantidad_requerida / receta.cantidad_lote)
+    num_lotes = math.ceil(orden.cantidad_requerida / 12) 
     tiempo_total = num_lotes * tiempo_base
 
     orden.estado = 'EN_PROCESO'
     orden.observaciones = f"En preparación. Tiempo estimado: {tiempo_total} min."
     
     db.session.commit()
-    flash(f" ¡Insumos surtidos con éxito! Tiempo de producción: {tiempo_total} min.", "success")
+    flash(f" ¡Insumos surtidos! Se descontó materia prima para {orden.cantidad_requerida} piezas.", "success")
     return redirect(url_for("produccion.mostrar_ordenes"))
 
 @produccion.route("/completar-orden/<int:id>")
@@ -137,5 +138,5 @@ def completar_orden(id):
             pass
 
     db.session.commit()
-    flash(f"✨ ¡Lote {orden.lote} de {producto.nombre} finalizado!", "success")
+    flash(f" ¡Lote {orden.lote} de {producto.nombre} finalizado!", "success")
     return redirect(url_for("produccion.mostrar_ordenes"))

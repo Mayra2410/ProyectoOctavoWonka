@@ -1,38 +1,186 @@
 {% extends "base.html" %}
-{% import "recetas/_macros_recetas.html" as mr %}
 
 {% block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">Receta del producto</h1>
-    <p class="text-gray-500">{{ producto.nombre }}</p>
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+
+  /* Estilo Wonka para la barra de desplazamiento (Scrollbar) */
+  .wonka-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .wonka-scrollbar::-webkit-scrollbar-track {
+    background: #fdfaf3;
+    border-radius: 10px;
+  }
+
+  .wonka-scrollbar::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+  }
+
+  .wonka-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c19c31;
+  }
+
+  /* Estilo para Firefox */
+  .wonka-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #fdfaf3;
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center gap-4">
+      <a href="{{ url_for('productos.detalle_producto', id_producto=producto.id_producto) if session['rol'] != 'CLIENTE' else url_for('puntoVenta.index') }}"
+        class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all group">
+        <i data-lucide="chevron-left" class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"></i>
+      </a>
+      <div>
+        <h1 class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none">
+          Receta del Producto
+        </h1>
+        <p class="text-[#d4af37] font-bold text-[10px] uppercase tracking-[0.2em] mt-1">
+          Fórmula Maestra de Wonka
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-4">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center sticky top-6">
+          <div class="relative mb-6">
+            <div
+              class="w-40 h-40 rounded-full p-1 bg-white shadow-lg border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden">
+              <div class="w-full h-full rounded-full overflow-hidden bg-[#fdfaf3] flex items-center justify-center">
+                <img src="{{ url_for('static', filename='img/receta.png') }}" class="w-full h-full object-cover"
+                  onerror="this.src='https://cdn-icons-png.flaticon.com/512/3565/3565407.png';">
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-black text-wonka-chocolate text-center leading-tight uppercase">
+            {{ receta.nombre_receta or "Sin Nombre" }}
+          </h2>
+          <p class="text-[#d4af37] font-black text-xs uppercase tracking-[0.3em] mt-2">
+            Producto: {{ producto.nombre }}
+          </p>
+
+          <div class="w-full mt-8 space-y-3">
+            {% if session['rol'] == 'CLIENTE' %}
+            <a href="{{ url_for('puntoVenta.index') }}"
+              class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95 relative overflow-hidden group">
+              <span
+                class="absolute inset-0 bg-pattern-wonka opacity-0 group-hover:opacity-10 transition-opacity"></span>
+              <span class="relative z-10 flex items-center gap-2">Regresar a la Tienda</span>
+            </a>
+            {% else %}
+            <a href="{{ url_for('productos.detalle_producto', id_producto=producto.id_producto) }}"
+              class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95 relative overflow-hidden group">
+              <span
+                class="absolute inset-0 bg-pattern-wonka opacity-0 group-hover:opacity-10 transition-opacity"></span>
+              <span class="relative z-10 flex items-center gap-2">Regresar al Producto</span>
+            </a>
+            <a href="{{ url_for('productos.lista_productos') }}"
+              class="w-full py-4 bg-white text-[#3d1c02] border border-gray-100 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#fdfaf3] transition-all flex items-center justify-center shadow-sm active:scale-95">
+              Ir al Listado
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col gap-8 h-full">
+
+          <div>
+            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+              <div class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md">
+                <i data-lucide="beaker" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-black text-wonka-chocolate uppercase tracking-tight">
+                Ingredientes Requeridos
+              </h3>
+            </div>
+
+            {% if receta.detalles %}
+            <div class="grid grid-cols-1 gap-3 max-h-[300px] overflow-y-auto pr-2 wonka-scrollbar">
+              {% for detalle in receta.detalles %}
+              <div
+                class="flex justify-between items-center p-4 bg-[#fdfaf3] rounded-2xl border border-[#d4af37]/5 hover:border-[#d4af37]/20 transition-all shadow-sm">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-[#d4af37]"></div>
+                  <span class="text-wonka-chocolate font-bold text-sm uppercase tracking-tight">{{
+                    detalle.materia_prima.nombre }}</span>
+                </div>
+                <span
+                  class="text-wonka-chocolate font-black bg-white px-4 py-1.5 rounded-xl border border-gray-100 shadow-sm text-xs tracking-tighter">
+                  {{ detalle.cantidad_capturada | float }} {{ detalle.unidad_capturada }}
+                </span>
+              </div>
+              {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-10 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-100 mb-8">
+              <p class="text-gray-400 italic text-sm">No hay ingredientes registrados para este secreto culinario.</p>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="mt-8">
+            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+              <div class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md">
+                <i data-lucide="scroll" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-black text-wonka-chocolate uppercase tracking-tight">
+                Método de Elaboración
+              </h3>
+            </div>
+
+            <div class="p-1 bg-gradient-to-b from-[#d4af37]/20 to-transparent rounded-[2rem]">
+              <div class="bg-white rounded-[1.8rem] p-6 shadow-inner">
+                <div
+                  class="wonka-scrollbar overflow-y-auto pr-4 text-wonka-chocolate/80 font-medium text-sm leading-relaxed"
+                  style="max-height: 250px; min-height: 150px;">
+
+                  <div class="whitespace-pre-line italic">
+                    {% if receta.instrucciones %}
+                    "{{ receta.instrucciones }}"
+                    {% else %}
+                    <span class="opacity-50">Las instrucciones para esta obra maestra son un secreto...</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  {% set botones %}
-    {% if session['rol'] == 'CLIENTE' %}
-        <a
-          href="{{ url_for('puntoVenta.index') }}"
-          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block"
-        >
-          Regresar a la Tienda
-        </a>
-    {% else %}
-        <a
-          href="{{ url_for('productos.detalle_producto', id_producto=producto.id_producto) }}"
-          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block"
-        >
-          Regresar al producto
-        </a>
-
-        <a
-          href="{{ url_for('productos.lista_productos') }}"
-          class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block mt-4"
-        >
-          Ir al listado
-        </a>
-    {% endif %}
-  {% endset %}
-
-  {{ mr.tarjeta_receta(receta, botones=botones) }}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
+</script>
 {% endblock %}

@@ -173,7 +173,10 @@ class RecetaDetalle(db.Model):
     materia_prima_id = db.Column(
         db.Integer, db.ForeignKey("materias_primas.id_materia_prima"), nullable=False
     )
+    
     cantidad_necesaria = db.Column(db.Numeric(10, 2), nullable=False)
+    cantidad_capturada = db.Column(db.Numeric(10, 4), nullable=True) 
+    unidad_capturada = db.Column(db.String(20), nullable=True)
     unidad_medida = db.Column(db.String(20), nullable=False)
 
     receta = db.relationship("Receta", back_populates="detalles")

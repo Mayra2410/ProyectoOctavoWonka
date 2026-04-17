@@ -34,12 +34,8 @@ def gestionar_pago(id_compra):
     if form.validate_on_submit():
         try:
             if form.accion.data == "PAGADO":
-                if not form.metodo_pago.data:
-                    flash("Selecciona un método de pago.", "warning")
-                    return render_template(
-                        "pagosProveedores/gestionarPago.html", form=form, compra=compra
-                    )
-
+                # La validación del método de pago ya la hace tu form, 
+                # así que aquí vamos directo al grano.
                 monto_total = compra.cantidad * compra.costo_unitario
 
                 pago = PagoProveedor(
@@ -48,18 +44,16 @@ def gestionar_pago(id_compra):
                     fecha_pago=datetime.now(),
                     monto=monto_total,
                     metodo_pago=form.metodo_pago.data,
-                    numero_comprobante=form.numero_comprobante.data,
+                    # numero_comprobante ELIMINADO
                     observaciones=form.observaciones.data,
                     usuario_registro="admin",
                 )
 
                 db.session.add(pago)
-
                 compra.estatus_compra = "PAGADO"
 
                 materia = MateriasPrimas.query.get(compra.materia_prima_id)
                 if materia:
-                    # Sumamos al stock lo que se compró
                     materia.stock_actual = (materia.stock_actual or 0) + compra.cantidad
                     materia.costo_unitario = compra.costo_unitario
                     materia.fecha_ultima_compra = datetime.now().date()
@@ -69,6 +63,8 @@ def gestionar_pago(id_compra):
                 return redirect(url_for("pagosProveedores.lista_pagos"))
 
             elif form.accion.data == "CANCELADO":
+                # Como tu validador en forms.py ya prohíbe cancelar si hay método de pago,
+                # si llegamos aquí es porque los datos son correctos.
                 compra.estatus_compra = "CANCELADO"
                 db.session.commit()
                 flash("Compra cancelada correctamente.", "info")
@@ -76,12 +72,14 @@ def gestionar_pago(id_compra):
 
         except Exception as e:
             db.session.rollback()
-            print(f"Error en pagosProveedores: {e}")
             flash(f"Error al procesar el pago: {str(e)}", "danger")
 
-    # Para depurar si el formulario no valida
+    # --- CRUCIAL: Esto atrapa los errores de validación de tu forms.py ---
     if request.method == "POST" and not form.validate():
-        print("Errores del formulario:", form.errors)
+        for field, errors in form.errors.items():
+            for error in errors:
+                # Esto enviará el mensaje "No debes seleccionar método si vas a cancelar"
+                flash(error, "danger") 
 
     return render_template(
         "pagosProveedores/gestionarPago.html", form=form, compra=compra

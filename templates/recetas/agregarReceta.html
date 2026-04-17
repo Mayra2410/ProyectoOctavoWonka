@@ -1,121 +1,149 @@
-{% extends "base.html" %}
-{% import "recetas/_macros_recetas.html" as mr %}
-{% block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">Nueva Receta</h1>
+{% extends "base.html" %} {% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+  
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
+  .wonka-input {
+    background: rgba(253, 250, 243, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+  }
+  .wonka-input:focus {
+    background: white;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  }
+</style>
+
+<div class="relative min-h-screen p-4 md:p-8">
+  <div class="absolute inset-0 opacity-5 pointer-events-none"
+    style="background-image: radial-gradient(#3d1c02 0.5px, transparent 0.5px); background-size: 30px 30px;">
   </div>
 
-  <form action="{{ url_for('recetas.agregar_receta') }}" method="POST" novalidate>
-    {{ form.csrf_token }}
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-10 flex items-center gap-5">
+      <a href="{{ url_for('recetas.lista_recetas') }}"
+        class="w-12 h-12 rounded-2xl bg-white border border-[#d4af37]/20 flex items-center justify-center text-[#3d1c02] shadow-sm hover:shadow-md transition-all active:scale-95">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </a>
+      <div>
+        <h1 class="text-3xl font-wonka-title text-[#3d1c02] font-bold tracking-tight italic">
+          Nueva Fórmula Maestra
+        </h1>
+        <p class="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.2em]">
+          Registrar receta de producto
+        </p>
+      </div>
+    </div>
 
-    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
-      <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+    <form action="{{ url_for('recetas.agregar_receta') }}" method="POST" novalidate>
+      {{ form.csrf_token }}
 
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-        <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
-          <div class="relative mb-6">
-            <img class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
-              src="{{ url_for('static', filename='img/receta.png') }}" alt="Nueva receta" />
-            <div class="absolute bottom-3 right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full"></div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-4 space-y-6">
+          <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center relative overflow-hidden text-center">
+            <div class="absolute top-0 left-0 w-full h-2 bg-[#3d1c02]"></div>
+            
+            <div class="relative group mb-6">
+              <div class="w-44 h-44 rounded-full border-4 border-[#fdfaf3] shadow-2xl bg-gray-50 flex items-center justify-center overflow-hidden ring-4 ring-[#d4af37]/10 transition-transform group-hover:scale-105">
+                <img src="{{ url_for('static', filename='img/receta.png') }}" class="w-full h-full object-cover" />
+              </div>
+              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[9px] font-black px-4 py-1 rounded-full border-2 border-white shadow-sm">
+                NUEVA
+              </div>
+            </div>
+
+            <div class="w-full space-y-4">
+              <button type="submit"
+                class="w-full py-4 bg-[#3d1c02] text-white font-black rounded-2xl shadow-xl hover:brightness-125 transition-all flex items-center justify-center gap-3 uppercase text-xs tracking-widest">
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#d4af37]"></i>
+                Crear Receta
+              </button>
+              <a href="{{ url_for('recetas.lista_recetas') }}"
+                class="block w-full py-3 text-gray-400 font-bold rounded-2xl text-center text-[10px] uppercase tracking-widest hover:text-[#3d1c02] transition-colors">
+                Descartar
+              </a>
+            </div>
           </div>
 
-          <div class="w-full space-y-4">
-            <button type="submit"
-              class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-black rounded-2xl text-center transition-all shadow-lg flex items-center justify-center gap-2">
-              <i data-lucide="plus-circle" class="w-5 h-5"></i>
-              Guardar Receta
-            </button>
-
-            <a href="{{ url_for('recetas.lista_recetas') }}"
-              class="block w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all">
-              Cancelar
-            </a>
+          <div class="bg-[#3d1c02] rounded-[2rem] p-6 text-white shadow-lg relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 opacity-10">
+              <i data-lucide="beaker" class="w-24 h-24"></i>
+            </div>
+            <h4 class="text-xs font-black uppercase tracking-widest mb-2 text-[#d4af37]">Siguiente Paso</h4>
+            <p class="text-[11px] leading-relaxed opacity-80">
+              Al guardar esta ficha, podrás acceder a la gestión de ingredientes para añadir las materias primas y cantidades exactas de esta fórmula.
+            </p>
           </div>
         </div>
 
-        <div class="lg:col-span-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            <div class="md:col-span-2 p-5 bg-wonka-purple/5 rounded-2xl border border-wonka-purple/20">
-              <h3 class="text-lg font-bold text-wonka-purple mb-2">
-                Ingredientes de la receta
-              </h3>
-              <p class="text-gray-600 text-sm leading-relaxed">
-                Primero guarda la receta. Después podrás seleccionar las materias primas ya registradas
-                y definir la cantidad necesaria de cada una.
-              </p>
-            </div>
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-                Nombre de la Receta
-              </label>
-              {{ form.nombre_receta(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2
-              focus:ring-wonka-purple outline-none text-gray-700") }}
-              {% for error in form.nombre_receta.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-              {% endfor %}
-            </div>
+        <div class="lg:col-span-8">
+          <div class="bg-white rounded-[2.5rem] p-10 shadow-xl border border-[#d4af37]/20 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-[#d4af37]"></div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-                Producto
-              </label>
-              {{ form.producto_id(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2
-              focus:ring-wonka-purple outline-none text-gray-700") }}
-              {% for error in form.producto_id.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-              {% endfor %}
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {% macro input_wonka(field, label, icon, placeholder="") %}
+              <div class="space-y-1.5">
+                <label class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2">
+                  <i data-lucide="{{ icon }}" class="w-3 h-3 text-[#d4af37]"></i>
+                  {{ label }}
+                </label>
+                {{ field(class="wonka-input w-full rounded-2xl p-4 text-sm font-bold text-[#3d1c02] outline-none", placeholder=placeholder) }}
+                {% if field.errors %}
+                  {% for error in field.errors %}
+                    <span class="text-rose-500 text-[10px] font-black mt-1 block uppercase tracking-tighter">* {{ error }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              {% endmacro %}
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 md:col-span-2">
-              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-                Instrucciones
-              </label>
-              {{ form.instrucciones(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2
-              focus:ring-wonka-purple outline-none text-gray-700", rows="3") }}
-              {% for error in form.instrucciones.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-              {% endfor %}
-            </div>
+              <div class="md:col-span-2">
+                {{ input_wonka(form.nombre_receta, "Nombre de la Fórmula", "scroll", "Ej. Trufa Imperial de Avellana") }}
+              </div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100">
-              <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-                Cantidad del lote
-              </label>
-              {{ form.cantidad_lote(class="w-full bg-white border-0 rounded-xl p-3 shadow-sm focus:ring-2
-              focus:ring-wonka-purple outline-none text-gray-700") }}
-              {% for error in form.cantidad_lote.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-              {% endfor %}
-            </div>
+              <div class="md:col-span-2 space-y-1.5">
+                <label class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] ml-1 flex items-center gap-2">
+                  <i data-lucide="package" class="w-3 h-3 text-[#d4af37]"></i>
+                  Producto Final
+                </label>
+                {{ form.producto_id(class="wonka-input w-full rounded-2xl p-4 text-sm font-bold text-[#3d1c02] outline-none cursor-pointer appearance-none") }}
+                {% if form.producto_id.errors %}
+                  {% for error in form.producto_id.errors %}
+                    <span class="text-rose-500 text-[10px] font-black mt-1 block uppercase tracking-tighter">* {{ error }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
 
+              <div class="md:col-span-2 p-6 bg-[#3d1c02]/5 rounded-[2.5rem] border-2 border-dashed border-[#d4af37]/30 mt-2">
+                <label class="text-[10px] font-black text-[#3d1c02] uppercase tracking-[0.15em] mb-4 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-3 h-3 text-[#d4af37]"></i>
+                  Instrucciones de Preparación
+                </label>
+                {{ form.instrucciones(class="w-full bg-white/80 border-0 rounded-2xl p-4 text-sm italic text-[#3d1c02] focus:ring-0", rows="5", placeholder="Describe el proceso mágico aquí...") }}
+                {% if form.instrucciones.errors %}
+                  {% for error in form.instrucciones.errors %}
+                    <span class="text-rose-500 text-[10px] font-black mt-1 block uppercase tracking-tighter">* {{ error }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
 
-            <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-              <label class="text-sm font-bold text-wonka-purple uppercase block mb-3">
-                Estado
-              </label>
-
-              <select name="activo"
-                class="w-full bg-transparent border-0 text-xl font-medium text-gray-700 focus:ring-0 outline-none py-3">
-                <option value="1" {% if form.activo.data==true or form.activo.data==1 %}selected{% endif %}>Activo
-                </option>
-                <option value="0" {% if form.activo.data==false or form.activo.data==0 %}selected{% endif %}>Inactivo
-                </option>
-              </select>
-
-              {% if form.activo.errors %}
-              {% for error in form.activo.errors %}
-              <span class="text-red-500 text-xs font-bold mt-1 block w-full leading-tight">
-                * {{ error }}
-              </span>
-              {% endfor %}
-              {% endif %}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
+</script>
 {% endblock %}
