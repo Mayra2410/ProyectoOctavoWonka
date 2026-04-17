@@ -1,77 +1,203 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">Gestionar Pago</h1>
-    <p class="text-gray-500">Procesa el pago o cancelación de la compra</p>
-  </div>
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+  .bg-wonka-chocolate {
+    background-color: #3d1c02;
+  }
+</style>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-      <h2 class="text-2xl font-bold text-wonka-brown mb-6">Detalle de la compra</h2>
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
 
-      <div class="space-y-4 text-gray-700">
-        <p><span class="font-bold">ID:</span> {{ compra.id_compra }}</p>
-     <p><span class="font-bold">Proveedor:</span> {{ compra.proveedor.nombre if compra.proveedor else 'Sin proveedor' }}</p>
-        <p><span class="font-bold">Materia Prima:</span> {{ compra.materia_prima.nombre }}</p>
-        <p><span class="font-bold">Cantidad:</span> {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}</p>
-        <p><span class="font-bold">Costo Unitario:</span> ${{ "{:,.2f}".format(compra.costo_unitario) }}</p>
-        <p><span class="font-bold">Total:</span> ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}</p>
-        <p>
-          <span class="font-bold">Estatus:</span>
-          <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
-            {{ compra.estatus_compra }}
-          </span>
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-6 flex items-center gap-4">
+      <a
+        href="{{ url_for('pagosProveedores.lista_pagos') }}"
+        class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all group"
+      >
+        <i
+          data-lucide="chevron-left"
+          class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"
+        ></i>
+      </a>
+      <div>
+        <h1
+          class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none"
+        >
+          Gestionar Pago
+        </h1>
+        <p
+          class="text-[#d4af37] font-bold text-[10px] uppercase tracking-[0.2em] mt-1"
+        >
+          Procesamiento de Compras
         </p>
       </div>
     </div>
 
-    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-      <form method="POST" class="space-y-6">
-        {{ form.hidden_tag() }}
-
-        <div>
-          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
-            {{ form.accion.label.text }}
-          </label>
-          {{ form.accion(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3") }}
-        </div>
-
-        <div>
-          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
-            {{ form.metodo_pago.label.text }}
-          </label>
-          {{ form.metodo_pago(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3") }}
-        </div>
-
-        <div>
-          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
-            {{ form.numero_comprobante.label.text }}
-          </label>
-          {{ form.numero_comprobante(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3", placeholder="Ej. TRX-001") }}
-        </div>
-
-        <div>
-          <label class="block text-sm font-bold text-wonka-purple uppercase mb-2">
-            {{ form.observaciones.label.text }}
-          </label>
-          {{ form.observaciones(class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3", rows="4") }}
-        </div>
-
-        <div class="flex gap-4">
-          {{ form.submit(class="bg-wonka-purple hover:bg-wonka-purple-dark text-white px-6 py-3 rounded-xl font-bold transition-all") }}
-
-          <a
-            href="{{ url_for('pagosProveedores.lista_pagos') }}"
-            class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold transition-all"
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-4">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20 flex flex-col items-center sticky top-6"
+        >
+          <div
+            class="p-4 bg-[#fdfaf3] rounded-full border-2 border-[#d4af37] mb-6 shadow-inner"
           >
-            Volver
-          </a>
+            <i data-lucide="banknote" class="w-12 h-12 text-[#3d1c02]"></i>
+          </div>
+          <p
+            class="text-[#d4af37] font-black text-[10px] uppercase tracking-[0.3em] mb-1"
+          >
+            Total a Liquidar
+          </p>
+          <h2
+            class="text-4xl font-black text-wonka-chocolate text-center leading-tight mb-6"
+          >
+            ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
+          </h2>
+          <div class="w-full space-y-4 border-t border-gray-100 pt-6">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] font-black text-gray-400 uppercase"
+                >Estatus Actual</span
+              >
+              <span
+                class="px-3 py-1 rounded-full text-[9px] font-black uppercase bg-yellow-100 text-yellow-700 border border-yellow-200"
+              >
+                {{ compra.estatus_compra }}
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] font-black text-gray-400 uppercase"
+                >Insumo</span
+              >
+              <span class="text-xs font-bold text-wonka-chocolate uppercase"
+                >{{ compra.materia_prima.nombre }}</span
+              >
+            </div>
+          </div>
+          <div class="w-full mt-8">
+            <a
+              href="{{ url_for('pagosProveedores.lista_pagos') }}"
+              class="w-full py-4 bg-white text-[#3d1c02] border border-gray-100 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#fdfaf3] transition-all flex items-center justify-center shadow-sm active:scale-95"
+            >
+              Cancelar y Volver
+            </a>
+          </div>
         </div>
-      </form>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div
+          class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-[#d4af37]/20"
+        >
+          <div
+            class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4"
+          >
+            <div
+              class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md"
+            >
+              <i data-lucide="credit-card" class="w-6 h-6"></i>
+            </div>
+            <h3
+              class="text-xl font-black text-wonka-chocolate uppercase tracking-tight"
+            >
+              Detalles de la Transacción
+            </h3>
+          </div>
+
+          <form method="POST" class="space-y-6">
+            {{ form.hidden_tag() }}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+                  >{{ form.accion.label.text }}</label
+                >
+                {{ form.accion(class="w-full rounded-2xl px-5 py-3.5 text-sm
+                font-bold text-[#3d1c02] bg-[#fdfaf3]/50 border
+                border-[#d4af37]/10 focus:border-[#3d1c02] outline-none
+                transition-all") }}
+              </div>
+              <div class="space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+                  >{{ form.metodo_pago.label.text }}</label
+                >
+                {{ form.metodo_pago(class="w-full rounded-2xl px-5 py-3.5
+                text-sm font-bold text-[#3d1c02] bg-[#fdfaf3]/50 border
+                border-[#d4af37]/10 focus:border-[#3d1c02] outline-none
+                transition-all") }}
+              </div>
+              <div class="md:col-span-2 space-y-1.5">
+                <label
+                  class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+                  >{{ form.observaciones.label.text }}</label
+                >
+                {{ form.observaciones(class="w-full rounded-2xl px-5 py-3.5
+                text-sm font-bold text-[#3d1c02] bg-[#fdfaf3]/50 border
+                border-[#d4af37]/10 focus:border-[#3d1c02] outline-none
+                transition-all", rows="3") }}
+              </div>
+            </div>
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full py-4 bg-[#3d1c02] text-white rounded-2xl font-black text-[11px] uppercase tracking-widest hover:brightness-125 transition-all flex items-center justify-center shadow-xl active:scale-95 gap-2"
+              >
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 text-[#d4af37]"
+                ></i>
+                Confirmar
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div
+          class="mt-6 p-6 bg-[#3d1c02]/[0.02] rounded-3xl border-2 border-dashed border-[#d4af37]/20 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="p-3 bg-white rounded-2xl shadow-sm border border-gray-100"
+            >
+              <i data-lucide="truck" class="w-6 h-6 text-[#d4af37]"></i>
+            </div>
+            <div>
+              <p
+                class="text-[9px] font-black text-gray-400 uppercase tracking-widest"
+              >
+                Proveedor Beneficiario
+              </p>
+              <p class="text-sm font-black text-wonka-chocolate uppercase">
+                {{ compra.proveedor.nombre if compra.proveedor else 'Sin
+                proveedor' }}
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p
+              class="text-[9px] font-black text-gray-400 uppercase tracking-widest"
+            >
+              Cantidad Compra
+            </p>
+            <p class="text-sm font-bold text-wonka-chocolate">
+              {{ compra.cantidad | float }} {{
+              compra.materia_prima.unidad_medida }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

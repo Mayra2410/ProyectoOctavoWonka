@@ -1,101 +1,179 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
 
-{% block content %}
-<div class="space-y-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
-            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Ingresos Hoy</p>
-            <h4 class="text-xl font-black text-green-600">${{ "{:,.2f}".format(ingresos) }}</h4>
-        </div>
-        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
-            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Egresos Hoy</p>
-            <h4 class="text-xl font-black text-red-500">-${{ "{:,.2f}".format(egresos) }}</h4>
-        </div>
-        <div class="bg-wonka-purple/10 p-4 rounded-2xl border border-wonka-purple/20 shadow-sm">
-            <p class="text-wonka-purple text-[10px] font-bold uppercase tracking-widest">Utilidad Neta</p>
-            <h4 class="text-xl font-black text-wonka-purple">${{ "{:,.2f}".format(utilidad) }}</h4>
-        </div>
-        <div class="flex items-center justify-end gap-2">
-             <a href="{{ url_for('gesVentas.corte_caja') }}" class="bg-wonka-gold text-wonka-brown px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:scale-105 transition-transform shadow-md">
-                <i data-lucide="printer" class="w-4 h-4"></i> Corte de Caja
-             </a>
-        </div>
+  .stat-card {
+    background: white;
+    border-radius: 2.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .header-sales {
+    background: linear-gradient(135deg, #3d1c02 0%, #5d2e06 100%);
+    border-radius: 3rem;
+    padding: 3rem;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<div class="max-w-[1700px] mx-auto px-10 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+    <div class="stat-card border-b-8 border-green-500">
+      <p
+        class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2"
+      >
+        Ingresos del Día
+      </p>
+      <h4 class="text-3xl font-black text-green-600">
+        ${{ "{:,.2f}".format(ingresos) }}
+      </h4>
     </div>
+    <div class="stat-card border-b-8 border-red-500">
+      <p
+        class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2"
+      >
+        Egresos Realizados
+      </p>
+      <h4 class="text-3xl font-black text-red-500">
+        -${{ "{:,.2f}".format(egresos) }}
+      </h4>
+    </div>
+    <div class="stat-card border-b-8 border-wonka-purple bg-purple-50/30">
+      <p
+        class="text-[10px] font-black text-wonka-purple uppercase tracking-widest mb-2"
+      >
+        Utilidad Neta
+      </p>
+      <h4 class="text-3xl font-black text-wonka-purple">
+        ${{ "{:,.2f}".format(utilidad) }}
+      </h4>
+    </div>
+    <div class="flex flex-col gap-3">
+      <a
+        href="{{ url_for('gesVentas.corte_caja') }}"
+        class="flex-1 bg-[#D4AF37] text-white rounded-[2rem] flex items-center justify-center font-black uppercase text-xs tracking-widest hover:brightness-110 shadow-lg transition-all"
+      >
+        <i data-lucide="printer" class="mr-2 w-5 h-5"></i> Corte de Caja
+      </a>
+      <a
+        href="{{ url_for('puntoVenta.index') }}"
+        class="flex-1 bg-[#3d1c02] text-white rounded-[2rem] flex items-center justify-center font-black uppercase text-xs tracking-widest hover:brightness-125 shadow-lg transition-all"
+      >
+        <i data-lucide="plus" class="mr-2 w-5 h-5"></i> Nueva Venta
+      </a>
+    </div>
+  </div>
 
-    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-            <form action="{{ url_for('gesVentas.mostrar_ventas') }}" method="GET" class="relative w-full md:w-1/3 flex gap-2">
-                <div class="relative flex-1">
-                    <i data-lucide="search" class="absolute left-3 top-2.5 text-gray-400 w-4 h-4"></i>
-                    <input type="text" name="q" value="{{ request.args.get('q', '') }}" placeholder="Buscar por Folio #..." class="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl text-sm outline-none focus:ring-2 focus:ring-wonka-purple/20">
-                </div>
-                <button type="submit" class="bg-wonka-brown text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-black transition-colors">
-                    Buscar
-                </button>
-                {% if request.args.get('q') %}
-                <a href="{{ url_for('gesVentas.mostrar_ventas') }}" class="p-2 text-gray-400 hover:text-red-500">
-                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-                </a>
-                {% endif %}
-            </form>
+  <div class="header-sales flex justify-between items-center text-white">
+    <div>
+      <h1 class="text-4xl font-wonka-title font-bold tracking-tight">
+        Bitácora de Ventas
+      </h1>
+      <p
+        class="text-white/60 text-xs mt-1 font-bold uppercase tracking-[0.2em]"
+      >
+        Historial de transacciones doradas
+      </p>
+    </div>
+    <div
+      class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 flex items-center gap-3"
+    >
+      <i data-lucide="search" class="text-[#D4AF37] w-5 h-5"></i>
+      <form action="{{ url_for('gesVentas.mostrar_ventas') }}" method="GET">
+        <input
+          type="text"
+          name="q"
+          value="{{ request.args.get('q', '') }}"
+          placeholder="Buscar por Folio #..."
+          class="bg-transparent border-none outline-none text-sm font-bold text-white placeholder:text-white/30 w-64"
+        />
+      </form>
+    </div>
+  </div>
 
-            <div class="flex gap-2">
-                <a href="{{ url_for('puntoVenta.index') }}" class="bg-wonka-purple text-white px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-wonka-purple-dark transition-all shadow-lg">
-                    <i data-lucide="plus-circle" class="w-4 h-4"></i> Nueva Venta
-                </a>
-                <a href="{{ url_for('pagosProveedores.lista_pagos') }}" class="bg-gray-100 text-gray-600 px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-gray-200 transition-all">
-                    <i data-lucide="truck" class="w-4 h-4"></i> Cuentas por Pagar
-                </a>
+  <div
+    class="glass-panel"
+    style="
+      border-radius: 3rem;
+      margin-top: -1.5rem;
+      background: white;
+      padding: 3rem;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    "
+  >
+    <table class="w-full text-left border-separate border-spacing-y-4">
+      <thead
+        class="text-[#3d1c02]/40 text-[10px] font-black uppercase tracking-widest"
+      >
+        <tr>
+          <th class="px-6 pb-4">Folio</th>
+          <th class="px-4 pb-4">Monto Total</th>
+          <th class="px-4 pb-4 text-center">Estado</th>
+          <th class="px-6 pb-4 text-right">Logística de Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for v in ventas %}
+        <tr
+          class="order-row"
+          style="background: #fdfcf9; border-radius: 1.5rem"
+        >
+          <td class="py-6 px-6 font-black text-lg text-[#3d1c02] italic">
+            #{{ v.id_venta }}
+          </td>
+          <td class="py-6 px-4 font-black text-[#5d2e06] text-base">
+            ${{ "{:,.2f}".format(v.total) }}
+          </td>
+          <td class="py-6 px-4 text-center">
+            <span
+              class="px-4 py-1.5 rounded-full text-[9px] font-black uppercase {% if v.estado == 'ENTREGADA' %} bg-green-100 text-green-700 {% elif v.estado == 'COMPLETADA' %} bg-blue-100 text-blue-700 {% elif v.estado == 'CANCELADA' %} bg-red-100 text-red-700 {% else %} bg-orange-100 text-orange-700 {% endif %}"
+            >
+              {{ v.estado }}
+            </span>
+          </td>
+          <td class="py-6 px-6 text-right flex justify-end gap-3 items-center">
+            {% if v.estado == 'PENDIENTE' %}
+            <span class="text-[10px] text-gray-400 font-bold italic"
+              >En Fabricación...</span
+            >
+            {% elif v.estado == 'COMPLETADA' %}
+            <a
+              href="{{ url_for('gesVentas.entregar_venta', id=v.id_venta) }}"
+              class="bg-[#D4AF37] text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase hover:scale-105 transition-all flex items-center gap-2 shadow-md"
+            >
+              <i data-lucide="hand-heart" class="w-4 h-4"></i> Entregar
+            </a>
+            {% elif v.estado == 'ENTREGADA' %}
+            <div
+              class="flex items-center gap-2 text-green-600 font-black text-[10px] uppercase"
+            >
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i> Cliente
+              Satisfecho
             </div>
-        </div>
-
-        <div class="overflow-x-auto">
-            <table class="w-full text-left">
-                <thead class="bg-gray-50 text-gray-400 text-[10px] font-black uppercase tracking-widest border-b border-gray-100">
-                    <tr>
-                        <th class="px-4 py-4">Folio</th>
-                        <th class="px-4 py-4">Fecha y Hora</th>
-                        <th class="px-4 py-4">Monto Total</th>
-                        <th class="px-4 py-4">Método</th>
-                        <th class="px-4 py-4">Estado</th>
-                        <th class="px-4 py-4 text-right">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100 text-sm">
-                    {% for v in ventas %}
-                    <tr class="hover:bg-gray-50/50 transition-colors">
-                        <td class="px-4 py-4 font-bold text-wonka-purple">#{{ v.id_venta }}</td>
-                        <td class="px-4 py-4 text-gray-500">{{ v.fecha_venta.strftime('%d/%m/%Y %I:%M %p') }}</td>
-                        <td class="px-4 py-4 font-black text-wonka-brown">${{ "{:,.2f}".format(v.total) }}</td>
-                        <td class="px-4 py-4"><span class="bg-gray-100 px-2 py-1 rounded text-[10px] font-bold">{{ v.metodo_pago }}</span></td>
-                        <td class="px-4 py-4">
-                            <span class="px-3 py-1 rounded-full text-[10px] font-black tracking-tighter 
-                                {% if v.estado == 'COMPLETADA' %} bg-green-100 text-green-700 
-                                {% elif v.estado == 'CANCELADA' %} bg-red-100 text-red-700
-                                {% else %} bg-yellow-100 text-yellow-700 {% endif %}">
-                                {{ v.estado }}
-                            </span>
-                        </td>
-                        <td class="px-4 py-4 text-right flex justify-end gap-2">
-                            <a href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}" class="p-2 bg-pink-50 text-pink-500 rounded-lg hover:bg-pink-100 transition-colors" title="Imprimir Ticket">
-                                <i data-lucide="ticket" class="w-4 h-4"></i>
-                            </a>
-                            
-                            <a href="{{ url_for('gesVentas.cancelar_venta', id=v.id_venta) }}" 
-                               onclick="return confirm('¿Seguro que deseas cancelar la venta #{{ v.id_venta }}?')"
-                               class="p-2 bg-red-50 text-red-400 rounded-lg hover:bg-red-500 hover:text-white transition-all" title="Cancelar Venta">
-                                <i data-lucide="ban" class="w-4 h-4"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="6" class="text-center py-10 text-gray-400 italic">No se encontraron ventas con ese criterio.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+            {% endif %}
+            <a
+              href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}"
+              class="p-3 bg-pink-50 text-pink-500 rounded-xl hover:bg-pink-100 transition-colors"
+            >
+              <i data-lucide="ticket" class="w-5 h-5"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% endblock %}

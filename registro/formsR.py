@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, SelectField, FileField, PasswordField
-from wtforms import validators
+from wtforms import StringField, EmailField, FileField, PasswordField
 from flask_wtf.file import FileAllowed
-from wtforms.validators import Regexp, DataRequired, Length, Email
+from wtforms.validators import Regexp, DataRequired, Length, Email, ValidationError
+from models import Cliente
 
 
 class ClienteForm(FlaskForm):
@@ -10,7 +10,9 @@ class ClienteForm(FlaskForm):
         "Nombre Completo",
         [
             DataRequired(message="El campo nombre es obligatorio"),
-            Length(min=4, max=100),
+            Length(
+                min=4, max=100, message="El nombre debe tener entre 4 y 100 caracteres"
+            ),
             Regexp(r"^[a-zA-Z\s]+$", message="Este campo solo acepta letras"),
         ],
     )
@@ -23,24 +25,23 @@ class ClienteForm(FlaskForm):
         ],
     )
 
+    def validate_email(self, email):
+        cliente_existente = Cliente.query.filter_by(email=email.data).first()
+        if cliente_existente:
+            raise ValidationError("Este correo ya esta registrado")
+
     telefono = StringField(
         "Telefono",
         [
             DataRequired(message="El numero de telefono es obligatorio"),
             Length(min=10, max=10, message="Deben ser 10 digitos"),
-            Regexp(r"^[0-9]+$", message="Solo numeros"),
+            Regexp(r"^[0-9]+$", message="Este campo solo acepta numeros"),
         ],
     )
 
     direccion = StringField(
-        "Direccion", [DataRequired(message="La direccion es necesaria")]
+        "Direccion", [DataRequired(message="La direccion es obligatoria")]
     )
-
-    tipo = SelectField(
-        "Tipo de Comprador",
-        choices=[("MINORISTA", "Minorista"), ("MAYORISTA", "Mayorista")],
-    )
-
     password = PasswordField(
         "Contrasena",
         [

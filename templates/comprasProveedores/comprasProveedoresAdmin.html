@@ -92,7 +92,6 @@
     </div>
   </div>
 
-  {# LISTADO DE PEDIDOS #}
   <div class="glass-panel overflow-hidden">
     <div class="overflow-x-auto">
       <table class="w-full text-left border-separate border-spacing-y-3">
@@ -179,25 +178,33 @@
 
             {# ESTATUS #}
             <td class="py-5 px-4 text-center">
-              {% if compra.estatus_compra == 'PAGADO' %}
+              {% if compra.estatus_compra == 'RECIBIDO' %}
+              <span
+                class="text-[9px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100"
+              >
+                RECIBIDO
+              </span>
+              {% elif compra.estatus_compra == 'PAGADO' %}
               <span
                 class="text-[9px] font-black text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-100"
-                >PAGADO</span
               >
+                PAGADO
+              </span>
               {% elif compra.estatus_compra == 'CANCELADO' %}
               <span
                 class="text-[9px] font-black text-red-400 bg-red-50 px-3 py-1 rounded-full border border-red-100"
-                >CANCELADO</span
               >
+                CANCELADO
+              </span>
               {% else %}
               <span
                 class="text-[9px] font-black text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-100"
-                >PENDIENTE</span
               >
+                PENDIENTE
+              </span>
               {% endif %}
             </td>
 
-            {# FECHA Y HORA #}
             <td class="py-5 px-4 text-center">
               {% if compra.fecha_compra %}
               <div class="flex flex-col">
@@ -214,7 +221,6 @@
               {% endif %}
             </td>
 
-            {# NOTAS #}
             <td
               class="py-5 px-6 text-right text-gray-400 italic text-[11px] truncate max-w-[150px]"
             >
@@ -237,7 +243,6 @@
       input.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
           e.preventDefault();
-          // CORREGIDO: Usando 'lista_compras' que es tu nombre real
           window.location.href =
             "{{ url_for('comprasProveedores.lista_compras') }}?q=" +
             encodeURIComponent(this.value.trim());
@@ -253,7 +258,6 @@
       buscador.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
           const query = buscador.value.trim();
-          // Redirige a la ruta de lista_compras con el parámetro q
           window.location.href =
             "{{ url_for('comprasProveedores.lista_compras') }}?q=" +
             encodeURIComponent(query);

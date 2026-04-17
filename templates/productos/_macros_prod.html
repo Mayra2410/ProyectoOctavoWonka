@@ -1,239 +1,191 @@
-{% macro tarjeta_producto(datos, botones=None) %}
-<div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
-  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+{% macro formulario_edicion_producto(form, producto_id=None, producto_obj=None,
+modo='agregar') %}
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+  <!-- IZQUIERDA -->
+  <div
+    class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 flex flex-col items-center sticky top-6"
+  >
+    <div
+      class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"
+    ></div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-    <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
-      <div class="relative mb-6">
-        <img class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
-          src="{{ datos.imagen_producto if datos.imagen_producto else url_for('static', filename='img/producto.png') }}"
-          onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/producto.png') }}';" alt="Producto" />
-
+    <div class="relative mb-6">
+      <div
+        class="w-40 h-40 rounded-full p-1 bg-white shadow-2xl border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden"
+      >
         <div
-          class="absolute bottom-3 right-3 w-8 h-8 {% if datos.activo %}bg-green-500{% else %}bg-red-500{% endif %} border-4 border-white rounded-full">
+          class="w-full h-full rounded-full bg-[#fdfaf3] flex items-center justify-center overflow-hidden"
+        >
+          {% if producto_obj and producto_obj.imagen_producto %}
+          <img
+            id="preview"
+            src="{{ producto_obj.imagen_producto }}"
+            class="w-full h-full object-cover"
+          />
+          {% else %}
+          <i
+            data-lucide="package"
+            id="preview-icon"
+            class="w-16 h-16 text-[#3d1c02]/10"
+          ></i>
+          <img id="preview" src="" class="w-full h-full object-cover hidden" />
+          {% endif %}
         </div>
-      </div>
-
-      <h2 class="text-4xl font-extrabold text-wonka-brown text-center leading-tight mb-2">
-        {{ datos.nombre }}
-      </h2>
-
-      <p class="text-wonka-purple font-medium text-lg mb-8">
-        ID Producto: {{ datos.id_producto }}
-      </p>
-
-      <div class="w-full space-y-3">
-        {% if botones %}
-        {{ botones }}
-        {% else %}
-        <a href="{{ url_for('productos.ver_receta_producto', id_producto=datos.id_producto) }}"
-          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg inline-block">
-          Ver receta
-        </a>
-
-        <a href="{{ url_for('productos.lista_productos') }}"
-          class="w-full py-4 bg-wonka-brown hover:bg-wonka-purple text-white font-bold rounded-2xl text-center transition-all shadow-lg hover:shadow-wonka-purple/20 inline-block">
-          Regresar al listado
-        </a>
-        {% endif %}
       </div>
     </div>
 
-    <div class="lg:col-span-3">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+    {% if producto_id %}
+    <div class="text-center mb-8">
+      <p class="text-[#3d1c02] font-black text-sm uppercase">ID Producto</p>
+      <p class="text-[#d4af37] font-bold text-xs">#{{ producto_id }}</p>
+    </div>
+    {% endif %}
 
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Categoría</span>
-          <span class="text-gray-700 text-xl font-medium">
-            {{ datos.categoria or '--' }}
-          </span>
-        </div>
+    <div class="w-full space-y-3">
+      <button
+        type="submit"
+        class="w-full py-4 bg-[#3d1c02] text-[#d4af37] rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-lg hover:brightness-125 transition-all flex items-center justify-center gap-2 border border-[#d4af37]/20"
+      >
+        <i data-lucide="save" class="w-4 h-4"></i>
+        {{ 'Guardar Producto' if modo == 'agregar' else 'Guardar Cambios' }}
+      </button>
 
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Estado</span>
-          <span class="text-gray-700 text-xl font-medium">
-            {% if datos.activo %}Activo{% else %}Inactivo{% endif %}
-          </span>
-        </div>
-
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Precio de venta</span>
-          <span class="text-gray-700 text-xl font-medium font-mono tracking-wider">
-            ${{ '%.2f'|format(datos.precio_venta or 0) }}
-          </span>
-        </div>
-
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Costo de producción estimado</span>
-          <span class="text-gray-700 text-xl font-medium font-mono tracking-wider">
-            {% if datos.costo_produccion_estimado is not none %}
-            ${{ '%.2f'|format(datos.costo_produccion_estimado) }}
-            {% else %}
-            --
-            {% endif %}
-          </span>
-        </div>
-
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Unidad de medida</span>
-          <span class="text-gray-700 text-xl font-medium">
-            {{ datos.unidad_medida or '--' }}
-          </span>
-        </div>
-
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Tiempo de producción</span>
-          <span class="text-gray-700 text-xl font-medium">
-            {% if datos.tiempo_produccion_minutos is not none %}
-            {{ datos.tiempo_produccion_minutos }} min
-            {% else %}
-            --
-            {% endif %}
-          </span>
-        </div>
-
-        <div class="p-6 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2">
-          <span class="text-sm font-bold text-wonka-purple uppercase block mb-1">Descripción</span>
-          <span class="text-gray-700 text-xl font-medium">
-            {{ datos.descripcion or 'Sin descripción registrada aún.' }}
-          </span>
-        </div>
-
-      </div>
+      <a
+        href="{{ url_for('productos.lista_productos') }}"
+        class="block w-full py-4 bg-[#fdfaf3] text-gray-400 rounded-2xl font-bold text-[10px] text-center uppercase tracking-[0.2em] border border-[#d4af37]/10 hover:text-[#3d1c02] transition-colors"
+      >
+        Cancelar
+      </a>
     </div>
   </div>
-</div>
-{% endmacro %}
 
-{% macro formulario_edicion_producto(form, producto_id=None, producto_obj=None, modo='agregar') %}
-<div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden relative p-8">
-  <div class="absolute top-0 left-0 bottom-0 w-3 bg-wonka-purple"></div>
+  <!-- DERECHA -->
+  <div
+    class="lg:col-span-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 relative overflow-hidden"
+  >
+    <div
+      class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"
+    ></div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 pl-6">
-    <div class="lg:col-span-1 flex flex-col items-center justify-center border-r border-gray-100 pr-12">
-      <div class="relative mb-6">
-        <img class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50 object-cover"
-          src="{{ producto_obj.imagen_producto if producto_obj and producto_obj.imagen_producto else url_for('static', filename='img/producto.png') }}"
-          onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/producto.png') }}';" alt="Producto" />
-
-        <div
-          class="absolute bottom-3 right-3 w-8 h-8 {% if form.activo.data %}bg-green-500{% else %}bg-red-500{% endif %} border-4 border-white rounded-full">
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+      <!-- IMAGEN -->
+      <div class="md:col-span-2 space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Actualizar Foto del Producto
+        </label>
+        <input
+          type="file"
+          name="imagen_producto"
+          id="imagen_producto"
+          accept="image/*"
+          onchange="previewImage(event)"
+          class="wonka-input w-full rounded-2xl px-5 py-2 text-xs font-bold text-[#3d1c02] file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-[#3d1c02] file:text-[#d4af37] cursor-pointer"
+        />
       </div>
 
-      {% if producto_id %}
-      <p class="text-wonka-purple font-medium text-lg mb-8">
-        ID Producto: {{ producto_id }}
-      </p>
-      {% endif %}
-
-      <div class="w-full space-y-3">
-        <button type="submit"
-          class="w-full py-4 bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold rounded-2xl text-center transition-all shadow-lg">
-          {% if modo == 'agregar' %}
-          Guardar producto
-          {% else %}
-          Guardar cambios
-          {% endif %}
-        </button>
-
-        <a href="{{ url_for('productos.lista_productos') }}"
-          class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all inline-block">
-          Cancelar
-        </a>
+      <!-- NOMBRE -->
+      <div class="md:col-span-2 space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Nombre del Producto
+        </label>
+        {{ form.nombre(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm
+        font-bold text-[#3d1c02] outline-none") }}
       </div>
-    </div>
 
-    <div class="lg:col-span-3">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+      <!-- CATEGORIA -->
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Categoría
+        </label>
+        {{ form.categoria(class="wonka-input w-full rounded-2xl px-5 py-3.5
+        text-sm font-bold text-[#3d1c02] outline-none") }}
+      </div>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Nombre</label>
-          {{ form.nombre(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% for error in form.nombre.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
+      <!-- PRECIO -->
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Precio de Venta ($)
+        </label>
+        {{ form.precio_venta(class="wonka-input w-full rounded-2xl px-5 py-3.5
+        text-sm font-bold text-[#3d1c02] outline-none") }}
+      </div>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Categoría</label>
-          {{ form.categoria(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700 appearance-none") }}
-          {% for error in form.categoria.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
+      <!-- COSTO -->
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Costo Producción Estimado ($)
+        </label>
+        {{ form.costo_produccion_estimado(class="wonka-input w-full rounded-2xl
+        px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
+      </div>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Precio de venta</label>
-          {{ form.precio_venta(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% for error in form.precio_venta.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
+      <!-- UNIDAD -->
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Unidad de Medida
+        </label>
+        {{ form.unidad_medida(class="wonka-input w-full rounded-2xl px-5 py-3.5
+        text-sm font-bold text-[#3d1c02] outline-none") }}
+      </div>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Costo de producción estimado</label>
-          {{ form.costo_produccion_estimado(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0
-          outline-none text-gray-700", required=false) }}
-          {% for error in form.costo_produccion_estimado.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
+      <!-- TIEMPO -->
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Tiempo Producción (Minutos)
+        </label>
+        {{ form.tiempo_produccion_minutos(class="wonka-input w-full rounded-2xl
+        px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
+      </div>
 
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Unidad de medida</label>
-          {{ form.unidad_medida(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% for error in form.unidad_medida.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
-
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Tiempo de producción (minutos)</label>
-          {{ form.tiempo_produccion_minutos(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0
-          outline-none text-gray-700", required=false) }}
-          {% for error in form.tiempo_produccion_minutos.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
-
-        <div
-          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Imagen del producto</label>
-          {{ form.imagen_producto(class="w-full bg-transparent border-0 text-base font-medium focus:ring-0 outline-none
-          text-gray-700", required=false) }}
-          {% for error in form.imagen_producto.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
-
-        <div
-          class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner md:col-span-2 flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Descripción</label>
-          {{ form.descripcion(class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none
-          text-gray-700", rows="3", required=false) }}
-          {% for error in form.descripcion.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
-        </div>
-
-        <div class="p-4 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner flex flex-col justify-start">
-          <label class="text-sm font-bold text-wonka-purple uppercase block mb-1">Estado</label>
-
-          <select name="{{ form.activo.name }}"
-            class="w-full bg-transparent border-0 text-xl font-medium focus:ring-0 outline-none text-gray-700">
-            <option value="1" {% if form.activo.data %}selected{% endif %}>Activo</option>
-            <option value="0" {% if not form.activo.data %}selected{% endif %}>Inactivo</option>
+      <div class="space-y-1.5">
+        <label
+          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
+        >
+          Estatus del Producto
+        </label>
+        <div class="relative">
+          <select
+            name="activo"
+            class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none"
+          >
+            <option value="1" {% if form.activo.data %}selected{% endif %}>
+              ACTIVO
+            </option>
+            <option value="0" {% if not form.activo.data %}selected{% endif %}>
+              INACTIVO
+            </option>
           </select>
-
-          {% for error in form.activo.errors %}
-          <span class="text-red-500 text-xs font-bold mt-1 block">* {{ error }}</span>
-          {% endfor %}
+          <i
+            data-lucide="chevron-down"
+            class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"
+          ></i>
         </div>
+      </div>
 
+      <div
+        class="md:col-span-2 p-6 bg-[#3d1c02]/5 rounded-3xl border-2 border-dashed border-[#d4af37]/30"
+      >
+        <label
+          class="text-[10px] font-black text-[#3d1c02] uppercase tracking-widest mb-3 block"
+        >
+          Descripción
+        </label>
+        {{ form.descripcion(class="w-full bg-white/80 border-0 rounded-2xl p-4
+        text-sm italic text-[#3d1c02] outline-none", rows="3") }}
       </div>
     </div>
   </div>

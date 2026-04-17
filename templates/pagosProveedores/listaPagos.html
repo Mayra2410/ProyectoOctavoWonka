@@ -1,64 +1,179 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
 
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-6">
-    <h1 class="text-4xl font-bold text-wonka-purple">Pagos a Proveedores</h1>
-    <p class="text-gray-500">Gestiona las compras pendientes de pago</p>
+  .font-wonka-title {
+    font-family: "Playfair Display", serif;
+  }
+  body {
+    background-color: #fdfaf3;
+  }
+
+  .chocolate-source {
+    background: linear-gradient(135deg, #3d1c02 0%, #5d2e06 100%);
+    border-radius: 2.5rem 2.5rem 0 0;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(61, 28, 2, 0.15);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 3rem 3rem;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-top: none;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(61, 28, 2, 0.04);
+    position: relative;
+  }
+
+  .chocolate-row {
+    background: white;
+    border: 1px solid #f8f5f0;
+    transition: all 0.2s ease;
+  }
+
+  .chocolate-row:hover {
+    border-color: #d4af37;
+    background: #fffdfa;
+    transform: translateY(-1px);
+  }
+
+  .text-wonka-gold {
+    color: #d4af37;
+  }
+</style>
+
+<div class="max-w-[1900px] mx-auto px-10 py-8 relative">
+  <div class="chocolate-source flex justify-between items-center relative">
+    <div class="z-20">
+      <h1 class="text-4xl font-wonka-title text-white font-bold tracking-tight">
+        Pagos y Recepción
+      </h1>
+      <p class="text-white/60 text-xs mt-2 font-bold uppercase tracking-widest">
+        Control financiero y logístico de suministros
+      </p>
+    </div>
   </div>
 
-  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
+  <div class="glass-panel overflow-hidden">
     {% if compras %}
     <div class="overflow-x-auto">
-      <table class="w-full text-left">
-        <thead class="text-gray-400 text-sm border-b border-gray-100">
+      <table class="w-full text-left border-separate border-spacing-y-3">
+        <thead
+          class="text-[#3d1c02]/50 text-[10px] font-black uppercase tracking-[0.2em]"
+        >
           <tr>
-            <th class="pb-4 px-2">ID Compra</th>
-            <th class="pb-4 px-2">Proveedor</th>
-            <th class="pb-4 px-2">Materia Prima</th>
-            <th class="pb-4 px-2">Cantidad</th>
-            <th class="pb-4 px-2">Total</th>
-            <th class="pb-4 px-2">Estatus</th>
-            <th class="pb-4 px-2 text-center">Acción</th>
+            <th class="pb-4 px-6 text-center">ID Compra</th>
+            <th class="pb-4 px-4">Proveedor</th>
+            <th class="pb-4 px-4">Materia Prima</th>
+            <th class="pb-4 px-4 text-center">Cantidad</th>
+            <th class="pb-4 px-4 text-center">Total</th>
+            <th class="pb-4 px-4 text-center">Estatus</th>
+            <th class="pb-4 px-6 text-right">Acción</th>
           </tr>
         </thead>
 
-        <tbody class="divide-y divide-gray-50">
+        <tbody class="text-sm">
           {% for compra in compras %}
-          <tr class="hover:bg-wonka-purple/5 transition-all">
-            <td class="py-5 px-2 font-bold text-wonka-brown">
-              {{ compra.id_compra }}
-            </td>
-
-           <td class="py-5 px-2 text-gray-700">
-  {{ compra.proveedor.nombre if compra.proveedor else 'Sin proveedor' }}
-</td>
-
-            <td class="py-5 px-2 text-gray-700">
-              {{ compra.materia_prima.nombre }}
-            </td>
-
-            <td class="py-5 px-2 text-gray-700">
-              {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}
-            </td>
-
-            <td class="py-5 px-2 font-semibold text-gray-700">
-              ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
-            </td>
-
-            <td class="py-5 px-2">
-              <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
-                {{ compra.estatus_compra }}
+          <tr class="chocolate-row rounded-2xl cursor-default">
+            <td class="py-5 px-6 text-center">
+              <span
+                class="text-wonka-gold font-black text-lg italic tracking-tighter"
+              >
+                #{{ compra.id_compra }}
               </span>
             </td>
 
-            <td class="py-5 px-2 text-center">
+            <td class="py-5 px-4">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl overflow-hidden border-2 border-[#f0ede6] shadow-sm flex-shrink-0 bg-[#fdfaf3] flex items-center justify-center"
+                >
+                  <i data-lucide="truck" class="w-6 h-6 text-[#d4af37]"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-[#3d1c02] font-extrabold text-base tracking-tight"
+                  >
+                    {{ compra.proveedor.nombre if compra.proveedor else 'Sin
+                    proveedor' }}
+                  </span>
+                  <span
+                    class="text-[9px] text-wonka-gold font-black uppercase tracking-tighter"
+                  >
+                    Proveedor
+                  </span>
+                </div>
+              </div>
+            </td>
+
+            <td
+              class="py-5 px-4 text-[#3d1c02] font-bold text-sm tracking-tight"
+            >
+              {{ compra.materia_prima.nombre }}
+            </td>
+
+            <td class="py-5 px-4 text-center text-[#5d2e06] font-bold text-xs">
+              <span class="bg-[#5d2e06]/5 px-3 py-1 rounded-full uppercase">
+                {{ compra.cantidad }} {{ compra.materia_prima.unidad_medida }}
+              </span>
+            </td>
+
+            <td
+              class="py-5 px-4 text-center text-[#3d1c02]/60 font-black text-xs"
+            >
+              ${{ "{:,.2f}".format(compra.cantidad * compra.costo_unitario) }}
+            </td>
+
+            <td class="py-5 px-4 text-center">
+              {% if compra.estatus_compra == 'PENDIENTE' %}
+              <span
+                class="text-[9px] font-black text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full border border-yellow-200 uppercase"
+              >
+                Por Pagar
+              </span>
+              {% else %}
+              <span
+                class="text-[9px] font-black text-blue-700 bg-blue-100 px-3 py-1 rounded-full border border-blue-200 uppercase"
+              >
+                Pagado / Por Recibir
+              </span>
+              {% endif %}
+            </td>
+
+            <td class="py-5 px-6 text-right">
+              {% if compra.estatus_compra == 'PENDIENTE' %}
               <a
                 href="{{ url_for('pagosProveedores.gestionar_pago', id_compra=compra.id_compra) }}"
-                class="inline-block bg-wonka-purple hover:bg-wonka-purple-dark text-white px-4 py-2 rounded-xl font-bold transition-all"
+                class="inline-block bg-[#3d1c02] hover:bg-[#d4af37] text-white px-5 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all shadow-md"
               >
                 Gestionar pago
               </a>
+              {% elif compra.estatus_compra == 'PAGADO' %}
+              <form
+                action="{{ url_for('pagosProveedores.recibir_materia', id_compra=compra.id_compra) }}"
+                method="POST"
+                class="inline"
+              >
+                <input
+                  type="hidden"
+                  name="csrf_token"
+                  value="{{ csrf_token() }}"
+                />
+
+                <button
+                  type="submit"
+                  class="inline-block bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all shadow-md"
+                >
+                  <i
+                    data-lucide="package-check"
+                    class="w-4 h-4 inline mr-1"
+                  ></i>
+                  Confirmar Llegada
+                </button>
+              </form>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
@@ -67,10 +182,17 @@
     </div>
     {% else %}
     <div class="text-center py-10">
-      <p class="text-gray-500 text-lg">No hay compras pendientes por pagar.</p>
+      <p class="text-gray-500 text-lg font-bold font-wonka-title">
+        No hay movimientos pendientes.
+      </p>
     </div>
     {% endif %}
   </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.lucide) lucide.createIcons();
+  });
+</script>
 {% endblock %}

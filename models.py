@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from sqlalchemy.dialects.mysql import LONGTEXT
-
 from sqlalchemy import FetchedValue
 
 # ÚNICA INSTANCIA DE DB
@@ -28,8 +27,11 @@ class Usuario(db.Model):
         nullable=False,
         default="CLIENTE",
     )
+    # Mejoras de Naomi integradas
+    codigo_verificacion = db.Column(db.String(6), nullable=True)
+    verificado = db.Column(db.Boolean, default=False)
+
     activo = db.Column(db.Boolean, default=True)
-    
     intentos_fallidos = db.Column(db.Integer, default=0)
     bloqueado_hasta = db.Column(db.DateTime, nullable=True)
 
@@ -46,8 +48,6 @@ class Cliente(db.Model):
     email = db.Column(db.String(100), unique=True)
     telefono = db.Column(db.String(20))
     direccion = db.Column(db.String(200))
-    
-    tipo = db.Column(db.Enum('MINORISTA', 'MAYORISTA'), default='MINORISTA')
     tipo = db.Column(db.Enum("MINORISTA", "MAYORISTA"), default="MINORISTA")
     fecha_registro = db.Column(db.Date, default=date.today)
     categoria_comprador = db.Column(
@@ -58,45 +58,30 @@ class Cliente(db.Model):
     estatus = db.Column(db.String(10), default="ACTIVO")
 
     def __repr__(self):
-        return f'<Cliente {self.nombre}>'
-    
         return f"<Cliente {self.nombre}>"
 
 
 class Empleado(db.Model):
     __tablename__ = "empleados"
-
     id_empleado = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), unique=True)
-    
     usuario_id = db.Column(
         db.Integer, db.ForeignKey("usuarios.id_usuario"), unique=True
     )
-
     nombre = db.Column(db.String(100), nullable=False)
-    apellido = db.Column(db.String(100), nullable=False)
     apellido = db.Column(db.String(100), nullable=False)
     dni_cedula = db.Column(db.String(20), unique=True, nullable=False)
     telefono = db.Column(db.String(20))
-    telefono = db.Column(db.String(20))
     email = db.Column(db.String(100), unique=True)
     direccion = db.Column(db.String(200))
-    
-    puesto = db.Column(db.String(100), nullable=False) 
-    
-
     puesto = db.Column(db.String(100), nullable=False)
-
     salario_mensual = db.Column(db.Numeric(10, 2))
     fecha_contratacion = db.Column(db.Date)
-    fecha_contratacion = db.Column(db.Date)
     imagen_empleado = db.Column(LONGTEXT, nullable=True)
-    estatus = db.Column(db.String(10), default='ACTIVO')
-
-    usuario = db.relationship('Usuario', backref=db.backref('empleado', uselist=False))
     estatus = db.Column(db.String(10), default="ACTIVO")
 
-    usuario = db.relationship("Usuario", backref=db.backref("empleado", uselist=False))
+    usuario_rel = db.relationship(
+        "Usuario", backref=db.backref("empleado", uselist=False)
+    )
 
     def __repr__(self):
         return f"<Empleado {self.nombre}>"
@@ -147,12 +132,8 @@ class Producto(db.Model):
     categoria = db.Column(db.String(50))
     precio_venta = db.Column(db.Numeric(10, 2), nullable=False)
     costo_produccion_estimado = db.Column(db.Numeric(10, 2))
-
-    # --- AGREGA ESTAS DOS LÍNEAS ---
     stock_actual = db.Column(db.Integer, default=0)
     stock_minimo = db.Column(db.Integer, default=10)
-    # -------------------------------
-
     unidad_medida = db.Column(db.String(20), default="unidad")
     tiempo_produccion_minutos = db.Column(db.Integer)
     imagen_producto = db.Column(db.Text, nullable=True)
@@ -189,14 +170,16 @@ class RecetaDetalle(db.Model):
     materia_prima_id = db.Column(
         db.Integer, db.ForeignKey("materias_primas.id_materia_prima"), nullable=False
     )
-    cantidad_necesaria = db.Column(db.Numeric(10, 2), nullable=False)
+    cantidad_necesaria = db.Column(db.Numeric(10, 4), nullable=False)
+    cantidad_capturada = db.Column(db.Numeric(10, 4), nullable=True)
+    unidad_capturada = db.Column(db.String(20), nullable=True)
     unidad_medida = db.Column(db.String(20), nullable=False)
 
     receta = db.relationship("Receta", back_populates="detalles")
     materia_prima = db.relationship("MateriasPrimas", back_populates="detalles_receta")
 
 
-# --- 4. PRODUCCIÓN (Módulo de Víctor/Aarón) ---
+# --- 3. PRODUCCIÓN ---
 class OrdenProduccion(db.Model):
     __tablename__ = "ordenes_produccion"
     id_orden_produccion = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -215,7 +198,6 @@ class OrdenProduccion(db.Model):
     observaciones = db.Column(db.String(200))
     receta_id = db.Column(db.Integer, db.ForeignKey("recetas.id_receta"))
 
-    # Relación para saber qué producto se está fabricando
     producto = db.relationship("Producto", backref="ordenes")
 
     def __repr__(self):
@@ -237,7 +219,7 @@ class ComprasMateriaPrima(db.Model):
     fecha_compra = db.Column(db.DateTime, default=datetime.now)
     observaciones = db.Column(db.String(200))
     estatus_compra = db.Column(
-        db.Enum("PENDIENTE", "PAGADO", "CANCELADO"), default="PENDIENTE"
+        db.Enum("PENDIENTE", "PAGADO", "RECIBIDO", "CANCELADO"), default="PENDIENTE"
     )
 
     materia_prima = db.relationship("MateriasPrimas", backref="compras")
@@ -262,11 +244,12 @@ class PagoProveedor(db.Model):
     numero_comprobante = db.Column(db.String(50))
     observaciones = db.Column(db.String(200))
     usuario_registro = db.Column(db.String(50))
+
     compra = db.relationship("ComprasMateriaPrima", back_populates="pagos")
     proveedor = db.relationship("Proveedores", backref="pagos_realizados")
-    # --- 5. VENTAS (Módulo de Punto de Venta) ---
 
 
+# --- 5. VENTAS ---
 class Venta(db.Model):
     __tablename__ = "ventas"
     id_venta = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -275,14 +258,13 @@ class Venta(db.Model):
     total = db.Column(db.Numeric(12, 2), nullable=False)
     metodo_pago = db.Column(db.Enum("EFECTIVO", "TARJETA"), nullable=False)
     estado = db.Column(
-        db.Enum("PENDIENTE", "COMPLETADA", "CANCELADA"), default="COMPLETADA"
+        db.Enum("PENDIENTE", "COMPLETADA", "CANCELADA", "ENTREGADA"),
+        default="COMPLETADA",
     )
 
-    # Relación con el cliente para saber quién compró
     cliente = db.relationship("Cliente", backref="ventas")
 
     def __repr__(self):
-        return f'<Empleado {self.nombre}>'
         return f"<Venta ID: {self.id_venta} - Total: {self.total}>"
 
 
@@ -313,6 +295,7 @@ class TarjetaCliente(db.Model):
     terminacion = db.Column(db.String(4), nullable=False)
     banco = db.Column(db.String(50))
     activa = db.Column(db.Boolean, default=True)
+
     cliente = db.relationship("Cliente", backref=db.backref("tarjetas", lazy=True))
 
 
@@ -325,7 +308,6 @@ class DetalleVenta(db.Model):
     )
     cantidad = db.Column(db.Integer, nullable=False)
     precio_unitario = db.Column(db.Numeric(10, 2), nullable=False)
-
     subtotal = db.Column(db.Numeric(10, 2), server_default=FetchedValue())
 
     producto = db.relationship("Producto")

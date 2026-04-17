@@ -1,86 +1,206 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-wonka-purple">Ingredientes de la receta</h1>
-    <p class="text-gray-500">{{ receta.nombre_receta }}</p>
-  </div>
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
+</style>
 
-  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8">
-    <form method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"   novalidate>
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
 
-      <div>
-        <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-          Materia prima
-        </label>
-        <select name="materia_prima_id" class="w-full rounded-xl border border-gray-200 p-3" required>
-          <option value="">Selecciona una materia prima</option>
-          {% for materia in materias %}
-          <option value="{{ materia.id_materia_prima }}">{{ materia.nombre }}</option>
-          {% endfor %}
-        </select>
-      </div>
-
-      <div>
-        <label class="text-sm font-bold text-wonka-purple uppercase block mb-2">
-          Cantidad necesaria
-        </label>
-        <input
-          type="number"
-          step="0.01"
-          name="cantidad_necesaria"
-          class="w-full rounded-xl border border-gray-200 p-3"
-          required
-        >
-      </div>
-
-      <div class="flex items-end">
-        <button type="submit" class="w-full bg-wonka-purple hover:bg-wonka-purple-dark text-white font-bold py-3 rounded-xl">
-          Agregar ingrediente
-        </button>
-      </div>
-    </form>
-
-    <p class="text-sm text-gray-500 mb-6">
-      La unidad de medida se asigna automáticamente según la materia prima seleccionada.
-    </p>
-
-    <div class="overflow-x-auto">
-      <table class="w-full text-left">
-        <thead class="text-gray-400 text-sm border-b border-gray-50">
-          <tr>
-            <th class="pb-4 px-2">Ingrediente</th>
-            <th class="pb-4 px-2">Cantidad</th>
-            <th class="pb-4 px-2">Unidad</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-50">
-          {% for detalle in receta.detalles %}
-          <tr>
-            <td class="py-4 px-2">{{ detalle.materia_prima.nombre }}</td>
-            <td class="py-4 px-2">{{ detalle.cantidad_necesaria }}</td>
-            <td class="py-4 px-2">{{ detalle.unidad_medida }}</td>
-          </tr>
-          {% else %}
-          <tr>
-            <td colspan="3" class="py-6 text-center text-gray-400">
-              No hay ingredientes registrados para esta receta.
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mt-6">
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div class="mb-8 flex items-center gap-4">
       <a
         href="{{ url_for('recetas.detalle_receta', id_receta=receta.id_receta) }}"
-        class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-xl"
+        class="flex items-center justify-center w-11 h-11 bg-white border border-gray-100 text-[#3d1c02] rounded-2xl shadow-sm hover:shadow-md transition-all"
       >
-        Volver a detalles
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </a>
+      <div>
+        <h1 class="text-3xl font-black text-[#3d1c02] uppercase leading-none">
+          Configurar Ingredientes
+        </h1>
+        <p
+          class="text-[#d4af37] font-bold text-xs uppercase tracking-widest mt-1"
+        >
+          {{ receta.nombre_receta }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8"
+    >
+      <form
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 items-end"
+        novalidate
+      >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+        <div class="md:col-span-1">
+          <label
+            class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 ml-1"
+            >Materia Prima</label
+          >
+          <select
+            name="materia_prima_id"
+            class="w-full rounded-2xl border-gray-100 bg-[#fdfaf3] p-3 text-sm font-bold text-[#3d1c02]"
+            required
+          >
+            <option value="">Selecciona...</option>
+            {% for materia in materias %}
+            <option value="{{ materia.id_materia_prima }}">
+              {{ materia.nombre }} (Stock: {{ materia.unidad_medida }})
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label
+            class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 ml-1"
+            >Cantidad</label
+          >
+          <input
+            type="number"
+            step="0.01"
+            name="cantidad_necesaria"
+            class="w-full rounded-2xl border-gray-100 bg-[#fdfaf3] p-3 text-sm font-bold"
+            placeholder="0.00"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest block mb-2 ml-1"
+            >Unidad de Receta</label
+          >
+          <select
+            name="unidad_receta"
+            class="w-full rounded-2xl border-gray-100 bg-[#fdfaf3] p-3 text-sm font-bold text-[#3d1c02]"
+            required
+          >
+            <optgroup label="Peso">
+              <option value="kg">Kilogramos (kg)</option>
+              <option value="g">Gramos (g)</option>
+              <option value="mg">Miligramos (mg)</option>
+            </optgroup>
+            <optgroup label="Volumen">
+              <option value="l">Litros (l)</option>
+              <option value="ml">Mililitros (ml)</option>
+            </optgroup>
+            <optgroup label="Unidades">
+              <option value="pza">Piezas (pza)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#3d1c02] text-[#d4af37] font-black py-3.5 rounded-2xl uppercase text-[10px] tracking-widest hover:brightness-125 transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2"
+        >
+          <i data-lucide="plus-circle" class="w-4 h-4"></i> Agregar
+        </button>
+      </form>
+
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr
+              class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest border-b border-gray-100"
+            >
+              <th class="text-left pb-4 px-2">Ingrediente</th>
+              <th class="text-center pb-4 px-2">Cant. Receta</th>
+              <th class="text-center pb-4 px-2">Unidad Receta</th>
+              <th class="text-right pb-4 px-2">Equivalente Stock</th>
+              <th class="text-right pb-4 px-2 w-20">Acción</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            {% for detalle in receta.detalles %}
+            <tr class="group hover:bg-[#fdfaf3]/50 transition-colors">
+              <td class="py-4 px-2 font-bold text-[#3d1c02] text-sm uppercase">
+                {{ detalle.materia_prima.nombre }}
+              </td>
+              <td class="py-4 px-2 text-center font-black text-[#3d1c02]">
+                {{ detalle.cantidad_capturada | float }}
+              </td>
+              <td
+                class="py-4 px-2 text-center text-xs font-bold text-[#d4af37] uppercase"
+              >
+                {{ detalle.unidad_capturada }}
+              </td>
+              <td class="py-4 px-2 text-right">
+                <span
+                  class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[10px] font-black"
+                >
+                  {{ detalle.cantidad_necesaria }} {{ detalle.unidad_medida }}
+                </span>
+              </td>
+              <td class="py-4 px-2 text-right">
+                <form
+                  id="form-eliminar-{{ detalle.id_receta_detalle }}"
+                  action="{{ url_for('recetas.eliminar_ingrediente', id_detalle=detalle.id_receta_detalle) }}"
+                  method="POST"
+                  class="inline"
+                >
+                  <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                  />
+                  <button
+                    type="button"
+                    onclick="confirmarEliminacion('{{ detalle.id_receta_detalle }}', '{{ detalle.materia_prima.nombre }}')"
+                    class="p-2 text-rose-300 hover:text-rose-600 rounded-xl"
+                  >
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  function confirmarEliminacion(id, nombre) {
+    Swal.fire({
+      title:
+        '<span class="text-wonka-chocolate uppercase font-black">¿Quitar ingrediente?</span>',
+      html: `<p class="text-gray-500 font-medium">¿Estás seguro de eliminar <b>${nombre}</b> de la receta?</p>`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3d1c02",
+      cancelButtonColor: "#e11d48",
+      confirmButtonText: "SÍ, ELIMINAR",
+      cancelButtonText: "CANCELAR",
+      borderRadius: "2rem",
+      customClass: {
+        popup: "rounded-[2rem] border border-[#d4af37]/20 shadow-2xl",
+        confirmButton:
+          "rounded-xl font-black text-[10px] tracking-widest py-3 px-6",
+        cancelButton:
+          "rounded-xl font-black text-[10px] tracking-widest py-3 px-6",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById("form-eliminar-" + id).submit();
+      }
+    });
+  }
+</script>
+
+<script>
+  lucide.createIcons();
+</script>
 {% endblock %}

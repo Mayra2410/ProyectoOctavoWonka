@@ -1,14 +1,19 @@
+import logging
+import os
+from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_mail import Mail, Message
+
+# Configuración local
 from config import DevelopmentConfig
 from models import db, Usuario
-
 from forms import LoginForm
 from registro.formsR import ClienteForm
-from datetime import datetime, timedelta
-# --- IMPORTACIÓN DE BLUEPRINTS ---
+
+# --- IMPORTACIÓN DE TODOS LOS BLUEPRINTS ---
 from proveedores.routes import proveedores
 from produccion.routes import produccion
 from inventario.routes import inventario
@@ -20,38 +25,35 @@ from recetas.routes import recetas
 from pagosProveedores.routes import pagosProveedores
 from puntoVenta.routes import puntoVenta_bp
 from registro.routesR import registro as registro_blueprint
-import logging
-
 from clientes import cliente
 from empleados import empleado
-
-from pymongo import MongoClient
-from flask import current_app
-
-
-def get_mongo_db():
-    client = MongoClient(current_app.config["MONGO_URI"])
-    return client[current_app.config["MONGO_DB"]]
-
+from recuperarContrasenia import recuperarContrasenia # Tu blueprint de recuperación
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
-app.config["SECRET_KEY"] = "WonkA"
+app.config["SECRET_KEY"] = "WonKA"
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
-file_handler = logging.FileHandler("wonka_auditoria.log", encoding="utf-8")
-file_handler.setFormatter(
-    logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-)
-logging.getLogger().addHandler(file_handler)
+# --- CONFIGURACIÓN DE MAIL (Smtp Gmail) ---
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'pruebawonka1@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ankapkaclgspdhfm'
+app.config['MAIL_DEFAULT_SENDER'] = ('Wonka', 'pruebawonka1@gmail.com')
 
+# Inicialización de extensiones
+mail = Mail(app)
 db.init_app(app)
 migrate = Migrate(app, db)
 csrf = CSRFProtect(app)
 
-# --- REGISTRO DE BLUEPRINTS ---
+# --- CONFIGURACIÓN DE LOGGING / AUDITORÍA ---
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+file_handler = logging.FileHandler("wonka_auditoria.log", encoding="utf-8")
+file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+logging.getLogger().addHandler(file_handler)
+
+# --- REGISTRO DE TODOS LOS BLUEPRINTS ---
 app.register_blueprint(proveedores)
 app.register_blueprint(produccion)
 app.register_blueprint(inventario)
@@ -65,7 +67,9 @@ app.register_blueprint(puntoVenta_bp, url_prefix="/punto-venta")
 app.register_blueprint(registro_blueprint)
 app.register_blueprint(cliente)
 app.register_blueprint(empleado)
+app.register_blueprint(recuperarContrasenia) # Registrado para evitar BuildError
 
+# --- RUTAS PRINCIPALES ---
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -76,15 +80,19 @@ def index():
         user = Usuario.query.filter_by(email=email).first()
 
         if user:
-            # 1. Verificar si la cuenta está bloqueada temporalmente
+            # 1. Verificar si la cuenta está verificada (Lógica de ella)
+            if hasattr(user, 'verificado') and not user.verificado:
+                flash("Tu cuenta aún no está verificada...", "warning")
+                return redirect(url_for('registro.verificar_codigo', email=user.email))
+
+            # 2. Verificar bloqueo por intentos (Lógica de ambos)
             if user.bloqueado_hasta and user.bloqueado_hasta > datetime.now():
                 minutos_restantes = int((user.bloqueado_hasta - datetime.now()).total_seconds() / 60)
-                flash(f"Cuenta bloqueada temporalmente. Intenta de nuevo en {minutos_restantes + 1} minutos.", "danger")
+                flash(f"Cuenta bloqueada. Intenta en {minutos_restantes + 1} min.", "danger")
                 return redirect(url_for('index'))
 
-            # 2. Validar contraseña
+            # 3. Validar contraseña
             if check_password_hash(user.password_hash, password):
-                # Éxito: Reiniciar contador y desbloquear
                 user.intentos_fallidos = 0
                 user.bloqueado_hasta = None
                 db.session.commit()
@@ -93,97 +101,45 @@ def index():
                 session['rol'] = user.rol
                 session['nombre'] = user.username
                 
-                return redirect(url_for('puntoVenta.index') if user.rol == 'CLIENTE' else url_for('proveedores.lista_proveedores'))
+                # Redirección inteligente según rol
+                if user.rol == 'CLIENTE':
+                    return redirect(url_for('puntoVenta.index'))
+                else:
+                    return redirect(url_for('proveedores.lista_proveedores'))
             
             else:
-                # 3. Contraseña incorrecta: Aumentar intentos
+                # Fallo de contraseña: aumentar contador
                 user.intentos_fallidos += 1
-                
                 if user.intentos_fallidos >= 3:
-                    # Aplicar bloqueo por 10 minutos
                     user.bloqueado_hasta = datetime.now() + timedelta(minutes=10)
-                    logging.warning(f"Auditoria: Cuenta bloqueada por intentos fallidos: {email}")
-                    flash("Has superado el número de intentos. Tu cuenta ha sido bloqueada por 10 minutos.", "danger")
+                    logging.warning(f"Auditoria: Cuenta bloqueada por intentos: {email}")
+                    flash("Has superado los intentos permitidos. Bloqueada por 10 min.", "danger")
                 else:
                     intentos_quedan = 3 - user.intentos_fallidos
-                    flash(f"Contraseña incorrecta. Te quedan {intentos_quedan} intentos antes de bloquear la cuenta.", "danger")
+                    flash(f"Contraseña incorrecta. Te quedan {intentos_quedan} intentos.", "danger")
                 
                 db.session.commit()
                 return redirect(url_for('index'))
         else:
-            # Por seguridad, no decimos si el correo existe o no
             flash("Correo o contraseña incorrectos.", "danger")
             return redirect(url_for('index'))
 
     return render_template("index.html", form=form)
 
-
-@app.route("/recuperar", methods=["GET", "POST"])
-def recuperar_password():
-    form = ClienteForm()
-    del form.imagen_cliente
-    del form.nombre
-    del form.telefono
-    del form.direccion
-    del form.tipo
-
-    if form.validate_on_submit():
-        email = form.email.data
-        nueva_pass = form.password.data
-
-        user = Usuario.query.filter_by(email=email).first()
-        if user:
-            user.password_hash = generate_password_hash(nueva_pass)
-            db.session.commit()
-            logging.info(f"Auditoria: Contrasena actualizada para {email}")
-            flash("Contrasena actualizada con exito.", "success")
-            return redirect(url_for("index"))
-        else:
-            flash("El correo no esta registrado.", "error")
-
-    return render_template("recuperarContrasenia/recuperar.html", form=form)
-
-
-@app.route("/registro", methods=["GET", "POST"])
-def registro_pagina():
-    form = ClienteForm()
-    if form.validate_on_submit():
-        nuevo_usuario = Usuario(
-            nombre=form.nombre.data,
-            email=form.email.data,
-            password_hash=generate_password_hash(form.password.data),
-            telefono=form.telefono.data,
-            direccion=form.direccion.data,
-            rol="Cliente",
-        )
-        try:
-            db.session.add(nuevo_usuario)
-            db.session.commit()
-            flash("Registro exitoso.", "success")
-            return redirect(url_for("index"))
-        except Exception as e:
-            db.session.rollback()
-            flash("Error al registrar.", "error")
-
-    return render_template("registro/usuarioRegistro.html", form=form)
-
-
 @app.route("/logout")
 def logout():
     usuario_id = session.get("user_id", "Anonimo")
-    logging.info(f"Salida: El usuario id {usuario_id} cerro sesion.")
+    logging.info(f"Salida: Usuario {usuario_id} cerró sesión.")
     session.clear()
-    flash("Has cerrado sesion correctamente.", "info")
+    flash("Has cerrado sesión correctamente.", "info")
     return redirect(url_for("index"))
 
 @app.route('/catalogo')
 def catalogo():
-    items_db = db.session.execute(db.text("SELECT * FROM productos")).fetchall()
-    
-    return render_template('vistaCatalogo/catalogo.html', productos=items_db)
-
-
-
+    # Consulta limpia usando SQLAlchemy para el catálogo
+    result = db.session.execute(db.text("SELECT * FROM productos WHERE activo = 1"))
+    productos_db = [dict(row._mapping) for row in result]
+    return render_template('vistaCatalogo/catalogo.html', productos=productos_db)
 
 if __name__ == "__main__":
     with app.app_context():

@@ -11,6 +11,7 @@ from models import (
 )
 from datetime import datetime
 import random
+import math
 from decimal import Decimal
 from utils import login_required
 
@@ -18,12 +19,7 @@ from utils import login_required
 @produccion.route("/ordenes", methods=["GET", "POST"])
 @login_required
 def mostrar_ordenes():
-    # if not session.get('username'):
-    #     flash("Por favor, regístrate.", "warning")
-    #     return redirect(url_for('index'))
-
     query = request.args.get("q") or request.form.get("q")
-
     consulta = OrdenProduccion.query.join(Producto)
 
     if query:
@@ -41,7 +37,6 @@ def mostrar_ordenes():
 @produccion.route("/crear-orden", methods=["POST"])
 @login_required
 def crear_orden():
-
     id_prod = request.form.get("producto_id")
     cant = int(request.form.get("cantidad"))
     prioridad = request.form.get("prioridad", "MEDIA")
@@ -62,68 +57,85 @@ def crear_orden():
 
     db.session.add(nueva_orden)
     db.session.commit()
-
-    # flash(f"Orden {nuevo_lote} generada exitosamente.", "success")
     return redirect(url_for("produccion.mostrar_ordenes"))
 
 
-from decimal import Decimal
-from datetime import datetime
+@produccion.route("/surtir-insumos/<int:id>")
+@login_required
+def surtir_insumos_orden(id):
+    orden = OrdenProduccion.query.get_or_404(id)
+    producto = Producto.query.get(orden.producto_id)
+    receta = Receta.query.filter_by(producto_id=orden.producto_id, activo=True).first()
+
+    if not receta:
+        flash("No hay receta activa.", "danger")
+        return redirect(url_for("produccion.mostrar_ordenes"))
+
+    detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
+    faltantes = []
+
+    factor_receta = Decimal(str(orden.cantidad_requerida))
+
+    for item in detalles:
+        materia = MateriasPrimas.query.get(item.materia_prima_id)
+        necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
+
+        if materia.stock_actual < necesario:
+            diferencia = necesario - materia.stock_actual
+            faltantes.append(
+                f"{materia.nombre}: faltan {diferencia:.4f} {materia.unidad_medida}"
+            )
+
+    if faltantes:
+        flash(
+            " PRODUCCIÓN BLOQUEADA. Materia insuficiente: " + " | ".join(faltantes),
+            "danger",
+        )
+        return redirect(url_for("produccion.mostrar_ordenes"))
+
+    for item in detalles:
+        materia = MateriasPrimas.query.get(item.materia_prima_id)
+        necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
+        materia.stock_actual -= necesario
+
+    tiempo_base = producto.tiempo_produccion_minutos or 10
+    num_lotes_tiempo = math.ceil(orden.cantidad_requerida / 12)
+    tiempo_total = num_lotes_tiempo * tiempo_base
+
+    orden.estado = "EN_PROCESO"
+    orden.observaciones = f"En preparación. Tiempo estimado: {tiempo_total} min."
+
+    db.session.commit()
+    flash(
+        f" ¡Insumos surtidos! Se descontó materia prima para {orden.cantidad_requerida} piezas.",
+        "success",
+    )
+    return redirect(url_for("produccion.mostrar_ordenes"))
 
 
 @produccion.route("/completar-orden/<int:id>")
 @login_required
 def completar_orden(id):
     orden = OrdenProduccion.query.get_or_404(id)
+
     if orden.estado == "COMPLETADA":
         return redirect(url_for("produccion.mostrar_ordenes"))
 
-    receta = Receta.query.filter_by(producto_id=orden.producto_id, activo=True).first()
-    if not receta:
-        flash("Error: No hay una receta activa para fabricar este chocolate.", "danger")
-        return redirect(url_for("produccion.mostrar_ordenes"))
-
-    detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
-    faltantes = []
-
-    for item in detalles:
-        materia = MateriasPrimas.query.get(item.materia_prima_id)
-        necesario = Decimal(
-            str(
-                (float(item.cantidad_necesaria) * float(orden.cantidad_requerida))
-                / float(receta.cantidad_lote)
-            )
-        )
-
-        if materia.stock_actual < necesario:
-            diferencia = necesario - materia.stock_actual
-            faltantes.append(
-                f"{materia.nombre} (Faltan: {diferencia:.2f} {materia.unidad_medida})"
-            )
-
-    if faltantes:
+    if orden.estado != "EN_PROCESO":
         flash(
-           " PRODUCCIÓN BLOQUEADA. Faltan insumos: " + ", ".join(faltantes), "danger"
-         )
-        return redirect(url_for("produccion.mostrar_ordenes"))
-
-    for item in detalles:
-        materia = MateriasPrimas.query.get(item.materia_prima_id)
-        necesario = Decimal(
-            str(
-                (float(item.cantidad_necesaria) * float(orden.cantidad_requerida))
-                / float(receta.cantidad_lote)
-            )
+            " Primero debe 'Surtir Insumos' para procesar los ingredientes.", "warning"
         )
-        materia.stock_actual -= necesario
+        return redirect(url_for("produccion.mostrar_ordenes"))
 
     producto = Producto.query.get(orden.producto_id)
+
     if "AUTO-" not in orden.lote:
         producto.stock_actual += orden.cantidad_requerida
 
     orden.estado = "COMPLETADA"
     orden.fecha_fin = datetime.now()
     orden.usuario_fin = session.get("username")
+    orden.observaciones = "¡Pedido terminado y listo para entrega!"
 
     if "AUTO-" in orden.lote:
         try:
@@ -131,10 +143,9 @@ def completar_orden(id):
             v_asociada = Venta.query.get(id_venta)
             if v_asociada:
                 v_asociada.estado = "COMPLETADA"
-                # flash(f"¡Venta #{id_venta} surtida y completada!", "success")
         except:
             pass
 
     db.session.commit()
-    # flash(f"Lote {orden.lote} finalizado correctamente.", "success")
+    flash(f" ¡Lote {orden.lote} de {producto.nombre} finalizado!", "success")
     return redirect(url_for("produccion.mostrar_ordenes"))

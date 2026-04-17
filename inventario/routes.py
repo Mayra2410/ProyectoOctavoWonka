@@ -6,10 +6,15 @@ from datetime import datetime
 from utils import login_required
 from decimal import Decimal
 from flask import flash, redirect, url_for, session, request
-from models import db, Producto, Receta, RecetaDetalle, MateriasPrimas, MovimientoInventario
+from models import (
+    db,
+    Producto,
+    Receta,
+    RecetaDetalle,
+    MateriasPrimas,
+    MovimientoInventario,
+)
 from datetime import datetime
-
-
 
 
 @inventario.route("/producto-terminado")
@@ -36,46 +41,64 @@ def mostrar_inventario():
     )
 
 
-
 @inventario.route("/registrar-ajuste", methods=["POST"])
 @login_required
 def registrar_ajuste():
     id_prod = request.form.get("producto_id")
-    cantidad_input = int(request.form.get("cantidad"))
+    cantidad_input = int(request.form.get("cantidad") or 0)
     presentacion = request.form.get("presentacion")
     motivo = request.form.get("motivo")
 
     multiplicador = {"PIEZA": 1, "MEDIA": 6, "DOCENA": 12}.get(presentacion, 1)
     cantidad_total_piezas = cantidad_input * multiplicador
+
     producto = Producto.query.get(id_prod)
+    if not producto:
+        flash(" Error: Producto no encontrado.", "danger")
+        return redirect(url_for("inventario.mostrar_inventario"))
 
-    if cantidad_total_piezas > 0: 
+    if cantidad_total_piezas > 0:
         receta = Receta.query.filter_by(producto_id=id_prod, activo=True).first()
+
         if not receta:
-            flash(f"No hay receta activa para {producto.nombre}. No se puede procesar la entrada.", "danger")
-            return redirect(url_for("inventario.mostrar_inventario"))
+            flash(
+                f" No hay receta activa para {producto.nombre}. No se descontará materia prima.",
+                "warning",
+            )
+        else:
+            detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
+            faltantes = []
 
-        detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
-        faltantes = []
-        
-        for item in detalles:
-            insumo = MateriasPrimas.query.get(item.materia_prima_id)
-            necesario = Decimal(str((float(item.cantidad_necesaria) * float(cantidad_total_piezas)) / float(receta.cantidad_lote)))
-            
-            if insumo.stock_actual < necesario:
-                faltantes.append(f"{insumo.nombre} (Faltan {necesario - insumo.stock_actual:.2f} {insumo.unidad_medida})")
+            factor_receta = Decimal(str(cantidad_total_piezas))
 
-        if faltantes:
-            flash(" NO HAY INGREDIENTES: " + ", ".join(faltantes), "danger")
-            return redirect(url_for("inventario.mostrar_inventario"))
+            for item in detalles:
+                insumo = MateriasPrimas.query.get(item.materia_prima_id)
+                # cantidad_necesaria (por pieza) * total de piezas
+                necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
 
-        for item in detalles:
-            insumo = MateriasPrimas.query.get(item.materia_prima_id)
-            necesario = Decimal(str((float(item.cantidad_necesaria) * float(cantidad_total_piezas)) / float(receta.cantidad_lote)))
-            insumo.stock_actual -= necesario
+                if insumo.stock_actual < necesario:
+                    diferencia = necesario - insumo.stock_actual
+                    faltantes.append(
+                        f"{insumo.nombre} (Faltan {diferencia:.4f} {insumo.unit_medida if hasattr(insumo, 'unit_medida') else 'uds'})"
+                    )
+
+            if faltantes:
+                flash(
+                    " AJUSTE CANCELADO. Materia prima insuficiente: "
+                    + ", ".join(faltantes),
+                    "danger",
+                )
+                return redirect(url_for("inventario.mostrar_inventario"))
+
+            for item in detalles:
+                insumo = MateriasPrimas.query.get(item.materia_prima_id)
+                necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
+                insumo.stock_actual -= necesario
 
     if (producto.stock_actual + cantidad_total_piezas) < 0:
-        flash("No puedes retirar más producto del que existe.", "danger")
+        flash(
+            " Error: No puedes retirar más producto del que existe en bodega.", "danger"
+        )
         return redirect(url_for("inventario.mostrar_inventario"))
 
     producto.stock_actual += cantidad_total_piezas
@@ -84,11 +107,20 @@ def registrar_ajuste():
         producto_id=id_prod,
         tipo_movimiento="AJUSTE",
         cantidad=cantidad_total_piezas,
-        motivo=f"{motivo} (Ajuste por {presentacion} - Materia Prima Descontada)",
+        motivo=f"{motivo} ({presentacion})",
         usuario_id=session.get("username", "Admin_Wonka"),
+        fecha_movimiento=datetime.now(),
     )
 
-    db.session.add(nuevo_mov)
-    db.session.commit()
-    flash(f"Ajuste exitoso. Se descontaron los ingredientes de la receta de {producto.nombre}.", "success")
+    try:
+        db.session.add(nuevo_mov)
+        db.session.commit()
+        flash(
+            f" Ajuste exitoso. Se procesaron {cantidad_total_piezas} piezas y se descontaron sus insumos.",
+            "success",
+        )
+    except Exception as e:
+        db.session.rollback()
+        flash(f" Error al guardar: {str(e)}", "danger")
+
     return redirect(url_for("inventario.mostrar_inventario"))

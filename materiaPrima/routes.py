@@ -4,7 +4,7 @@ from models import db, MateriasPrimas, Proveedores
 from . import materia_Prima
 from . import forms
 from utils import login_required
-from sqlalchemy import or_ 
+from sqlalchemy import or_
 
 
 @materia_Prima.route("/materias-primas")

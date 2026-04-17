@@ -29,11 +29,6 @@ def clientesAdmin():
         ]
         query = query.filter(or_(*filtros))
 
-    return render_template("clientes/clientesAdmin.html", 
-                         form=ClienteForm(), 
-                         clientes=query.all(), 
-                         query=search_query)
-
     return render_template(
         "clientes/clientesAdmin.html",
         form=ClienteForm(),
@@ -47,15 +42,15 @@ def clientesAdmin():
 def agregar_cliente():
     form = ClienteForm()
     if form.validate_on_submit():
-        archivo = request.files.get('imagen_cliente')
-        imagen_recuperada = request.form.get('imagen_base64_recuperada')
-        
+        archivo = request.files.get("imagen_cliente")
+        imagen_recuperada = request.form.get("imagen_base64_recuperada")
+
         base64_final = None
-        if archivo and archivo.filename != '':
+        if archivo and archivo.filename != "":
             contenido = archivo.read()
-            encoded = base64.b64encode(contenido).decode('utf-8')
+            encoded = base64.b64encode(contenido).decode("utf-8")
             base64_final = f"data:{archivo.content_type};base64,{encoded}"
-        elif imagen_recuperada and imagen_recuperada.startswith('data:image'):
+        elif imagen_recuperada and imagen_recuperada.startswith("data:image"):
             base64_final = imagen_recuperada
 
         if not base64_final:
@@ -131,8 +126,6 @@ def modificar_cliente(id):
                 db.session.rollback()
                 flash(f"Error: {str(e)}", "danger")
 
-    return render_template("clientes/modificarClientes.html", form=form, cliente_id=id, cliente=cliente_obj)
-
     return render_template(
         "clientes/modificarClientes.html", form=form, cliente_id=id, cliente=cliente_obj
     )
@@ -142,7 +135,6 @@ def modificar_cliente(id):
 @login_required
 def eliminar_cliente(id):
     cliente_obj = Cliente.query.get_or_404(id)
-    # Simplemente enviamos al nuevo HTML
     return render_template("clientes/eliminarCliente.html", cliente=cliente_obj)
 
 
@@ -266,7 +258,7 @@ def mis_compras():
 def calificar_producto():
     id_producto = request.form.get("id_producto")
     nombre_producto = request.form.get("nombre_producto")
-    calificacion = request.form.get("calificacion")  
+    calificacion = request.form.get("calificacion")
     comentario = request.form.get("comentario")
 
     user_id = session.get("user_id")

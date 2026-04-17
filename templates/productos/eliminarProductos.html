@@ -1,63 +1,202 @@
-{% extends "base.html" %}
-{% import "productos/_macros_prod.html" as mm %}
-{% block content %}
-<div class="max-w-[1800px] mx-auto p-8">
-  <div
-    class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2rem] border border-red-100 shadow-sm"
-  >
-    <div class="p-4 bg-white rounded-2xl shadow-sm">
-      <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
-    </div>
-    <div>
-      <h1 class="text-4xl font-black text-red-600 tracking-tight">
-        Desactivar Producto
-      </h1>
-      <p class="text-red-800/60 font-medium text-lg">
-        El estado del producto
-        <span class="font-bold underline text-red-700">
-          "{{ producto.nombre }}"
-        </span>
-        cambiará a <span class="font-bold underline">Inactivo</span>. No se
-        borrará de la base de datos.
-      </p>
-    </div>
-  </div>
+{% extends "base.html" %} {% block content %}
+<style>
+  .bg-pattern-wonka {
+    background-color: #fdfaf3;
+    background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+  }
 
-  {% set botones_desactivar %}
-  <div class="flex flex-col gap-4 w-full mt-4">
-    <form
-      action="{{ url_for('productos.desactivar_producto', id_producto=producto.id_producto) }}"
-      method="POST"
-      class="w-full"
+  .text-wonka-chocolate {
+    color: #3d1c02;
+  }
+</style>
+
+<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
+  <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto relative z-10">
+    <div
+      class="mb-8 flex items-center gap-6 bg-red-50 p-6 rounded-[2.5rem] border border-red-100 shadow-sm"
     >
-      {{ form.csrf_token }}
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <div class="p-4 bg-white rounded-2xl shadow-sm">
+        <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
+      </div>
+      <div>
+        <h1 class="text-3xl font-black text-red-600 tracking-tight uppercase">
+          Desactivar Registro de Producto
+        </h1>
+        <p class="text-red-800/60 font-bold text-sm tracking-wide">
+          EL ESTADO DEL PRODUCTO CAMBIARÁ A
+          <span class="font-black underline decoration-2 underline-offset-4">
+            INACTIVO </span
+          >. NO SE BORRARÁ DE LA BASE DE DATOS.
+        </p>
+      </div>
+    </div>
 
-      <button
-        type="submit"
-        class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group"
+    <div
+      class="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl border border-gray-50 grid grid-cols-1 md:grid-cols-12 gap-8"
+    >
+      <div
+        class="md:col-span-4 flex flex-col items-center border-r border-gray-100 pr-8"
       >
-        <i
-          data-lucide="power"
-          class="w-5 h-5 group-hover:rotate-12 transition-transform"
-        ></i>
-        Confirmar Desactivación
-      </button>
-    </form>
+        <div
+          class="w-40 h-40 rounded-full p-1 bg-white shadow-lg border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden mb-6"
+        >
+          <div class="w-full h-full rounded-full overflow-hidden">
+            {% if producto.imagen_producto %}
+            <img
+              src="{{ producto.imagen_producto }}"
+              class="w-full h-full object-cover"
+              alt="Imagen del producto"
+            />
+            {% else %}
+            <div
+              class="w-full h-full bg-[#fdfaf3] flex items-center justify-center text-wonka-chocolate font-black text-5xl"
+            >
+              {{ producto.nombre[0]|upper }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
 
-    <a
-      href="{{ url_for('productos.lista_productos') }}"
-      class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-2xl text-center transition-all border border-gray-200"
-    >
-      Cancelar
-    </a>
+        <h2
+          class="text-2xl font-black text-wonka-chocolate text-center leading-tight mb-1"
+        >
+          {{ producto.nombre }}
+        </h2>
+        <p
+          class="text-[#d4af37] font-black text-[10px] uppercase tracking-[0.3em] mb-8"
+        >
+          ID PRODUCTO #{{ producto.id_producto }}
+        </p>
+
+        <div class="flex flex-col gap-3 w-full">
+          <form
+            action="{{ url_for('productos.desactivar_producto', id_producto=producto.id_producto) }}"
+            method="POST"
+            class="w-full"
+          >
+            {{ form.csrf_token }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+            <button
+              type="submit"
+              class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl text-center transition-all shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 group text-[11px] uppercase tracking-widest"
+            >
+              <i
+                data-lucide="power"
+                class="w-5 h-5 group-hover:rotate-12 transition-transform"
+              ></i>
+              Confirmar Desactivación
+            </button>
+          </form>
+
+          <a
+            href="{{ url_for('productos.lista_productos') }}"
+            class="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-500 font-bold rounded-2xl text-center transition-all border border-gray-200 text-[10px] uppercase tracking-widest"
+          >
+            Cancelar
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-8 flex flex-col gap-6">
+        <div class="flex items-center gap-2 px-2">
+          <i data-lucide="clipboard-list" class="w-4 h-4 text-[#d4af37]"></i>
+          <span
+            class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]"
+          >
+            Resumen del Producto
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10">
+            <label
+              class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-1"
+            >
+              Precio de Venta
+            </label>
+            <p class="text-wonka-chocolate font-black text-xl">
+              ${{ producto.precio_venta }}
+            </p>
+          </div>
+
+          <div class="p-5 bg-[#fdfaf3] rounded-3xl border border-[#d4af37]/10">
+            <label
+              class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-1"
+            >
+              Costo Estimado
+            </label>
+            <p class="text-wonka-chocolate font-black text-xl">
+              ${{ producto.costo_produccion_estimado }}
+            </p>
+          </div>
+
+          <div
+            class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+          >
+            <label
+              class="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1"
+            >
+              Categoría
+            </label>
+            <p class="text-rose-600 font-bold text-lg">
+              {{ producto.categoria or 'Sin categoría' }}
+            </p>
+          </div>
+
+          <div
+            class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm"
+          >
+            <label
+              class="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1"
+            >
+              Unidad de Medida
+            </label>
+            <p class="text-wonka-chocolate font-bold text-lg">
+              {{ producto.unidad_medida or 'No definida' }}
+            </p>
+          </div>
+
+          <div
+            class="p-5 bg-white rounded-3xl border border-gray-100 shadow-sm md:col-span-2"
+          >
+            <label
+              class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest block mb-2"
+            >
+              Descripción del Producto
+            </label>
+            <p
+              class="text-wonka-chocolate/70 font-medium italic text-sm leading-relaxed"
+            >
+              "{{ producto.descripcion or 'Sin descripción disponible.' }}"
+            </p>
+          </div>
+
+          <div
+            class="p-5 bg-[#3d1c02]/[0.02] rounded-3xl border-2 border-dashed border-[#3d1c02]/10 md:col-span-2"
+          >
+            <label
+              class="text-[9px] font-black text-wonka-chocolate uppercase tracking-widest block mb-1"
+            >
+              Tiempo de Producción
+            </label>
+            <p class="text-wonka-chocolate font-bold text-sm">
+              {{ producto.tiempo_produccion_minutos or 'No definido' }} minutos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  {% endset %}
-
-  {{ mm.tarjeta_producto(producto, botones=botones_desactivar) }}
 </div>
 
 <script>
-  lucide.createIcons();
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  });
 </script>
 {% endblock %}

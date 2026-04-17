@@ -64,11 +64,28 @@ def agregar_producto():
             costo_produccion_estimado=form.costo_produccion_estimado.data,
             unidad_medida=form.unidad_medida.data,
             tiempo_produccion_minutos=form.tiempo_produccion_minutos.data,
-            activo=form.activo.data,
+            activo=True,
         )
 
         file = request.files.get("imagen_producto")
         if file and file.filename != "":
+            if not file.content_type or not file.content_type.startswith("image/"):
+                flash("El archivo seleccionado no es una imagen válida.", "danger")
+                return render_template(
+                    "productos/agregarProductos.html",
+                    form=form,
+                    active_page="productos.lista_productos",
+                )
+
+            extensiones_validas = (".jpg", ".jpeg", ".png", ".webp")
+            if not file.filename.lower().endswith(extensiones_validas):
+                flash("Formato de imagen no permitido.", "danger")
+                return render_template(
+                    "productos/agregarProductos.html",
+                    form=form,
+                    active_page="productos.lista_productos",
+                )
+
             try:
                 imagen_bytes = file.read()
                 encoded = base64.b64encode(imagen_bytes).decode("utf-8")
@@ -121,6 +138,25 @@ def editar_producto(id_producto):
 
         file = request.files.get("imagen_producto")
         if file and file.filename != "":
+            if not file.content_type or not file.content_type.startswith("image/"):
+                flash("El archivo seleccionado no es una imagen válida.", "danger")
+                return render_template(
+                    "productos/modificarProductos.html",
+                    form=form,
+                    producto=producto,
+                    active_page="productos.lista_productos",
+                )
+
+            extensiones_validas = (".jpg", ".jpeg", ".png", ".webp")
+            if not file.filename.lower().endswith(extensiones_validas):
+                flash("Formato de imagen no permitido.", "danger")
+                return render_template(
+                    "productos/modificarProductos.html",
+                    form=form,
+                    producto=producto,
+                    active_page="productos.lista_productos",
+                )
+
             try:
                 imagen_bytes = file.read()
                 encoded = base64.b64encode(imagen_bytes).decode("utf-8")
