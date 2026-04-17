@@ -102,7 +102,6 @@ def registrar_tarjeta_view():
             db.session.add(nueva_tarjeta)
             db.session.commit()
 
-            # flash(f"Tarjeta terminada en {terminacion} vinculada con éxito.", "success")
             return redirect(url_for("puntoVenta.index"))
 
         except Exception as e:
@@ -189,7 +188,6 @@ def finalizar_venta():
                     prioridad="URGENTE",
                     estado="PENDIENTE",
                     fecha_inicio=datetime.now(),
-                    # usuario_inicio="Sistema Ventas",
                     observaciones=f"Falta de stock en Venta #{nueva_venta.id_venta}",
                 )
                 db.session.add(nueva_orden)

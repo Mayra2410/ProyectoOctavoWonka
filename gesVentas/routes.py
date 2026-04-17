@@ -5,52 +5,41 @@ from datetime import datetime
 from sqlalchemy import func
 from utils import login_required
 
-# --- 1. GESTIÓN Y LISTADO DE VENTAS ---
-# --- RUTAS DE GESTIÓN DE VENTAS ---
 
 @gesVentas.route('/gestion-ventas', methods=['GET', 'POST'])
 @login_required
 def mostrar_ventas():
-    # 1. Definimos la fecha de hoy para los filtros
     hoy = datetime.now().date()
 
-    # 2. Sincronización: Si producción terminó, la venta pasa a COMPLETADA
     ventas_pendientes = Venta.query.filter(Venta.estado == 'PENDIENTE').all()
     for v in ventas_pendientes:
-        # Buscamos si aún existen órdenes que NO estén completadas
         quendan_ordenes = OrdenProduccion.query.filter(
             OrdenProduccion.lote.like(f"AUTO-{v.id_venta}-%"),
             OrdenProduccion.estado != 'COMPLETADA'
         ).first()
         
-        # Si ya no quedan órdenes pendientes, la venta ya se puede entregar
         if not quendan_ordenes:
             v.estado = 'COMPLETADA'
     
     db.session.commit()
 
-    # 3. Lógica del Buscador
     query = request.args.get('q') 
     if query and query.isdigit():
         ventas = Venta.query.filter(Venta.id_venta == int(query)).all()
     else:
         ventas = Venta.query.order_by(Venta.fecha_venta.desc()).all()
     
-    # 4. Cálculo de Ingresos (Corregido para sumar COMPLETADAS y ENTREGADAS)
-    # Filtramos por 'hoy' para que coincida con el panel de control
     ingresos = db.session.query(func.sum(Venta.total)).filter(
         func.date(Venta.fecha_venta) == hoy,
         Venta.estado.in_(['COMPLETADA', 'ENTREGADA']) 
     ).scalar() or 0
     
-    # 5. Cálculo de Egresos y Utilidad
     egresos = db.session.query(func.sum(PagoProveedor.monto)).filter(
         func.date(PagoProveedor.fecha_pago) == hoy
     ).scalar() or 0
     
     utilidad = ingresos - egresos
     
-    # 6. Renderizado final
     return render_template('gesVentas/gestVentas.html', 
                            ventas=ventas, 
                            ingresos=ingresos, 
@@ -62,7 +51,6 @@ def mostrar_ventas():
 @login_required
 def entregar_venta(id):
     venta = Venta.query.get_or_404(id)
-    # Solo se puede entregar si ya se fabricó (COMPLETADA)
     if venta.estado == 'COMPLETADA':
         venta.estado = 'ENTREGADA'
         db.session.commit()
@@ -72,7 +60,6 @@ def entregar_venta(id):
     return redirect(url_for('gesVentas.mostrar_ventas'))
 
 
-# --- 2. CANCELACIÓN DE VENTAS ---
 @gesVentas.route('/cancelar-venta/<int:id>')
 @login_required
 def cancelar_venta(id):
@@ -85,13 +72,11 @@ def cancelar_venta(id):
     flash(f"Venta #{id} cancelada y logística revertida.", "warning")
     return redirect(url_for('gesVentas.mostrar_ventas'))
 
-# --- 3. TICKET DINÁMICO (Lógica de Trazabilidad) ---
 @gesVentas.route("/ver-ticket/<int:id>")
 @login_required
 def ver_ticket(id):
     venta = Venta.query.get_or_404(id)
     
-    # Buscamos la orden para saber si está en espera o en horno
     from models import OrdenProduccion
     orden = OrdenProduccion.query.filter(OrdenProduccion.lote.like(f"AUTO-{id}-%")).first()
     
@@ -117,7 +102,6 @@ def ver_ticket(id):
                            ahorro=ahorro,
                            orden=orden)
 
-# --- 4. CORTE DE CAJA PROFESIONAL ---
 @gesVentas.route("/corte-caja")
 @login_required
 def corte_caja():
@@ -129,7 +113,6 @@ def corte_caja():
     fecha_inicio = request.args.get('fecha_inicio', inicio_defecto)
     fecha_fin = request.args.get('fecha_fin', fin_defecto)
 
-    # 2. CÁLCULOS DESDE LA BASE DE DATOS (IMPORTANTE: INCLUIR 'ENTREGADA')
     ingresos = db.session.query(func.sum(Venta.total)).filter(
         func.date(Venta.fecha_venta).between(fecha_inicio, fecha_fin),
         Venta.estado.in_(['COMPLETADA', 'ENTREGADA']) # <--- SUMAMOS AMBOS ESTADOS
@@ -142,7 +125,6 @@ def corte_caja():
     reserva = float(ingresos) * 0.20
     utilidad = float(ingresos) - float(egresos) - reserva
 
-    # 3. GRÁFICA TOP PRODUCTOS (TAMBIÉN FILTRAR POR AMBOS ESTADOS)
     top_productos = db.session.query(
         Producto.nombre, 
         func.count(Venta.id_venta).label('total_ventas')
@@ -159,7 +141,6 @@ def corte_caja():
     labels_prod = [p[0] for p in top_productos]
     values_prod = [int(p[1]) for p in top_productos]
 
-    # 4. TENDENCIA DE VENTAS
     ventas_rango = db.session.query(
         func.date(Venta.fecha_venta).label('dia'), 
         func.sum(Venta.total)
@@ -171,7 +152,6 @@ def corte_caja():
     labels_dias = [v[0].strftime('%d/%m') for v in ventas_rango]
     values_dias = [float(v[1]) for v in ventas_rango]
 
-    # 5. MONGO FEEDBACK (Opcional)
     labels_rating, values_rating = [], []
     try:
         from clientes.routesC import get_mongo_db
@@ -182,7 +162,6 @@ def corte_caja():
         values_rating = [round(s['promedio'], 2) for s in stats]
     except: pass
 
-    # 6. HISTORIAL DE CIERRES
     historial_cortes = []
     try:
         historial_cortes = db.session.execute(
@@ -199,7 +178,6 @@ def corte_caja():
         labels_rating=labels_rating, values_rating=values_rating,
         historial_cortes=historial_cortes
     )
-# --- 5. PERSISTENCIA DE ARCHIVO CONTABLE ---
 @gesVentas.route("/guardar-corte", methods=["POST"])
 @login_required
 def guardar_corte():
