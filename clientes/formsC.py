@@ -57,24 +57,20 @@ class ClienteForm(FlaskForm):
         default="OCASIONAL",
     )
 
-    estatus = SelectField(
-        "Estado del Cliente",
-        choices=[("ACTIVO", "ACTIVO"), ("INACTIVO", "INACTIVO")],
-        default="ACTIVO",
+    estatus = SelectField("Estado del Cliente",
+        choices=[('ACTIVO', 'ACTIVO'), ('INACTIVO', 'INACTIVO')],
+        default='ACTIVO'
     )
 
-    notas = TextAreaField(
-        "Notas Adicionales",
-        [Optional(), Length(max=200, message="Maximo 200 caracteres")],
-    )
-
-    imagen_cliente = FileField(
-        "Foto del Cliente",
-        validators=[
-            Optional(),
-            FileAllowed(["jpg", "png", "jpeg"], "Solo imagenes JPG o PNG"),
-        ],
-    )
+    notas = TextAreaField("Notas Adicionales", [
+        Optional(), 
+        Length(max=200, message="Maximo 200 caracteres")
+    ])
+    
+    imagen_cliente = FileField("Foto del Cliente", validators=[
+        Optional(),
+        FileAllowed(['jpg', 'png', 'jpeg'], 'Solo imagenes JPG o PNG')
+    ])
 
     fecha_registro = DateField(
         "Fecha de Registro",

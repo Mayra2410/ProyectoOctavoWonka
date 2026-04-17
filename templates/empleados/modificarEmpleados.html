@@ -3,149 +3,83 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-<style>
-    .bg-pattern-wonka {
-        background-color: #fdfaf3;
-        background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px);
-        background-size: 24px 24px;
-        opacity: 0.15;
-    }
-    .text-wonka-chocolate { color: #3d1c02; }
-    .bg-wonka-chocolate { background-color: #3d1c02; }
-    .wonka-input {
-        background-color: #fdfaf3;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        transition: all 0.2s ease;
-    }
-    .wonka-input:focus {
-        border-color: #d4af37;
-        background-color: #fff;
-        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.05);
-    }
-</style>
+<div class="max-w-[1800px] mx-auto p-8">
+  <form action="{{ url_for('empleado.modificar_empleado', id=empleado_id) }}" method="POST" enctype="multipart/form-data" class="flex flex-col lg:flex-row gap-8 items-start">
+    {{ form.csrf_token }}
 
-<div class="relative min-h-screen bg-[#fdfaf3] p-4 md:p-6">
-    <div class="absolute inset-0 bg-pattern-wonka pointer-events-none"></div>
+    <div class="w-full lg:w-[350px] bg-white rounded-[2.5rem] shadow-sm border border-gray-50 p-10 flex flex-col items-center shrink-0">
+      <div class="relative mb-4 group cursor-pointer" onclick="document.getElementById('imagen_empleado_file').click()">
+        <div class="w-36 h-36 rounded-full p-1 bg-gradient-to-tr from-wonka-purple to-wonka-brown flex items-center justify-center shadow-lg">
+          <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+            <img id="preview" src="{{ empleado.imagen_empleado or '' }}" class="w-full h-full object-cover {% if not empleado.imagen_empleado %}hidden{% endif %}">
+            {% if not empleado.imagen_empleado %}
+              <div id="placeholder" class="text-wonka-purple/30 text-center"><i data-lucide="camera" class="w-12 h-12"></i></div>
+            {% endif %}
+          </div>
+        </div>
+        <input type="file" name="imagen_empleado" id="imagen_empleado_file" class="hidden" accept="image/*" onchange="previewImage(this)">
+      </div>
+      <p class="text-wonka-purple font-medium text-xs mb-10">ID de Registro: {{ empleado_id }}</p>
+      <div class="w-full space-y-4">
+        <button type="submit" class="w-full py-4 bg-wonka-purple text-white rounded-2xl font-bold text-sm shadow-md hover:scale-[1.02] transition-all">Guardar Cambios</button>
+        <a href="{{ url_for('empleado.empleadosAdmin') }}" class="block w-full py-4 bg-gray-50 text-gray-400 rounded-2xl font-bold text-sm text-center">Cancelar</a>
+      </div>
+    </div>
 
-    <div class="max-w-[1100px] mx-auto relative z-10">
-        <div class="mb-6 flex items-center gap-4">
-            <div class="p-2 bg-wonka-chocolate text-[#d4af37] rounded-xl shadow-md">
-                <i data-lucide="user-cog" class="w-5 h-5"></i>
-            </div>
-            <div>
-                <h1 class="text-2xl font-black text-wonka-chocolate tracking-tight uppercase leading-none">Modificar datos</h1>
-            </div>
+    <div class="flex-1 bg-white rounded-[2.5rem] shadow-sm border border-gray-50 p-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+        
+        <div class="md:col-span-2 flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Nombre Completo</label>
+          {{ form.nombre(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
         </div>
 
-        <form action="{{ url_for('empleado.modificar_empleado', id=empleado_id) }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {{ form.csrf_token }}
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Correo Electronico</label>
+          {{ form.email(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-            <div class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 flex flex-col items-center sticky top-6">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"></div>
-                
-                <div class="relative mb-6 group cursor-pointer" onclick="document.getElementById('imagen_empleado_file').click()">
-                    <div class="w-40 h-40 rounded-full p-1 bg-white shadow-2xl border-[3px] border-[#d4af37] ring-8 ring-[#3d1c02]/5 overflow-hidden transition-transform group-hover:scale-105 duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden flex items-center justify-center">
-                            <img id="preview" src="{{ empleado.imagen_empleado or '' }}" class="w-full h-full object-cover {% if not empleado.imagen_empleado %}hidden{% endif %}">
-                            {% if not empleado.imagen_empleado %}
-                                <div id="placeholder" class="text-wonka-chocolate/20 flex flex-col items-center">
-                                    <i data-lucide="camera" class="w-10 h-10 mb-1"></i>
-                                    <span class="text-[8px] font-black uppercase tracking-widest">Subir Foto</span>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="absolute bottom-1 right-1 bg-wonka-chocolate text-[#d4af37] p-2 rounded-full border-2 border-white shadow-lg">
-                        <i data-lucide="pencil" class="w-4 h-4"></i>
-                    </div>
-                    <input type="file" name="imagen_empleado" id="imagen_empleado_file" class="hidden" accept="image/*" onchange="previewImage(this)">
-                </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Telefono de Contacto</label>
+          {{ form.telefono(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-                <div class="text-center mb-8">
-                    <p class="text-[#3d1c02] font-black text-sm uppercase">ID de Registro</p>
-                    <p class="text-[#d4af37] font-bold text-xs">#{{ empleado_id }}</p>
-                </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Fecha de Registro</label>
+          {{ form.fecha_contratacion(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none", id="fecha_contratacion") }}
+        </div>
 
-                <div class="w-full space-y-3">
-                    <button type="submit" class="w-full py-4 bg-wonka-chocolate text-white rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg hover:brightness-125 transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="save" class="w-4 h-4"></i>
-                        Guardar Cambios
-                    </button>
-                    <a href="{{ url_for('empleado.empleadosAdmin') }}" class="block w-full py-4 bg-[#fdfaf3] text-gray-400 rounded-2xl font-bold text-xs text-center uppercase tracking-widest border border-[#d4af37]/10 hover:text-wonka-chocolate transition-colors">
-                        Cancelar
-                    </a>
-                </div>
-            </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Estado Laboral</label>
+          <select name="estatus" class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none appearance-none">
+            <option value="ACTIVO" {% if empleado.estatus == 'ACTIVO' %}selected{% endif %}>ACTIVO</option>
+            <option value="INACTIVO" {% if empleado.estatus == 'INACTIVO' %}selected{% endif %}>INACTIVO</option>
+          </select>
+        </div>
 
-            <div class="lg:col-span-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-[#d4af37]/20 p-8 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#d4af37] via-[#3d1c02] to-[#d4af37]"></div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
-                    
-                    <div class="md:col-span-2 space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Nombre del Colaborador</label>
-                        {{ form.nombre(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
-                    </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Salario Mensual</label>
+          {{ form.salario_mensual(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Correo Electrónico</label>
-                        {{ form.email(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
-                    </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Identificacion (DNI/RFC)</label>
+          {{ form.dni_cedula(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Teléfono</label>
-                        {{ form.telefono(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
-                    </div>
+        <div class="md:col-span-2 flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Puesto / Cargo</label>
+          {{ form.puesto(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Fecha de Contratación</label>
-                        <div class="relative">
-                            {{ form.fecha_contratacion(class="wonka-input w-full rounded-2xl pl-12 pr-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none", id="fecha_contratacion") }}
-                            <i data-lucide="calendar" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37]"></i>
-                        </div>
-                    </div>
+        <div class="md:col-span-2 flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-wonka-purple uppercase">Direccion de Domicilio</label>
+          {{ form.direccion(class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-4 text-sm text-gray-600 outline-none") }}
+        </div>
 
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Estatus Laboral</label>
-                        <div class="relative">
-                            <select name="estatus" class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none appearance-none cursor-pointer">
-                                <option value="ACTIVO" {% if empleado.estatus == 'ACTIVO' %}selected{% endif %}>ACTIVO</option>
-                                <option value="INACTIVO" {% if empleado.estatus == 'INACTIVO' %}selected{% endif %}>INACTIVO</option>
-                            </select>
-                            <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-purple-700 uppercase tracking-widest ml-1">Salario Mensual (MXN)</label>
-                        <div class="relative">
-                            {{ form.salario_mensual(class="wonka-input w-full pl-12 pr-5 py-3.5 rounded-2xl text-sm font-bold text-purple-700 outline-none border-purple-100 focus:border-purple-300") }}
-                            <i data-lucide="dollar-sign" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-700"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Identificación (DNI)</label>
-                        {{ form.dni_cedula(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
-                    </div>
-
-                    <div class="md:col-span-2 space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Puesto / Cargo Administrativo</label>
-                        {{ form.puesto(class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] outline-none") }}
-                    </div>
-
-                    <div class="md:col-span-2 space-y-1.5">
-                        <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">Dirección de Domicilio</label>
-                        <div class="relative">
-                            {{ form.direccion(class="wonka-input w-full pl-12 pr-5 py-3.5 rounded-2xl text-sm font-bold text-[#3d1c02] outline-none") }}
-                            <i data-lucide="map-pin" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37]"></i>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </form>
+      </div>
     </div>
+  </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -163,10 +97,7 @@
     }
   }
   document.addEventListener('DOMContentLoaded', () => {
-    flatpickr("#fecha_contratacion", { 
-        dateFormat: "Y-m-d",
-        disableMobile: "true"
-    });
+    flatpickr("#fecha_contratacion", { dateFormat: "Y-m-d" });
     if(window.lucide) lucide.createIcons();
   });
 </script>

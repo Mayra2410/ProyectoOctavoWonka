@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from sqlalchemy.dialects.mysql import LONGTEXT
+
 from sqlalchemy import FetchedValue
 
 # ÚNICA INSTANCIA DE DB
@@ -45,6 +46,8 @@ class Cliente(db.Model):
     email = db.Column(db.String(100), unique=True)
     telefono = db.Column(db.String(20))
     direccion = db.Column(db.String(200))
+    
+    tipo = db.Column(db.Enum('MINORISTA', 'MAYORISTA'), default='MINORISTA')
     tipo = db.Column(db.Enum("MINORISTA", "MAYORISTA"), default="MINORISTA")
     fecha_registro = db.Column(db.Date, default=date.today)
     categoria_comprador = db.Column(
@@ -55,6 +58,8 @@ class Cliente(db.Model):
     estatus = db.Column(db.String(10), default="ACTIVO")
 
     def __repr__(self):
+        return f'<Cliente {self.nombre}>'
+    
         return f"<Cliente {self.nombre}>"
 
 
@@ -62,22 +67,33 @@ class Empleado(db.Model):
     __tablename__ = "empleados"
 
     id_empleado = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), unique=True)
+    
     usuario_id = db.Column(
         db.Integer, db.ForeignKey("usuarios.id_usuario"), unique=True
     )
 
     nombre = db.Column(db.String(100), nullable=False)
     apellido = db.Column(db.String(100), nullable=False)
+    apellido = db.Column(db.String(100), nullable=False)
     dni_cedula = db.Column(db.String(20), unique=True, nullable=False)
+    telefono = db.Column(db.String(20))
     telefono = db.Column(db.String(20))
     email = db.Column(db.String(100), unique=True)
     direccion = db.Column(db.String(200))
+    
+    puesto = db.Column(db.String(100), nullable=False) 
+    
 
     puesto = db.Column(db.String(100), nullable=False)
 
     salario_mensual = db.Column(db.Numeric(10, 2))
     fecha_contratacion = db.Column(db.Date)
+    fecha_contratacion = db.Column(db.Date)
     imagen_empleado = db.Column(LONGTEXT, nullable=True)
+    estatus = db.Column(db.String(10), default='ACTIVO')
+
+    usuario = db.relationship('Usuario', backref=db.backref('empleado', uselist=False))
     estatus = db.Column(db.String(10), default="ACTIVO")
 
     usuario = db.relationship("Usuario", backref=db.backref("empleado", uselist=False))
@@ -266,6 +282,7 @@ class Venta(db.Model):
     cliente = db.relationship("Cliente", backref="ventas")
 
     def __repr__(self):
+        return f'<Empleado {self.nombre}>'
         return f"<Venta ID: {self.id_venta} - Total: {self.total}>"
 
 
