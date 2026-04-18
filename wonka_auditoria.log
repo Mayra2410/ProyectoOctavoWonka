@@ -18563,3 +18563,43 @@
 2026-04-18 09:14:20,929 - INFO - 127.0.0.1 - - [18/Apr/2026 09:14:20] "GET /mis-pedidos HTTP/1.1" 200 -
 2026-04-18 09:14:20,968 - INFO - 127.0.0.1 - - [18/Apr/2026 09:14:20] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
 2026-04-18 09:14:20,968 - INFO - 127.0.0.1 - - [18/Apr/2026 09:14:20] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:21:49,366 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-18 09:21:49,367 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-18 09:21:49,370 - INFO -  * Restarting with stat
+2026-04-18 09:21:50,236 - WARNING -  * Debugger is active!
+2026-04-18 09:21:50,239 - INFO -  * Debugger PIN: 102-485-939
+2026-04-18 09:21:52,362 - INFO - 127.0.0.1 - - [18/Apr/2026 09:21:52] "GET / HTTP/1.1" 200 -
+2026-04-18 09:21:52,647 - INFO - 127.0.0.1 - - [18/Apr/2026 09:21:52] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:21:54,779 - INFO - 127.0.0.1 - - [18/Apr/2026 09:21:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-18 09:22:03,177 - INFO - 127.0.0.1 - - [18/Apr/2026 09:22:03] "[32mPOST / HTTP/1.1[0m" 302 -
+2026-04-18 09:22:03,260 - INFO - 127.0.0.1 - - [18/Apr/2026 09:22:03] "GET /proveedores HTTP/1.1" 200 -
+2026-04-18 09:22:03,316 - INFO - 127.0.0.1 - - [18/Apr/2026 09:22:03] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:22:05,197 - INFO - 127.0.0.1 - - [18/Apr/2026 09:22:05] "GET /clientes HTTP/1.1" 200 -
+2026-04-18 09:22:05,224 - INFO - 127.0.0.1 - - [18/Apr/2026 09:22:05] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:23:02,478 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:02] "GET /empleados HTTP/1.1" 200 -
+2026-04-18 09:23:02,501 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:02] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:23:16,118 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:16] "GET /proveedores HTTP/1.1" 200 -
+2026-04-18 09:23:16,139 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:16] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:23:25,494 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:25] "GET /materias-primas HTTP/1.1" 200 -
+2026-04-18 09:23:25,516 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:25] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:23:35,374 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:35] "GET /compras HTTP/1.1" 200 -
+2026-04-18 09:23:35,395 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:35] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:23:47,617 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:47] "GET /pagos-proveedores HTTP/1.1" 200 -
+2026-04-18 09:23:47,639 - INFO - 127.0.0.1 - - [18/Apr/2026 09:23:47] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:24:03,484 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:03] "GET /productos HTTP/1.1" 200 -
+2026-04-18 09:24:03,502 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:03] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:24:13,324 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:13] "GET /recetas HTTP/1.1" 200 -
+2026-04-18 09:24:13,354 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:13] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:24:23,142 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:23] "GET /ordenes HTTP/1.1" 200 -
+2026-04-18 09:24:23,158 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:23] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:24:32,803 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:32] "GET /producto-terminado HTTP/1.1" 200 -
+2026-04-18 09:24:32,823 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:32] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:24:43,332 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:43] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-18 09:24:43,357 - INFO - 127.0.0.1 - - [18/Apr/2026 09:24:43] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:25:15,635 - INFO - 127.0.0.1 - - [18/Apr/2026 09:25:15] "GET /ver-ticket/4 HTTP/1.1" 200 -
+2026-04-18 09:25:15,657 - INFO - 127.0.0.1 - - [18/Apr/2026 09:25:15] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:25:24,226 - INFO - 127.0.0.1 - - [18/Apr/2026 09:25:24] "GET /gestion-ventas HTTP/1.1" 200 -
+2026-04-18 09:25:24,244 - INFO - 127.0.0.1 - - [18/Apr/2026 09:25:24] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
+2026-04-18 09:34:55,422 - INFO - 127.0.0.1 - - [18/Apr/2026 09:34:55] "GET /corte-caja HTTP/1.1" 200 -
+2026-04-18 09:34:55,453 - INFO - 127.0.0.1 - - [18/Apr/2026 09:34:55] "GET /static/img/log_wonka.jpeg HTTP/1.1" 200 -
