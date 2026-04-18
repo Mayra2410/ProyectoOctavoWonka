@@ -123,6 +123,7 @@
 </div>
 
 {# MODAL DE CALIFICACIÓN #}
+{# MODAL DE CALIFICACIÓN #}
 <div id="modalCalificar" class="hidden fixed inset-0 bg-[#3d1c02]/90 backdrop-blur-md z-[70] flex items-center justify-center p-4">
   <div class="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl relative border-4 border-wonka-gold/20">
     <h3 id="tituloModal" class="text-3xl font-wonka-title text-[#3d1c02] mb-1 font-bold italic text-center">
@@ -133,6 +134,10 @@
     </p>
 
     <form action="{{ url_for('cliente.calificar_producto') }}" method="POST" class="space-y-6">
+      {# SECCIÓN DE TOKENS CORREGIDA #}
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      
+      {# Campos ocultos para la lógica #}
       <input type="hidden" id="modal_id_producto" name="id_producto" />
       <input type="hidden" id="modal_nombre_producto" name="nombre_producto" />
 

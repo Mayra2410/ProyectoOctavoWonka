@@ -50,40 +50,49 @@ def registrar_ajuste():
     cantidad_total_piezas = cantidad_input * multiplicador
 
     producto = Producto.query.get(id_prod)
+    
+    # 1. Validaciones iniciales
     if not producto:
         flash("Error: Producto no encontrado.", "danger")
         return redirect(url_for("inventario.mostrar_inventario"))
     
     if not producto.activo:
-        flash(f"Error: El producto '{producto.nombre}' está inactivo y no admite movimientos.", "danger")
+        flash(f"Error: El producto '{producto.nombre}' está inactivo.", "danger")
         return redirect(url_for("inventario.mostrar_inventario"))
 
     try:
-        
+        # 2. Lógica de Receta e Insumos (Solo si es entrada de stock > 0)
         if cantidad_total_piezas > 0:
             receta = Receta.query.filter_by(producto_id=id_prod, activo=True).first()
             
             if not receta:
-                flash(f"Aviso: No hay receta activa para {producto.nombre}. Se agregará stock sin descontar insumos.", "warning")
+                flash(f"Aviso: No hay receta activa para {producto.nombre}.", "warning")
             else:
                 detalles = RecetaDetalle.query.filter_by(receta_id=receta.id_receta).all()
                 factor_receta = Decimal(str(cantidad_total_piezas))
-
+                
+                # --- PASO CRÍTICO: VALIDACIÓN PREVIA ---
+                # Primero verificamos todos, NO restamos nada todavía
                 for item in detalles:
                     insumo = MateriasPrimas.query.get(item.materia_prima_id)
                     necesario = Decimal(str(item.cantidad_necesaria)) * factor_receta
-                    
                     if insumo.stock_actual < necesario:
+                        # Si uno falla, lanzamos el error antes de tocar la DB
                         raise Exception(f"Insumo insuficiente: {insumo.nombre} (Faltan {necesario - insumo.stock_actual:.2f})")
-                    
-                    insumo.stock_actual -= necesario
 
+                # --- PASO 2: RESTAR (Solo si todos pasaron la validación) ---
+                for item in detalles:
+                    insumo = MateriasPrimas.query.get(item.materia_prima_id)
+                    insumo.stock_actual -= (Decimal(str(item.cantidad_necesaria)) * factor_receta)
+
+        # 3. Ajuste de stock del producto final
         stock_proyectado = producto.stock_actual + cantidad_total_piezas
         if stock_proyectado < 0:
              raise Exception(f"No hay suficiente stock de {producto.nombre} para retirar {abs(cantidad_total_piezas)} unidades.")
              
         producto.stock_actual = stock_proyectado
 
+        # 4. Registro del movimiento
         nuevo_mov = MovimientoInventario(
             producto_id=id_prod,
             tipo_movimiento="AJUSTE",
@@ -93,20 +102,12 @@ def registrar_ajuste():
             fecha_movimiento=datetime.now(),
         )
         db.session.add(nuevo_mov)
-
         db.session.commit()
-        flash(f"¡Ajuste exitoso! Se procesaron {cantidad_total_piezas} piezas de {producto.nombre}.", "success")
+        
+        flash(f"¡Ajuste exitoso! {producto.nombre} actualizado.", "success")
 
     except Exception as e:
-        db.session.rollback()
-        error_msg = str(e)
-        
-        if "INACTIVOS" in error_msg.upper():
-            flash("La base de datos bloqueó el ajuste: El producto está marcado como Inactivo.", "danger")
-        elif "Insumo insuficiente" in error_msg:
-            flash(error_msg, "warning")
-        else:
-            flash(f"Error en el proceso: {error_msg}", "danger")
-            print(f"DEBUG: {error_msg}") # Para ver el error real en consola
+        db.session.rollback() # Limpia la sesión de cualquier cambio pendiente
+        flash(str(e), "warning")
 
     return redirect(url_for("inventario.mostrar_inventario"))
