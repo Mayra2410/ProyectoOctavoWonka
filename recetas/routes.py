@@ -30,54 +30,52 @@ def lista_recetas():
 @login_required
 def agregar_receta():
     form = RecetaForm()
-    form.producto_id.choices = [(p.id_producto, p.nombre) for p in Producto.query.all()]
+
+    productos_libres = (
+        Producto.query.outerjoin(Receta, Producto.id_producto == Receta.producto_id)
+        .filter(Producto.activo == True)
+        .filter(Receta.id_receta == None)
+        .all()
+    )
+    form.producto_id.choices = [(p.id_producto, p.nombre) for p in productos_libres]
 
     if form.validate_on_submit():
         nombre_limpio = form.nombre_receta.data.strip()
 
-        existe_nombre = Receta.query.filter_by(nombre_receta=nombre_limpio).first()
-        if existe_nombre:
+        if Receta.query.filter_by(nombre_receta=nombre_limpio).first():
             form.nombre_receta.errors.append("Esta receta ya existe.")
+            return render_template("recetas/agregarReceta.html", form=form)
 
-        existe_producto = Receta.query.filter_by(
-            producto_id=form.producto_id.data
-        ).first()
-        if existe_producto:
-            form.producto_id.errors.append(
-                "Ese producto ya tiene una receta registrada."
+        nueva_receta = Receta(
+            producto_id=form.producto_id.data,
+            nombre_receta=nombre_limpio,
+            instrucciones=(
+                form.instrucciones.data.strip() if form.instrucciones.data else None
+            ),
+        )
+
+        try:
+            db.session.add(nueva_receta)
+            db.session.commit()
+            flash("Receta agregada correctamente.", "success")
+            return redirect(
+                url_for(
+                    "recetas.gestionar_ingredientes", id_receta=nueva_receta.id_receta
+                )
             )
 
-        if not form.nombre_receta.errors and not form.producto_id.errors:
-            nueva_receta = Receta(
-                producto_id=form.producto_id.data,
-                nombre_receta=nombre_limpio,
-                instrucciones=(
-                    form.instrucciones.data.strip() if form.instrucciones.data else None
-                ),
-            )
+        except IntegrityError:
+            db.session.rollback()
+            flash("Error: El producto ya tiene una receta asignada.", "danger")
 
-            try:
-                db.session.add(nueva_receta)
-                db.session.commit()
-                flash(
-                    "Receta agregada correctamente. Ahora agrega sus ingredientes.",
-                    "success",
-                )
-                return redirect(
-                    url_for(
-                        "recetas.gestionar_ingredientes",
-                        id_receta=nueva_receta.id_receta,
-                    )
-                )
-            except IntegrityError:
-                db.session.rollback()
-                form.producto_id.errors.append(
-                    "Ese producto ya tiene una receta registrada."
-                )
-            except Exception as e:
-                db.session.rollback()
-                print(f"Error al agregar receta: {e}")
-                flash("Ocurrió un error al guardar la receta.", "danger")
+        except Exception as e:
+            db.session.rollback()
+            error_msg = str(e)
+            if "cancelada" in error_msg or "INACTIVO" in error_msg:
+                flash("No puedes crear recetas para productos inactivos.", "warning")
+            else:
+                flash("Ocurrió un error inesperado al guardar.", "danger")
+                print(f"Error real: {e}")
 
     return render_template(
         "recetas/agregarReceta.html", form=form, active_page="recetas.lista_recetas"
@@ -88,44 +86,47 @@ def agregar_receta():
 @login_required
 def modificar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
-    form = RecetaForm(obj=receta)
-    form.producto_id.choices = [(p.id_producto, p.nombre) for p in Producto.query.all()]
+    form = RecetaForm(request.form if request.method == "POST" else None, obj=receta)
 
-    if form.validate_on_submit():
-        nombre_limpio = form.nombre_receta.data.strip()
+    productos_disponibles = (
+        Producto.query.outerjoin(Receta, Producto.id_producto == Receta.producto_id)
+        .filter(Producto.activo == True)
+        .filter(
+            (Receta.id_receta == None) | (Producto.id_producto == receta.producto_id)
+        )
+        .all()
+    )
+    form.producto_id.choices = [
+        (p.id_producto, p.nombre) for p in productos_disponibles
+    ]
 
-        duplicado_nombre = Receta.query.filter(
-            Receta.nombre_receta == nombre_limpio, Receta.id_receta != id_receta
-        ).first()
-        if duplicado_nombre:
-            form.nombre_receta.errors.append(
-                "Este nombre de receta ya está registrado."
-            )
+    if request.method == "POST" and form.validate():
+        receta.producto_id = form.producto_id.data
+        receta.nombre_receta = form.nombre_receta.data.strip()
+        receta.instrucciones = (
+            form.instrucciones.data.strip() if form.instrucciones.data else None
+        )
 
-        duplicado_producto = Receta.query.filter(
-            Receta.producto_id == form.producto_id.data, Receta.id_receta != id_receta
-        ).first()
-        if duplicado_producto:
-            form.producto_id.errors.append(
-                "Ese producto ya tiene una receta registrada."
-            )
+        estado_valor = request.form.get("activo")
+        receta.activo = True if estado_valor == "1" else False
 
-        if not form.nombre_receta.errors and not form.producto_id.errors:
-            receta.producto_id = form.producto_id.data
-            receta.nombre_receta = nombre_limpio
-            receta.instrucciones = (
-                form.instrucciones.data.strip() if form.instrucciones.data else None
-            )
-            receta.activo = bool(int(request.form.get("activo", 1)))
+        try:
+            db.session.commit()
+            flash("Receta actualizada correctamente.", "success")
+            return redirect(url_for("recetas.lista_recetas"))
 
-            try:
-                db.session.commit()
-                flash("Receta actualizada correctamente.", "success")
-                return redirect(url_for("recetas.lista_recetas"))
-            except Exception as e:
-                db.session.rollback()
-                print(f"Error al editar receta: {e}")
-                flash("Ocurrió un error al actualizar la receta.", "danger")
+        except Exception as e:
+            db.session.rollback()
+            if "INACTIVO" in str(e):
+                flash(
+                    "Error: No puedes asignar esta receta a un producto inactivo.",
+                    "danger",
+                )
+            else:
+                flash("Error al actualizar la receta.", "danger")
+
+    if request.method == "GET":
+        form.activo.data = receta.activo
 
     return render_template(
         "recetas/modificarReceta.html",
@@ -189,7 +190,6 @@ def gestionar_ingredientes(id_receta):
         materia = MateriasPrimas.query.get_or_404(materia_id)
         cantidad_base = cantidad_cap
 
-        # Lógica de conversión de unidades
         if unidad_cap == "g" and materia.unidad_medida.lower() == "kg":
             cantidad_base = cantidad_cap / 1000
         elif unidad_cap == "mg" and materia.unidad_medida.lower() == "kg":
@@ -243,7 +243,7 @@ def eliminar_ingrediente(id_detalle):
 @login_required
 def confirmar_eliminar_receta(id_receta):
     receta = Receta.query.get_or_404(id_receta)
-    form = FlaskForm() 
+    form = FlaskForm()
 
     return render_template(
         "recetas/eliminarReceta.html",

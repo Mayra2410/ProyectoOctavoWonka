@@ -13,6 +13,13 @@ from datetime import datetime
 from sqlalchemy import func
 from utils import login_required
 
+import subprocess
+import os
+from flask import send_file 
+import csv
+from io import StringIO
+from flask import Response
+
 
 @gesVentas.route("/gestion-ventas", methods=["GET", "POST"])
 @login_required
@@ -272,3 +279,74 @@ def guardar_corte():
         db.session.rollback()
         flash(f"Error al archivar: {e}", "danger")
     return redirect(url_for("gesVentas.corte_caja"))
+
+
+@gesVentas.route("/respaldar-db", methods=["POST"])
+@login_required
+def respaldar_db():
+    db_user = "wonka_app"
+    db_pass = "Wonka2026*"
+    db_name = "wonka"
+    db_host = "127.0.0.1"
+
+    ruta_mysql = r"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe"
+
+    fecha_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+    nombre_archivo = f"backup_wonka_{fecha_str}.sql"
+    ruta_backups = os.path.join(os.getcwd(), 'backups')
+    
+    if not os.path.exists(ruta_backups):
+        os.makedirs(ruta_backups)
+        
+    ruta_completa = os.path.join(ruta_backups, nombre_archivo)
+
+    try:
+        comando = f'"{ruta_mysql}" -h {db_host} -u {db_user} -p"{db_pass}" {db_name} > "{ruta_completa}"'
+        
+        subprocess.run(comando, shell=True, check=True, capture_output=True, text=True)
+
+        flash(f"¡Éxito! Respaldo guardado en la carpeta del proyecto.", "success")
+        
+    except subprocess.CalledProcessError as e:
+        flash(f"Error de ejecución: Asegúrate de que la ruta '{ruta_mysql}' sea correcta en tu PC.", "danger")
+    except Exception as e:
+        flash(f"Error inesperado: {str(e)}", "danger")
+
+    return redirect(url_for("gesVentas.corte_caja"))
+
+
+
+@gesVentas.route("/exportar-cortes")
+@login_required
+def exportar_cortes():
+    # 1. Consultar los datos del historial (igual que en tu vista de corte)
+    sql = "SELECT fecha_inicio, fecha_fin, total_ingresos, total_egresos, monto_reserva, utilidad_neta, fecha_registro FROM cortes_caja ORDER BY fecha_registro DESC"
+    resultado = db.session.execute(db.text(sql)).all()
+
+    # 2. Crear el archivo CSV en memoria
+    def generate():
+        data = StringIO()
+        writer = csv.writer(data)
+        
+        # Escribir encabezados
+        writer.writerow(['Fecha Inicio', 'Fecha Fin', 'Ingresos', 'Egresos', 'Reserva', 'Utilidad Neta', 'Fecha Registro'])
+        yield data.getvalue()
+        data.seek(0)
+        data.truncate(0)
+
+        # Escribir filas de datos
+        for fila in resultado:
+            writer.writerow([
+                fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]
+            ])
+            yield data.getvalue()
+            data.seek(0)
+            data.truncate(0)
+
+    # 3. Retornar el archivo como una descarga
+    nombre_archivo = f"reporte_wonka_{datetime.now().strftime('%Y%m%d')}.csv"
+    return Response(
+        generate(),
+        mimetype='text/csv',
+        headers={"Content-disposition": f"attachment; filename={nombre_archivo}"}
+    )

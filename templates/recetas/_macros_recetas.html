@@ -97,30 +97,25 @@
 
       <!-- ESTADO -->
       <div class="space-y-1.5">
-        <label
-          class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1"
-        >
-          Estatus de la Receta
-        </label>
+  <label class="text-[10px] font-black text-[#d4af37] uppercase tracking-widest ml-1">
+    Estatus de la Receta
+  </label>
 
-        <div class="relative">
-          <select
-            name="activo"
-            class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none"
-          >
-            <option value="1" {% if form.activo.data %}selected{% endif %}>
-              ACTIVO
-            </option>
-            <option value="0" {% if not form.activo.data %}selected{% endif %}>
-              INACTIVO
-            </option>
-          </select>
+  <div class="relative">
+    <select
+      name="activo"
+      class="wonka-input w-full rounded-2xl px-5 py-3.5 text-sm font-bold text-[#3d1c02] appearance-none outline-none"
+    >
+      <option value="1" {% if form.activo.data == True or form.activo.data == 1 %}selected{% endif %}>
+        ACTIVO
+      </option>
+      <option value="0" {% if form.activo.data == False or form.activo.data == 0 %}selected{% endif %}>
+        INACTIVO
+      </option>
+    </select>
 
-          <i
-            data-lucide="chevron-down"
-            class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"
-          ></i>
-        </div>
+    <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37] pointer-events-none"></i>
+  </div>
 
         {% if form.activo.errors %} {% for error in form.activo.errors %}
         <p class="text-red-500 text-[10px] font-bold mt-1 uppercase">

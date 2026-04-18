@@ -42,7 +42,8 @@ def detalle_materia(id):
 def agregar_materia():
     form = forms.MateriaPrimaForm(request.form)
     form.proveedor_id.choices = [
-        (p.id_proveedor, p.nombre) for p in Proveedores.query.all()
+        (p.id_proveedor, p.nombre) 
+        for p in Proveedores.query.filter_by(activo=True).all()
     ]
 
     if form.validate_on_submit():

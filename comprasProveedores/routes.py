@@ -17,24 +17,28 @@ def lista_compras():
 @compras_bp.route("/compras/registrar", methods=["GET", "POST"])
 @login_required
 def registrar_compra():
-    materias_query = MateriasPrimas.query.all()
-    proveedores_query = Proveedores.query.all()
+    # FILTRO: Solo traemos Materias Primas y Proveedores con estatus activo
+    materias_query = MateriasPrimas.query.filter_by(activo=True).all()
+    proveedores_query = Proveedores.query.filter_by(activo=True).all()
 
     form = forms.CompraMateriaPrimaForm(
         request.form if request.method == "POST" else None
     )
 
+    # Llenamos las opciones del formulario con los resultados filtrados
     form.materia_prima_id.choices = [(0, "SELECCIONA UN INSUMO")] + [
         (m.id_materia_prima, m.nombre) for m in materias_query
     ]
     form.proveedor_id.choices = [(0, "SELECCIONA UN PROVEEDOR")] + [
         (p.id_proveedor, p.nombre) for p in proveedores_query
     ]
+
     if request.method == "POST" and form.validate():
-        materia = MateriasPrimas.query.get(form.materia_prima_id.data)
+        # Verificamos que la materia prima exista y esté activa antes de proceder
+        materia = MateriasPrimas.query.filter_by(id_materia_prima=form.materia_prima_id.data, activo=True).first()
 
         if not materia:
-            flash("La materia prima seleccionada no existe.", "danger")
+            flash("La materia prima seleccionada no es válida o está inactiva.", "danger")
             return redirect(url_for("comprasProveedores.registrar_compra"))
 
         nueva_compra = ComprasMateriaPrima(
@@ -44,20 +48,17 @@ def registrar_compra():
             costo_unitario=form.costo_unitario.data,
             fecha_compra=form.fecha_compra.data,
             observaciones=form.observaciones.data,
-            estatus_compra="PENDIENTE",
+            estatus_compra="PENDIENTE", #
         )
 
         try:
+            # Actualizamos datos en la tabla de materia prima basándonos en la compra
             materia.costo_unitario = form.costo_unitario.data
             materia.fecha_ultima_compra = form.fecha_compra.data
 
             db.session.add(nueva_compra)
             db.session.commit()
 
-            # flash(
-            #     "Compra registrada correctamente. El stock no se verá afectado hasta que se procese la producción.",
-            #     "success",
-            # )
             return redirect(url_for("comprasProveedores.lista_compras"))
 
         except Exception as e:

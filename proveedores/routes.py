@@ -1,9 +1,10 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from . import proveedores
 from . import forms
 from models import db, Proveedores
 from utils import login_required
 from sqlalchemy import or_
+from sqlalchemy.exc import IntegrityError
 
 
 @proveedores.route("/proveedores", methods=["GET", "POST"])
@@ -27,7 +28,7 @@ def lista_proveedores():
         "proveedores/proveedoresAdmin.html",
         form=create_form,
         proveedores=lista_de_proveedores,
-        search_query=search_query,  
+        search_query=search_query,
     )
 
 
@@ -39,32 +40,14 @@ def detalle_proveedor(id):
     return render_template("proveedores/detallesProveedores.html", proveedor=proveedor)
 
 
-# Agregar nuevo proveedor
 @proveedores.route("/proveedores/agregar", methods=["GET", "POST"])
 @login_required
 def agregar_proveedor():
     form = forms.ProveedorForm(request.form)
 
     if request.method == "POST" and form.validate():
-        existe_ruc = Proveedores.query.filter_by(ruc=form.ruc.data).first()
-        existe_nombre = Proveedores.query.filter_by(nombre=form.nombre.data).first()
-        existe_tel = Proveedores.query.filter_by(telefono=form.telefono.data).first()
-        existe_dir = Proveedores.query.filter_by(direccion=form.direccion.data).first()
-
-        if existe_ruc:
-            form.ruc.errors.append("Este RUC ya está registrado.")
-        if existe_nombre:
-            form.nombre.errors.append("Ya existe una empresa con este nombre.")
-        if existe_tel:
-            form.telefono.errors.append("Este teléfono ya pertenece a otro proveedor.")
-        if existe_dir:
-            form.direccion.errors.append("Esta dirección ya está registrada.")
-
-        if existe_ruc or existe_nombre or existe_tel or existe_dir:
-            return render_template("proveedores/agregarProveedores.html", form=form)
-
         nuevo_prov = Proveedores(
-            nombre=form.nombre.data,
+            nombre=form.nombre.data.strip(),
             contacto=form.contacto.data,
             email=form.email.data,
             telefono=form.telefono.data,
@@ -76,11 +59,30 @@ def agregar_proveedor():
         )
 
         try:
+            # INICIO DE TRANSACCIÓN ATÓMICA
             db.session.add(nuevo_prov)
             db.session.commit()
+            flash("Proveedor registrado exitosamente", "success")
             return redirect(url_for("proveedores.lista_proveedores"))
+
+        except IntegrityError as e:
+            db.session.rollback()
+            # Detectamos qué campo falló analizando el error de la DB
+            error_info = str(e.orig).lower()
+            if "ruc" in error_info:
+                form.ruc.errors.append("Este RUC ya existe.")
+            elif "nombre" in error_info:
+                form.nombre.errors.append("Este nombre de empresa ya existe.")
+            elif "telefono" in error_info:
+                form.telefono.errors.append("Este teléfono ya está registrado.")
+            else:
+                flash(
+                    "Error de duplicidad: Verifique los datos del proveedor.", "danger"
+                )
+
         except Exception as e:
             db.session.rollback()
+            flash("Ocurrió un error inesperado.", "danger")
 
     return render_template("proveedores/agregarProveedores.html", form=form)
 

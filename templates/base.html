@@ -116,8 +116,7 @@
         Wonka', 'shopping-bag', 'puntoVenta.index'), ('orders', 'Mis Pedidos',
         'package', 'cliente.mis_compras'), ('profile', 'Mi Perfil', 'user',
         'cliente.detalles_cliente_vista') ] %} {% elif session['rol'] ==
-        'GERENTE' %} {% set items = [ ('pos', 'Punto de Venta', 'shopping-bag',
-        'puntoVenta.index'), ('customers', 'Clientes', 'users',
+        'GERENTE' %} {% set items = [ ('customers', 'Clientes', 'users',
         'cliente.clientesAdmin'), ('employees', 'Empleados', 'user-cog',
         'empleado.empleadosAdmin'), ('suppliers', 'Proveedores', 'truck',
         'proveedores.lista_proveedores'), ('materials', 'Materias Primas',

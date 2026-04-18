@@ -45,6 +45,23 @@
       >
         <i data-lucide="printer" class="w-4 h-4"></i> Imprimir Reporte
       </button>
+
+      <div class="flex gap-3 no-print">
+        <form action="{{ url_for('gesVentas.respaldar_db') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-black text-xs hover:scale-105 transition-all shadow-md flex items-center gap-2 border-b-4 border-blue-800/30"
+          >
+            <i data-lucide="database" class="w-4 h-4"></i> Generar Respaldo SQL
+          </button>
+        </form>
+
+        <form
+          action="{{ url_for('gesVentas.guardar_corte') }}"
+          method="POST"
+        ></form>
+      </div>
     </div>
   </div>
 
@@ -135,12 +152,21 @@
   <div
     class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 no-print"
   >
-    <h4
-      class="text-wonka-brown font-black uppercase text-xs tracking-widest mb-6 flex items-center gap-2"
-    >
-      <i data-lucide="book-open" class="w-4 h-4 text-wonka-purple"></i>
-      Historial de Ciclos Archivados
-    </h4>
+    <div class="flex justify-between items-center mb-6">
+      <h4
+        class="text-wonka-brown font-black uppercase text-xs tracking-widest flex items-center gap-2"
+      >
+        <i data-lucide="book-open" class="w-4 h-4 text-wonka-purple"></i>
+        Historial de Ciclos Archivados
+      </h4>
+
+      <a
+        href="{{ url_for('gesVentas.exportar_cortes') }}"
+        class="bg-green-600 text-white px-4 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2 hover:bg-green-700 transition-all shadow-sm"
+      >
+        <i data-lucide="download" class="w-3 h-3"></i> Exportar a Excel (CSV)
+      </a>
+    </div>
     <div class="overflow-x-auto">
       <table class="w-full text-left text-[10px]">
         <thead

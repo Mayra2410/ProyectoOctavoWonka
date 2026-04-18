@@ -1,13 +1,10 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% block content %}
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
 
-  .font-wonka-title {
-    font-family: "Playfair Display", serif;
-  }
-  body {
-    background-color: #fdfaf3;
-  }
+  .font-wonka-title { font-family: "Playfair Display", serif; }
+  body { background-color: #fdfaf3; }
 
   .chocolate-source {
     background: linear-gradient(135deg, #3d1c02 0%, #5d2e06 100%);
@@ -32,13 +29,8 @@
     transition: all 0.2s ease;
   }
 
-  .chocolate-row:hover {
-    background: #fffdfa;
-  }
-
-  .text-wonka-gold {
-    color: #d4af37;
-  }
+  .chocolate-row:hover { background: #fffdfa; }
+  .text-wonka-gold { color: #d4af37; }
 </style>
 
 <div class="max-w-[1400px] mx-auto px-6 py-8">
@@ -52,12 +44,11 @@
     </p>
   </div>
 
+  {# CONTENIDO PRINCIPAL #}
   <div class="glass-panel overflow-hidden">
     <div class="overflow-x-auto">
       <table class="w-full text-left border-separate border-spacing-y-2">
-        <thead
-          class="text-[#3d1c02]/50 text-[10px] font-black uppercase tracking-widest"
-        >
+        <thead class="text-[#3d1c02]/50 text-[10px] font-black uppercase tracking-widest">
           <tr>
             <th class="pb-4 px-6">Folio</th>
             <th class="pb-4 px-6">Fecha</th>
@@ -71,9 +62,7 @@
           {% for v in ventas %}
           <tr class="chocolate-row rounded-2xl overflow-hidden shadow-sm">
             <td class="py-5 px-6">
-              <span class="text-wonka-gold font-black italic text-lg"
-                >#{{ v.id_venta }}</span
-              >
+              <span class="text-wonka-gold font-black italic text-lg">#{{ v.id_venta }}</span>
             </td>
             <td class="py-5 px-6 text-gray-500 font-semibold">
               {{ v.fecha_venta.strftime('%d/%m/%Y %H:%M') }}
@@ -82,77 +71,46 @@
               ${{ "{:,.2f}".format(v.total) }}
             </td>
             <td class="px-6 py-4 text-center">
-              {% if v.estado ==
-              'ENTREGADA' %}
-              <span
-                class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-black uppercase"
-              >
-                Completada
-              </span>
+              {% if v.estado == 'ENTREGADA' %}
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-black uppercase">Completada</span>
               {% elif v.estado == 'COMPLETADA' %}
-              <span
-                class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-black uppercase"
-              >
-                Lista para recoger
-              </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-black uppercase">Lista para recoger</span>
               {% elif v.estado == 'PENDIENTE' %}
-              <span
-                class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-black uppercase"
-              >
-                En Producción
-              </span>
+                <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-black uppercase">En Producción</span>
               {% else %}
-              <span
-                class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-black uppercase"
-              >
-                {{ v.estado }}
-              </span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-black uppercase">{{ v.estado }}</span>
               {% endif %}
             </td>
             <td class="py-5 px-6 text-center">
-              <a
-                href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}"
-                class="w-10 h-10 flex items-center justify-center bg-[#fdfaf3] text-wonka-gold rounded-xl hover:bg-[#3d1c02] hover:text-white transition-all mx-auto border border-[#f0ede6]"
-              >
+              <a href="{{ url_for('gesVentas.ver_ticket', id=v.id_venta) }}"
+                 class="w-10 h-10 flex items-center justify-center bg-[#fdfaf3] text-wonka-gold rounded-xl hover:bg-[#3d1c02] hover:text-white transition-all mx-auto border border-[#f0ede6]">
                 <i data-lucide="receipt" class="w-5 h-5"></i>
               </a>
             </td>
             <td class="py-5 px-6 text-right">
               {% if v.estado == 'ENTREGADA' %}
-              <button
-                onclick="toggleChocolates('{{ v.id_venta }}')"
-                class="bg-wonka-gold text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-tighter hover:bg-[#3d1c02] transition-colors shadow-sm"
-              >
-                Calificar Dulces
-              </button>
+                <button onclick="toggleChocolates('{{ v.id_venta }}')"
+                        class="bg-wonka-gold text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-tighter hover:bg-[#3d1c02] transition-colors shadow-sm">
+                  Calificar Dulces
+                </button>
               {% else %}
-              <span class="text-gray-400 text-[10px] font-bold italic"
-                >Podrás calificar al recibir</span
-              >
+                <span class="text-gray-400 text-[10px] font-bold italic">Podrás calificar al recibir</span>
               {% endif %}
             </td>
           </tr>
 
-          {# FILA DESPLEGABLE DE PRODUCTOS #}
           <tr id="extra-{{ v.id_venta }}" class="hidden">
-            <td
-              colspan="6"
-              class="p-6 bg-[#fdfaf3]/50 rounded-b-2xl border-x border-b border-[#f0ede6]"
-            >
+            <td colspan="6" class="p-6 bg-[#fdfaf3]/50 rounded-b-2xl border-x border-b border-[#f0ede6]">
               <div class="flex flex-wrap gap-3 justify-center">
-                <p
-                  class="w-full text-center text-[10px] font-black text-[#3d1c02]/40 uppercase mb-3 tracking-widest"
-                >
+                <p class="w-full text-center text-[10px] font-black text-[#3d1c02]/40 uppercase mb-3 tracking-widest">
                   ¿Cuál de estos manjares deseas calificar?
                 </p>
                 {% for d in v.detalles %}
-                <button
-                  onclick="abrirModalCalificar('{{ d.producto.id_producto }}', '{{ d.producto.nombre }}')"
-                  class="flex items-center gap-3 px-5 py-3 bg-white border border-[#f0ede6] rounded-2xl text-[11px] font-extrabold text-[#3d1c02] hover:border-wonka-gold hover:shadow-lg transition-all active:scale-95"
-                >
-                  <span class="text-lg">🍫</span>
-                  {{ d.producto.nombre }}
-                </button>
+                  <button onclick="abrirModalCalificar('{{ d.producto.id_producto }}', '{{ d.producto.nombre }}')"
+                          class="flex items-center gap-3 px-5 py-3 bg-white border border-[#f0ede6] rounded-2xl text-[11px] font-extrabold text-[#3d1c02] hover:border-wonka-gold hover:shadow-lg transition-all active:scale-95">
+                    <span class="text-lg">🍫</span>
+                    {{ d.producto.nombre }}
+                  </button>
                 {% endfor %}
               </div>
             </td>
@@ -164,90 +122,49 @@
   </div>
 </div>
 
-<div
-  id="modalCalificar"
-  class="hidden fixed inset-0 bg-[#3d1c02]/90 backdrop-blur-md z-[70] flex items-center justify-center p-4"
->
-  <div
-    class="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl relative border-4 border-wonka-gold/20"
-  >
-    <h3
-      id="tituloModal"
-      class="text-3xl font-wonka-title text-[#3d1c02] mb-1 font-bold italic text-center"
-    >
+{# MODAL DE CALIFICACIÓN #}
+<div id="modalCalificar" class="hidden fixed inset-0 bg-[#3d1c02]/90 backdrop-blur-md z-[70] flex items-center justify-center p-4">
+  <div class="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl relative border-4 border-wonka-gold/20">
+    <h3 id="tituloModal" class="text-3xl font-wonka-title text-[#3d1c02] mb-1 font-bold italic text-center">
       Calificar Producto
     </h3>
-    <p
-      class="text-[10px] text-wonka-gold text-center uppercase font-black tracking-[0.2em] mb-8"
-    >
+    <p class="text-[10px] text-wonka-gold text-center uppercase font-black tracking-[0.2em] mb-8">
       Tu opinión es magia para nosotros
     </p>
 
-    <form
-      action="{{ url_for('cliente.calificar_producto') }}"
-      method="POST"
-      class="space-y-6"
-    >
+    <form action="{{ url_for('cliente.calificar_producto') }}" method="POST" class="space-y-6">
       <input type="hidden" id="modal_id_producto" name="id_producto" />
       <input type="hidden" id="modal_nombre_producto" name="nombre_producto" />
 
       <div>
-        <label
-          class="block text-[10px] font-black text-[#3d1c02] uppercase mb-3 tracking-widest text-center"
-          >Puntuación Dorada</label
-        >
+        <label class="block text-[10px] font-black text-[#3d1c02] uppercase mb-3 tracking-widest text-center">
+          Puntuación Dorada
+        </label>
         <div class="grid grid-cols-5 gap-3">
           {% for i in range(1, 6) %}
-          <label class="cursor-pointer">
-            <input
-              type="radio"
-              name="calificacion"
-              value="{{ i }}"
-              class="hidden peer"
-              {%
-              if
-              i=""
-              ="5"
-              %}checked{%
-              endif
-              %}
-            />
-            <div
-              class="text-center py-3 rounded-2xl bg-[#fdfaf3] border-2 border-transparent peer-checked:border-wonka-gold peer-checked:bg-amber-50 transition-all font-black text-sm text-[#3d1c02]"
-            >
-              {{ i }} <span class="text-wonka-gold">★</span>
-            </div>
-          </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="calificacion" value="{{ i }}" class="hidden peer" {% if i == 5 %}checked{% endif %} />
+              <div class="text-center py-3 rounded-2xl bg-[#fdfaf3] border-2 border-transparent peer-checked:border-wonka-gold peer-checked:bg-amber-50 transition-all font-black text-sm text-[#3d1c02]">
+                {{ i }} <span class="text-wonka-gold">★</span>
+              </div>
+            </label>
           {% endfor %}
         </div>
       </div>
 
       <div>
-        <label
-          class="block text-[10px] font-black text-[#3d1c02] uppercase mb-3 tracking-widest"
-          >Tu Reseña</label
-        >
-        <textarea
-          name="comentario"
-          rows="3"
-          required
-          class="w-full bg-[#fdfaf3] border-none rounded-[1.5rem] p-5 text-sm focus:ring-4 focus:ring-wonka-gold/20 resize-none font-semibold text-[#5d2e06]"
-          placeholder="Describe el sabor de esta maravilla..."
-        ></textarea>
+        <label class="block text-[10px] font-black text-[#3d1c02] uppercase mb-3 tracking-widest">Tu Reseña</label>
+        <textarea name="comentario" rows="3" required
+                  class="w-full bg-[#fdfaf3] border-none rounded-[1.5rem] p-5 text-sm focus:ring-4 focus:ring-wonka-gold/20 resize-none font-semibold text-[#5d2e06]"
+                  placeholder="Describe el sabor de esta maravilla..."></textarea>
       </div>
 
       <div class="flex flex-col gap-4 pt-4">
-        <button
-          type="submit"
-          class="w-full bg-[#3d1c02] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-wonka-gold hover:-translate-y-1 transition-all"
-        >
+        <button type="submit" class="w-full bg-[#3d1c02] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-wonka-gold hover:-translate-y-1 transition-all">
           ENVIAR CALIFICACIÓN
         </button>
-        <button
-          type="button"
-          onclick="cerrarModal()"
-          class="w-full py-2 text-gray-400 font-bold text-[10px] uppercase hover:text-red-500 transition-colors tracking-widest text-center"
-        >
+        <button type="button" onclick="cerrarModal()"
+                class="w-full py-2 text-gray-400 font-bold text-[10px] uppercase hover:text-red-500 transition-colors tracking-widest text-center">
           Cerrar Ventana
         </button>
       </div>
@@ -260,9 +177,7 @@
     const extraRow = document.getElementById("extra-" + idVenta);
     const isHidden = extraRow.classList.contains("hidden");
 
-    document
-      .querySelectorAll('[id^="extra-"]')
-      .forEach((row) => row.classList.add("hidden"));
+    document.querySelectorAll('[id^="extra-"]').forEach((row) => row.classList.add("hidden"));
 
     if (isHidden) {
       extraRow.classList.remove("hidden");
@@ -272,8 +187,7 @@
   function abrirModalCalificar(idProd, nombreProd) {
     document.getElementById("modal_id_producto").value = idProd;
     document.getElementById("modal_nombre_producto").value = nombreProd;
-    document.getElementById("tituloModal").innerText =
-      "Calificar: " + nombreProd;
+    document.getElementById("tituloModal").innerText = "Calificar: " + nombreProd;
     document.getElementById("modalCalificar").classList.remove("hidden");
   }
 
